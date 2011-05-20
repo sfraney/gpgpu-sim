@@ -1,0 +1,5 @@
+kernel line : count latency dram_traffic smem_bk_conflicts smem_warp gmem_access_generated gmem_warp exposed_latency warp_divergence
+_1.ptx 56 : 16384 81920 0 0 0 0 0 0 0 
+_1.ptx 57 : 16384 81920 0 0 0 0 0 0 0 
+_1.ptx 58 : 16384 134247899 0 0 0 0 0 302950 0 
+_1.ptx 60 : 16384 85600 0 0 0 0 0 0 0 
