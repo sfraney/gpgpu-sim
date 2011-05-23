@@ -841,7 +841,10 @@ unsigned int run_gpu_sim(int grid_num)
    
    ptx_file_line_stats_write_file();
    //SEAN
-   if(g_pipetrace) pipe_stat_write_file();
+   if(g_pipetrace) {
+     pipe_stat_write_file();
+     //     g_pipetrace = 0;
+   }
 
    printf("stats for grid: %d\n", grid_num);
    gpu_print_stat();

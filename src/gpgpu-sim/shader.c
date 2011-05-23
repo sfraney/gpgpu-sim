@@ -239,7 +239,7 @@ int log2i(int n) {
 
 //SEAN:  pipetrace support
 extern char* g_pipetrace_out;
-extern int g_pipetrace;  //Is pipetrace on or not?
+extern int g_pipetrace;  //pipetrace on/off
 
 //struct to contain timestamps for existence in different stages
 typedef struct pipe_stat_t {
@@ -269,8 +269,22 @@ void pipe_stat_write_file() {
   //print header
   fprintf(pfile, "Instruction ID:  issued fetch decode pre-exec exec pre-mem mem writeback\n");
 
+  /*TEST
+  static int counting=0;
+  counting++;
+  printf("%i printing pipe stats\n", counting);
+  //TEST*/
+
   curr = pipe_stat_first;
 
+  /*TEST
+  while(curr != NULL) {
+    if(curr->uid == 60000) { printf("Printing uid %u's trace\n", curr->uid); }
+    if(curr->next->uid < curr->uid) break;  //Don't know why, but this enters a (infinite?) loop (w/ atomics at least) otherwise
+    curr = curr->next;
+  }
+  //TEST*/
+  //UNTEST
   while(curr != NULL) {
     fprintf(pfile, "%14i", curr->uid);
     fprintf(pfile, "%7u", curr->issued);
@@ -283,11 +297,13 @@ void pipe_stat_write_file() {
     fprintf(pfile, "%7u", curr->in_writeback);
     fprintf(pfile, "\n");
 
+    if((curr->next != NULL) && (curr->next->uid < curr->uid)) break;  //Don't know why, but this enters a (infinite?) loop (w/ atomics at least) otherwise
     curr = curr->next;
   }
 
   //not sure on the purpose of this, but figure it can't hurt
-  fflush(pfile);
+  //fflush(pfile);
+  //UNTEST*/
   fclose(pfile);
 }
 //SEAN*/
@@ -810,7 +826,7 @@ address_type shader_thread_nextpc(shader_core_ctx_t *shader, int tid)
 // tid - thread id, warp_id - used by PDOM, wlane - position in warp
 void shader_issue_thread(shader_core_ctx_t *shader, int tid, int wlane, unsigned active_mask )
 {
-  //TEST
+  /*TEST
   static int count = 0;
   //TEST*/
    if ( gpgpu_cuda_sim ) {
@@ -825,19 +841,33 @@ void shader_issue_thread(shader_core_ctx_t *shader, int tid, int wlane, unsigned
       //SEAN
       if(g_pipetrace) {
 	if(pipe_stat_last == NULL) {
+	  /*TEST
+	  printf("pipe_stats list is empty\n");
+	  //TEST*/
 	  pipe_stat_last = (pipe_stat *) malloc(sizeof(pipe_stat));
 	  pipe_stat_first = pipe_stat_last;
 	} else {
 	  pipe_stat *curr = (pipe_stat *) malloc(sizeof(pipe_stat));
-	  //TEST
-	  count++;
-	  if(!(count % 1000)) printf("COUNT = %i\n",count);
-	  //TEST*/
 	  curr->prev = pipe_stat_last;
 	  pipe_stat_last->next = curr;
 	  pipe_stat_last = curr;
 	}
+	/*TEST
+	count++;
+	if(!(count % 1000)) printf("COUNT = %i\n",count);
+	//TEST*/
+	pipe_stat_last->issued=0;
+	pipe_stat_last->in_fetch=0;
+	pipe_stat_last->in_decode=0;
+	pipe_stat_last->in_pre_exec=0;
+	pipe_stat_last->in_exec=0;
+	pipe_stat_last->in_pre_mem=0;
+	pipe_stat_last->in_mem=0;
+	pipe_stat_last->in_writeback=0;
 	pipe_stat_last->uid = shader->pipeline_reg[wlane][TS_IF].uid;
+	/*TEST
+	if(pipe_stat_last->uid == 60000) printf("Creating pipe_stat for uid %u\n", pipe_stat_last->uid);
+	//TEST*/
 	pipe_stat_last->issued = gpu_sim_cycle;
       }
    }
@@ -1940,19 +1970,20 @@ void shader_preexecute( shader_core_ctx_t *shader,
 
    shader->RR_k = 0; //setting RR_k to 0 to indicate RF conflict check next cycle
    for (i=0; i<pipe_simd_width;i++) {
+      //SEAN
+      if(g_pipetrace) {
+	if(shader->pipeline_reg[i][ID_RR].uid != nop_inst.uid) {
+	  pipe_stat *curr=pipe_stat_last;
+	  while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][ID_RR].uid)) curr = curr->prev;    
+	  assert(curr->uid == shader->pipeline_reg[i][ID_RR].uid);
+	  curr->in_pre_exec = gpu_sim_cycle;
+	}
+      }
+
       if (shader->pipeline_reg[i][ID_RR].hw_thread_id == -1 )
          continue; //bubble 
       shader->pipeline_reg[i][ID_EX] = shader->pipeline_reg[i][ID_RR];
       shader->pipeline_reg[i][ID_RR] = nop_inst;
-      //SEAN
-      if(g_pipetrace) {
-	if(shader->pipeline_reg[i][ID_EX].uid != nop_inst.uid) {
-	  pipe_stat *curr=pipe_stat_last;
-	  while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][ID_EX].uid)) curr = curr->prev;    
-	  assert(curr->uid == shader->pipeline_reg[i][ID_EX].uid);
-	  curr->in_pre_exec = gpu_sim_cycle;
-	}
-      }
    }
 
 }
@@ -3521,7 +3552,7 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
 	 pipe_stat *curr=pipe_stat_last;
 	 while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][MM_WB].uid)) curr = curr->prev;    
 	 assert(curr->uid == shader->pipeline_reg[i][MM_WB].uid);
-	 curr->in_mem = gpu_sim_cycle;
+	 curr->in_writeback = gpu_sim_cycle;
        }
      }
    }

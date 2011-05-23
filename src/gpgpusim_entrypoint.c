@@ -112,6 +112,8 @@ void gpgpu_ptx_sim_init_perf()
 
 extern unsigned long long  gpu_tot_sim_insn;
 extern unsigned long long  gpu_tot_sim_cycle;
+//SEAN
+extern int g_pipetrace;
 
 int gpgpu_ptx_sim_main_perf( const char *kernel_key, struct dim3 gridDim, struct dim3 blockDim, struct gpgpu_ptx_sim_arg *grid_params )
 {
@@ -135,6 +137,8 @@ int gpgpu_ptx_sim_main_perf( const char *kernel_key, struct dim3 gridDim, struct
           (unsigned)d, (unsigned)h, (unsigned)m, (unsigned)s, (unsigned)difference );
    printf("gpgpu_simulation_rate = %u (inst/sec)\n", (unsigned)(gpu_tot_sim_insn / difference) );
    printf("gpgpu_simulation_rate = %u (cycle/sec)\n", (unsigned)(gpu_tot_sim_cycle / difference) );
+   //SEAN
+   //   if(g_pipetrace) pipe_stat_write_file();
    fflush(stdout);
 
    return 0;
