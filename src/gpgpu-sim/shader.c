@@ -193,7 +193,7 @@ extern int gpgpu_cuda_sim;
 extern unsigned long long  gpu_tot_sim_cycle;
 
 extern unsigned g_max_regs_per_thread;
-extern void ptx_decode_inst( void *thd, unsigned *op, int *i1, int *i2, int *i3, int *i4, int *o1, int *o2, int *o3, int *o4, unsigned *vectorin, unsigned *vectorout );
+extern void ptx_decode_inst( void *thd, unsigned *op, int *i1, int *i2, int *i3, int *i4, int *o1, int *o2, int *o3, int *o4, unsigned *vectorin, unsigned *vectorout, unsigned *isatom );
 extern unsigned ptx_get_inst_op( void *thd);
 extern void ptx_exec_inst( void *thd, address_type *addr, unsigned *space, unsigned *data_size, dram_callback_t* callback, unsigned warp_active_mask);
 extern int  ptx_branch_taken( void *thd );
@@ -1721,7 +1721,7 @@ void shader_decode( shader_core_ctx_t *shader,
    int i;
    int touched_priority=0;
    int warp_tid=0;
-   unsigned space, data_size, vectorin, vectorout;
+   unsigned space, data_size, vectorin, vectorout, /*SEAN*/ isatom;
    address_type regs_regs_PC = 0xDEADBEEF;
    address_type warp_current_pc = 0x600DBEEF;
    address_type warp_next_pc = 0x600DBEEF;
@@ -1746,10 +1746,11 @@ void shader_decode( shader_core_ctx_t *shader,
       tid = shader->pipeline_reg[i][IF_ID].hw_thread_id;
 
       if ( gpgpu_cuda_sim ) {
-         ptx_decode_inst( shader->thread[tid].ptx_thd_info, (unsigned*)&op, &i1, &i2, &i3, &i4, &o1, &o2, &o3, &o4, &vectorin, &vectorout);
+	 ptx_decode_inst( shader->thread[tid].ptx_thd_info, (unsigned*)&op, &i1, &i2, &i3, &i4, &o1, &o2, &o3, &o4, &vectorin, &vectorout, &isatom);
          shader->pipeline_reg[i][IF_ID].op = op;
          shader->pipeline_reg[i][IF_ID].pc = ptx_thread_get_next_pc( shader->thread[tid].ptx_thd_info );
          shader->pipeline_reg[i][IF_ID].ptx_thd_info = shader->thread[tid].ptx_thd_info;
+	 shader->pipeline_reg[i][IF_ID].isatom = isatom;
 
       } else {
          abort();
@@ -1772,10 +1773,11 @@ void shader_decode( shader_core_ctx_t *shader,
       /* get the next instruction to execute from fetch stage */
       tid = shader->pipeline_reg[i][IF_ID].hw_thread_id;
       if ( gpgpu_cuda_sim ) {
-         ptx_decode_inst( shader->thread[tid].ptx_thd_info, (unsigned*)&op, &i1, &i2, &i3, &i4, &o1, &o2, &o3, &o4, &vectorin, &vectorout );
+	 ptx_decode_inst( shader->thread[tid].ptx_thd_info, (unsigned*)&op, &i1, &i2, &i3, &i4, &o1, &o2, &o3, &o4, &vectorin, &vectorout, &isatom );
          ptx_exec_inst( shader->thread[tid].ptx_thd_info, &addr, &space, &data_size, &callback, shader->pipeline_reg[i][IF_ID].warp_active_mask );
          shader->pipeline_reg[i][IF_ID].callback = callback;
          shader->pipeline_reg[i][IF_ID].space = space;
+
          if (is_local(space) && (is_load(op) || is_store(op))) {
             // During functional execution, each thread sees its own memory space for local memory, but these
             // need to be mapped to a shared address space for timing simulation.  We do that mapping here.

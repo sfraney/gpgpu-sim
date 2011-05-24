@@ -139,6 +139,8 @@ typedef struct {
    unsigned long long  ex_cycle;
    unsigned long long  mm_cycle;
 
+  //SEAN
+  unsigned isatom;
 } inst_t;
 
 typedef struct {

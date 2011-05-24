@@ -778,7 +778,8 @@ void function_info::ptx_decode_inst( ptx_thread_info *thread,
                                      int *i1, int *i2, int *i3, int *i4, 
                                      int *o1, int *o2, int *o3, int *o4, 
                                      int *vectorin, 
-                                     int* vectorout )
+                                     int* vectorout,
+				     unsigned *isatom )
 {
    addr_t pc = thread->get_pc();
    unsigned index = pc - m_start_PC;
@@ -788,6 +789,15 @@ void function_info::ptx_decode_inst( ptx_thread_info *thread,
    int op_classification = 0; 
    bool has_dst = false ;
    int opcode = pI->get_opcode(); //determine the opcode
+   *isatom = pI->get_atomic(); //SEAN:  determine if atomic op
+   /*TEST
+   printf("m_atomic_spec = %u\n", *isatom);
+   //TEST*/
+   /*TEST
+   if(*isatom >= ATOMIC_AND) {
+     printf("Insn is atomic (%u)\n", *isatom);
+   }
+   //TEST*/
 
    switch ( pI->get_opcode() ) {
 #define OP_DEF(OP,FUNC,STR,DST,CLASSIFICATION) case OP: has_dst = (DST!=0); op_classification = CLASSIFICATION; break;
@@ -1880,8 +1890,10 @@ extern "C" void gpgpu_ptx_sim_main_func( const char *kernel_key, dim3 gridDim, d
                   dram_callback_t callback;
                   unsigned warp_active_mask = (unsigned)-1; // vote instruction with diverged warps won't execute correctly
                                                             // in functional simulation mode
-
-                  g_func_info->ptx_decode_inst( thread, &op_type, &i1, &i2, &i3, &i4, &o1, &o2, &o3, &o4, &vectorin, &vectorout  );
+		  //SEAN
+		  unsigned isatom;
+		  
+                  g_func_info->ptx_decode_inst( thread, &op_type, &i1, &i2, &i3, &i4, &o1, &o2, &o3, &o4, &vectorin, &vectorout, &isatom);
                   g_func_info->ptx_exec_inst( thread, &addr, &space, &data_size, &callback, warp_active_mask );
                }
             }
@@ -1908,7 +1920,7 @@ extern "C" void gpgpu_ptx_sim_main_func( const char *kernel_key, dim3 gridDim, d
    fflush(stdout); 
 }
 
-extern "C" void ptx_decode_inst( void *thd, unsigned *op, int *i1, int *i2, int *i3, int *i4, int *o1, int *o2, int *o3, int *o4, int *vectorin, int *vectorout  )
+extern "C" void ptx_decode_inst( void *thd, unsigned *op, int *i1, int *i2, int *i3, int *i4, int *o1, int *o2, int *o3, int *o4, int *vectorin, int *vectorout, unsigned *isatom  )
 {
    *op = NO_OP;
    *o1 = 0;
@@ -1921,13 +1933,14 @@ extern "C" void ptx_decode_inst( void *thd, unsigned *op, int *i1, int *i2, int 
    *i4 = 0;
    *vectorin = 0;
    *vectorout = 0;
+   *isatom = 0;
 
    if ( thd == NULL )
       return;
 
    ptx_thread_info *thread = (ptx_thread_info *) thd;
    g_func_info = thread->func_info();
-   g_func_info->ptx_decode_inst(thread,op,i1,i2,i3,i4,o1,o2,o3,o4,vectorin,vectorout);
+   g_func_info->ptx_decode_inst(thread,op,i1,i2,i3,i4,o1,o2,o3,o4,vectorin,vectorout,isatom);
 }
 
 extern "C" unsigned ptx_get_inst_op( void *thd)

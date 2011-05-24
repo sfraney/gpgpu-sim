@@ -352,6 +352,51 @@ unsigned long long int shd_cache_fill( shd_cache_t *cp,
    return repl_addr;
 }
 
+void shd_cache_invalidate( shd_cache_t *cp, 
+			   unsigned long long int addr) {
+
+  //TEST
+  printf("Invalidating address %llu\n", addr);
+  //TEST*/
+
+   unsigned int i;
+   unsigned int set;
+   unsigned long long int tag;
+   unsigned long long int packed_addr;
+   unsigned char line_exists;
+
+   unsigned int base = 0 ; 
+   unsigned int maxway = cp->assoc ; 
+
+   shd_cache_line_t *pline, *cline;
+
+   if (cp->bank_mask)
+      packed_addr = addrdec_packbits(cp->bank_mask, addr, 64, 0);
+   else
+      packed_addr = addr;
+   set = (packed_addr >> cp->line_sz_log2) & ( (1<<cp->nset_log2) - 1 );
+   tag = packed_addr >> (cp->line_sz_log2 + cp->nset_log2);
+
+   //SEAN - find line in cache
+   line_exists = 0;
+   for (i=base; i<maxway; i++) {
+      pline = &(cp->lines[set*cp->assoc+i] );
+      if (pline->tag == tag) {
+         cline = pline;
+         line_exists = 1;
+         break;
+      }
+   }
+
+   /*TEST
+   if(line_exists)
+   //TEST*/
+   assert(line_exists);  //SEAN - if this isn't set, there's a problem
+
+   //SEAN - invalidate block
+   cline->status &= ~VALID;
+}
+
 void shd_cache_mergehit( shd_cache_t *cp, unsigned long long int addr )
 {
    cp->merge_hit += 1;

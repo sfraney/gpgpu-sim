@@ -150,6 +150,10 @@ unsigned long long int shd_cache_fill( shd_cache_t *cp,
                                        unsigned long long int addr,
                                        unsigned int sim_cycle );
 
+//SEAN
+void shd_cache_invalidate( shd_cache_t *cp, 
+			   unsigned long long int addr);
+
 unsigned long long int L2_shd_cache_fill( shd_cache_t *cp, 
                                           unsigned long long int addr,
                                           unsigned int sim_cycle );
