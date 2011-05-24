@@ -2790,8 +2790,16 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
       if (mem_insn[i].hw_thread_id == -1 )
          continue; // bubble 
 
+      //SEAN
+      if(mem_insn[i].isatom) {
+	isatommem[i] = 1;
+      }
+
+      //SEAN - this should probably be more explicit
+      // Instead of relying on the fact that only atomics have callbacks, this should be handled by a check for an instruction being an atomic
+      // The question is:  does this 'if' enforce the 'continue' only if it's an atomic or any time there's an instruction with a callback function (and the isatommem is just appended because only atomics have callbacks.  In other words:  can I just add 'continue' to 'if' statement above?
       if ( mem_insn[i].callback.function != NULL ) {
-         isatommem[i] = 1;
+	//         isatommem[i] = 1;
          continue;
       }
 
