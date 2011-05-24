@@ -940,7 +940,8 @@ public:
                          int *o3,
                          int *o4,
                          int *vectorin,
-                         int *vectorout);
+                         int *vectorout,
+			 unsigned *isatom);
    unsigned ptx_get_inst_op( ptx_thread_info *thread );
    void ptx_exec_inst( ptx_thread_info *thd, addr_t *addr, unsigned *space, unsigned *data_size, dram_callback_t* callback, unsigned warp_active_mask  );
    void add_param( const char *name, struct param_t value )
