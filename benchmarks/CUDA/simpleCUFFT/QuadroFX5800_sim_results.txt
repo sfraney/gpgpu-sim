@@ -1,0 +1,2144 @@
+
+
+        *** GPGPU-Sim version 2.1.1b (beta) ***
+
+
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19dpRadix016A_kernel2ILi1EEvP7double2S1_jj : 0x7fbbc7f9fbf0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19dpRadix016A_kernel2ILin1EEvP7double2S1_jj : 0x7fbbc7f9fca0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18dpRadix016A_kernelILi1EEvP7double2S1_jjjjd : 0x7fbbc7f9f750
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18dpRadix016A_kernelILin1EEvP7double2S1_jjjjd : 0x7fbbc7f9f620
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19dpRadix008A_kernel2ILi1EEvP7double2S1_jj : 0x7fbbc7f9f1d0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19dpRadix008A_kernel2ILin1EEvP7double2S1_jj : 0x7fbbc7f9f280
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18dpRadix008A_kernelILi1EEvP7double2S1_jjjjd : 0x7fbbc7f9ed30
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18dpRadix008A_kernelILin1EEvP7double2S1_jjjjd : 0x7fbbc7f9ec00
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19dpRadix004A_kernel2ILi1EEvP7double2S1_jj : 0x7fbbc7f9e7b0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19dpRadix004A_kernel2ILin1EEvP7double2S1_jj : 0x7fbbc7f9e860
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18dpRadix004A_kernelILi1EEvP7double2S1_jjjjd : 0x7fbbc7f9e310
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18dpRadix004A_kernelILin1EEvP7double2S1_jjjjd : 0x7fbbc7f9e1e0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18dpRadix002A_kernelP7double2S0_jjjjd : 0x7fbbc7f9dcb0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25fftSmem2048Kernel_8_4_8_8ILi1EEvP6float2S1_jf : 0x7fbbc7f9d3a0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24fftSmem1024Kernel_8_8_16ILi1EEvP6float2S1_jf : 0x7fbbc7f9d9d0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22fftSmem512Kernel_8_8_8ILi1EEvP6float2S1_jf : 0x7fbbc7f9d920
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22fftSmem256Kernel_16_16ILi1EEvP6float2S1_jf : 0x7fbbc7f9d870
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22fftSmem128Kernel_8_4_4ILi1EEvP6float2S1_jf : 0x7fbbc7f9d7c0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25fftSmem2048Kernel_8_4_8_8ILin1EEvP6float2S1_jf : 0x7fbbc7f9d710
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24fftSmem1024Kernel_8_8_16ILin1EEvP6float2S1_jf : 0x7fbbc7f9d660
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22fftSmem512Kernel_8_8_8ILin1EEvP6float2S1_jf : 0x7fbbc7f9d5b0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22fftSmem256Kernel_16_16ILin1EEvP6float2S1_jf : 0x7fbbc7f9d500
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22fftSmem128Kernel_8_4_4ILin1EEvP6float2S1_jf : 0x7fbbc7f9d450
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix512C_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f9be30
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix512C_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f9bd00
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix256B_kernel2ILi1EEvP6float2S1_jj : 0x7fbbc7f9b7e0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix256B_kernel2ILin1EEvP6float2S1_jj : 0x7fbbc7f9b890
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix256B_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f9b310
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix256B_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f9b1e0
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b4ec0; deviceAddress = c_Twiddle_16x16o256; deviceName = c_Twiddle_16x16o256
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 2048 bytes
+GPGPU-Sim PTX registering constant c_Twiddle_16x16o256 (2048 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix128B_kernel2ILi1EEvP6float2S1_jj : 0x7fbbc7f9ac00
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix128B_kernel2ILin1EEvP6float2S1_jj : 0x7fbbc7f9acb0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix128B_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f9a730
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix128B_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f9a600
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b4980; deviceAddress = c_Twiddle_16x8o128; deviceName = c_Twiddle_16x8o128
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 1024 bytes
+GPGPU-Sim PTX registering constant c_Twiddle_16x8o128 (1024 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix064B_kernel2ILi1EEvP6float2S1_jj : 0x7fbbc7f9a020
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix064B_kernel2ILin1EEvP6float2S1_jj : 0x7fbbc7f9a0d0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix064B_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f99b70
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix064B_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f99a40
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b4640; deviceAddress = c_Twiddle_8x8o64; deviceName = c_Twiddle_8x8o64
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 512 bytes
+GPGPU-Sim PTX registering constant c_Twiddle_8x8o64 (512 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix032B_kernel2ILi1EEvP6float2S1_jj : 0x7fbbc7f995b0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix032B_kernel2ILin1EEvP6float2S1_jj : 0x7fbbc7f99660
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix032B_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f99100
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix032B_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f98fd0
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b44e0; deviceAddress = c_Twiddle_8x4o32; deviceName = c_Twiddle_8x4o32
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 256 bytes
+GPGPU-Sim PTX registering constant c_Twiddle_8x4o32 (256 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix032A_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f98a10
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix032A_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f988e0
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix016B_kernel2ILi1EEvP6float2S1_jj : 0x7fbbc7f983c0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix016B_kernel2ILin1EEvP6float2S1_jj : 0x7fbbc7f98470
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix016B_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f97f10
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix016B_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f97de0
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b42e0; deviceAddress = c_Twiddle_4x4o16; deviceName = c_Twiddle_4x4o16
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 128 bytes
+GPGPU-Sim PTX registering constant c_Twiddle_4x4o16 (128 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix016A_kernel2ILi1EEvP6float2S1_jj : 0x7fbbc7f97950
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix016A_kernel2ILin1EEvP6float2S1_jj : 0x7fbbc7f97a00
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix016A_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f97460
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix016A_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f97330
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix008A_kernel2ILi1EEvP6float2S1_jj : 0x7fbbc7f96d80
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix008A_kernel2ILin1EEvP6float2S1_jj : 0x7fbbc7f96e30
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix008A_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f968a0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix008A_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f96770
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix004A_kernel2ILi1EEvP6float2S1_jj : 0x7fbbc7f961c0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix004A_kernel2ILin1EEvP6float2S1_jj : 0x7fbbc7f96270
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix004A_kernelILi1EEvP6float2S1_jjjjf : 0x7fbbc7f95ce0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix004A_kernelILin1EEvP6float2S1_jjjjf : 0x7fbbc7f95bb0
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z19spRadix002A_kernel2P6float2S0_jj : 0x7fbbc7f953c0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18spRadix002A_kernelP6float2S0_jjjjf : 0x7fbbc7f95200
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2r_mradix_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f94db0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b3c20; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2r_radix7_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f94b00
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2r_radix6_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f94880
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2r_radix5_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f94600
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2r_radix4_sp_kernelidiPvS_i11tfStride_st : 0x7fbbc7f94380
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2r_radix3_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f940d0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2r_radix2_sp_kernelidiPvS_i11tfStride_st : 0x7fbbc7f93e50
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25DP_c2r_radix2_mpgm_kernelidiiPvS_i11tfStride_st : 0x7fbbc7f93a60
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25DP_c2r_radix2_mpsm_kernelidiPvS_i11tfStride_st : 0x7fbbc7f93ba0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_r2c_mradix_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f93730
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b3880; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_r2c_radix7_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f93480
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_r2c_radix6_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f93200
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_r2c_radix5_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f92f80
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_r2c_radix4_sp_kernelidiPvS_i11tfStride_st : 0x7fbbc7f92d00
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_r2c_radix3_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f92a50
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_r2c_radix2_sp_kernelidiPvS_i11tfStride_st : 0x7fbbc7f927d0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25DP_r2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st : 0x7fbbc7f923e0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25DP_r2c_radix2_mpsm_kernelidiPvS_i11tfStride_st : 0x7fbbc7f92520
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z20DP_c2c_lprime_kernelidPvS_ii11tfStride_st : 0x7fbbc7f91fb0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24DP_c2c_mrtable_r5_kernelidPvS_i11tfStride_st : 0x7fbbc7f91860
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24DP_c2c_mrtable_r4_kernelidPvS_i11tfStride_st : 0x7fbbc7f91970
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24DP_c2c_mrtable_r3_kernelidPvS_i11tfStride_st : 0x7fbbc7f91a80
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24DP_c2c_mrtable_r2_kernelidPvS_i11tfStride_st : 0x7fbbc7f91b90
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b33a0; deviceAddress = mrt; deviceName = mrt
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrt (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_mradix_r7_kernelidPvS_i11tfStride_stii : 0x7fbbc7f914a0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b31c0; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_mradix_r5_kernelidPvS_i11tfStride_stii : 0x7fbbc7f91170
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b2fe0; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_mradix_r3_kernelidPvS_i11tfStride_stii : 0x7fbbc7f90e40
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b2e00; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_mradix_r2_kernelidPvS_i11tfStride_stii : 0x7fbbc7f90b10
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b2c20; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_mradix_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f907f0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b2a40; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix7_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f90540
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix6_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f902c0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix5_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f90040
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix4_sp_kernelidiPvS_i11tfStride_st : 0x7fbbc7f8fdc0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix3_sp_kernelidPvS_i11tfStride_st : 0x7fbbc7f8fb10
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix2_sp_kernelidiPvS_i11tfStride_st : 0x7fbbc7f8f890
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25DP_c2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st : 0x7fbbc7f8f4a0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25DP_c2c_radix2_mpsm_kernelidiPvS_i11tfStride_st : 0x7fbbc7f8f5e0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radixM_mp_kernelidPvS_iiiii11tfStride_st : 0x7fbbc7f8e640
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix7_mp_kernelidPvS_iiiii11tfStride_st : 0x7fbbc7f8e7f0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix6_mp_kernelidPvS_iiiii11tfStride_st : 0x7fbbc7f8e9a0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix5_mp_kernelidPvS_iiiii11tfStride_st : 0x7fbbc7f8eb50
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix4_mp_kernelidPvS_iiiii11tfStride_st : 0x7fbbc7f8ed00
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix3_mp_kernelidPvS_iiiii11tfStride_st : 0x7fbbc7f8eeb0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_radix2_mp_kernelidPvS_iiiii11tfStride_st : 0x7fbbc7f8f060
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23DP_c2c_transpose_kerneliiiiiiPvS_ : 0x7fbbc7f8e030
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21DP_c2r_copy_1d_kerneliPvS_11tfStride_st : 0x7fbbc7f8d6a0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21DP_r2c_copy_1d_kerneliPvS_11tfStride_st : 0x7fbbc7f8d770
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22DP_c2ch_copy_1d_kerneliPvS_11tfStride_st : 0x7fbbc7f8d840
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22DP_c2cf_copy_1d_kerneliPvS_11tfStride_st : 0x7fbbc7f8d910
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21DP_c2r_copy_2d_kerneliPvS_11tfStride_st : 0x7fbbc7f8d9e0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21DP_r2c_copy_2d_kerneliPvS_11tfStride_st : 0x7fbbc7f8dab0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22DP_c2ch_copy_2d_kerneliPvS_11tfStride_st : 0x7fbbc7f8db80
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22DP_c2cf_copy_2d_kerneliPvS_11tfStride_st : 0x7fbbc7f8dc50
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21DP_c2c_twiddle_kernelidPvS_ii11tfStride_st : 0x7fbbc7f8d110
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2r_mradix_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8ce40
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b2360; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2r_radix7_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8cb90
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2r_radix6_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8c910
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2r_radix5_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8c690
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2r_radix3_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8c410
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2r_radix4_sp_kernelifiPvS_i11tfStride_st : 0x7fbbc7f8c190
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2r_radix2_sp_kernelifiPvS_i11tfStride_st : 0x7fbbc7f8bee0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25SP_c2r_radix2_mpgm_kernelifiiPvS_i11tfStride_st : 0x7fbbc7f8baf0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25SP_c2r_radix2_mpsm_kernelifiPvS_i11tfStride_st : 0x7fbbc7f8bc30
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_r2c_mradix_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8b7c0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b1fc0; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_r2c_radix7_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8b510
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_r2c_radix6_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8b290
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_r2c_radix5_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8b010
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_r2c_radix4_sp_kernelifiPvS_i11tfStride_st : 0x7fbbc7f8ad90
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_r2c_radix3_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f8aae0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_r2c_radix2_sp_kernelifiPvS_i11tfStride_st : 0x7fbbc7f8a860
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25SP_r2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st : 0x7fbbc7f8a470
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25SP_r2c_radix2_mpsm_kernelifiPvS_i11tfStride_st : 0x7fbbc7f8a5b0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z20SP_c2c_lprime_kernelifPvS_ii11tfStride_st : 0x7fbbc7f8a040
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24SP_c2c_mrtable_r5_kernelifPvS_i11tfStride_st : 0x7fbbc7f89900
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24SP_c2c_mrtable_r4_kernelifPvS_i11tfStride_st : 0x7fbbc7f89a10
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24SP_c2c_mrtable_r3_kernelifPvS_i11tfStride_st : 0x7fbbc7f89b20
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24SP_c2c_mrtable_r2_kernelifPvS_i11tfStride_st : 0x7fbbc7f89c30
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b1ae0; deviceAddress = mrt; deviceName = mrt
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrt (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_mradix_r7_kernelifPvS_i11tfStride_stii : 0x7fbbc7f89540
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b1900; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_mradix_r5_kernelifPvS_i11tfStride_stii : 0x7fbbc7f89210
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b1720; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_mradix_r3_kernelifPvS_i11tfStride_stii : 0x7fbbc7f88ee0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b1540; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_mradix_r2_kernelifPvS_i11tfStride_stii : 0x7fbbc7f88bb0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b1360; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_mradix_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f88890
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterVar: hostVar = 0x7fbbc89b1180; deviceAddress = mrp; deviceName = mrp
+GPGPU-Sim PTX: __cudaRegisterVar: Registering const memory space of 392 bytes
+GPGPU-Sim PTX registering constant mrp (392 bytes) to name mapping
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix7_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f885e0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix6_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f88360
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix5_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f880e0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix4_sp_kernelifiPvS_i11tfStride_st : 0x7fbbc7f87e60
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix3_sp_kernelifPvS_i11tfStride_st : 0x7fbbc7f87bb0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix2_sp_kernelifiPvS_i11tfStride_st : 0x7fbbc7f87930
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25SP_c2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st : 0x7fbbc7f87540
+GPGPU-Sim PTX: __cudaRegisterFunction _Z25SP_c2c_radix2_mpsm_kernelifiPvS_i11tfStride_st : 0x7fbbc7f87680
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radixM_mp_kernelifPvS_iiiii11tfStride_st : 0x7fbbc7f866e0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix7_mp_kernelifPvS_iiiii11tfStride_st : 0x7fbbc7f86890
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix6_mp_kernelifPvS_iiiii11tfStride_st : 0x7fbbc7f86a40
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix5_mp_kernelifPvS_iiiii11tfStride_st : 0x7fbbc7f86bf0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix4_mp_kernelifPvS_iiiii11tfStride_st : 0x7fbbc7f86da0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix3_mp_kernelifPvS_iiiii11tfStride_st : 0x7fbbc7f86f50
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_radix2_mp_kernelifPvS_iiiii11tfStride_st : 0x7fbbc7f87100
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z23SP_c2c_transpose_kerneliiiiiiPvS_ : 0x7fbbc7f860e0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21SP_c2r_copy_1d_kerneliPvS_11tfStride_st : 0x7fbbc7f85750
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21SP_r2c_copy_1d_kerneliPvS_11tfStride_st : 0x7fbbc7f85820
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22SP_c2ch_copy_1d_kerneliPvS_11tfStride_st : 0x7fbbc7f858f0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22SP_c2cf_copy_1d_kerneliPvS_11tfStride_st : 0x7fbbc7f859c0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21SP_c2r_copy_2d_kerneliPvS_11tfStride_st : 0x7fbbc7f85a90
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21SP_r2c_copy_2d_kerneliPvS_11tfStride_st : 0x7fbbc7f85b60
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22SP_c2ch_copy_2d_kerneliPvS_11tfStride_st : 0x7fbbc7f85c30
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22SP_c2cf_copy_2d_kerneliPvS_11tfStride_st : 0x7fbbc7f85d00
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: in __cudaRegisterTexture:
+GPGPU-Sim PTX:   int dim = 1
+GPGPU-Sim PTX:   int norm = 0
+GPGPU-Sim PTX:   int ext = 0
+GPGPU-Sim PTX:   Execution warning: Not finished implementing "void __cudaRegisterTexture(void**, const textureReference*, const void**, const char*, int, int, int)"
+GPGPU-Sim PTX: __cudaRegisterFunction _Z21SP_c2c_twiddle_kernelifPvS_ii11tfStride_st : 0x7fbbc7f851d0
+GPGPU-Sim PTX: __cudaRegisterShared
+GPGPU-Sim PTX: __cudaRegisterFunction _Z27ComplexPointwiseMulAndScaleP6float2PKS_if : 0x403f70
+GPGPU-Sim PTX: simulation mode 0 (can change with PTX_SIM_MODE_FUNC environment variable:
+               1=functional simulation only, 0=detailed performance simulator)
+GPGPU-Sim: Configuration options:
+
+-network_mode                           1 # Interconnection network mode
+-inter_config_file   icnt_config_quadro_islip.txt # Interconnection network config file
+-save_embedded_ptx                      0 # saves ptx files embedded in binary as <n>.ptx
+-gpgpu_simd_model                       1 # 0 = no recombination, 1 = post-dominator, 2 = MIMD, 3 = dynamic warp formation
+-gpgpu_dram_scheduler                    1 # 0 = fifo (default), 1 = fast ideal
+-gpgpu_max_cycle                        0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_max_insn                         0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_tex_cache:l1             64:64:2:L # per-shader L1 texture cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_const_cache:l1            64:64:2:L # per-shader L1 constant memory cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_no_dl1                           1 # no dl1 cache (voids -gpgpu_cache:dl1 option)
+-gpgpu_cache:dl1               128:64:4:L # shader L1 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}
+-gpgpu_cache:dl2                     NULL # unified banked L2 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}; disabled by default
+-gpgpu_perfect_mem                      0 # enable perfect memory mode (no cache miss)
+-gpgpu_shader_core_pipeline           1024:32:32 # shader core pipeline config, i.e., {<nthread>:<warpsize>:<pipe_simd_width>}
+-gpgpu_shader_registers                16384 # Number of registers per shader core. Limits number of concurrent CTAs. (default 8192)
+-gpgpu_shader_cta                       8 # Maximum number of concurrent CTAs in shader (default 8)
+-gpgpu_n_shader                        30 # number of shaders in gpu
+-gpgpu_n_mem                            8 # number of memory modules (e.g. memory controllers) in gpu
+-gpgpu_n_mem_per_ctrlr                    2 # number of memory chips per memory controller
+-gpgpu_runtime_stat                  1000 # display runtime statistics such as dram utilization {<freq>:<flag>}
+-gpgpu_dwf_heuristic                    0 # DWF scheduling heuristic: 0 = majority, 1 = minority, 2 = timestamp, 3 = pdom priority, 4 = pc-based, 5 = max-heap
+-gpgpu_reg_bankconflict                    0 # Check for bank conflict in the pipeline
+-gpgpu_dwf_regbk                        1 # Have dwf scheduler to avoid bank conflict
+-gpgpu_memlatency_stat                   14 # track and display latency statistics 0x2 enables MC, 0x4 enables queue logs
+-gpgpu_mshr_per_thread                    1 # Number of MSHRs per thread
+-gpgpu_interwarp_mshr_merge                    6 # interwarp coalescing
+-gpgpu_dram_sched_queue_size                   32 # 0 = unlimited (default); # entries per chip
+-gpgpu_dram_buswidth                    4 # default = 4 bytes (8 bytes per cycle at DDR)
+-gpgpu_dram_burst_length                    4 # Burst length of each DRAM request (default = 4 DDR cycle)
+-gpgpu_dram_timing_opt 8:2:8:12:25:10:35:10:7:6 # DRAM timing parameters = {nbk:tCCD:tRRD:tRCD:tRAS:tRP:tRC:CL:WL:tWTR}
+-gpgpu_mem_address_mask                    1 # 0 = old addressing mask, 1 = new addressing mask, 2 = new add. mask + flipped bank sel and chip sel bits
+-gpgpu_flush_cache                      0 # Flush cache at the end of each kernel call
+-gpgpu_l2_readoverwrite                    0 # Prioritize read requests over write requests for L2
+-gpgpu_pre_mem_stages                    1 # default = 0 pre-memory pipeline stages
+-gpgpu_no_divg_load                     0 # Don't allow divergence on load
+-gpgpu_dwf_hw                        32:2 # dynamic warp formation hw config, i.e., {<#LUT_entries>:<associativity>|none}
+-gpgpu_thread_swizzling                    0 # Thread Swizzling (1=on, 0=off)
+-gpgpu_strict_simd_wrbk                    0 # Applying Strick SIMD WriteBack Stage (1=on, 0=off)
+-gpgpu_shmem_size                   16384 # Size of shared memory per shader core (default 16kB)
+-gpgpu_shmem_bkconflict                    1 # Turn on bank conflict check for shared memory
+-gpgpu_shmem_pipe_speedup                    1 # Number of groups each warp is divided for shared memory bank conflict check
+-gpgpu_L2_queue         0:0:0:0:0:0:10:10 # L2 data cache queue length and latency config
+-gpgpu_cache_wt_through                    0 # L1 cache become write through (1=on, 0=off)
+-gpgpu_deadlock_detect                    1 # Stop the simulation at deadlock (1=on (default), 0=off)
+-gpgpu_cache_bkconflict                    1 # Turn on bank conflict check for L1 cache access
+-gpgpu_n_cache_bank                     1 # Number of banks in L1 cache, also for memory coalescing stall
+-gpgpu_warpdistro_shader                   -1 # Specify which shader core to collect the warp size distribution from
+-gpgpu_pdom_sched_type                    8 # 0 = first ready warp found, 1 = random, 8 = loose round robin
+-gpgpu_spread_blocks_across_cores                    1 # Spread block-issuing across all cores instead of filling up core by core
+-gpgpu_cuda_sim                         1 # use PTX instruction set
+-gpgpu_ptx_instruction_classification                    0 # if enabled will classify ptx instruction types per kernel (Max 255 kernels now)
+-gpgpu_ptx_sim_mode                     0 # Select between Performance (default) or Functional simulation (1)
+-gpgpu_clock_domains 325.0:650.0:650.0:800.0 # Clock Domain Frequencies in MhZ {<Core Clock>:<ICNT Clock>:<L2 Clock>:<DRAM Clock>}
+-gpgpu_shmem_port_per_bank                    2 # Number of access processed by a shared memory bank per cycle (default = 2)
+-gpgpu_cache_port_per_bank                    2 # Number of access processed by a cache bank per cycle (default = 2)
+-gpgpu_const_port_per_bank                    2 # Number of access processed by a constant cache bank per cycle (default = 2)
+-gpgpu_cflog_interval                    0 # Interval between each snapshot in control flow logger
+-gpgpu_partial_write_mask                    1 # use partial write mask to filter memory requests <1>No extra reads(use this!)<2>extra reads generated for partial chunks
+-gpu_concentration                      3 # Number of shader cores per interconnection port (default = 1)
+-gpgpu_local_mem_map                    1 # Mapping from local memory space address to simulated GPU physical address space (default = 1)
+-pipetrace_out              pipetrace.txt # specifies file to output pipetrace to
+-pipetrace                              0 # Turns pipetrace on/off
+-gpgpu_mem_addr_mapping dramid@8;00000000.00000000.00000000.00000000.0000RRRR.RRRRRRRR.RRBBBCCC.CCCSSSSS # mapping memory address to dram model {dramid@<start bit>;<memory address map>}
+-visualizer_enabled                     1 # Turn on visualizer output (1=On, 0=Off)
+-visualizer_outputfile                 NULL # Specifies the output log file for visualizer
+-visualizer_zlevel                      6 # Compression level of the visualizer output log (0=no comp, 9=highest)
+-enable_ptx_file_line_stats                    1 # Turn on PTX source line statistic profiling. (1 = On)
+-ptx_line_stats_filename gpgpu_inst_stats.txt # Output file for PTX source line statistics.
+32 30 1024 983040
+30720
+addr_dec_mask[CHIP]  = 0000000000000700 	high:11 low:8
+addr_dec_mask[BK]    = 000000000001c000 	high:17 low:14
+addr_dec_mask[ROW]   = 000000007ffe0000 	high:31 low:17
+addr_dec_mask[COL]   = 00000000000038ff 	high:14 low:0
+addr_dec_mask[BURST] = 000000000000001f 	high:5 low:0
+*** Initializing Memory Statistics ***
+nodemap
+0 
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 15 16 
+17 GPU performance model initialization complete.
+GPGPU-Sim PTX: USING EMBEDDED .ptx files...
+GPGPU-Sim PTX: parsing function _Z18dpRadix016A_kernelILin1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: instruction assembly for function '_Z18dpRadix016A_kernelILin1EEvP7double2S1_jjjjd'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18dpRadix016A_kernelILin1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18dpRadix016A_kernelILin1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: parsing function _Z18dpRadix016A_kernelILi1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: instruction assembly for function '_Z18dpRadix016A_kernelILi1EEvP7double2S1_jjjjd'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18dpRadix016A_kernelILi1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18dpRadix016A_kernelILi1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: parsing function _Z19dpRadix016A_kernel2ILin1EEvP7double2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose104" from 0x100 to 0x2300 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19dpRadix016A_kernel2ILin1EEvP7double2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19dpRadix016A_kernel2ILin1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19dpRadix016A_kernel2ILin1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19dpRadix016A_kernel2ILi1EEvP7double2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose8832" from 0x100 to 0x2300 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19dpRadix016A_kernel2ILi1EEvP7double2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19dpRadix016A_kernel2ILi1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19dpRadix016A_kernel2ILi1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _1.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_NeAeDJ"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_OiLzCg --output-file /dev/null 2> _ptx_NeAeDJinfo"
+GPGPU-Sim PTX: Kernel _Z19dpRadix016A_kernel2ILi1EEvP7double2S1_jj
+GPGPU-Sim PTX: Kernel _Z19dpRadix016A_kernel2ILin1EEvP7double2S1_jj
+GPGPU-Sim PTX: Kernel _Z18dpRadix016A_kernelILi1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: Kernel _Z18dpRadix016A_kernelILin1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_NeAeDJ _ptx2_OiLzCg _ptx_NeAeDJinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: parsing function _Z18dpRadix008A_kernelILin1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: instruction assembly for function '_Z18dpRadix008A_kernelILin1EEvP7double2S1_jjjjd'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18dpRadix008A_kernelILin1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18dpRadix008A_kernelILin1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: parsing function _Z18dpRadix008A_kernelILi1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: instruction assembly for function '_Z18dpRadix008A_kernelILi1EEvP7double2S1_jjjjd'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18dpRadix008A_kernelILi1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18dpRadix008A_kernelILi1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: parsing function _Z19dpRadix008A_kernel2ILin1EEvP7double2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose104" from 0x100 to 0x1300 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19dpRadix008A_kernel2ILin1EEvP7double2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19dpRadix008A_kernel2ILin1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19dpRadix008A_kernel2ILin1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19dpRadix008A_kernel2ILi1EEvP7double2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose4736" from 0x100 to 0x1300 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19dpRadix008A_kernel2ILi1EEvP7double2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19dpRadix008A_kernel2ILi1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19dpRadix008A_kernel2ILi1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _2.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_h7ILJO"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_8ovbSm --output-file /dev/null 2> _ptx_h7ILJOinfo"
+GPGPU-Sim PTX: Kernel _Z19dpRadix008A_kernel2ILi1EEvP7double2S1_jj
+GPGPU-Sim PTX: Kernel _Z19dpRadix008A_kernel2ILin1EEvP7double2S1_jj
+GPGPU-Sim PTX: Kernel _Z18dpRadix008A_kernelILi1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: Kernel _Z18dpRadix008A_kernelILin1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_h7ILJO _ptx2_8ovbSm _ptx_h7ILJOinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: parsing function _Z18dpRadix004A_kernelILin1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: instruction assembly for function '_Z18dpRadix004A_kernelILin1EEvP7double2S1_jjjjd'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18dpRadix004A_kernelILin1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18dpRadix004A_kernelILin1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: parsing function _Z18dpRadix004A_kernelILi1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: instruction assembly for function '_Z18dpRadix004A_kernelILi1EEvP7double2S1_jjjjd'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18dpRadix004A_kernelILi1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18dpRadix004A_kernelILi1EEvP7double2S1_jjjjd'...
+GPGPU-Sim PTX: parsing function _Z19dpRadix004A_kernel2ILin1EEvP7double2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose104" from 0x100 to 0x1500 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19dpRadix004A_kernel2ILin1EEvP7double2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19dpRadix004A_kernel2ILin1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19dpRadix004A_kernel2ILin1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19dpRadix004A_kernel2ILi1EEvP7double2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose5248" from 0x100 to 0x1500 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19dpRadix004A_kernel2ILi1EEvP7double2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19dpRadix004A_kernel2ILi1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19dpRadix004A_kernel2ILi1EEvP7double2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _3.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_D7Y6wV"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_9dpYcu --output-file /dev/null 2> _ptx_D7Y6wVinfo"
+GPGPU-Sim PTX: Kernel _Z19dpRadix004A_kernel2ILi1EEvP7double2S1_jj
+GPGPU-Sim PTX: Kernel _Z19dpRadix004A_kernel2ILin1EEvP7double2S1_jj
+GPGPU-Sim PTX: Kernel _Z18dpRadix004A_kernelILi1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: Kernel _Z18dpRadix004A_kernelILin1EEvP7double2S1_jjjjd
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_D7Y6wV _ptx2_9dpYcu _ptx_D7Y6wVinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: parsing function _Z18dpRadix002A_kernelP7double2S0_jjjjd
+GPGPU-Sim PTX: instruction assembly for function '_Z18dpRadix002A_kernelP7double2S0_jjjjd'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18dpRadix002A_kernelP7double2S0_jjjjd'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18dpRadix002A_kernelP7double2S0_jjjjd'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _4.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_Ir6kg3"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_j8XrkC --output-file /dev/null 2> _ptx_Ir6kg3info"
+GPGPU-Sim PTX: Kernel _Z18dpRadix002A_kernelP7double2S0_jjjjd
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_Ir6kg3 _ptx2_j8XrkC _ptx_Ir6kg3info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: parsing function _Z22fftSmem128Kernel_8_4_4ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose24" from 0x100 to 0xb00 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z22fftSmem128Kernel_8_4_4ILin1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22fftSmem128Kernel_8_4_4ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22fftSmem128Kernel_8_4_4ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: parsing function _Z22fftSmem256Kernel_16_16ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose2608" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z22fftSmem256Kernel_16_16ILin1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22fftSmem256Kernel_16_16ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22fftSmem256Kernel_16_16ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: parsing function _Z22fftSmem512Kernel_8_8_8ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose6984" from 0x100 to 0x9e0 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z22fftSmem512Kernel_8_8_8ILin1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22fftSmem512Kernel_8_8_8ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22fftSmem512Kernel_8_8_8ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: parsing function _Z24fftSmem1024Kernel_8_8_16ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose9280" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z24fftSmem1024Kernel_8_8_16ILin1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24fftSmem1024Kernel_8_8_16ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24fftSmem1024Kernel_8_8_16ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: parsing function _Z25fftSmem2048Kernel_8_4_8_8ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose13656" from 0x100 to 0x2500 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z25fftSmem2048Kernel_8_4_8_8ILin1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25fftSmem2048Kernel_8_4_8_8ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25fftSmem2048Kernel_8_4_8_8ILin1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: parsing function _Z22fftSmem128Kernel_8_4_4ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose22896" from 0x100 to 0xb00 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z22fftSmem128Kernel_8_4_4ILi1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22fftSmem128Kernel_8_4_4ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22fftSmem128Kernel_8_4_4ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: parsing function _Z22fftSmem256Kernel_16_16ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose25480" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z22fftSmem256Kernel_16_16ILi1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22fftSmem256Kernel_16_16ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22fftSmem256Kernel_16_16ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: parsing function _Z22fftSmem512Kernel_8_8_8ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose29856" from 0x100 to 0x9e0 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z22fftSmem512Kernel_8_8_8ILi1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22fftSmem512Kernel_8_8_8ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22fftSmem512Kernel_8_8_8ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: parsing function _Z24fftSmem1024Kernel_8_8_16ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose32152" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z24fftSmem1024Kernel_8_8_16ILi1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24fftSmem1024Kernel_8_8_16ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24fftSmem1024Kernel_8_8_16ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: parsing function _Z25fftSmem2048Kernel_8_4_8_8ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose36528" from 0x100 to 0x2500 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z25fftSmem2048Kernel_8_4_8_8ILi1EEvP6float2S1_jf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25fftSmem2048Kernel_8_4_8_8ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25fftSmem2048Kernel_8_4_8_8ILi1EEvP6float2S1_jf'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _5.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_4QWjxc"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_eCxqSM --output-file /dev/null 2> _ptx_4QWjxcinfo"
+GPGPU-Sim PTX: Kernel _Z25fftSmem2048Kernel_8_4_8_8ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: Kernel _Z24fftSmem1024Kernel_8_8_16ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: Kernel _Z22fftSmem512Kernel_8_8_8ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: Kernel _Z22fftSmem256Kernel_16_16ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: Kernel _Z22fftSmem128Kernel_8_4_4ILi1EEvP6float2S1_jf
+GPGPU-Sim PTX: Kernel _Z25fftSmem2048Kernel_8_4_8_8ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: Kernel _Z24fftSmem1024Kernel_8_8_16ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: Kernel _Z22fftSmem512Kernel_8_8_8ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: Kernel _Z22fftSmem256Kernel_16_16ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: Kernel _Z22fftSmem128Kernel_8_4_4ILin1EEvP6float2S1_jf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_4QWjxc _ptx2_eCxqSM _ptx_4QWjxcinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: encountered texture directive texComplex.
+GPGPU-Sim PTX: encountered texture directive texComplex2.
+GPGPU-Sim PTX: parsing function _Z18spRadix512C_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose36" from 0x100 to 0x2500 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix512C_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix512C_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix512C_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix512C_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose9292" from 0x100 to 0x2500 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix512C_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix512C_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix512C_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _6.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_ZbItJp"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_Op0gC2 --output-file /dev/null 2> _ptx_ZbItJpinfo"
+GPGPU-Sim PTX: Kernel _Z18spRadix512C_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix512C_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_ZbItJp _ptx2_Op0gC2 _ptx_ZbItJpinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: encountered texture directive texComplex.
+GPGPU-Sim PTX: encountered texture directive texComplex2.
+GPGPU-Sim PTX: allocating constant region for "c_Twiddle_16x16o256" from 0x100 to 0x900 (global memory space) 1
+GPGPU-Sim PTX: parsing function _Z18spRadix256B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose36" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix256B_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix256B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix256B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix256B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose4428" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix256B_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix256B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix256B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z19spRadix256B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose8808" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix256B_kernel2ILin1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix256B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix256B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19spRadix256B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose13184" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix256B_kernel2ILi1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix256B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix256B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _7.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_iZZ5yG"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_L55mAk --output-file /dev/null 2> _ptx_iZZ5yGinfo"
+GPGPU-Sim PTX: Kernel _Z19spRadix256B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z19spRadix256B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z18spRadix256B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix256B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_iZZ5yG _ptx2_L55mAk _ptx_iZZ5yGinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: encountered texture directive texComplex.
+GPGPU-Sim PTX: encountered texture directive texComplex2.
+GPGPU-Sim PTX: allocating constant region for "c_Twiddle_16x8o128" from 0x100 to 0x500 (global memory space) 2
+GPGPU-Sim PTX: parsing function _Z18spRadix128B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose36" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix128B_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix128B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix128B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix128B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose4428" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix128B_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix128B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix128B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z19spRadix128B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose8808" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix128B_kernel2ILin1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix128B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix128B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19spRadix128B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose13184" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix128B_kernel2ILi1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix128B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix128B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _8.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_fzz7B0"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_EdUoHG --output-file /dev/null 2> _ptx_fzz7B0info"
+GPGPU-Sim PTX: Kernel _Z19spRadix128B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z19spRadix128B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z18spRadix128B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix128B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_fzz7B0 _ptx2_EdUoHG _ptx_fzz7B0info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating constant region for "c_Twiddle_8x8o64" from 0x100 to 0x300 (global memory space) 3
+GPGPU-Sim PTX: parsing function _Z18spRadix064B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose36" from 0x100 to 0x1100 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix064B_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix064B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix064B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix064B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose4172" from 0x100 to 0x1100 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix064B_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix064B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix064B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z19spRadix064B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose8296" from 0x100 to 0x1300 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix064B_kernel2ILin1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix064B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix064B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19spRadix064B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose12928" from 0x100 to 0x1300 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix064B_kernel2ILi1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix064B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix064B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _9.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_j07Hlo"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_1sB115 --output-file /dev/null 2> _ptx_j07Hloinfo"
+GPGPU-Sim PTX: Kernel _Z19spRadix064B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z19spRadix064B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z18spRadix064B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix064B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_j07Hlo _ptx2_1sB115 _ptx_j07Hloinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating constant region for "c_Twiddle_8x4o32" from 0x100 to 0x200 (global memory space) 4
+GPGPU-Sim PTX: parsing function _Z18spRadix032B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose36" from 0x100 to 0x900 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix032B_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix032B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix032B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix032B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose2124" from 0x100 to 0x900 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix032B_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix032B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix032B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z19spRadix032B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose4200" from 0x100 to 0xa00 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix032B_kernel2ILin1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix032B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix032B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19spRadix032B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose6528" from 0x100 to 0xa00 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix032B_kernel2ILi1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix032B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix032B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _10.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_0O0UyO"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_Zhlv7w --output-file /dev/null 2> _ptx_0O0UyOinfo"
+GPGPU-Sim PTX: Kernel _Z19spRadix032B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z19spRadix032B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z18spRadix032B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix032B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_0O0UyO _ptx2_Zhlv7w _ptx_0O0UyOinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: encountered texture directive texComplex.
+GPGPU-Sim PTX: encountered texture directive texComplex2.
+GPGPU-Sim PTX: parsing function _Z18spRadix032A_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix032A_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix032A_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix032A_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix032A_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix032A_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix032A_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix032A_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _11.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_kCustg"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_VCvmRZ --output-file /dev/null 2> _ptx_kCustginfo"
+GPGPU-Sim PTX: Kernel _Z18spRadix032A_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix032A_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_kCustg _ptx2_VCvmRZ _ptx_kCustginfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating constant region for "c_Twiddle_4x4o16" from 0x100 to 0x180 (global memory space) 5
+GPGPU-Sim PTX: parsing function _Z18spRadix016B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose36" from 0x100 to 0x900 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix016B_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix016B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix016B_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix016B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose2124" from 0x100 to 0x900 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix016B_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix016B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix016B_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z19spRadix016B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose4200" from 0x100 to 0xb00 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix016B_kernel2ILin1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix016B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix016B_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19spRadix016B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose6784" from 0x100 to 0xb00 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix016B_kernel2ILi1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix016B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix016B_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _12.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_b5G7HK"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_WjGZzv --output-file /dev/null 2> _ptx_b5G7HKinfo"
+GPGPU-Sim PTX: Kernel _Z19spRadix016B_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z19spRadix016B_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z18spRadix016B_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix016B_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_b5G7HK _ptx2_WjGZzv _ptx_b5G7HKinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: encountered texture directive texComplex.
+GPGPU-Sim PTX: encountered texture directive texComplex2.
+GPGPU-Sim PTX: parsing function _Z18spRadix016A_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix016A_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix016A_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix016A_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix016A_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix016A_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix016A_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix016A_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z19spRadix016A_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose104" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix016A_kernel2ILin1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix016A_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix016A_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19spRadix016A_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: allocating shared region for "__cuda_s_transpose4480" from 0x100 to 0x1200 (shared memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix016A_kernel2ILi1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix016A_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix016A_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _13.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_vUSU1g"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_qjozv2 --output-file /dev/null 2> _ptx_vUSU1ginfo"
+GPGPU-Sim PTX: Kernel _Z19spRadix016A_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z19spRadix016A_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z18spRadix016A_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix016A_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_vUSU1g _ptx2_qjozv2 _ptx_vUSU1ginfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: encountered texture directive texComplex.
+GPGPU-Sim PTX: encountered texture directive texComplex2.
+GPGPU-Sim PTX: parsing function _Z18spRadix008A_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix008A_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix008A_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix008A_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix008A_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix008A_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix008A_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix008A_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z19spRadix008A_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix008A_kernel2ILin1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix008A_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix008A_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19spRadix008A_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix008A_kernel2ILi1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix008A_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix008A_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _14.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_SjX8KO"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_0NSK1A --output-file /dev/null 2> _ptx_SjX8KOinfo"
+GPGPU-Sim PTX: Kernel _Z19spRadix008A_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z19spRadix008A_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z18spRadix008A_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix008A_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_SjX8KO _ptx2_0NSK1A _ptx_SjX8KOinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: encountered texture directive texComplex.
+GPGPU-Sim PTX: encountered texture directive texComplex2.
+GPGPU-Sim PTX: parsing function _Z18spRadix004A_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix004A_kernelILin1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix004A_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix004A_kernelILin1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z18spRadix004A_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix004A_kernelILi1EEvP6float2S1_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix004A_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix004A_kernelILi1EEvP6float2S1_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z19spRadix004A_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix004A_kernel2ILin1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix004A_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix004A_kernel2ILin1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: parsing function _Z19spRadix004A_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix004A_kernel2ILi1EEvP6float2S1_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix004A_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix004A_kernel2ILi1EEvP6float2S1_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _15.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_rV95Jn"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_97Xeta --output-file /dev/null 2> _ptx_rV95Jninfo"
+GPGPU-Sim PTX: Kernel _Z19spRadix004A_kernel2ILi1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z19spRadix004A_kernel2ILin1EEvP6float2S1_jj
+GPGPU-Sim PTX: Kernel _Z18spRadix004A_kernelILi1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: Kernel _Z18spRadix004A_kernelILin1EEvP6float2S1_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_rV95Jn _ptx2_97Xeta _ptx_rV95Jninfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: encountered texture directive texComplex.
+GPGPU-Sim PTX: encountered texture directive texComplex2.
+GPGPU-Sim PTX: parsing function _Z18spRadix002A_kernelP6float2S0_jjjjf
+GPGPU-Sim PTX: instruction assembly for function '_Z18spRadix002A_kernelP6float2S0_jjjjf'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z18spRadix002A_kernelP6float2S0_jjjjf'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z18spRadix002A_kernelP6float2S0_jjjjf'...
+GPGPU-Sim PTX: parsing function _Z19spRadix002A_kernel2P6float2S0_jj
+GPGPU-Sim PTX: instruction assembly for function '_Z19spRadix002A_kernel2P6float2S0_jj'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z19spRadix002A_kernel2P6float2S0_jj'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z19spRadix002A_kernel2P6float2S0_jj'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _16.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_2r2PxX"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_BF91CK --output-file /dev/null 2> _ptx_2r2PxXinfo"
+GPGPU-Sim PTX: Kernel _Z19spRadix002A_kernel2P6float2S0_jj
+GPGPU-Sim PTX: Kernel _Z18spRadix002A_kernelP6float2S0_jjjjf
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_2r2PxX _ptx2_BF91CK _ptx_2r2PxXinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 6
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x310 to 0x3a0 (global memory space) 7
+GPGPU-Sim PTX: parsing function _Z23DP_c2r_mradix_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32448" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2r_mradix_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2r_mradix_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2r_mradix_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _17.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_285Z5x"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_rdKUzl --output-file /dev/null 2> _ptx_285Z5xinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2r_mradix_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_285Z5x _ptx2_rdKUzl _ptx_285Z5xinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 8
+GPGPU-Sim PTX: parsing function _Z23DP_c2r_radix7_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2r_radix7_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2r_radix7_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2r_radix7_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _18.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_Xpc4W9"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_iOs3lY --output-file /dev/null 2> _ptx_Xpc4W9info"
+GPGPU-Sim PTX: Kernel _Z23DP_c2r_radix7_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_Xpc4W9 _ptx2_iOs3lY _ptx_Xpc4W9info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 9
+GPGPU-Sim PTX: parsing function _Z23DP_c2r_radix6_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2r_radix6_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2r_radix6_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2r_radix6_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _19.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_d7Jg3O"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_xVw2LF --output-file /dev/null 2> _ptx_d7Jg3Oinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2r_radix6_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_d7Jg3O _ptx2_xVw2LF _ptx_d7Jg3Oinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 10
+GPGPU-Sim PTX: parsing function _Z23DP_c2r_radix5_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2r_radix5_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2r_radix5_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2r_radix5_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _20.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_jsLQ5x"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_x3Y2qq --output-file /dev/null 2> _ptx_jsLQ5xinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2r_radix5_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_jsLQ5x _ptx2_x3Y2qq _ptx_jsLQ5xinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 11
+GPGPU-Sim PTX: parsing function _Z23DP_c2r_radix4_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3264" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2r_radix4_sp_kernelidiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2r_radix4_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2r_radix4_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _21.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_1ATrZj"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_wQw1yd --output-file /dev/null 2> _ptx_1ATrZjinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2r_radix4_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_1ATrZj _ptx2_wQw1yd _ptx_1ATrZjinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 12
+GPGPU-Sim PTX: parsing function _Z23DP_c2r_radix3_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2r_radix3_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2r_radix3_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2r_radix3_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _22.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_PYnjW7"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_DmbEk2 --output-file /dev/null 2> _ptx_PYnjW7info"
+GPGPU-Sim PTX: Kernel _Z23DP_c2r_radix3_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_PYnjW7 _ptx2_DmbEk2 _ptx_PYnjW7info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 13
+GPGPU-Sim PTX: parsing function _Z23DP_c2r_radix2_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3264" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2r_radix2_sp_kernelidiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2r_radix2_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2r_radix2_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _23.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_IL6dmX"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_qwuBoS --output-file /dev/null 2> _ptx_IL6dmXinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2r_radix2_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_IL6dmX _ptx2_qwuBoS _ptx_IL6dmXinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 14
+GPGPU-Sim PTX: parsing function _Z25DP_c2r_radix2_mpsm_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3264" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z25DP_c2r_radix2_mpsm_kernelidiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25DP_c2r_radix2_mpsm_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25DP_c2r_radix2_mpsm_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z25DP_c2r_radix2_mpgm_kernelidiiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32168" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z25DP_c2r_radix2_mpgm_kernelidiiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25DP_c2r_radix2_mpgm_kernelidiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25DP_c2r_radix2_mpgm_kernelidiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _24.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_jZqgTN"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_95hWoJ --output-file /dev/null 2> _ptx_jZqgTNinfo"
+GPGPU-Sim PTX: Kernel _Z25DP_c2r_radix2_mpgm_kernelidiiPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z25DP_c2r_radix2_mpsm_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_jZqgTN _ptx2_95hWoJ _ptx_jZqgTNinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 15
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x310 to 0x3a0 (global memory space) 16
+GPGPU-Sim PTX: parsing function _Z23DP_r2c_mradix_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32448" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_r2c_mradix_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_r2c_mradix_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_r2c_mradix_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _25.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_c4p4tF"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_ytXaAB --output-file /dev/null 2> _ptx_c4p4tFinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_r2c_mradix_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_c4p4tF _ptx2_ytXaAB _ptx_c4p4tFinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 17
+GPGPU-Sim PTX: parsing function _Z23DP_r2c_radix7_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_r2c_radix7_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_r2c_radix7_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_r2c_radix7_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _26.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_hWq3xy"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_6SgExv --output-file /dev/null 2> _ptx_hWq3xyinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_r2c_radix7_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_hWq3xy _ptx2_6SgExv _ptx_hWq3xyinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 18
+GPGPU-Sim PTX: parsing function _Z23DP_r2c_radix6_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_r2c_radix6_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_r2c_radix6_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_r2c_radix6_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _27.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_sAtpuu"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_WzEJst --output-file /dev/null 2> _ptx_sAtpuuinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_r2c_radix6_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_sAtpuu _ptx2_WzEJst _ptx_sAtpuuinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 19
+GPGPU-Sim PTX: parsing function _Z23DP_r2c_radix5_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_r2c_radix5_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_r2c_radix5_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_r2c_radix5_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _28.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_fpIPTt"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_Na6gmu --output-file /dev/null 2> _ptx_fpIPTtinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_r2c_radix5_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_fpIPTt _ptx2_Na6gmu _ptx_fpIPTtinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 20
+GPGPU-Sim PTX: parsing function _Z23DP_r2c_radix4_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3264" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_r2c_radix4_sp_kernelidiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_r2c_radix4_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_r2c_radix4_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _29.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_1h26Uv"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_q9Dbvx --output-file /dev/null 2> _ptx_1h26Uvinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_r2c_radix4_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_1h26Uv _ptx2_q9Dbvx _ptx_1h26Uvinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 21
+GPGPU-Sim PTX: parsing function _Z23DP_r2c_radix3_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_r2c_radix3_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_r2c_radix3_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_r2c_radix3_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _30.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_vOmKSz"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_EnFlhC --output-file /dev/null 2> _ptx_vOmKSzinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_r2c_radix3_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_vOmKSz _ptx2_EnFlhC _ptx_vOmKSzinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 22
+GPGPU-Sim PTX: parsing function _Z23DP_r2c_radix2_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3264" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_r2c_radix2_sp_kernelidiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_r2c_radix2_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_r2c_radix2_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _31.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_VNBefF"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_2EpUdI --output-file /dev/null 2> _ptx_VNBefFinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_r2c_radix2_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_VNBefF _ptx2_2EpUdI _ptx_VNBefFinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 23
+GPGPU-Sim PTX: parsing function _Z25DP_r2c_radix2_mpsm_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3264" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z25DP_r2c_radix2_mpsm_kernelidiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25DP_r2c_radix2_mpsm_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25DP_r2c_radix2_mpsm_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z25DP_r2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32168" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z25DP_r2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25DP_r2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25DP_r2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _32.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_2U7XDL"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_rSC24O --output-file /dev/null 2> _ptx_2U7XDLinfo"
+GPGPU-Sim PTX: Kernel _Z25DP_r2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z25DP_r2c_radix2_mpsm_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_2U7XDL _ptx2_rSC24O _ptx_2U7XDLinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: encountered texture directive cdtexref.
+GPGPU-Sim PTX: encountered texture directive rdtexref.
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 24
+GPGPU-Sim PTX: parsing function _Z20DP_c2c_lprime_kernelidPvS_ii11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z20DP_c2c_lprime_kernelidPvS_ii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z20DP_c2c_lprime_kernelidPvS_ii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z20DP_c2c_lprime_kernelidPvS_ii11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _33.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_u4nP2S"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_vkxp1W --output-file /dev/null 2> _ptx_u4nP2Sinfo"
+GPGPU-Sim PTX: Kernel _Z20DP_c2c_lprime_kernelidPvS_ii11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_u4nP2S _ptx2_vkxp1W _ptx_u4nP2Sinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrt" from 0x100 to 0x288 (global memory space) 25
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x310 to 0x3a0 (global memory space) 26
+GPGPU-Sim PTX: parsing function _Z24DP_c2c_mrtable_r2_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32448" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z24DP_c2c_mrtable_r2_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24DP_c2c_mrtable_r2_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24DP_c2c_mrtable_r2_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z24DP_c2c_mrtable_r3_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32544" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z24DP_c2c_mrtable_r3_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24DP_c2c_mrtable_r3_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24DP_c2c_mrtable_r3_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z24DP_c2c_mrtable_r4_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32640" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z24DP_c2c_mrtable_r4_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24DP_c2c_mrtable_r4_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24DP_c2c_mrtable_r4_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z24DP_c2c_mrtable_r5_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32736" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z24DP_c2c_mrtable_r5_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24DP_c2c_mrtable_r5_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24DP_c2c_mrtable_r5_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _34.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_KyIRk7"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_3dzTNh --output-file /dev/null 2> _ptx_KyIRk7info"
+GPGPU-Sim PTX: Kernel _Z24DP_c2c_mrtable_r5_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z24DP_c2c_mrtable_r4_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z24DP_c2c_mrtable_r3_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z24DP_c2c_mrtable_r2_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_KyIRk7 _ptx2_3dzTNh _ptx_KyIRk7info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 27
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x310 to 0x3a0 (global memory space) 28
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_mradix_r7_kernelidPvS_i11tfStride_stii
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32456" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_mradix_r7_kernelidPvS_i11tfStride_stii'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_mradix_r7_kernelidPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_mradix_r7_kernelidPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _35.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_oENNk2"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_5pDuTM --output-file /dev/null 2> _ptx_oENNk2info"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_mradix_r7_kernelidPvS_i11tfStride_stii
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_oENNk2 _ptx2_5pDuTM _ptx_oENNk2info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 29
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x310 to 0x3a0 (global memory space) 30
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_mradix_r5_kernelidPvS_i11tfStride_stii
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32456" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_mradix_r5_kernelidPvS_i11tfStride_stii'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_mradix_r5_kernelidPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_mradix_r5_kernelidPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _36.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_p44edz"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_6Onnyl --output-file /dev/null 2> _ptx_p44edzinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_mradix_r5_kernelidPvS_i11tfStride_stii
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_p44edz _ptx2_6Onnyl _ptx_p44edzinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 31
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x310 to 0x3a0 (global memory space) 32
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_mradix_r3_kernelidPvS_i11tfStride_stii
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32456" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_mradix_r3_kernelidPvS_i11tfStride_stii'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_mradix_r3_kernelidPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_mradix_r3_kernelidPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _37.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_SVVu18"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_28jCvW --output-file /dev/null 2> _ptx_SVVu18info"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_mradix_r3_kernelidPvS_i11tfStride_stii
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_SVVu18 _ptx2_28jCvW _ptx_SVVu18info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 33
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x310 to 0x3a0 (global memory space) 34
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_mradix_r2_kernelidPvS_i11tfStride_stii
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32456" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_mradix_r2_kernelidPvS_i11tfStride_stii'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_mradix_r2_kernelidPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_mradix_r2_kernelidPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _38.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_VQbUzK"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_Y0LYEy --output-file /dev/null 2> _ptx_VQbUzKinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_mradix_r2_kernelidPvS_i11tfStride_stii
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_VQbUzK _ptx2_Y0LYEy _ptx_VQbUzKinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 35
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x310 to 0x3a0 (global memory space) 36
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_mradix_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32448" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_mradix_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_mradix_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_mradix_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _39.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_N26Kfn"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_sFyxRb --output-file /dev/null 2> _ptx_N26Kfninfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_mradix_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_N26Kfn _ptx2_sFyxRb _ptx_N26Kfninfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 37
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix7_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix7_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix7_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix7_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _40.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_Ef0Dl1"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_fUiuRQ --output-file /dev/null 2> _ptx_Ef0Dl1info"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix7_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_Ef0Dl1 _ptx2_fUiuRQ _ptx_Ef0Dl1info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 38
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix6_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix6_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix6_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix6_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _41.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_3XXjdI"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_pHfFAz --output-file /dev/null 2> _ptx_3XXjdIinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix6_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_3XXjdI _ptx2_pHfFAz _ptx_3XXjdIinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 39
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix5_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix5_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix5_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix5_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _42.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_Wh7dxs"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_2gm8ul --output-file /dev/null 2> _ptx_Wh7dxsinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix5_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_Wh7dxs _ptx2_2gm8ul _ptx_Wh7dxsinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 40
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix4_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3264" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix4_sp_kernelidiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix4_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix4_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _43.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_m1mHwf"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_3Jzoz9 --output-file /dev/null 2> _ptx_m1mHwfinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix4_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_m1mHwf _ptx2_3Jzoz9 _ptx_m1mHwfinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 41
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix3_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix3_sp_kernelidPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix3_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix3_sp_kernelidPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _44.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_rigjo4"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_kzKeeZ --output-file /dev/null 2> _ptx_rigjo4info"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix3_sp_kernelidPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_rigjo4 _ptx2_kzKeeZ _ptx_rigjo4info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 42
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix2_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3264" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix2_sp_kernelidiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix2_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix2_sp_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _45.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_t0ETHU"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_lA8kcQ --output-file /dev/null 2> _ptx_t0ETHUinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix2_sp_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_t0ETHU _ptx2_lA8kcQ _ptx_t0ETHUinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 43
+GPGPU-Sim PTX: parsing function _Z25DP_c2c_radix2_mpsm_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3264" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z25DP_c2c_radix2_mpsm_kernelidiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25DP_c2c_radix2_mpsm_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25DP_c2c_radix2_mpsm_kernelidiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z25DP_c2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32168" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z25DP_c2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25DP_c2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25DP_c2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _46.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_FCOH9L"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_f1L27H --output-file /dev/null 2> _ptx_FCOH9Linfo"
+GPGPU-Sim PTX: Kernel _Z25DP_c2c_radix2_mpgm_kernelidiiPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z25DP_c2c_radix2_mpsm_kernelidiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_FCOH9L _ptx2_f1L27H _ptx_FCOH9Linfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: encountered texture directive cdtexref.
+GPGPU-Sim PTX: encountered texture directive rdtexref.
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 44
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix2_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3272" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix2_mp_kernelidPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix2_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix2_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix3_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32184" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix3_mp_kernelidPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix3_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix3_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix4_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32296" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix4_mp_kernelidPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix4_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix4_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix5_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32408" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix5_mp_kernelidPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix5_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix5_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix6_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32520" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix6_mp_kernelidPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix6_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix6_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radix7_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32632" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radix7_mp_kernelidPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radix7_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radix7_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_radixM_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_32744" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_radixM_mp_kernelidPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_radixM_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_radixM_mp_kernelidPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _47.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_eTjQCF"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_v3VPbD --output-file /dev/null 2> _ptx_eTjQCFinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radixM_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix7_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix6_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix5_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix4_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix3_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_radix2_mp_kernelidPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_eTjQCF _ptx2_v3VPbD _ptx_eTjQCFinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23DP_c2c_transpose_kerneliiiiiiPvS_
+GPGPU-Sim PTX: instruction assembly for function '_Z23DP_c2c_transpose_kerneliiiiiiPvS_'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23DP_c2c_transpose_kerneliiiiiiPvS_'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23DP_c2c_transpose_kerneliiiiiiPvS_'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _48.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_9V3GOD"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_KHl9rE --output-file /dev/null 2> _ptx_9V3GODinfo"
+GPGPU-Sim PTX: Kernel _Z23DP_c2c_transpose_kerneliiiiiiPvS_
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_9V3GOD _ptx2_KHl9rE _ptx_9V3GODinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: encountered texture directive cdtexref.
+GPGPU-Sim PTX: encountered texture directive rdtexref.
+GPGPU-Sim PTX: parsing function _Z22DP_c2cf_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z22DP_c2cf_copy_2d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22DP_c2cf_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22DP_c2cf_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z22DP_c2ch_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z22DP_c2ch_copy_2d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22DP_c2ch_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22DP_c2ch_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z21DP_r2c_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z21DP_r2c_copy_2d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21DP_r2c_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21DP_r2c_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z21DP_c2r_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z21DP_c2r_copy_2d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21DP_c2r_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21DP_c2r_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z22DP_c2cf_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z22DP_c2cf_copy_1d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22DP_c2cf_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22DP_c2cf_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z22DP_c2ch_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z22DP_c2ch_copy_1d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22DP_c2ch_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22DP_c2ch_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z21DP_r2c_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z21DP_r2c_copy_1d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21DP_r2c_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21DP_r2c_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z21DP_c2r_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z21DP_c2r_copy_1d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21DP_c2r_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21DP_c2r_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _49.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_Pb5MuF"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_S1e5xG --output-file /dev/null 2> _ptx_Pb5MuFinfo"
+GPGPU-Sim PTX: Kernel _Z21DP_c2r_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z21DP_r2c_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z22DP_c2ch_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z22DP_c2cf_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z21DP_c2r_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z21DP_r2c_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z22DP_c2ch_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z22DP_c2cf_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_Pb5MuF _ptx2_S1e5xG _ptx_Pb5MuFinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "__cudart_i2opi_d" from 0x100 to 0x190 (global memory space) 45
+GPGPU-Sim PTX: parsing function _Z21DP_c2c_twiddle_kernelidPvS_ii11tfStride_st
+GPGPU-Sim PTX: allocating local region for "__cuda___cuda_result_3256" from 0x100 to 0x128 (local memory space)
+GPGPU-Sim PTX: instruction assembly for function '_Z21DP_c2c_twiddle_kernelidPvS_ii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21DP_c2c_twiddle_kernelidPvS_ii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21DP_c2c_twiddle_kernelidPvS_ii11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _50.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_nTNu0H"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_S0AEtJ --output-file /dev/null 2> _ptx_nTNu0Hinfo"
+GPGPU-Sim PTX: Kernel _Z21DP_c2c_twiddle_kernelidPvS_ii11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_nTNu0H _ptx2_S0AEtJ _ptx_nTNu0Hinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 46
+GPGPU-Sim PTX: parsing function _Z23SP_c2r_mradix_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2r_mradix_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2r_mradix_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2r_mradix_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _51.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_VlS1mL"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_ONu6gN --output-file /dev/null 2> _ptx_VlS1mLinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2r_mradix_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_VlS1mL _ptx2_ONu6gN _ptx_VlS1mLinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2r_radix7_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2r_radix7_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2r_radix7_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2r_radix7_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _52.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_irEmAP"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_R00tUR --output-file /dev/null 2> _ptx_irEmAPinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2r_radix7_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_irEmAP _ptx2_R00tUR _ptx_irEmAPinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2r_radix6_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2r_radix6_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2r_radix6_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2r_radix6_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _53.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_GoGbMU"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_1AzQEX --output-file /dev/null 2> _ptx_GoGbMUinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2r_radix6_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_GoGbMU _ptx2_1AzQEX _ptx_GoGbMUinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2r_radix5_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2r_radix5_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2r_radix5_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2r_radix5_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _54.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_qELVZ0"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_888Ml4 --output-file /dev/null 2> _ptx_qELVZ0info"
+GPGPU-Sim PTX: Kernel _Z23SP_c2r_radix5_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_qELVZ0 _ptx2_888Ml4 _ptx_qELVZ0info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2r_radix3_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2r_radix3_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2r_radix3_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2r_radix3_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _55.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_eAFk87"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_W6TAVb --output-file /dev/null 2> _ptx_eAFk87info"
+GPGPU-Sim PTX: Kernel _Z23SP_c2r_radix3_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_eAFk87 _ptx2_W6TAVb _ptx_eAFk87info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2r_radix4_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2r_radix4_sp_kernelifiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2r_radix4_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2r_radix4_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _56.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_DYwH7f"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_UAhwkk --output-file /dev/null 2> _ptx_DYwH7finfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2r_radix4_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_DYwH7f _ptx2_UAhwkk _ptx_DYwH7finfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2r_radix2_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2r_radix2_sp_kernelifiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2r_radix2_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2r_radix2_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _57.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_jrDRUo"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_IJDTvt --output-file /dev/null 2> _ptx_jrDRUoinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2r_radix2_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_jrDRUo _ptx2_IJDTvt _ptx_jrDRUoinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z25SP_c2r_radix2_mpsm_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z25SP_c2r_radix2_mpsm_kernelifiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25SP_c2r_radix2_mpsm_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25SP_c2r_radix2_mpsm_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z25SP_c2r_radix2_mpgm_kernelifiiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z25SP_c2r_radix2_mpgm_kernelifiiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25SP_c2r_radix2_mpgm_kernelifiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25SP_c2r_radix2_mpgm_kernelifiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _58.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_CMqjty"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_oVcrrD --output-file /dev/null 2> _ptx_CMqjtyinfo"
+GPGPU-Sim PTX: Kernel _Z25SP_c2r_radix2_mpgm_kernelifiiPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z25SP_c2r_radix2_mpsm_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_CMqjty _ptx2_oVcrrD _ptx_CMqjtyinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 47
+GPGPU-Sim PTX: parsing function _Z23SP_r2c_mradix_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_r2c_mradix_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_r2c_mradix_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_r2c_mradix_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _59.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_x1QyNI"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_SZFnaO --output-file /dev/null 2> _ptx_x1QyNIinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_r2c_mradix_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_x1QyNI _ptx2_SZFnaO _ptx_x1QyNIinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_r2c_radix7_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_r2c_radix7_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_r2c_radix7_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_r2c_radix7_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _60.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_431ZUT"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_0z2oGZ --output-file /dev/null 2> _ptx_431ZUTinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_r2c_radix7_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_431ZUT _ptx2_0z2oGZ _ptx_431ZUTinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_r2c_radix6_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_r2c_radix6_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_r2c_radix6_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_r2c_radix6_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _61.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_rrdmT5"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_XHH56b --output-file /dev/null 2> _ptx_rrdmT5info"
+GPGPU-Sim PTX: Kernel _Z23SP_r2c_radix6_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_rrdmT5 _ptx2_XHH56b _ptx_rrdmT5info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_r2c_radix5_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_r2c_radix5_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_r2c_radix5_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_r2c_radix5_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _62.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_PjOHLi"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_WPi1qp --output-file /dev/null 2> _ptx_PjOHLiinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_r2c_radix5_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_PjOHLi _ptx2_WPi1qp _ptx_PjOHLiinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_r2c_radix4_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_r2c_radix4_sp_kernelifiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_r2c_radix4_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_r2c_radix4_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _63.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_3aY6vw"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_svrVBD --output-file /dev/null 2> _ptx_3aY6vwinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_r2c_radix4_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_3aY6vw _ptx2_svrVBD _ptx_3aY6vwinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_r2c_radix3_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_r2c_radix3_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_r2c_radix3_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_r2c_radix3_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _64.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_pLop5K"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_cc9zzS --output-file /dev/null 2> _ptx_pLop5Kinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_r2c_radix3_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_pLop5K _ptx2_cc9zzS _ptx_pLop5Kinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_r2c_radix2_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_r2c_radix2_sp_kernelifiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_r2c_radix2_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_r2c_radix2_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _65.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_ezMsq0"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_EofZh8 --output-file /dev/null 2> _ptx_ezMsq0info"
+GPGPU-Sim PTX: Kernel _Z23SP_r2c_radix2_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_ezMsq0 _ptx2_EofZh8 _ptx_ezMsq0info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z25SP_r2c_radix2_mpsm_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z25SP_r2c_radix2_mpsm_kernelifiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25SP_r2c_radix2_mpsm_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25SP_r2c_radix2_mpsm_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z25SP_r2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z25SP_r2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25SP_r2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25SP_r2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _66.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_bkkJvg"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_tJlbKo --output-file /dev/null 2> _ptx_bkkJvginfo"
+GPGPU-Sim PTX: Kernel _Z25SP_r2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z25SP_r2c_radix2_mpsm_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_bkkJvg _ptx2_tJlbKo _ptx_bkkJvginfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: encountered texture directive cdtexref.
+GPGPU-Sim PTX: encountered texture directive rdtexref.
+GPGPU-Sim PTX: parsing function _Z20SP_c2c_lprime_kernelifPvS_ii11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z20SP_c2c_lprime_kernelifPvS_ii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z20SP_c2c_lprime_kernelifPvS_ii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z20SP_c2c_lprime_kernelifPvS_ii11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _67.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_mACBlx"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_jGoKXF --output-file /dev/null 2> _ptx_mACBlxinfo"
+GPGPU-Sim PTX: Kernel _Z20SP_c2c_lprime_kernelifPvS_ii11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_mACBlx _ptx2_jGoKXF _ptx_mACBlxinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrt" from 0x100 to 0x288 (global memory space) 48
+GPGPU-Sim PTX: parsing function _Z24SP_c2c_mrtable_r2_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z24SP_c2c_mrtable_r2_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24SP_c2c_mrtable_r2_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24SP_c2c_mrtable_r2_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z24SP_c2c_mrtable_r3_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z24SP_c2c_mrtable_r3_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24SP_c2c_mrtable_r3_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24SP_c2c_mrtable_r3_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z24SP_c2c_mrtable_r4_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z24SP_c2c_mrtable_r4_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24SP_c2c_mrtable_r4_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24SP_c2c_mrtable_r4_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z24SP_c2c_mrtable_r5_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z24SP_c2c_mrtable_r5_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z24SP_c2c_mrtable_r5_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z24SP_c2c_mrtable_r5_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _68.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_juQn8O"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_o6BflY --output-file /dev/null 2> _ptx_juQn8Oinfo"
+GPGPU-Sim PTX: Kernel _Z24SP_c2c_mrtable_r5_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z24SP_c2c_mrtable_r4_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z24SP_c2c_mrtable_r3_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z24SP_c2c_mrtable_r2_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_juQn8O _ptx2_o6BflY _ptx_juQn8Oinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 49
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_mradix_r7_kernelifPvS_i11tfStride_stii
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_mradix_r7_kernelifPvS_i11tfStride_stii'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_mradix_r7_kernelifPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_mradix_r7_kernelifPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _69.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_0npHS8"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_GPlZqj --output-file /dev/null 2> _ptx_0npHS8info"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_mradix_r7_kernelifPvS_i11tfStride_stii
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_0npHS8 _ptx2_GPlZqj _ptx_0npHS8info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 50
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_mradix_r5_kernelifPvS_i11tfStride_stii
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_mradix_r5_kernelifPvS_i11tfStride_stii'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_mradix_r5_kernelifPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_mradix_r5_kernelifPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _70.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_PAzSsu"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_L0TvvF --output-file /dev/null 2> _ptx_PAzSsuinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_mradix_r5_kernelifPvS_i11tfStride_stii
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_PAzSsu _ptx2_L0TvvF _ptx_PAzSsuinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 51
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_mradix_r3_kernelifPvS_i11tfStride_stii
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_mradix_r3_kernelifPvS_i11tfStride_stii'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_mradix_r3_kernelifPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_mradix_r3_kernelifPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _71.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_HEd8XQ"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_HChsr2 --output-file /dev/null 2> _ptx_HEd8XQinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_mradix_r3_kernelifPvS_i11tfStride_stii
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_HEd8XQ _ptx2_HChsr2 _ptx_HEd8XQinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 52
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_mradix_r2_kernelifPvS_i11tfStride_stii
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_mradix_r2_kernelifPvS_i11tfStride_stii'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_mradix_r2_kernelifPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_mradix_r2_kernelifPvS_i11tfStride_stii'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _72.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_MSUvie"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_Hvfgaq --output-file /dev/null 2> _ptx_MSUvieinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_mradix_r2_kernelifPvS_i11tfStride_stii
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_MSUvie _ptx2_Hvfgaq _ptx_MSUvieinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: allocating constant region for "mrp" from 0x100 to 0x288 (global memory space) 53
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_mradix_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_mradix_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_mradix_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_mradix_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _73.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_6fyUoC"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_TAgfEO --output-file /dev/null 2> _ptx_6fyUoCinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_mradix_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_6fyUoC _ptx2_TAgfEO _ptx_6fyUoCinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix7_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix7_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix7_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix7_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _74.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_CuOBi1"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_9D8KXd --output-file /dev/null 2> _ptx_CuOBi1info"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix7_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_CuOBi1 _ptx2_9D8KXd _ptx_CuOBi1info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix6_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix6_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix6_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix6_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _75.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_g8bV4q"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_JDOPcE --output-file /dev/null 2> _ptx_g8bV4qinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix6_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_g8bV4q _ptx2_JDOPcE _ptx_g8bV4qinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix5_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix5_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix5_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix5_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _76.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_4THrLR"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_taJNk5 --output-file /dev/null 2> _ptx_4THrLRinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix5_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_4THrLR _ptx2_taJNk5 _ptx_4THrLRinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix4_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix4_sp_kernelifiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix4_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix4_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _77.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_2kmpjj"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_VgSKix --output-file /dev/null 2> _ptx_2kmpjjinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix4_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_2kmpjj _ptx2_VgSKix _ptx_2kmpjjinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix3_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix3_sp_kernelifPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix3_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix3_sp_kernelifPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _78.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_00l6FL"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_1Oj93Z --output-file /dev/null 2> _ptx_00l6FLinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix3_sp_kernelifPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_00l6FL _ptx2_1Oj93Z _ptx_00l6FLinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix2_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix2_sp_kernelifiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix2_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix2_sp_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _79.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_Wn4HOe"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_dmuUzt --output-file /dev/null 2> _ptx_Wn4HOeinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix2_sp_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_Wn4HOe _ptx2_dmuUzt _ptx_Wn4HOeinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z25SP_c2c_radix2_mpsm_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z25SP_c2c_radix2_mpsm_kernelifiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25SP_c2c_radix2_mpsm_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25SP_c2c_radix2_mpsm_kernelifiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z25SP_c2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z25SP_c2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z25SP_c2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z25SP_c2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _80.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_cZiLII"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_l7mmSX --output-file /dev/null 2> _ptx_cZiLIIinfo"
+GPGPU-Sim PTX: Kernel _Z25SP_c2c_radix2_mpgm_kernelifiiPvS_i11tfStride_st
+GPGPU-Sim PTX: Kernel _Z25SP_c2c_radix2_mpsm_kernelifiPvS_i11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_cZiLII _ptx2_l7mmSX _ptx_cZiLIIinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: encountered texture directive cdtexref.
+GPGPU-Sim PTX: encountered texture directive rdtexref.
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix2_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix2_mp_kernelifPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix2_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix2_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix3_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix3_mp_kernelifPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix3_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix3_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix4_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix4_mp_kernelifPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix4_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix4_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix5_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix5_mp_kernelifPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix5_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix5_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix6_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix6_mp_kernelifPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix6_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix6_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radix7_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radix7_mp_kernelifPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radix7_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radix7_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_radixM_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_radixM_mp_kernelifPvS_iiiii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_radixM_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_radixM_mp_kernelifPvS_iiiii11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _81.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_nkLxvd"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_c0Y19s --output-file /dev/null 2> _ptx_nkLxvdinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radixM_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix7_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix6_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix5_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix4_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix3_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_radix2_mp_kernelifPvS_iiiii11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_nkLxvd _ptx2_c0Y19s _ptx_nkLxvdinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z23SP_c2c_transpose_kerneliiiiiiPvS_
+GPGPU-Sim PTX: instruction assembly for function '_Z23SP_c2c_transpose_kerneliiiiiiPvS_'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z23SP_c2c_transpose_kerneliiiiiiPvS_'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z23SP_c2c_transpose_kerneliiiiiiPvS_'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _82.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_HzayoJ"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_8aQLDZ --output-file /dev/null 2> _ptx_HzayoJinfo"
+GPGPU-Sim PTX: Kernel _Z23SP_c2c_transpose_kerneliiiiiiPvS_
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_HzayoJ _ptx2_8aQLDZ _ptx_HzayoJinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: encountered texture directive cdtexref.
+GPGPU-Sim PTX: encountered texture directive rdtexref.
+GPGPU-Sim PTX: parsing function _Z22SP_c2cf_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z22SP_c2cf_copy_2d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22SP_c2cf_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22SP_c2cf_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z22SP_c2ch_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z22SP_c2ch_copy_2d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22SP_c2ch_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22SP_c2ch_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z21SP_r2c_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z21SP_r2c_copy_2d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21SP_r2c_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21SP_r2c_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z21SP_c2r_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z21SP_c2r_copy_2d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21SP_c2r_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21SP_c2r_copy_2d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z22SP_c2cf_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z22SP_c2cf_copy_1d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22SP_c2cf_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22SP_c2cf_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z22SP_c2ch_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z22SP_c2ch_copy_1d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z22SP_c2ch_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z22SP_c2ch_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z21SP_r2c_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z21SP_r2c_copy_1d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21SP_r2c_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21SP_r2c_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: parsing function _Z21SP_c2r_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z21SP_c2r_copy_1d_kerneliPvS_11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21SP_c2r_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21SP_c2r_copy_1d_kerneliPvS_11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _83.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_FEdAig"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_Pfb9Xw --output-file /dev/null 2> _ptx_FEdAiginfo"
+GPGPU-Sim PTX: Kernel _Z21SP_c2r_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z21SP_r2c_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z22SP_c2ch_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z22SP_c2cf_copy_1d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z21SP_c2r_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z21SP_r2c_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z22SP_c2ch_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: Kernel _Z22SP_c2cf_copy_2d_kerneliPvS_11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_FEdAig _ptx2_Pfb9Xw _ptx_FEdAiginfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: allocating shared region for "smem" from 0x100 to 0x100 (shared memory space)
+GPGPU-Sim PTX: parsing function _Z21SP_c2c_twiddle_kernelifPvS_ii11tfStride_st
+GPGPU-Sim PTX: instruction assembly for function '_Z21SP_c2c_twiddle_kernelifPvS_ii11tfStride_st'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z21SP_c2c_twiddle_kernelifPvS_ii11tfStride_st'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z21SP_c2c_twiddle_kernelifPvS_ii11tfStride_st'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _84.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_AvxE1N"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_ZbjM54 --output-file /dev/null 2> _ptx_AvxE1Ninfo"
+GPGPU-Sim PTX: Kernel _Z21SP_c2c_twiddle_kernelifPvS_ii11tfStride_st
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_AvxE1N _ptx2_ZbjM54 _ptx_AvxE1Ninfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _85.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_6EwHxm"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_PFng0D --output-file /dev/null 2> _ptx_6EwHxminfo"
+GPGPU-Sim PTX: Kernel '__cuda_dummy_entry__' in _85.ptx not found. Ignoring.
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_6EwHxm _ptx2_PFng0D _ptx_6EwHxminfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _86.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_YXbfMV"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_zcbMyd --output-file /dev/null 2> _ptx_YXbfMVinfo"
+GPGPU-Sim PTX: Kernel '__cuda_dummy_entry__' in _86.ptx not found. Ignoring.
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_YXbfMV _ptx2_zcbMyd _ptx_YXbfMVinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: parsing function _Z27ComplexPointwiseMulAndScaleP6float2PKS_if
+GPGPU-Sim PTX: instruction assembly for function '_Z27ComplexPointwiseMulAndScaleP6float2PKS_if'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z27ComplexPointwiseMulAndScaleP6float2PKS_if'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z27ComplexPointwiseMulAndScaleP6float2PKS_if'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _87.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_UsW6Ev"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_TZw3LN --output-file /dev/null 2> _ptx_UsW6Evinfo"
+GPGPU-Sim PTX: Kernel _Z27ComplexPointwiseMulAndScaleP6float2PKS_if
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_UsW6Ev _ptx2_TZw3LN _ptx_UsW6Evinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: Program parsing completed (max 2832 registers used per thread).
+GPGPU-Sim PTX: allocating 448 bytes on GPU starting at address 0x10000000
+GPGPU-Sim PTX: cudaMallocing 448 bytes starting at 0x10000000..
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x10000000
+GPGPU-Sim PTX: copying 448 bytes from CPU[0xb12be60] to GPU[0x10000000] ...  done.
+GPGPU-Sim PTX: allocating 448 bytes on GPU starting at address 0x100001c0
+GPGPU-Sim PTX: cudaMallocing 448 bytes starting at 0x100001c0..
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x100001c0
+GPGPU-Sim PTX: copying 448 bytes from CPU[0xb12c030] to GPU[0x100001c0] ...  done.
+
+
+GPGPU-Sim PTX: Execution error: CUDA API function "cudaError_t cudaFuncGetAttributes(cudaFuncAttributes*, const char*)()" has not been implemented yet.
+                 [$GPGPUSIM_ROOT/libcuda/cuda_runtime_api.cc around line 1236]
+
+

@@ -1,0 +1,1051 @@
+
+
+        *** GPGPU-Sim version 2.1.1b (beta) ***
+
+
+GPGPU-Sim PTX: __cudaRegisterFunction _Z10testKernelPi : 0x403e50
+GPGPU-Sim PTX: simulation mode 0 (can change with PTX_SIM_MODE_FUNC environment variable:
+               1=functional simulation only, 0=detailed performance simulator)
+GPGPU-Sim: Configuration options:
+
+-network_mode                           1 # Interconnection network mode
+-inter_config_file   icnt_config_quadro_islip.txt # Interconnection network config file
+-save_embedded_ptx                      0 # saves ptx files embedded in binary as <n>.ptx
+-gpgpu_simd_model                       1 # 0 = no recombination, 1 = post-dominator, 2 = MIMD, 3 = dynamic warp formation
+-gpgpu_dram_scheduler                    1 # 0 = fifo (default), 1 = fast ideal
+-gpgpu_max_cycle                        0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_max_insn                         0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_tex_cache:l1             64:64:2:L # per-shader L1 texture cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_const_cache:l1            64:64:2:L # per-shader L1 constant memory cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_no_dl1                           1 # no dl1 cache (voids -gpgpu_cache:dl1 option)
+-gpgpu_cache:dl1               128:64:4:L # shader L1 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}
+-gpgpu_cache:dl2                     NULL # unified banked L2 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}; disabled by default
+-gpgpu_perfect_mem                      0 # enable perfect memory mode (no cache miss)
+-gpgpu_shader_core_pipeline           1024:32:32 # shader core pipeline config, i.e., {<nthread>:<warpsize>:<pipe_simd_width>}
+-gpgpu_shader_registers                16384 # Number of registers per shader core. Limits number of concurrent CTAs. (default 8192)
+-gpgpu_shader_cta                       8 # Maximum number of concurrent CTAs in shader (default 8)
+-gpgpu_n_shader                        30 # number of shaders in gpu
+-gpgpu_n_mem                            8 # number of memory modules (e.g. memory controllers) in gpu
+-gpgpu_n_mem_per_ctrlr                    2 # number of memory chips per memory controller
+-gpgpu_runtime_stat                  1000 # display runtime statistics such as dram utilization {<freq>:<flag>}
+-gpgpu_dwf_heuristic                    0 # DWF scheduling heuristic: 0 = majority, 1 = minority, 2 = timestamp, 3 = pdom priority, 4 = pc-based, 5 = max-heap
+-gpgpu_reg_bankconflict                    0 # Check for bank conflict in the pipeline
+-gpgpu_dwf_regbk                        1 # Have dwf scheduler to avoid bank conflict
+-gpgpu_memlatency_stat                   14 # track and display latency statistics 0x2 enables MC, 0x4 enables queue logs
+-gpgpu_mshr_per_thread                    1 # Number of MSHRs per thread
+-gpgpu_interwarp_mshr_merge                    6 # interwarp coalescing
+-gpgpu_dram_sched_queue_size                   32 # 0 = unlimited (default); # entries per chip
+-gpgpu_dram_buswidth                    4 # default = 4 bytes (8 bytes per cycle at DDR)
+-gpgpu_dram_burst_length                    4 # Burst length of each DRAM request (default = 4 DDR cycle)
+-gpgpu_dram_timing_opt 8:2:8:12:25:10:35:10:7:6 # DRAM timing parameters = {nbk:tCCD:tRRD:tRCD:tRAS:tRP:tRC:CL:WL:tWTR}
+-gpgpu_mem_address_mask                    1 # 0 = old addressing mask, 1 = new addressing mask, 2 = new add. mask + flipped bank sel and chip sel bits
+-gpgpu_flush_cache                      0 # Flush cache at the end of each kernel call
+-gpgpu_l2_readoverwrite                    0 # Prioritize read requests over write requests for L2
+-gpgpu_pre_mem_stages                    1 # default = 0 pre-memory pipeline stages
+-gpgpu_no_divg_load                     0 # Don't allow divergence on load
+-gpgpu_dwf_hw                        32:2 # dynamic warp formation hw config, i.e., {<#LUT_entries>:<associativity>|none}
+-gpgpu_thread_swizzling                    0 # Thread Swizzling (1=on, 0=off)
+-gpgpu_strict_simd_wrbk                    0 # Applying Strick SIMD WriteBack Stage (1=on, 0=off)
+-gpgpu_shmem_size                   16384 # Size of shared memory per shader core (default 16kB)
+-gpgpu_shmem_bkconflict                    1 # Turn on bank conflict check for shared memory
+-gpgpu_shmem_pipe_speedup                    1 # Number of groups each warp is divided for shared memory bank conflict check
+-gpgpu_L2_queue         0:0:0:0:0:0:10:10 # L2 data cache queue length and latency config
+-gpgpu_cache_wt_through                    0 # L1 cache become write through (1=on, 0=off)
+-gpgpu_deadlock_detect                    1 # Stop the simulation at deadlock (1=on (default), 0=off)
+-gpgpu_cache_bkconflict                    1 # Turn on bank conflict check for L1 cache access
+-gpgpu_n_cache_bank                     1 # Number of banks in L1 cache, also for memory coalescing stall
+-gpgpu_warpdistro_shader                   -1 # Specify which shader core to collect the warp size distribution from
+-gpgpu_pdom_sched_type                    8 # 0 = first ready warp found, 1 = random, 8 = loose round robin
+-gpgpu_spread_blocks_across_cores                    1 # Spread block-issuing across all cores instead of filling up core by core
+-gpgpu_cuda_sim                         1 # use PTX instruction set
+-gpgpu_ptx_instruction_classification                    0 # if enabled will classify ptx instruction types per kernel (Max 255 kernels now)
+-gpgpu_ptx_sim_mode                     0 # Select between Performance (default) or Functional simulation (1)
+-gpgpu_clock_domains 325.0:650.0:650.0:800.0 # Clock Domain Frequencies in MhZ {<Core Clock>:<ICNT Clock>:<L2 Clock>:<DRAM Clock>}
+-gpgpu_shmem_port_per_bank                    2 # Number of access processed by a shared memory bank per cycle (default = 2)
+-gpgpu_cache_port_per_bank                    2 # Number of access processed by a cache bank per cycle (default = 2)
+-gpgpu_const_port_per_bank                    2 # Number of access processed by a constant cache bank per cycle (default = 2)
+-gpgpu_cflog_interval                    0 # Interval between each snapshot in control flow logger
+-gpgpu_partial_write_mask                    1 # use partial write mask to filter memory requests <1>No extra reads(use this!)<2>extra reads generated for partial chunks
+-gpu_concentration                      3 # Number of shader cores per interconnection port (default = 1)
+-gpgpu_local_mem_map                    1 # Mapping from local memory space address to simulated GPU physical address space (default = 1)
+-pipetrace_out              pipetrace.txt # specifies file to output pipetrace to
+-pipetrace                              0 # Turns pipetrace on/off
+-gpgpu_mem_addr_mapping dramid@8;00000000.00000000.00000000.00000000.0000RRRR.RRRRRRRR.RRBBBCCC.CCCSSSSS # mapping memory address to dram model {dramid@<start bit>;<memory address map>}
+-visualizer_enabled                     1 # Turn on visualizer output (1=On, 0=Off)
+-visualizer_outputfile                 NULL # Specifies the output log file for visualizer
+-visualizer_zlevel                      6 # Compression level of the visualizer output log (0=no comp, 9=highest)
+-enable_ptx_file_line_stats                    1 # Turn on PTX source line statistic profiling. (1 = On)
+-ptx_line_stats_filename gpgpu_inst_stats.txt # Output file for PTX source line statistics.
+32 30 1024 983040
+30720
+addr_dec_mask[CHIP]  = 0000000000000700 	high:11 low:8
+addr_dec_mask[BK]    = 000000000001c000 	high:17 low:14
+addr_dec_mask[ROW]   = 000000007ffe0000 	high:31 low:17
+addr_dec_mask[COL]   = 00000000000038ff 	high:14 low:0
+addr_dec_mask[BURST] = 000000000000001f 	high:5 low:0
+*** Initializing Memory Statistics ***
+nodemap
+0 
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 15 16 
+17 GPU performance model initialization complete.
+GPGPU-Sim PTX: USING EMBEDDED .ptx files...
+GPGPU-Sim PTX: parsing function _Z10testKernelPi
+GPGPU-Sim PTX: instruction assembly for function '_Z10testKernelPi'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z10testKernelPi'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z10testKernelPi'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _1.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_IDDs02"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_khWmNK --output-file /dev/null 2> _ptx_IDDs02info"
+GPGPU-Sim PTX: Kernel _Z10testKernelPi
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_IDDs02 _ptx2_khWmNK _ptx_IDDs02info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: Program parsing completed (max 32 registers used per thread).
+Using Device 0: "GPGPU-Sim_v2.1.1b (beta)"
+GPGPU-Sim PTX: allocating 44 bytes on GPU starting at address 0x10000000
+GPGPU-Sim PTX: cudaMallocing 44 bytes starting at 0x10000000..
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x10000000
+GPGPU-Sim PTX: copying 44 bytes from CPU[0x32b1440] to GPU[0x10000000] ...  done.
+
+
+
+GPGPU-Sim PTX: cudaLaunch for 0x403e50 (mode=performance simulation)
+GPGPU-Sim PTX: Launching kernel '_Z10testKernelPi' gridDim= (64,1,1) blockDim = (256,1,1); ntuid=1
+GPGPU-Sim uArch: clock freqs: 325000000.000000:650000000.000000:650000000.000000:800000000.000000
+GPGPU-Sim uArch: clock periods: 0.00000000307692307692:0.00000000153846153846:0.00000000153846153846:0.00000000125000000000
+Reconvergence Pairs for _Z10testKernelPi
+CTA/core = 4, limited by: threads
+Shader 0 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 1 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 2 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 3 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 4 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 5 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 6 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 7 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 8 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 9 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 10 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 11 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 12 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 13 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 14 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 15 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 16 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 17 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 18 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 19 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 20 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 21 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 22 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 23 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 24 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 25 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 26 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 27 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 28 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 29 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 0 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 1 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 2 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 3 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 4 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 5 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 6 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 7 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 8 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 9 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 10 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 11 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 12 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 13 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 14 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 15 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 16 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 17 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 18 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 19 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 20 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 21 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 22 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 23 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 24 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 25 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 26 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 27 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 28 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 29 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 0 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 1 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 2 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 3 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+cycles: 1000  inst.: 33417 (ipc=33.4) sim_rate=16708 (inst/sec) elapsed = 0:0:00:02 / Wed May 25 11:06:17 2011
+cycles: 2000  inst.: 34097 (ipc=17.0) sim_rate=11365 (inst/sec) elapsed = 0:0:00:03 / Wed May 25 11:06:18 2011
+cycles: 3000  inst.: 35736 (ipc=11.9) sim_rate=7147 (inst/sec) elapsed = 0:0:00:05 / Wed May 25 11:06:20 2011
+cycles: 4000  inst.: 36863 (ipc= 9.2) sim_rate=6143 (inst/sec) elapsed = 0:0:00:06 / Wed May 25 11:06:21 2011
+cycles: 5000  inst.: 37479 (ipc= 7.5) sim_rate=4684 (inst/sec) elapsed = 0:0:00:08 / Wed May 25 11:06:23 2011
+cycles: 6000  inst.: 38606 (ipc= 6.4) sim_rate=4289 (inst/sec) elapsed = 0:0:00:09 / Wed May 25 11:06:24 2011
+cycles: 7000  inst.: 39989 (ipc= 5.7) sim_rate=3635 (inst/sec) elapsed = 0:0:00:11 / Wed May 25 11:06:26 2011
+cycles: 8000  inst.: 43165 (ipc= 5.4) sim_rate=3597 (inst/sec) elapsed = 0:0:00:12 / Wed May 25 11:06:27 2011
+cycles: 9000  inst.: 44420 (ipc= 4.9) sim_rate=3172 (inst/sec) elapsed = 0:0:00:14 / Wed May 25 11:06:29 2011
+cycles: 10000  inst.: 45612 (ipc= 4.6) sim_rate=3040 (inst/sec) elapsed = 0:0:00:15 / Wed May 25 11:06:30 2011
+cycles: 11000  inst.: 46227 (ipc= 4.2) sim_rate=2719 (inst/sec) elapsed = 0:0:00:17 / Wed May 25 11:06:32 2011
+cycles: 12000  inst.: 48442 (ipc= 4.0) sim_rate=2691 (inst/sec) elapsed = 0:0:00:18 / Wed May 25 11:06:33 2011
+cycles: 13000  inst.: 50274 (ipc= 3.9) sim_rate=2513 (inst/sec) elapsed = 0:0:00:20 / Wed May 25 11:06:35 2011
+cycles: 14000  inst.: 51977 (ipc= 3.7) sim_rate=2475 (inst/sec) elapsed = 0:0:00:21 / Wed May 25 11:06:36 2011
+cycles: 15000  inst.: 53169 (ipc= 3.5) sim_rate=2311 (inst/sec) elapsed = 0:0:00:23 / Wed May 25 11:06:38 2011
+cycles: 16000  inst.: 54296 (ipc= 3.4) sim_rate=2262 (inst/sec) elapsed = 0:0:00:24 / Wed May 25 11:06:39 2011
+cycles: 17000  inst.: 55999 (ipc= 3.3) sim_rate=2153 (inst/sec) elapsed = 0:0:00:26 / Wed May 25 11:06:41 2011
+cycles: 18000  inst.: 57319 (ipc= 3.2) sim_rate=2047 (inst/sec) elapsed = 0:0:00:28 / Wed May 25 11:06:43 2011
+cycles: 19000  inst.: 59214 (ipc= 3.1) sim_rate=2041 (inst/sec) elapsed = 0:0:00:29 / Wed May 25 11:06:44 2011
+cycles: 20000  inst.: 61109 (ipc= 3.1) sim_rate=1971 (inst/sec) elapsed = 0:0:00:31 / Wed May 25 11:06:46 2011
+cycles: 21000  inst.: 65053 (ipc= 3.1) sim_rate=2032 (inst/sec) elapsed = 0:0:00:32 / Wed May 25 11:06:47 2011
+cycles: 22000  inst.: 67972 (ipc= 3.1) sim_rate=1999 (inst/sec) elapsed = 0:0:00:34 / Wed May 25 11:06:49 2011
+cycles: 23000  inst.: 70892 (ipc= 3.1) sim_rate=2025 (inst/sec) elapsed = 0:0:00:35 / Wed May 25 11:06:50 2011
+cycles: 24000  inst.: 72723 (ipc= 3.0) sim_rate=1965 (inst/sec) elapsed = 0:0:00:37 / Wed May 25 11:06:52 2011
+cycles: 25000  inst.: 75354 (ipc= 3.0) sim_rate=1983 (inst/sec) elapsed = 0:0:00:38 / Wed May 25 11:06:53 2011
+cycles: 26000  inst.: 78370 (ipc= 3.0) sim_rate=1959 (inst/sec) elapsed = 0:0:00:40 / Wed May 25 11:06:55 2011
+cycles: 27000  inst.: 82569 (ipc= 3.1) sim_rate=2013 (inst/sec) elapsed = 0:0:00:41 / Wed May 25 11:06:56 2011
+cycles: 28000  inst.: 86769 (ipc= 3.1) sim_rate=2017 (inst/sec) elapsed = 0:0:00:43 / Wed May 25 11:06:58 2011
+100000 instructions simulated : ctaid=(7,0,0) tid=(159,0,0)
+cycles: 29000  inst.: 90584 (ipc= 3.1) sim_rate=2012 (inst/sec) elapsed = 0:0:00:45 / Wed May 25 11:07:00 2011
+cycles: 30000  inst.: 94527 (ipc= 3.2) sim_rate=2054 (inst/sec) elapsed = 0:0:00:46 / Wed May 25 11:07:01 2011
+cycles: 31000  inst.: 99687 (ipc= 3.2) sim_rate=2076 (inst/sec) elapsed = 0:0:00:48 / Wed May 25 11:07:03 2011
+cycles: 32000  inst.: 103374 (ipc= 3.2) sim_rate=2109 (inst/sec) elapsed = 0:0:00:49 / Wed May 25 11:07:04 2011
+cycles: 33000  inst.: 108021 (ipc= 3.3) sim_rate=2118 (inst/sec) elapsed = 0:0:00:51 / Wed May 25 11:07:06 2011
+cycles: 34000  inst.: 110749 (ipc= 3.3) sim_rate=2129 (inst/sec) elapsed = 0:0:00:52 / Wed May 25 11:07:07 2011
+cycles: 35000  inst.: 113092 (ipc= 3.2) sim_rate=2094 (inst/sec) elapsed = 0:0:00:54 / Wed May 25 11:07:09 2011
+cycles: 36000  inst.: 117516 (ipc= 3.3) sim_rate=2136 (inst/sec) elapsed = 0:0:00:55 / Wed May 25 11:07:10 2011
+cycles: 37000  inst.: 121811 (ipc= 3.3) sim_rate=2137 (inst/sec) elapsed = 0:0:00:57 / Wed May 25 11:07:12 2011
+cycles: 38000  inst.: 124698 (ipc= 3.3) sim_rate=2149 (inst/sec) elapsed = 0:0:00:58 / Wed May 25 11:07:13 2011
+cycles: 39000  inst.: 126434 (ipc= 3.2) sim_rate=2107 (inst/sec) elapsed = 0:0:01:00 / Wed May 25 11:07:15 2011
+cycles: 40000  inst.: 129609 (ipc= 3.2) sim_rate=2124 (inst/sec) elapsed = 0:0:01:01 / Wed May 25 11:07:16 2011
+cycles: 41000  inst.: 132785 (ipc= 3.2) sim_rate=2107 (inst/sec) elapsed = 0:0:01:03 / Wed May 25 11:07:18 2011
+cycles: 42000  inst.: 137240 (ipc= 3.3) sim_rate=2144 (inst/sec) elapsed = 0:0:01:04 / Wed May 25 11:07:19 2011
+cycles: 43000  inst.: 140096 (ipc= 3.3) sim_rate=2122 (inst/sec) elapsed = 0:0:01:06 / Wed May 25 11:07:21 2011
+cycles: 44000  inst.: 141671 (ipc= 3.2) sim_rate=2114 (inst/sec) elapsed = 0:0:01:07 / Wed May 25 11:07:22 2011
+cycles: 45000  inst.: 143246 (ipc= 3.2) sim_rate=2076 (inst/sec) elapsed = 0:0:01:09 / Wed May 25 11:07:24 2011
+cycles: 46000  inst.: 144790 (ipc= 3.1) sim_rate=2039 (inst/sec) elapsed = 0:0:01:11 / Wed May 25 11:07:26 2011
+cycles: 47000  inst.: 146333 (ipc= 3.1) sim_rate=2032 (inst/sec) elapsed = 0:0:01:12 / Wed May 25 11:07:27 2011
+cycles: 48000  inst.: 147461 (ipc= 3.1) sim_rate=1992 (inst/sec) elapsed = 0:0:01:14 / Wed May 25 11:07:29 2011
+cycles: 49000  inst.: 149388 (ipc= 3.0) sim_rate=1991 (inst/sec) elapsed = 0:0:01:15 / Wed May 25 11:07:30 2011
+cycles: 50000  inst.: 150899 (ipc= 3.0) sim_rate=1985 (inst/sec) elapsed = 0:0:01:16 / Wed May 25 11:07:31 2011
+cycles: 51000  inst.: 152699 (ipc= 3.0) sim_rate=1957 (inst/sec) elapsed = 0:0:01:18 / Wed May 25 11:07:33 2011
+cycles: 52000  inst.: 161090 (ipc= 3.1) sim_rate=2039 (inst/sec) elapsed = 0:0:01:19 / Wed May 25 11:07:34 2011
+cycles: 53000  inst.: 162313 (ipc= 3.1) sim_rate=2003 (inst/sec) elapsed = 0:0:01:21 / Wed May 25 11:07:36 2011
+cycles: 54000  inst.: 163569 (ipc= 3.0) sim_rate=1994 (inst/sec) elapsed = 0:0:01:22 / Wed May 25 11:07:37 2011
+cycles: 55000  inst.: 164824 (ipc= 3.0) sim_rate=1962 (inst/sec) elapsed = 0:0:01:24 / Wed May 25 11:07:39 2011
+cycles: 56000  inst.: 166080 (ipc= 3.0) sim_rate=1931 (inst/sec) elapsed = 0:0:01:26 / Wed May 25 11:07:41 2011
+cycles: 57000  inst.: 167335 (ipc= 2.9) sim_rate=1923 (inst/sec) elapsed = 0:0:01:27 / Wed May 25 11:07:42 2011
+cycles: 58000  inst.: 168590 (ipc= 2.9) sim_rate=1894 (inst/sec) elapsed = 0:0:01:29 / Wed May 25 11:07:44 2011
+cycles: 59000  inst.: 169846 (ipc= 2.9) sim_rate=1887 (inst/sec) elapsed = 0:0:01:30 / Wed May 25 11:07:45 2011
+cycles: 60000  inst.: 171101 (ipc= 2.9) sim_rate=1859 (inst/sec) elapsed = 0:0:01:32 / Wed May 25 11:07:47 2011
+cycles: 61000  inst.: 172357 (ipc= 2.8) sim_rate=1853 (inst/sec) elapsed = 0:0:01:33 / Wed May 25 11:07:48 2011
+cycles: 62000  inst.: 173612 (ipc= 2.8) sim_rate=1827 (inst/sec) elapsed = 0:0:01:35 / Wed May 25 11:07:50 2011
+cycles: 63000  inst.: 174835 (ipc= 2.8) sim_rate=1821 (inst/sec) elapsed = 0:0:01:36 / Wed May 25 11:07:51 2011
+cycles: 64000  inst.: 175931 (ipc= 2.7) sim_rate=1795 (inst/sec) elapsed = 0:0:01:38 / Wed May 25 11:07:53 2011
+cycles: 65000  inst.: 176994 (ipc= 2.7) sim_rate=1787 (inst/sec) elapsed = 0:0:01:39 / Wed May 25 11:07:54 2011
+cycles: 66000  inst.: 178121 (ipc= 2.7) sim_rate=1763 (inst/sec) elapsed = 0:0:01:41 / Wed May 25 11:07:56 2011
+cycles: 67000  inst.: 179537 (ipc= 2.7) sim_rate=1760 (inst/sec) elapsed = 0:0:01:42 / Wed May 25 11:07:57 2011
+cycles: 68000  inst.: 180696 (ipc= 2.7) sim_rate=1737 (inst/sec) elapsed = 0:0:01:44 / Wed May 25 11:07:59 2011
+cycles: 69000  inst.: 183488 (ipc= 2.7) sim_rate=1747 (inst/sec) elapsed = 0:0:01:45 / Wed May 25 11:08:00 2011
+cycles: 70000  inst.: 184647 (ipc= 2.6) sim_rate=1725 (inst/sec) elapsed = 0:0:01:47 / Wed May 25 11:08:02 2011
+cycles: 71000  inst.: 185614 (ipc= 2.6) sim_rate=1718 (inst/sec) elapsed = 0:0:01:48 / Wed May 25 11:08:03 2011
+cycles: 72000  inst.: 186870 (ipc= 2.6) sim_rate=1698 (inst/sec) elapsed = 0:0:01:50 / Wed May 25 11:08:05 2011
+200000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+cycles: 73000  inst.: 188125 (ipc= 2.6) sim_rate=1694 (inst/sec) elapsed = 0:0:01:51 / Wed May 25 11:08:06 2011
+cycles: 74000  inst.: 189893 (ipc= 2.6) sim_rate=1665 (inst/sec) elapsed = 0:0:01:54 / Wed May 25 11:08:09 2011
+cycles: 75000  inst.: 191404 (ipc= 2.6) sim_rate=1650 (inst/sec) elapsed = 0:0:01:56 / Wed May 25 11:08:11 2011
+cycles: 76000  inst.: 192883 (ipc= 2.5) sim_rate=1620 (inst/sec) elapsed = 0:0:01:59 / Wed May 25 11:08:14 2011
+cycles: 77000  inst.: 194011 (ipc= 2.5) sim_rate=1590 (inst/sec) elapsed = 0:0:02:02 / Wed May 25 11:08:17 2011
+cycles: 78000  inst.: 195394 (ipc= 2.5) sim_rate=1575 (inst/sec) elapsed = 0:0:02:04 / Wed May 25 11:08:19 2011
+cycles: 79000  inst.: 196969 (ipc= 2.5) sim_rate=1550 (inst/sec) elapsed = 0:0:02:07 / Wed May 25 11:08:22 2011
+cycles: 80000  inst.: 198801 (ipc= 2.5) sim_rate=1529 (inst/sec) elapsed = 0:0:02:10 / Wed May 25 11:08:25 2011
+cycles: 81000  inst.: 200632 (ipc= 2.5) sim_rate=1519 (inst/sec) elapsed = 0:0:02:12 / Wed May 25 11:08:27 2011
+cycles: 82000  inst.: 203232 (ipc= 2.5) sim_rate=1505 (inst/sec) elapsed = 0:0:02:15 / Wed May 25 11:08:30 2011
+cycles: 83000  inst.: 204967 (ipc= 2.5) sim_rate=1496 (inst/sec) elapsed = 0:0:02:17 / Wed May 25 11:08:32 2011
+cycles: 84000  inst.: 206670 (ipc= 2.5) sim_rate=1486 (inst/sec) elapsed = 0:0:02:19 / Wed May 25 11:08:34 2011
+cycles: 85000  inst.: 208502 (ipc= 2.5) sim_rate=1478 (inst/sec) elapsed = 0:0:02:21 / Wed May 25 11:08:36 2011
+cycles: 86000  inst.: 210205 (ipc= 2.4) sim_rate=1469 (inst/sec) elapsed = 0:0:02:23 / Wed May 25 11:08:38 2011
+cycles: 87000  inst.: 211525 (ipc= 2.4) sim_rate=1468 (inst/sec) elapsed = 0:0:02:24 / Wed May 25 11:08:39 2011
+cycles: 88000  inst.: 212716 (ipc= 2.4) sim_rate=1456 (inst/sec) elapsed = 0:0:02:26 / Wed May 25 11:08:41 2011
+cycles: 89000  inst.: 214547 (ipc= 2.4) sim_rate=1459 (inst/sec) elapsed = 0:0:02:27 / Wed May 25 11:08:42 2011
+cycles: 90000  inst.: 216091 (ipc= 2.4) sim_rate=1450 (inst/sec) elapsed = 0:0:02:29 / Wed May 25 11:08:44 2011
+cycles: 91000  inst.: 217762 (ipc= 2.4) sim_rate=1451 (inst/sec) elapsed = 0:0:02:30 / Wed May 25 11:08:45 2011
+cycles: 92000  inst.: 219657 (ipc= 2.4) sim_rate=1445 (inst/sec) elapsed = 0:0:02:32 / Wed May 25 11:08:47 2011
+cycles: 93000  inst.: 221553 (ipc= 2.4) sim_rate=1438 (inst/sec) elapsed = 0:0:02:34 / Wed May 25 11:08:49 2011
+cycles: 94000  inst.: 223448 (ipc= 2.4) sim_rate=1432 (inst/sec) elapsed = 0:0:02:36 / Wed May 25 11:08:51 2011
+cycles: 95000  inst.: 225344 (ipc= 2.4) sim_rate=1435 (inst/sec) elapsed = 0:0:02:37 / Wed May 25 11:08:52 2011
+cycles: 96000  inst.: 227239 (ipc= 2.4) sim_rate=1429 (inst/sec) elapsed = 0:0:02:39 / Wed May 25 11:08:54 2011
+cycles: 97000  inst.: 229134 (ipc= 2.4) sim_rate=1432 (inst/sec) elapsed = 0:0:02:40 / Wed May 25 11:08:55 2011
+cycles: 98000  inst.: 231030 (ipc= 2.4) sim_rate=1426 (inst/sec) elapsed = 0:0:02:42 / Wed May 25 11:08:57 2011
+cycles: 99000  inst.: 232861 (ipc= 2.4) sim_rate=1419 (inst/sec) elapsed = 0:0:02:44 / Wed May 25 11:08:59 2011
+cycles: 100000  inst.: 235461 (ipc= 2.4) sim_rate=1418 (inst/sec) elapsed = 0:0:02:46 / Wed May 25 11:09:01 2011
+cycles: 101000  inst.: 237100 (ipc= 2.3) sim_rate=1419 (inst/sec) elapsed = 0:0:02:47 / Wed May 25 11:09:02 2011
+cycles: 102000  inst.: 238803 (ipc= 2.3) sim_rate=1413 (inst/sec) elapsed = 0:0:02:49 / Wed May 25 11:09:04 2011
+cycles: 103000  inst.: 240731 (ipc= 2.3) sim_rate=1416 (inst/sec) elapsed = 0:0:02:50 / Wed May 25 11:09:05 2011
+cycles: 104000  inst.: 242274 (ipc= 2.3) sim_rate=1408 (inst/sec) elapsed = 0:0:02:52 / Wed May 25 11:09:07 2011
+cycles: 105000  inst.: 243465 (ipc= 2.3) sim_rate=1407 (inst/sec) elapsed = 0:0:02:53 / Wed May 25 11:09:08 2011
+cycles: 106000  inst.: 245425 (ipc= 2.3) sim_rate=1402 (inst/sec) elapsed = 0:0:02:55 / Wed May 25 11:09:10 2011
+cycles: 107000  inst.: 247320 (ipc= 2.3) sim_rate=1405 (inst/sec) elapsed = 0:0:02:56 / Wed May 25 11:09:11 2011
+cycles: 108000  inst.: 249216 (ipc= 2.3) sim_rate=1400 (inst/sec) elapsed = 0:0:02:58 / Wed May 25 11:09:13 2011
+cycles: 109000  inst.: 251111 (ipc= 2.3) sim_rate=1395 (inst/sec) elapsed = 0:0:03:00 / Wed May 25 11:09:15 2011
+cycles: 110000  inst.: 253006 (ipc= 2.3) sim_rate=1390 (inst/sec) elapsed = 0:0:03:02 / Wed May 25 11:09:17 2011
+cycles: 111000  inst.: 254902 (ipc= 2.3) sim_rate=1385 (inst/sec) elapsed = 0:0:03:04 / Wed May 25 11:09:19 2011
+cycles: 112000  inst.: 256797 (ipc= 2.3) sim_rate=1380 (inst/sec) elapsed = 0:0:03:06 / Wed May 25 11:09:21 2011
+cycles: 113000  inst.: 258693 (ipc= 2.3) sim_rate=1383 (inst/sec) elapsed = 0:0:03:07 / Wed May 25 11:09:22 2011
+cycles: 114000  inst.: 260588 (ipc= 2.3) sim_rate=1378 (inst/sec) elapsed = 0:0:03:09 / Wed May 25 11:09:24 2011
+cycles: 115000  inst.: 262419 (ipc= 2.3) sim_rate=1373 (inst/sec) elapsed = 0:0:03:11 / Wed May 25 11:09:26 2011
+cycles: 116000  inst.: 263963 (ipc= 2.3) sim_rate=1374 (inst/sec) elapsed = 0:0:03:12 / Wed May 25 11:09:27 2011
+cycles: 117000  inst.: 265570 (ipc= 2.3) sim_rate=1368 (inst/sec) elapsed = 0:0:03:14 / Wed May 25 11:09:29 2011
+cycles: 118000  inst.: 267401 (ipc= 2.3) sim_rate=1371 (inst/sec) elapsed = 0:0:03:15 / Wed May 25 11:09:30 2011
+cycles: 119000  inst.: 269105 (ipc= 2.3) sim_rate=1366 (inst/sec) elapsed = 0:0:03:17 / Wed May 25 11:09:32 2011
+cycles: 120000  inst.: 270808 (ipc= 2.3) sim_rate=1360 (inst/sec) elapsed = 0:0:03:19 / Wed May 25 11:09:34 2011
+cycles: 121000  inst.: 272896 (ipc= 2.3) sim_rate=1364 (inst/sec) elapsed = 0:0:03:20 / Wed May 25 11:09:35 2011
+cycles: 122000  inst.: 274407 (ipc= 2.2) sim_rate=1358 (inst/sec) elapsed = 0:0:03:22 / Wed May 25 11:09:37 2011
+cycles: 123000  inst.: 276110 (ipc= 2.2) sim_rate=1360 (inst/sec) elapsed = 0:0:03:23 / Wed May 25 11:09:38 2011
+cycles: 124000  inst.: 277622 (ipc= 2.2) sim_rate=1354 (inst/sec) elapsed = 0:0:03:25 / Wed May 25 11:09:40 2011
+cycles: 125000  inst.: 279517 (ipc= 2.2) sim_rate=1356 (inst/sec) elapsed = 0:0:03:26 / Wed May 25 11:09:41 2011
+cycles: 126000  inst.: 281413 (ipc= 2.2) sim_rate=1352 (inst/sec) elapsed = 0:0:03:28 / Wed May 25 11:09:43 2011
+cycles: 127000  inst.: 283820 (ipc= 2.2) sim_rate=1351 (inst/sec) elapsed = 0:0:03:30 / Wed May 25 11:09:45 2011
+cycles: 128000  inst.: 285907 (ipc= 2.2) sim_rate=1355 (inst/sec) elapsed = 0:0:03:31 / Wed May 25 11:09:46 2011
+cycles: 129000  inst.: 287451 (ipc= 2.2) sim_rate=1349 (inst/sec) elapsed = 0:0:03:33 / Wed May 25 11:09:48 2011
+300000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+cycles: 130000  inst.: 289378 (ipc= 2.2) sim_rate=1352 (inst/sec) elapsed = 0:0:03:34 / Wed May 25 11:09:49 2011
+cycles: 131000  inst.: 291561 (ipc= 2.2) sim_rate=1349 (inst/sec) elapsed = 0:0:03:36 / Wed May 25 11:09:51 2011
+cycles: 132000  inst.: 293777 (ipc= 2.2) sim_rate=1353 (inst/sec) elapsed = 0:0:03:37 / Wed May 25 11:09:52 2011
+cycles: 133000  inst.: 296248 (ipc= 2.2) sim_rate=1352 (inst/sec) elapsed = 0:0:03:39 / Wed May 25 11:09:54 2011
+cycles: 134000  inst.: 298720 (ipc= 2.2) sim_rate=1351 (inst/sec) elapsed = 0:0:03:41 / Wed May 25 11:09:56 2011
+cycles: 135000  inst.: 300999 (ipc= 2.2) sim_rate=1355 (inst/sec) elapsed = 0:0:03:42 / Wed May 25 11:09:57 2011
+cycles: 136000  inst.: 303310 (ipc= 2.2) sim_rate=1354 (inst/sec) elapsed = 0:0:03:44 / Wed May 25 11:09:59 2011
+cycles: 137000  inst.: 305878 (ipc= 2.2) sim_rate=1353 (inst/sec) elapsed = 0:0:03:46 / Wed May 25 11:10:01 2011
+cycles: 138000  inst.: 308285 (ipc= 2.2) sim_rate=1352 (inst/sec) elapsed = 0:0:03:48 / Wed May 25 11:10:03 2011
+cycles: 139000  inst.: 310533 (ipc= 2.2) sim_rate=1350 (inst/sec) elapsed = 0:0:03:50 / Wed May 25 11:10:05 2011
+cycles: 140000  inst.: 312396 (ipc= 2.2) sim_rate=1352 (inst/sec) elapsed = 0:0:03:51 / Wed May 25 11:10:06 2011
+cycles: 141000  inst.: 313875 (ipc= 2.2) sim_rate=1347 (inst/sec) elapsed = 0:0:03:53 / Wed May 25 11:10:08 2011
+cycles: 142000  inst.: 315675 (ipc= 2.2) sim_rate=1343 (inst/sec) elapsed = 0:0:03:55 / Wed May 25 11:10:10 2011
+cycles: 143000  inst.: 317986 (ipc= 2.2) sim_rate=1347 (inst/sec) elapsed = 0:0:03:56 / Wed May 25 11:10:11 2011
+cycles: 144000  inst.: 320521 (ipc= 2.2) sim_rate=1341 (inst/sec) elapsed = 0:0:03:59 / Wed May 25 11:10:14 2011
+cycles: 145000  inst.: 322545 (ipc= 2.2) sim_rate=1343 (inst/sec) elapsed = 0:0:04:00 / Wed May 25 11:10:15 2011
+cycles: 146000  inst.: 324824 (ipc= 2.2) sim_rate=1342 (inst/sec) elapsed = 0:0:04:02 / Wed May 25 11:10:17 2011
+cycles: 147000  inst.: 327104 (ipc= 2.2) sim_rate=1340 (inst/sec) elapsed = 0:0:04:04 / Wed May 25 11:10:19 2011
+cycles: 148000  inst.: 329639 (ipc= 2.2) sim_rate=1345 (inst/sec) elapsed = 0:0:04:05 / Wed May 25 11:10:20 2011
+cycles: 149000  inst.: 331854 (ipc= 2.2) sim_rate=1343 (inst/sec) elapsed = 0:0:04:07 / Wed May 25 11:10:22 2011
+cycles: 150000  inst.: 333814 (ipc= 2.2) sim_rate=1346 (inst/sec) elapsed = 0:0:04:08 / Wed May 25 11:10:23 2011
+cycles: 151000  inst.: 335773 (ipc= 2.2) sim_rate=1343 (inst/sec) elapsed = 0:0:04:10 / Wed May 25 11:10:25 2011
+cycles: 152000  inst.: 337669 (ipc= 2.2) sim_rate=1339 (inst/sec) elapsed = 0:0:04:12 / Wed May 25 11:10:27 2011
+cycles: 153000  inst.: 339564 (ipc= 2.2) sim_rate=1342 (inst/sec) elapsed = 0:0:04:13 / Wed May 25 11:10:28 2011
+cycles: 154000  inst.: 341203 (ipc= 2.2) sim_rate=1338 (inst/sec) elapsed = 0:0:04:15 / Wed May 25 11:10:30 2011
+cycles: 155000  inst.: 342555 (ipc= 2.2) sim_rate=1332 (inst/sec) elapsed = 0:0:04:17 / Wed May 25 11:10:32 2011
+cycles: 156000  inst.: 344418 (ipc= 2.2) sim_rate=1329 (inst/sec) elapsed = 0:0:04:19 / Wed May 25 11:10:34 2011
+cycles: 157000  inst.: 346185 (ipc= 2.2) sim_rate=1331 (inst/sec) elapsed = 0:0:04:20 / Wed May 25 11:10:35 2011
+cycles: 158000  inst.: 347505 (ipc= 2.2) sim_rate=1326 (inst/sec) elapsed = 0:0:04:22 / Wed May 25 11:10:37 2011
+cycles: 159000  inst.: 349272 (ipc= 2.2) sim_rate=1323 (inst/sec) elapsed = 0:0:04:24 / Wed May 25 11:10:39 2011
+cycles: 160000  inst.: 351168 (ipc= 2.2) sim_rate=1325 (inst/sec) elapsed = 0:0:04:25 / Wed May 25 11:10:40 2011
+cycles: 161000  inst.: 353063 (ipc= 2.2) sim_rate=1322 (inst/sec) elapsed = 0:0:04:27 / Wed May 25 11:10:42 2011
+cycles: 162000  inst.: 354702 (ipc= 2.2) sim_rate=1323 (inst/sec) elapsed = 0:0:04:28 / Wed May 25 11:10:43 2011
+cycles: 163000  inst.: 356086 (ipc= 2.2) sim_rate=1318 (inst/sec) elapsed = 0:0:04:30 / Wed May 25 11:10:45 2011
+cycles: 164000  inst.: 357981 (ipc= 2.2) sim_rate=1316 (inst/sec) elapsed = 0:0:04:32 / Wed May 25 11:10:47 2011
+cycles: 165000  inst.: 359621 (ipc= 2.2) sim_rate=1317 (inst/sec) elapsed = 0:0:04:33 / Wed May 25 11:10:48 2011
+cycles: 166000  inst.: 361228 (ipc= 2.2) sim_rate=1313 (inst/sec) elapsed = 0:0:04:35 / Wed May 25 11:10:50 2011
+cycles: 167000  inst.: 362771 (ipc= 2.2) sim_rate=1314 (inst/sec) elapsed = 0:0:04:36 / Wed May 25 11:10:51 2011
+cycles: 168000  inst.: 363963 (ipc= 2.2) sim_rate=1309 (inst/sec) elapsed = 0:0:04:38 / Wed May 25 11:10:53 2011
+cycles: 169000  inst.: 365090 (ipc= 2.2) sim_rate=1303 (inst/sec) elapsed = 0:0:04:40 / Wed May 25 11:10:55 2011
+cycles: 170000  inst.: 366377 (ipc= 2.2) sim_rate=1303 (inst/sec) elapsed = 0:0:04:41 / Wed May 25 11:10:56 2011
+cycles: 171000  inst.: 367665 (ipc= 2.2) sim_rate=1299 (inst/sec) elapsed = 0:0:04:43 / Wed May 25 11:10:58 2011
+cycles: 172000  inst.: 368792 (ipc= 2.1) sim_rate=1294 (inst/sec) elapsed = 0:0:04:45 / Wed May 25 11:11:00 2011
+cycles: 173000  inst.: 370143 (ipc= 2.1) sim_rate=1294 (inst/sec) elapsed = 0:0:04:46 / Wed May 25 11:11:01 2011
+cycles: 174000  inst.: 371303 (ipc= 2.1) sim_rate=1289 (inst/sec) elapsed = 0:0:04:48 / Wed May 25 11:11:03 2011
+cycles: 175000  inst.: 372814 (ipc= 2.1) sim_rate=1285 (inst/sec) elapsed = 0:0:04:50 / Wed May 25 11:11:05 2011
+cycles: 176000  inst.: 381141 (ipc= 2.2) sim_rate=1305 (inst/sec) elapsed = 0:0:04:52 / Wed May 25 11:11:07 2011
+cycles: 177000  inst.: 382301 (ipc= 2.2) sim_rate=1304 (inst/sec) elapsed = 0:0:04:53 / Wed May 25 11:11:08 2011
+cycles: 178000  inst.: 383556 (ipc= 2.2) sim_rate=1300 (inst/sec) elapsed = 0:0:04:55 / Wed May 25 11:11:10 2011
+cycles: 179000  inst.: 384812 (ipc= 2.1) sim_rate=1300 (inst/sec) elapsed = 0:0:04:56 / Wed May 25 11:11:11 2011
+400000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+cycles: 180000  inst.: 399347 (ipc= 2.2) sim_rate=1340 (inst/sec) elapsed = 0:0:04:58 / Wed May 25 11:11:13 2011
+cycles: 181000  inst.: 400442 (ipc= 2.2) sim_rate=1334 (inst/sec) elapsed = 0:0:05:00 / Wed May 25 11:11:15 2011
+cycles: 182000  inst.: 401570 (ipc= 2.2) sim_rate=1334 (inst/sec) elapsed = 0:0:05:01 / Wed May 25 11:11:16 2011
+cycles: 183000  inst.: 402825 (ipc= 2.2) sim_rate=1329 (inst/sec) elapsed = 0:0:05:03 / Wed May 25 11:11:18 2011
+cycles: 184000  inst.: 404081 (ipc= 2.2) sim_rate=1324 (inst/sec) elapsed = 0:0:05:05 / Wed May 25 11:11:20 2011
+cycles: 185000  inst.: 405336 (ipc= 2.2) sim_rate=1324 (inst/sec) elapsed = 0:0:05:06 / Wed May 25 11:11:21 2011
+cycles: 186000  inst.: 406591 (ipc= 2.2) sim_rate=1324 (inst/sec) elapsed = 0:0:05:07 / Wed May 25 11:11:22 2011
+cycles: 187000  inst.: 408135 (ipc= 2.2) sim_rate=1320 (inst/sec) elapsed = 0:0:05:09 / Wed May 25 11:11:24 2011
+cycles: 188000  inst.: 409326 (ipc= 2.2) sim_rate=1320 (inst/sec) elapsed = 0:0:05:10 / Wed May 25 11:11:25 2011
+cycles: 189000  inst.: 411029 (ipc= 2.2) sim_rate=1317 (inst/sec) elapsed = 0:0:05:12 / Wed May 25 11:11:27 2011
+cycles: 190000  inst.: 412445 (ipc= 2.2) sim_rate=1317 (inst/sec) elapsed = 0:0:05:13 / Wed May 25 11:11:28 2011
+cycles: 191000  inst.: 413828 (ipc= 2.2) sim_rate=1317 (inst/sec) elapsed = 0:0:05:14 / Wed May 25 11:11:29 2011
+cycles: 192000  inst.: 414988 (ipc= 2.2) sim_rate=1317 (inst/sec) elapsed = 0:0:05:15 / Wed May 25 11:11:30 2011
+cycles: 193000  inst.: 417683 (ipc= 2.2) sim_rate=1321 (inst/sec) elapsed = 0:0:05:16 / Wed May 25 11:11:31 2011
+cycles: 194000  inst.: 419130 (ipc= 2.2) sim_rate=1322 (inst/sec) elapsed = 0:0:05:17 / Wed May 25 11:11:32 2011
+cycles: 195000  inst.: 421570 (ipc= 2.2) sim_rate=1325 (inst/sec) elapsed = 0:0:05:18 / Wed May 25 11:11:33 2011
+cycles: 196000  inst.: 422921 (ipc= 2.2) sim_rate=1329 (inst/sec) elapsed = 0:0:05:18 / Wed May 25 11:11:33 2011
+Shader 6 finished CTA #1 (196075,0)
+Shader 9 finished CTA #1 (196077,0)
+Shader 12 finished CTA #1 (196078,0)
+Shader 15 finished CTA #1 (196080,0)
+Shader 18 finished CTA #1 (196081,0)
+Shader 21 finished CTA #1 (196083,0)
+Shader 24 finished CTA #1 (196085,0)
+Shader 27 finished CTA #1 (196086,0)
+Shader 0 finished CTA #1 (196137,0)
+Shader 6 finished CTA #0 (196595,0)
+Shader 9 finished CTA #0 (196597,0)
+Shader 12 finished CTA #0 (196598,0)
+Shader 15 finished CTA #0 (196600,0)
+Shader 18 finished CTA #0 (196601,0)
+Shader 21 finished CTA #0 (196603,0)
+Shader 24 finished CTA #0 (196605,0)
+Shader 27 finished CTA #0 (196606,0)
+cycles: 197000  inst.: 424177 (ipc= 2.2) sim_rate=1329 (inst/sec) elapsed = 0:0:05:19 / Wed May 25 11:11:34 2011
+cycles: 198000  inst.: 427672 (ipc= 2.2) sim_rate=1336 (inst/sec) elapsed = 0:0:05:20 / Wed May 25 11:11:35 2011
+cycles: 199000  inst.: 428927 (ipc= 2.2) sim_rate=1336 (inst/sec) elapsed = 0:0:05:21 / Wed May 25 11:11:36 2011
+cycles: 200000  inst.: 430183 (ipc= 2.2) sim_rate=1340 (inst/sec) elapsed = 0:0:05:21 / Wed May 25 11:11:36 2011
+Shader 0 finished CTA #2 (200297,0)
+Shader 7 finished CTA #1 (200755,0)
+Shader 10 finished CTA #1 (200757,0)
+Shader 13 finished CTA #1 (200758,0)
+Shader 16 finished CTA #1 (200760,0)
+Shader 19 finished CTA #1 (200761,0)
+Shader 22 finished CTA #1 (200763,0)
+Shader 25 finished CTA #1 (200765,0)
+Shader 28 finished CTA #1 (200766,0)
+Shader 0 finished CTA #0 (200817,0)
+cycles: 201000  inst.: 431438 (ipc= 2.1) sim_rate=1339 (inst/sec) elapsed = 0:0:05:22 / Wed May 25 11:11:37 2011
+Shader 3 finished CTA #1 (201273,0)
+Shader 7 finished CTA #0 (201795,0)
+Shader 10 finished CTA #0 (201797,0)
+Shader 13 finished CTA #0 (201798,0)
+Shader 16 finished CTA #0 (201800,0)
+Shader 19 finished CTA #0 (201801,0)
+Shader 22 finished CTA #0 (201803,0)
+Shader 25 finished CTA #0 (201805,0)
+Shader 28 finished CTA #0 (201806,0)
+cycles: 202000  inst.: 432757 (ipc= 2.1) sim_rate=1343 (inst/sec) elapsed = 0:0:05:22 / Wed May 25 11:11:37 2011
+cycles: 203000  inst.: 434077 (ipc= 2.1) sim_rate=1343 (inst/sec) elapsed = 0:0:05:23 / Wed May 25 11:11:38 2011
+cycles: 204000  inst.: 435396 (ipc= 2.1) sim_rate=1347 (inst/sec) elapsed = 0:0:05:23 / Wed May 25 11:11:38 2011
+cycles: 205000  inst.: 436716 (ipc= 2.1) sim_rate=1347 (inst/sec) elapsed = 0:0:05:24 / Wed May 25 11:11:39 2011
+Shader 3 finished CTA #2 (205433,0)
+Shader 3 finished CTA #0 (205953,0)
+cycles: 206000  inst.: 437971 (ipc= 2.1) sim_rate=1351 (inst/sec) elapsed = 0:0:05:24 / Wed May 25 11:11:39 2011
+cycles: 207000  inst.: 439226 (ipc= 2.1) sim_rate=1351 (inst/sec) elapsed = 0:0:05:25 / Wed May 25 11:11:40 2011
+cycles: 208000  inst.: 440514 (ipc= 2.1) sim_rate=1355 (inst/sec) elapsed = 0:0:05:25 / Wed May 25 11:11:40 2011
+cycles: 209000  inst.: 441929 (ipc= 2.1) sim_rate=1355 (inst/sec) elapsed = 0:0:05:26 / Wed May 25 11:11:41 2011
+cycles: 210000  inst.: 443345 (ipc= 2.1) sim_rate=1359 (inst/sec) elapsed = 0:0:05:26 / Wed May 25 11:11:41 2011
+cycles: 211000  inst.: 444792 (ipc= 2.1) sim_rate=1364 (inst/sec) elapsed = 0:0:05:26 / Wed May 25 11:11:41 2011
+cycles: 212000  inst.: 446207 (ipc= 2.1) sim_rate=1364 (inst/sec) elapsed = 0:0:05:27 / Wed May 25 11:11:42 2011
+cycles: 213000  inst.: 447591 (ipc= 2.1) sim_rate=1368 (inst/sec) elapsed = 0:0:05:27 / Wed May 25 11:11:42 2011
+cycles: 214000  inst.: 448910 (ipc= 2.1) sim_rate=1368 (inst/sec) elapsed = 0:0:05:28 / Wed May 25 11:11:43 2011
+cycles: 215000  inst.: 450293 (ipc= 2.1) sim_rate=1372 (inst/sec) elapsed = 0:0:05:28 / Wed May 25 11:11:43 2011
+cycles: 216000  inst.: 452701 (ipc= 2.1) sim_rate=1375 (inst/sec) elapsed = 0:0:05:29 / Wed May 25 11:11:44 2011
+cycles: 217000  inst.: 454468 (ipc= 2.1) sim_rate=1381 (inst/sec) elapsed = 0:0:05:29 / Wed May 25 11:11:44 2011
+cycles: 218000  inst.: 456492 (ipc= 2.1) sim_rate=1387 (inst/sec) elapsed = 0:0:05:29 / Wed May 25 11:11:44 2011
+cycles: 219000  inst.: 458515 (ipc= 2.1) sim_rate=1389 (inst/sec) elapsed = 0:0:05:30 / Wed May 25 11:11:45 2011
+cycles: 220000  inst.: 460122 (ipc= 2.1) sim_rate=1394 (inst/sec) elapsed = 0:0:05:30 / Wed May 25 11:11:45 2011
+cycles: 221000  inst.: 462114 (ipc= 2.1) sim_rate=1396 (inst/sec) elapsed = 0:0:05:31 / Wed May 25 11:11:46 2011
+cycles: 222000  inst.: 464265 (ipc= 2.1) sim_rate=1402 (inst/sec) elapsed = 0:0:05:31 / Wed May 25 11:11:46 2011
+cycles: 223000  inst.: 466417 (ipc= 2.1) sim_rate=1409 (inst/sec) elapsed = 0:0:05:31 / Wed May 25 11:11:46 2011
+cycles: 224000  inst.: 468312 (ipc= 2.1) sim_rate=1410 (inst/sec) elapsed = 0:0:05:32 / Wed May 25 11:11:47 2011
+cycles: 225000  inst.: 470207 (ipc= 2.1) sim_rate=1416 (inst/sec) elapsed = 0:0:05:32 / Wed May 25 11:11:47 2011
+cycles: 226000  inst.: 472167 (ipc= 2.1) sim_rate=1417 (inst/sec) elapsed = 0:0:05:33 / Wed May 25 11:11:48 2011
+cycles: 227000  inst.: 474062 (ipc= 2.1) sim_rate=1423 (inst/sec) elapsed = 0:0:05:33 / Wed May 25 11:11:48 2011
+cycles: 228000  inst.: 475957 (ipc= 2.1) sim_rate=1425 (inst/sec) elapsed = 0:0:05:34 / Wed May 25 11:11:49 2011
+cycles: 229000  inst.: 477789 (ipc= 2.1) sim_rate=1430 (inst/sec) elapsed = 0:0:05:34 / Wed May 25 11:11:49 2011
+cycles: 230000  inst.: 479620 (ipc= 2.1) sim_rate=1431 (inst/sec) elapsed = 0:0:05:35 / Wed May 25 11:11:50 2011
+cycles: 231000  inst.: 481484 (ipc= 2.1) sim_rate=1437 (inst/sec) elapsed = 0:0:05:35 / Wed May 25 11:11:50 2011
+cycles: 232000  inst.: 483187 (ipc= 2.1) sim_rate=1442 (inst/sec) elapsed = 0:0:05:35 / Wed May 25 11:11:50 2011
+cycles: 233000  inst.: 484474 (ipc= 2.1) sim_rate=1441 (inst/sec) elapsed = 0:0:05:36 / Wed May 25 11:11:51 2011
+cycles: 234000  inst.: 486050 (ipc= 2.1) sim_rate=1446 (inst/sec) elapsed = 0:0:05:36 / Wed May 25 11:11:51 2011
+cycles: 235000  inst.: 488649 (ipc= 2.1) sim_rate=1449 (inst/sec) elapsed = 0:0:05:37 / Wed May 25 11:11:52 2011
+cycles: 236000  inst.: 490353 (ipc= 2.1) sim_rate=1455 (inst/sec) elapsed = 0:0:05:37 / Wed May 25 11:11:52 2011
+cycles: 237000  inst.: 492152 (ipc= 2.1) sim_rate=1460 (inst/sec) elapsed = 0:0:05:37 / Wed May 25 11:11:52 2011
+500000 instructions simulated : ctaid=(56,0,0) tid=(63,0,0)
+cycles: 238000  inst.: 494047 (ipc= 2.1) sim_rate=1461 (inst/sec) elapsed = 0:0:05:38 / Wed May 25 11:11:53 2011
+cycles: 239000  inst.: 495943 (ipc= 2.1) sim_rate=1467 (inst/sec) elapsed = 0:0:05:38 / Wed May 25 11:11:53 2011
+cycles: 240000  inst.: 497838 (ipc= 2.1) sim_rate=1468 (inst/sec) elapsed = 0:0:05:39 / Wed May 25 11:11:54 2011
+cycles: 241000  inst.: 499733 (ipc= 2.1) sim_rate=1474 (inst/sec) elapsed = 0:0:05:39 / Wed May 25 11:11:54 2011
+cycles: 242000  inst.: 501917 (ipc= 2.1) sim_rate=1476 (inst/sec) elapsed = 0:0:05:40 / Wed May 25 11:11:55 2011
+cycles: 243000  inst.: 504292 (ipc= 2.1) sim_rate=1483 (inst/sec) elapsed = 0:0:05:40 / Wed May 25 11:11:55 2011
+cycles: 244000  inst.: 506668 (ipc= 2.1) sim_rate=1485 (inst/sec) elapsed = 0:0:05:41 / Wed May 25 11:11:56 2011
+cycles: 245000  inst.: 508947 (ipc= 2.1) sim_rate=1492 (inst/sec) elapsed = 0:0:05:41 / Wed May 25 11:11:56 2011
+cycles: 246000  inst.: 510650 (ipc= 2.1) sim_rate=1497 (inst/sec) elapsed = 0:0:05:41 / Wed May 25 11:11:56 2011
+cycles: 247000  inst.: 512866 (ipc= 2.1) sim_rate=1499 (inst/sec) elapsed = 0:0:05:42 / Wed May 25 11:11:57 2011
+cycles: 248000  inst.: 515209 (ipc= 2.1) sim_rate=1506 (inst/sec) elapsed = 0:0:05:42 / Wed May 25 11:11:57 2011
+cycles: 249000  inst.: 517553 (ipc= 2.1) sim_rate=1508 (inst/sec) elapsed = 0:0:05:43 / Wed May 25 11:11:58 2011
+cycles: 250000  inst.: 519768 (ipc= 2.1) sim_rate=1515 (inst/sec) elapsed = 0:0:05:43 / Wed May 25 11:11:58 2011
+cycles: 251000  inst.: 521471 (ipc= 2.1) sim_rate=1520 (inst/sec) elapsed = 0:0:05:43 / Wed May 25 11:11:58 2011
+cycles: 252000  inst.: 523175 (ipc= 2.1) sim_rate=1520 (inst/sec) elapsed = 0:0:05:44 / Wed May 25 11:11:59 2011
+cycles: 253000  inst.: 526670 (ipc= 2.1) sim_rate=1531 (inst/sec) elapsed = 0:0:05:44 / Wed May 25 11:11:59 2011
+cycles: 254000  inst.: 528373 (ipc= 2.1) sim_rate=1531 (inst/sec) elapsed = 0:0:05:45 / Wed May 25 11:12:00 2011
+cycles: 255000  inst.: 530205 (ipc= 2.1) sim_rate=1536 (inst/sec) elapsed = 0:0:05:45 / Wed May 25 11:12:00 2011
+cycles: 256000  inst.: 532036 (ipc= 2.1) sim_rate=1537 (inst/sec) elapsed = 0:0:05:46 / Wed May 25 11:12:01 2011
+cycles: 257000  inst.: 533868 (ipc= 2.1) sim_rate=1542 (inst/sec) elapsed = 0:0:05:46 / Wed May 25 11:12:01 2011
+cycles: 258000  inst.: 535635 (ipc= 2.1) sim_rate=1548 (inst/sec) elapsed = 0:0:05:46 / Wed May 25 11:12:01 2011
+cycles: 259000  inst.: 536794 (ipc= 2.1) sim_rate=1546 (inst/sec) elapsed = 0:0:05:47 / Wed May 25 11:12:02 2011
+cycles: 260000  inst.: 537986 (ipc= 2.1) sim_rate=1550 (inst/sec) elapsed = 0:0:05:47 / Wed May 25 11:12:02 2011
+cycles: 261000  inst.: 539369 (ipc= 2.1) sim_rate=1549 (inst/sec) elapsed = 0:0:05:48 / Wed May 25 11:12:03 2011
+cycles: 262000  inst.: 540753 (ipc= 2.1) sim_rate=1553 (inst/sec) elapsed = 0:0:05:48 / Wed May 25 11:12:03 2011
+cycles: 263000  inst.: 542200 (ipc= 2.1) sim_rate=1553 (inst/sec) elapsed = 0:0:05:49 / Wed May 25 11:12:04 2011
+cycles: 264000  inst.: 543615 (ipc= 2.1) sim_rate=1557 (inst/sec) elapsed = 0:0:05:49 / Wed May 25 11:12:04 2011
+cycles: 265000  inst.: 545063 (ipc= 2.1) sim_rate=1557 (inst/sec) elapsed = 0:0:05:50 / Wed May 25 11:12:05 2011
+cycles: 266000  inst.: 546510 (ipc= 2.1) sim_rate=1561 (inst/sec) elapsed = 0:0:05:50 / Wed May 25 11:12:05 2011
+cycles: 267000  inst.: 547797 (ipc= 2.1) sim_rate=1565 (inst/sec) elapsed = 0:0:05:50 / Wed May 25 11:12:05 2011
+cycles: 268000  inst.: 549949 (ipc= 2.1) sim_rate=1566 (inst/sec) elapsed = 0:0:05:51 / Wed May 25 11:12:06 2011
+cycles: 269000  inst.: 551204 (ipc= 2.0) sim_rate=1570 (inst/sec) elapsed = 0:0:05:51 / Wed May 25 11:12:06 2011
+Shader 4 finished CTA #1 (269913,0)
+cycles: 270000  inst.: 552428 (ipc= 2.0) sim_rate=1569 (inst/sec) elapsed = 0:0:05:52 / Wed May 25 11:12:07 2011
+Shader 4 finished CTA #0 (270433,0)
+cycles: 271000  inst.: 553651 (ipc= 2.0) sim_rate=1572 (inst/sec) elapsed = 0:0:05:52 / Wed May 25 11:12:07 2011
+cycles: 272000  inst.: 554746 (ipc= 2.0) sim_rate=1575 (inst/sec) elapsed = 0:0:05:52 / Wed May 25 11:12:07 2011
+cycles: 273000  inst.: 555906 (ipc= 2.0) sim_rate=1574 (inst/sec) elapsed = 0:0:05:53 / Wed May 25 11:12:08 2011
+cycles: 274000  inst.: 557225 (ipc= 2.0) sim_rate=1578 (inst/sec) elapsed = 0:0:05:53 / Wed May 25 11:12:08 2011
+Shader 8 finished CTA #1 (274075,0)
+Shader 11 finished CTA #1 (274077,0)
+Shader 14 finished CTA #1 (274078,0)
+Shader 17 finished CTA #1 (274080,0)
+Shader 20 finished CTA #1 (274081,0)
+Shader 23 finished CTA #1 (274083,0)
+Shader 26 finished CTA #1 (274085,0)
+Shader 29 finished CTA #1 (274086,0)
+Shader 8 finished CTA #0 (274595,0)
+Shader 11 finished CTA #0 (274597,0)
+Shader 14 finished CTA #0 (274598,0)
+Shader 17 finished CTA #0 (274600,0)
+Shader 20 finished CTA #0 (274601,0)
+Shader 23 finished CTA #0 (274603,0)
+Shader 26 finished CTA #0 (274605,0)
+Shader 29 finished CTA #0 (274606,0)
+cycles: 275000  inst.: 559569 (ipc= 2.0) sim_rate=1585 (inst/sec) elapsed = 0:0:05:53 / Wed May 25 11:12:08 2011
+cycles: 276000  inst.: 561336 (ipc= 2.0) sim_rate=1585 (inst/sec) elapsed = 0:0:05:54 / Wed May 25 11:12:09 2011
+cycles: 277000  inst.: 563583 (ipc= 2.0) sim_rate=1592 (inst/sec) elapsed = 0:0:05:54 / Wed May 25 11:12:09 2011
+cycles: 278000  inst.: 565767 (ipc= 2.0) sim_rate=1598 (inst/sec) elapsed = 0:0:05:54 / Wed May 25 11:12:09 2011
+cycles: 279000  inst.: 567630 (ipc= 2.0) sim_rate=1603 (inst/sec) elapsed = 0:0:05:54 / Wed May 25 11:12:09 2011
+cycles: 280000  inst.: 569109 (ipc= 2.0) sim_rate=1607 (inst/sec) elapsed = 0:0:05:54 / Wed May 25 11:12:09 2011
+cycles: 281000  inst.: 570525 (ipc= 2.0) sim_rate=1611 (inst/sec) elapsed = 0:0:05:54 / Wed May 25 11:12:09 2011
+cycles: 282000  inst.: 571748 (ipc= 2.0) sim_rate=1615 (inst/sec) elapsed = 0:0:05:54 / Wed May 25 11:12:09 2011
+Shader 1 finished CTA #1 (282522,0)
+cycles: 283000  inst.: 572972 (ipc= 2.0) sim_rate=1614 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+Shader 1 finished CTA #2 (283458,0)
+Shader 1 finished CTA #0 (283562,0)
+Shader 5 finished CTA #1 (283654,0)
+Shader 5 finished CTA #0 (283758,0)
+cycles: 284000  inst.: 574387 (ipc= 2.0) sim_rate=1617 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+cycles: 285000  inst.: 575930 (ipc= 2.0) sim_rate=1622 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+cycles: 286000  inst.: 577762 (ipc= 2.0) sim_rate=1627 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+cycles: 287000  inst.: 579657 (ipc= 2.0) sim_rate=1632 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+cycles: 288000  inst.: 581713 (ipc= 2.0) sim_rate=1638 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+cycles: 289000  inst.: 583800 (ipc= 2.0) sim_rate=1644 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+cycles: 290000  inst.: 585887 (ipc= 2.0) sim_rate=1650 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+cycles: 291000  inst.: 587399 (ipc= 2.0) sim_rate=1654 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+cycles: 292000  inst.: 588686 (ipc= 2.0) sim_rate=1658 (inst/sec) elapsed = 0:0:05:55 / Wed May 25 11:12:10 2011
+Shader 2 finished CTA #1 (292451,0)
+Shader 2 finished CTA #2 (292867,0)
+Shader 2 finished CTA #0 (292917,0)
+stats for grid: 0
+gpu_sim_cycle = 292918
+gpu_sim_insn = 589824
+gpu_sim_no_ld_const_insn = 573440
+gpu_ipc =       2.0136
+gpu_completed_thread = 16384
+gpu_tot_sim_cycle = 292918
+gpu_tot_sim_insn = 589824
+gpu_tot_ipc =       2.0136
+gpu_tot_completed_thread = 16384
+gpgpu_n_sent_writes = 0
+gpgpu_n_processed_writes = 0
+gpu_stall_by_MSHRwb= 448
+gpu_stall_shd_mem  = 3450456
+gpu_stall_wr_back  = 0
+gpu_stall_dramfull = 405410
+gpu_stall_icnt2sh    = 0
+gpu_stall_sh2icnt    = 3450456
+gpgpu_n_load_insn  = -110414592
+gpgpu_n_store_insn = 0
+gpgpu_n_shmem_insn = 0
+gpgpu_n_tex_insn = 0
+gpgpu_n_const_mem_insn = 0
+gpgpu_n_param_mem_insn = 16384
+gpgpu_n_shmem_bkconflict = 0
+gpgpu_n_cache_bkconflict = 0
+gpgpu_n_intrawarp_mshr_merge = 110594816
+gpgpu_n_cmem_portconflict = 0
+gpgpu_n_writeback_l1_miss = 0
+gpgpu_n_partial_writes = 0
+maxmrqlatency = 52 
+maxdqlatency = 9 
+maxmflatency = 17370 
+averagemflatency = 938 
+max_icnt2mem_latency = 17313 
+max_icnt2sh_latency = 1 
+mrq_lat_table:1 	0 	2 	7 	15 	180199 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+dq_lat_table:0 	0 	180223 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+mf_lat_table:0 	0 	0 	2 	10 	21 	40 	78 	158 	635 	7596 	3939 	27024 	17391 	123330 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+icnt2mem_lat_table:1 	4 	9 	16 	19 	20 	39 	79 	187 	606 	7606 	3947 	30844 	13820 	123027 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+icnt2sh_lat_table:180224 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+mf_lat_pw_table:0 	0 	0 	0 	0 	0 	0 	0 	1 	1 	8 	10 	5 	78 	190 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+maximum concurrent accesses to same row:
+dram[0]:         0         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+maximum service time to same row:
+dram[0]:        39         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+average row accesses per activate:
+dram[0]: 180224.000000      -nan      -nan      -nan 
+dram[1]:      -nan      -nan      -nan      -nan 
+dram[2]:      -nan      -nan      -nan      -nan 
+dram[3]:      -nan      -nan      -nan      -nan 
+dram[4]:      -nan      -nan      -nan      -nan 
+dram[5]:      -nan      -nan      -nan      -nan 
+dram[6]:      -nan      -nan      -nan      -nan 
+dram[7]:      -nan      -nan      -nan      -nan 
+average row locality = 180224/1 = 180224.000000
+number of total memory accesses made:
+dram[0]: 110594816         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total accesses: 110594816
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+number of total read accesses:
+dram[0]:    180224         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total reads: 180224
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+number of total write accesses:
+dram[0]:         0         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total reads: 0
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+average mf latency per bank:
+dram[0]:      14030    none      none      none  
+dram[1]:     none      none      none      none  
+dram[2]:     none      none      none      none  
+dram[3]:     none      none      none      none  
+dram[4]:     none      none      none      none  
+dram[5]:     none      none      none      none  
+dram[6]:     none      none      none      none  
+dram[7]:     none      none      none      none  
+maximum mf latency per bank:
+dram[0]:      17370         0         0         0
+dram[1]:          0         0         0         0
+dram[2]:          0         0         0         0
+dram[3]:          0         0         0         0
+dram[4]:          0         0         0         0
+dram[5]:          0         0         0         0
+dram[6]:          0         0         0         0
+dram[7]:          0         0         0         0
+
+Number of Memory Banks Accessed per Memory Operation per Warp (from 0):
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	
+Average # of Memory Banks Accessed per Memory Operation per Warp=-nan
+
+position of mrq chosen
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	
+
+average position of mrq chosen = -nan
+max return queue length = 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+merge misses = 0
+L1 read misses = 180224
+L1 write misses = 0
+L1 texture misses = 0
+L1 const misses = 0
+L2_write_miss = 0
+L2_write_hit = 0
+L2_read_miss = 0
+L2_read_hit = 0
+made_read_mfs = 180224
+made_write_mfs = 0
+freed_read_mfs = 180224
+freed_L1write_mfs = 0
+freed_L2write_mfs = 0
+freed_dummy_read_mfs = 0
+gpgpu_n_mem_read_local = 0
+gpgpu_n_mem_write_local = 0
+gpgpu_n_mem_read_global = 180224
+gpgpu_n_mem_write_global = 0
+gpgpu_n_mem_texture = 0
+gpgpu_n_mem_const = 0
+max_n_mshr_used = 768 768 768 768 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 512 
+DRAM[0]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=721027 n_nop=360578 n_act=1 n_pre=0 n_req=180224 n_rd=360448 n_write=0 bw_util=0.9998
+n_activity=720913 dram_eff=1
+bk0: 360448a 630915i bk1: 0a 630915i bk2: 0a 630915i bk3: 0a 630915i bk4: 0a 630915i bk5: 0a 630915i bk6: 0a 630915i bk7: 0a 630904i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=32 avg=31.6783
+DRAM[1]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=721027 n_nop=721027 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 721027i bk1: 0a 721027i bk2: 0a 721027i bk3: 0a 721027i bk4: 0a 721027i bk5: 0a 721027i bk6: 0a 721027i bk7: 0a 721027i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[2]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=721027 n_nop=721027 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 721027i bk1: 0a 721027i bk2: 0a 721027i bk3: 0a 721027i bk4: 0a 721027i bk5: 0a 721027i bk6: 0a 721027i bk7: 0a 721027i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[3]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=721027 n_nop=721027 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 721027i bk1: 0a 721027i bk2: 0a 721027i bk3: 0a 721027i bk4: 0a 721027i bk5: 0a 721027i bk6: 0a 721027i bk7: 0a 721027i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[4]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=721027 n_nop=721027 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 721027i bk1: 0a 721027i bk2: 0a 721027i bk3: 0a 721027i bk4: 0a 721027i bk5: 0a 721027i bk6: 0a 721027i bk7: 0a 721027i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[5]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=721027 n_nop=721027 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 721027i bk1: 0a 721027i bk2: 0a 721027i bk3: 0a 721027i bk4: 0a 721027i bk5: 0a 721027i bk6: 0a 721027i bk7: 0a 721027i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[6]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=721027 n_nop=721027 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 721027i bk1: 0a 721027i bk2: 0a 721027i bk3: 0a 721027i bk4: 0a 721027i bk5: 0a 721027i bk6: 0a 721027i bk7: 0a 721027i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[7]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=721027 n_nop=721027 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 721027i bk1: 0a 721027i bk2: 0a 721027i bk3: 0a 721027i bk4: 0a 721027i bk5: 0a 721027i bk6: 0a 721027i bk7: 0a 721027i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+Cache L1c_000:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -2523584, Miss = -2523584 (1), -MgHts = -2523584 (1)
+Cache L1c_001:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -7265440, Miss = -7265440 (1), -MgHts = -7265440 (1)
+Cache L1c_002:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -8921600, Miss = -8921600 (1), -MgHts = -8921600 (1)
+Cache L1c_003:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -2642080, Miss = -2642080 (1), -MgHts = -2642080 (1)
+Cache L1c_004:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6270368, Miss = -6270368 (1), -MgHts = -6270368 (1)
+Cache L1c_005:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6530944, Miss = -6530944 (1), -MgHts = -6530944 (1)
+Cache L1c_006:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1603808, Miss = -1603808 (1), -MgHts = -1603808 (1)
+Cache L1c_007:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1885888, Miss = -1885888 (1), -MgHts = -1885888 (1)
+Cache L1c_008:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6044832, Miss = -6044832 (1), -MgHts = -6044832 (1)
+Cache L1c_009:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1603872, Miss = -1603872 (1), -MgHts = -1603872 (1)
+Cache L1c_010:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1885952, Miss = -1885952 (1), -MgHts = -1885952 (1)
+Cache L1c_011:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6044896, Miss = -6044896 (1), -MgHts = -6044896 (1)
+Cache L1c_012:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1601632, Miss = -1601632 (1), -MgHts = -1601632 (1)
+Cache L1c_013:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1883232, Miss = -1883232 (1), -MgHts = -1883232 (1)
+Cache L1c_014:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6044960, Miss = -6044960 (1), -MgHts = -6044960 (1)
+Cache L1c_015:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1603968, Miss = -1603968 (1), -MgHts = -1603968 (1)
+Cache L1c_016:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1886048, Miss = -1886048 (1), -MgHts = -1886048 (1)
+Cache L1c_017:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6044992, Miss = -6044992 (1), -MgHts = -6044992 (1)
+Cache L1c_018:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1601728, Miss = -1601728 (1), -MgHts = -1601728 (1)
+Cache L1c_019:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1883328, Miss = -1883328 (1), -MgHts = -1883328 (1)
+Cache L1c_020:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6045056, Miss = -6045056 (1), -MgHts = -6045056 (1)
+Cache L1c_021:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1601792, Miss = -1601792 (1), -MgHts = -1601792 (1)
+Cache L1c_022:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1883392, Miss = -1883392 (1), -MgHts = -1883392 (1)
+Cache L1c_023:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6045120, Miss = -6045120 (1), -MgHts = -6045120 (1)
+Cache L1c_024:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1604128, Miss = -1604128 (1), -MgHts = -1604128 (1)
+Cache L1c_025:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1886208, Miss = -1886208 (1), -MgHts = -1886208 (1)
+Cache L1c_026:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6045152, Miss = -6045152 (1), -MgHts = -6045152 (1)
+Cache L1c_027:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1601888, Miss = -1601888 (1), -MgHts = -1601888 (1)
+Cache L1c_028:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -1883488, Miss = -1883488 (1), -MgHts = -1883488 (1)
+Cache L1c_029:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = -6045216, Miss = -6045216 (1), -MgHts = -6045216 (1)
+L1 Data Cache Total Miss Rate = 1.000
+Cache L1texc_000:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_001:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_002:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_003:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_004:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_005:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_006:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_007:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_008:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_009:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_010:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_011:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_012:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_013:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_014:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_015:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_016:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_017:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_018:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_019:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_020:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_021:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_022:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_023:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_024:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_025:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_026:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_027:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_028:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_029:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Texture Cache Total Miss Rate = -nan
+Cache L1constc_000:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_001:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_002:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_003:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_004:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_005:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_006:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_007:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_008:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_009:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_010:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_011:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_012:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_013:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_014:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_015:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_016:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_017:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_018:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_019:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_020:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_021:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_022:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_023:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_024:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_025:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_026:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_027:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_028:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_029:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Const Cache Total Miss Rate = -nan
+n_regconflict_stall = 0
+num_warps_issuable:4433438 14735 304 160 52 51 41 64 97 503 877 353 866 33 33 37 6 5 5 5 197 4 4 0 0 0 0 0 0 0 0 0 0 
+gpgpu_commit_pc_beyond_two = 0
+Warp Occupancy Distribution:
+Stall:2469615	W0_Idle:0	W0_Mem:4433438	W1:0	W2:0	W3:0	W4:0	W5:0	W6:0	W7:0	W8:0	W9:0	W10:0	W11:0	W12:0	W13:0	W14:0	W15:0	W16:0	W17:0	W18:0	W19:0	W20:0	W21:0	W22:0	W23:0	W24:0	W25:0	W26:0	W27:0	W28:0	W29:0	W30:0	W31:0	W32:18432
+LD_mem_lat_dist  0 0 0 13833 0 161 0 0 0 57 0 0 0 0 0
+ST_mem_lat_dist  0 0 0 0 0 0 0 0 0 0
+Traffic 0 Stat
+%=================================
+% Average latency = 27892.4
+% Accepted packets = 0 at node 0 (avg = 0.0170909)
+lat(1) = 27892.4;
+thru(1,:) = [ 0 0 0 0 0 0 0 0 0 0 0.307637 0 0 0 0 0 0 0 ];
+% latency change    = 1
+% throughput change = 1
+Traffic 1 Stat
+%=================================
+% Average latency = 2
+% Accepted packets = 0 at node 10 (avg = 0.0341818)
+lat(2) = 2;
+thru(2,:) = [ 0.0865228 0.0672955 0.0576819 0.0576819 0.0576819 0.0576819 0.0576819 0.0576819 0.0576819 0.0576819 0 0 0 0 0 0 0 0 ];
+% latency change    = 13945.2
+% throughput change = 0.5
+----------------------------Interconnect-DETAILS---------------------------------=======Traffic[0]class0 ======
+Traffic[0]class0Overall average latency = 27892.4 (1 samples)
+Traffic[0]class0Overall average accepted rate = 0.0170909 (1 samples)
+Traffic[0]class0Overall min accepted rate = 0 (1 samples)
+traffic_manager/latency_stat_0_freq = [ 0 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 0 1 2 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 6 1 0 6 1 0 6 1 0 0 7 0 0 6 1 0 6 1 0 6 1 0 0 6 0 1 6 1 0 6 1 0 6 1 0 0 7 0 0 6 1 0 179793 ];
+Traffic[0]class1Average hops = 1 (180224 samples)
+traffic_manager/hop_stats_freq = [ 0 180224 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+=======Traffic[1]class0 ======
+Traffic[1]class0Overall average latency = 2 (1 samples)
+Traffic[1]class0Overall average accepted rate = 0.0341818 (1 samples)
+Traffic[1]class0Overall min accepted rate = 0 (1 samples)
+traffic_manager/latency_stat_0_freq = [ 0 0 180224 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Traffic[1]class1Average hops = 1 (180224 samples)
+traffic_manager/hop_stats_freq = [ 0 180224 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+----------------------------END-of-Interconnect-DETAILS-------------------------(LOGB2)Latency DRAM[0] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 180224 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[0] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.999985 
+rwq_freq = [ 3 5 721019 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[1] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[1] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.999985 
+rwq_freq = [ 3 5 721019 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[2] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[2] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.999985 
+rwq_freq = [ 3 5 721019 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[3] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[3] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.999985 
+rwq_freq = [ 3 5 721019 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[4] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[4] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.999985 
+rwq_freq = [ 3 5 721019 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[5] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[5] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.999985 
+rwq_freq = [ 3 5 721019 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[6] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[6] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.999985 
+rwq_freq = [ 3 5 721019 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[7] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[7] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.999985 
+rwq_freq = [ 3 5 721019 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[0] Stats for mrqq_length
+Min 0.000000 Max 32.000000 Average 31.678288 
+mrqq_length_freq = [ 125 5 6 5 5 5 6 5 5 5 6 6 5 7 5 5 7 5 6 6 6 5 7 5 5 7 5 6 6 6 5 720734 ];
+Queue Length DRAM[1] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 721027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[2] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 721027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[3] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 721027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[4] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 721027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[5] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 721027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[6] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 721027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[7] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 721027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+
+
+gpgpu_simulation_time = 0 days, 0 hrs, 5 min, 56 sec (356 sec)
+gpgpu_simulation_rate = 1656 (inst/sec)
+gpgpu_simulation_rate = 822 (cycle/sec)
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x32b1440
+GPGPU-Sim PTX: copying 44 bytes from GPU[0x10000000] to CPU[0x32b1440] ... done.
+Processing time: 355562.281250 (ms)
+Test PASSED
