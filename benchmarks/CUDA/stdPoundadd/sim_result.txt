@@ -1,0 +1,563 @@
+
+
+        *** GPGPU-Sim version 2.1.1b (beta) ***
+
+
+GPGPU-Sim PTX: __cudaRegisterFunction _Z9addKernelPi : 0x403c50
+GPGPU-Sim PTX: simulation mode 0 (can change with PTX_SIM_MODE_FUNC environment variable:
+               1=functional simulation only, 0=detailed performance simulator)
+GPGPU-Sim: Configuration options:
+
+-network_mode                           1 # Interconnection network mode
+-inter_config_file                   mesh # Interconnection network config file
+-save_embedded_ptx                      0 # saves ptx files embedded in binary as <n>.ptx
+-gpgpu_simd_model                       1 # 0 = no recombination, 1 = post-dominator, 2 = MIMD, 3 = dynamic warp formation
+-gpgpu_dram_scheduler                    1 # 0 = fifo (default), 1 = fast ideal
+-gpgpu_max_cycle                        0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_max_insn                         0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_tex_cache:l1            512:64:2:L # per-shader L1 texture cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_const_cache:l1            64:64:2:L # per-shader L1 constant memory cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_no_dl1                           1 # no dl1 cache (voids -gpgpu_cache:dl1 option)
+-gpgpu_cache:dl1               128:64:4:L # shader L1 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}
+-gpgpu_cache:dl2                     NULL # unified banked L2 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}; disabled by default
+-gpgpu_perfect_mem                      0 # enable perfect memory mode (no cache miss)
+-gpgpu_shader_core_pipeline           1024:32:32 # shader core pipeline config, i.e., {<nthread>:<warpsize>:<pipe_simd_width>}
+-gpgpu_shader_registers                16768 # Number of registers per shader core. Limits number of concurrent CTAs. (default 8192)
+-gpgpu_shader_cta                       8 # Maximum number of concurrent CTAs in shader (default 8)
+-gpgpu_n_shader                        28 # number of shaders in gpu
+-gpgpu_n_mem                            8 # number of memory modules (e.g. memory controllers) in gpu
+-gpgpu_n_mem_per_ctrlr                    2 # number of memory chips per memory controller
+-gpgpu_runtime_stat               10000:0 # display runtime statistics such as dram utilization {<freq>:<flag>}
+-gpgpu_dwf_heuristic                    0 # DWF scheduling heuristic: 0 = majority, 1 = minority, 2 = timestamp, 3 = pdom priority, 4 = pc-based, 5 = max-heap
+-gpgpu_reg_bankconflict                    0 # Check for bank conflict in the pipeline
+-gpgpu_dwf_regbk                        1 # Have dwf scheduler to avoid bank conflict
+-gpgpu_memlatency_stat                    0 # track and display latency statistics 0x2 enables MC, 0x4 enables queue logs
+-gpgpu_mshr_per_thread                    1 # Number of MSHRs per thread
+-gpgpu_interwarp_mshr_merge                    6 # interwarp coalescing
+-gpgpu_dram_sched_queue_size                   32 # 0 = unlimited (default); # entries per chip
+-gpgpu_dram_buswidth                    4 # default = 4 bytes (8 bytes per cycle at DDR)
+-gpgpu_dram_burst_length                    4 # Burst length of each DRAM request (default = 4 DDR cycle)
+-gpgpu_dram_timing_opt 4:2:8:12:21:13:34:9:4:5 # DRAM timing parameters = {nbk:tCCD:tRRD:tRCD:tRAS:tRP:tRC:CL:WL:tWTR}
+-gpgpu_mem_address_mask                    1 # 0 = old addressing mask, 1 = new addressing mask, 2 = new add. mask + flipped bank sel and chip sel bits
+-gpgpu_flush_cache                      0 # Flush cache at the end of each kernel call
+-gpgpu_l2_readoverwrite                    0 # Prioritize read requests over write requests for L2
+-gpgpu_pre_mem_stages                    1 # default = 0 pre-memory pipeline stages
+-gpgpu_no_divg_load                     0 # Don't allow divergence on load
+-gpgpu_dwf_hw                        32:2 # dynamic warp formation hw config, i.e., {<#LUT_entries>:<associativity>|none}
+-gpgpu_thread_swizzling                    0 # Thread Swizzling (1=on, 0=off)
+-gpgpu_strict_simd_wrbk                    0 # Applying Strick SIMD WriteBack Stage (1=on, 0=off)
+-gpgpu_shmem_size                   16384 # Size of shared memory per shader core (default 16kB)
+-gpgpu_shmem_bkconflict                    1 # Turn on bank conflict check for shared memory
+-gpgpu_shmem_pipe_speedup                    1 # Number of groups each warp is divided for shared memory bank conflict check
+-gpgpu_L2_queue         0:0:0:0:0:0:10:10 # L2 data cache queue length and latency config
+-gpgpu_cache_wt_through                    0 # L1 cache become write through (1=on, 0=off)
+-gpgpu_deadlock_detect                    1 # Stop the simulation at deadlock (1=on (default), 0=off)
+-gpgpu_cache_bkconflict                    1 # Turn on bank conflict check for L1 cache access
+-gpgpu_n_cache_bank                     1 # Number of banks in L1 cache, also for memory coalescing stall
+-gpgpu_warpdistro_shader                   -1 # Specify which shader core to collect the warp size distribution from
+-gpgpu_pdom_sched_type                    8 # 0 = first ready warp found, 1 = random, 8 = loose round robin
+-gpgpu_spread_blocks_across_cores                    1 # Spread block-issuing across all cores instead of filling up core by core
+-gpgpu_cuda_sim                         1 # use PTX instruction set
+-gpgpu_ptx_instruction_classification                    0 # if enabled will classify ptx instruction types per kernel (Max 255 kernels now)
+-gpgpu_ptx_sim_mode                     0 # Select between Performance (default) or Functional simulation (1)
+-gpgpu_clock_domains 500.0:2000.0:2000.0:2000.0 # Clock Domain Frequencies in MhZ {<Core Clock>:<ICNT Clock>:<L2 Clock>:<DRAM Clock>}
+-gpgpu_shmem_port_per_bank                    2 # Number of access processed by a shared memory bank per cycle (default = 2)
+-gpgpu_cache_port_per_bank                    2 # Number of access processed by a cache bank per cycle (default = 2)
+-gpgpu_const_port_per_bank                    2 # Number of access processed by a constant cache bank per cycle (default = 2)
+-gpgpu_cflog_interval                    0 # Interval between each snapshot in control flow logger
+-gpgpu_partial_write_mask                    1 # use partial write mask to filter memory requests <1>No extra reads(use this!)<2>extra reads generated for partial chunks
+-gpu_concentration                      1 # Number of shader cores per interconnection port (default = 1)
+-gpgpu_local_mem_map                    1 # Mapping from local memory space address to simulated GPU physical address space (default = 1)
+-gpgpu_mem_addr_mapping                 NULL # mapping memory address to dram model {dramid@<start bit>;<memory address map>}
+-visualizer_enabled                     1 # Turn on visualizer output (1=On, 0=Off)
+-visualizer_outputfile                 NULL # Specifies the output log file for visualizer
+-visualizer_zlevel                      6 # Compression level of the visualizer output log (0=no comp, 9=highest)
+-enable_ptx_file_line_stats                    1 # Turn on PTX source line statistic profiling. (1 = On)
+-ptx_line_stats_filename gpgpu_inst_stats.txt # Output file for PTX source line statistics.
+32 28 1024 917504
+28672
+addr_dec_mask[CHIP]  = 000000000000e000 	high:16 low:13
+addr_dec_mask[BK]    = 0000000000001800 	high:13 low:11
+addr_dec_mask[ROW]   = 000000003fff0000 	high:30 low:16
+addr_dec_mask[COL]   = 00000000000007ff 	high:11 low:0
+addr_dec_mask[BURST] = 000000000000000f 	high:4 low:0
+*** Initializing Memory Statistics ***
+nodemap
+0 
+1 2 4 5 6 8 
+9 11 13 14 15 16 
+17 18 19 20 21 22 
+24 26 27 29 30 31 
+33 34 35 3 7 10 
+12 23 25 28 32 GPU performance model initialization complete.
+GPGPU-Sim PTX: USING EMBEDDED .ptx files...
+GPGPU-Sim PTX: parsing function _Z9addKernelPi
+GPGPU-Sim PTX: instruction assembly for function '_Z9addKernelPi'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z9addKernelPi'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z9addKernelPi'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _1.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_cMEf8p"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_fJNh22 --output-file /dev/null 2> _ptx_cMEf8pinfo"
+GPGPU-Sim PTX: Kernel _Z9addKernelPi
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_cMEf8p _ptx2_fJNh22 _ptx_cMEf8pinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: Program parsing completed (max 8 registers used per thread).
+Using Device 0: "GPGPU-Sim_v2.1.1b (beta)"
+GPGPU-Sim PTX: allocating 4 bytes on GPU starting at address 0x10000000
+GPGPU-Sim PTX: cudaMallocing 4 bytes starting at 0x10000000..
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x10000000
+GPGPU-Sim PTX: copying 4 bytes from CPU[0x26796a0] to GPU[0x10000000] ...  done.
+
+
+
+GPGPU-Sim PTX: cudaLaunch for 0x403c50 (mode=performance simulation)
+GPGPU-Sim PTX: Launching kernel '_Z9addKernelPi' gridDim= (64,1,1) blockDim = (256,1,1); ntuid=1
+GPGPU-Sim uArch: clock freqs: 500000000.000000:2000000000.000000:2000000000.000000:2000000000.000000
+GPGPU-Sim uArch: clock periods: 0.00000000200000000000:0.00000000050000000000:0.00000000050000000000:0.00000000050000000000
+Reconvergence Pairs for _Z9addKernelPi
+CTA/core = 4, limited by: threads
+Shader 0 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 1 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 2 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 3 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 4 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 5 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 6 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 7 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 8 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 9 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 10 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 11 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 12 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 13 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 14 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 15 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 16 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 17 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 18 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 19 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 20 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 21 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 22 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 23 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 24 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 25 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 26 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 27 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 0 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 1 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 2 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 3 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 4 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 5 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 6 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 7 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 8 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 9 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 10 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 11 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 12 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 13 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 14 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 15 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 16 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 17 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 18 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 19 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 20 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 21 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 22 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 23 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 24 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 25 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 26 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 27 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 0 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 1 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 2 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 3 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 4 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 5 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 6 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 7 initializing CTA #2 with hw tids from 512 to 768 @(3,0) shdr->not_completed = 512
+Shader 3 finished CTA #1 (141,0)
+Shader 2 finished CTA #1 (147,0)
+Shader 4 finished CTA #1 (152,0)
+Shader 8 finished CTA #0 (184,0)
+Shader 8 finished CTA #1 (187,0)
+Shader 3 finished CTA #2 (189,0)
+Shader 3 finished CTA #0 (191,0)
+Shader 2 finished CTA #0 (192,0)
+Shader 2 finished CTA #2 (193,0)
+Shader 4 finished CTA #2 (202,0)
+Shader 4 finished CTA #0 (203,0)
+Shader 1 finished CTA #1 (235,0)
+Shader 0 finished CTA #1 (239,0)
+Shader 7 finished CTA #1 (242,0)
+Shader 1 finished CTA #0 (334,0)
+Shader 0 finished CTA #2 (355,0)
+Shader 7 finished CTA #2 (359,0)
+Shader 7 finished CTA #0 (365,0)
+Shader 1 finished CTA #2 (366,0)
+Shader 0 finished CTA #0 (373,0)
+Shader 6 finished CTA #1 (409,0)
+Shader 5 finished CTA #1 (422,0)
+Shader 6 finished CTA #2 (482,0)
+Shader 6 finished CTA #0 (496,0)
+Shader 5 finished CTA #2 (501,0)
+Shader 5 finished CTA #0 (517,0)
+Shader 11 finished CTA #1 (533,0)
+Shader 11 finished CTA #0 (539,0)
+Shader 12 finished CTA #1 (628,0)
+Shader 12 finished CTA #0 (632,0)
+Shader 10 finished CTA #1 (639,0)
+Shader 10 finished CTA #0 (642,0)
+Shader 13 finished CTA #1 (658,0)
+Shader 13 finished CTA #0 (659,0)
+Shader 9 finished CTA #0 (662,0)
+Shader 9 finished CTA #1 (663,0)
+Shader 18 finished CTA #0 (723,0)
+Shader 17 finished CTA #0 (744,0)
+Shader 17 finished CTA #1 (752,0)
+Shader 18 finished CTA #1 (756,0)
+Shader 16 finished CTA #1 (837,0)
+Shader 16 finished CTA #0 (853,0)
+Shader 15 finished CTA #1 (911,0)
+Shader 21 finished CTA #1 (918,0)
+Shader 15 finished CTA #0 (923,0)
+Shader 21 finished CTA #0 (926,0)
+Shader 14 finished CTA #1 (931,0)
+Shader 22 finished CTA #1 (937,0)
+Shader 14 finished CTA #0 (943,0)
+Shader 22 finished CTA #0 (946,0)
+Shader 19 finished CTA #1 (1024,0)
+Shader 19 finished CTA #0 (1026,0)
+Shader 20 finished CTA #1 (1030,0)
+Shader 20 finished CTA #0 (1039,0)
+Shader 25 finished CTA #1 (1079,0)
+Shader 25 finished CTA #0 (1080,0)
+Shader 26 finished CTA #1 (1135,0)
+Shader 26 finished CTA #0 (1138,0)
+Shader 23 finished CTA #0 (1144,0)
+Shader 24 finished CTA #1 (1145,0)
+Shader 27 finished CTA #1 (1146,0)
+Shader 27 finished CTA #0 (1149,0)
+Shader 24 finished CTA #0 (1153,0)
+Shader 23 finished CTA #1 (1158,0)
+stats for grid: 0
+gpu_sim_cycle = 1165
+gpu_sim_insn = 81920
+gpu_sim_no_ld_const_insn = 65536
+gpu_ipc =      70.3176
+gpu_completed_thread = 16384
+gpu_tot_sim_cycle = 1165
+gpu_tot_sim_insn = 81920
+gpu_tot_ipc =      70.3176
+gpu_tot_completed_thread = 16384
+gpgpu_n_sent_writes = 512
+gpgpu_n_processed_writes = 509
+gpu_stall_by_MSHRwb= 106
+gpu_stall_shd_mem  = 0
+gpu_stall_wr_back  = 0
+gpu_stall_dramfull = 3441
+gpu_stall_icnt2sh    = 0
+gpu_stall_sh2icnt    = 0
+gpgpu_n_load_insn  = 16384
+gpgpu_n_store_insn = 16384
+gpgpu_n_shmem_insn = 0
+gpgpu_n_tex_insn = 0
+gpgpu_n_const_mem_insn = 0
+gpgpu_n_param_mem_insn = 16384
+gpgpu_n_shmem_bkconflict = 0
+gpgpu_n_cache_bkconflict = 0
+gpgpu_n_intrawarp_mshr_merge = 32768
+gpgpu_n_cmem_portconflict = 0
+gpgpu_n_writeback_l1_miss = 0
+gpgpu_n_partial_writes = 512
+max return queue length = 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 
+merge misses = 15872
+L1 read misses = 16384
+L1 write misses = 0
+L1 texture misses = 0
+L1 const misses = 0
+L2_write_miss = 0
+L2_write_hit = 0
+L2_read_miss = 0
+L2_read_hit = 0
+made_read_mfs = 512
+made_write_mfs = 512
+freed_read_mfs = 512
+freed_L1write_mfs = 509
+freed_L2write_mfs = 0
+freed_dummy_read_mfs = 0
+gpgpu_n_mem_read_local = 0
+gpgpu_n_mem_write_local = 0
+gpgpu_n_mem_read_global = 512
+gpgpu_n_mem_write_global = 512
+gpgpu_n_mem_texture = 0
+gpgpu_n_mem_const = 0
+max_n_mshr_used = 24 20 16 15 19 24 21 24 14 16 16 12 15 16 16 16 16 16 16 16 16 16 16 16 16 16 16 16 
+DRAM[0]: 4 bks, busW=4 BL=4 CL=9, tRRD=2 tCCD=8, tRCD=12 tRAS=21 tRP=13 tRC=34
+n_cmd=4661 n_nop=3125 n_act=1 n_pre=0 n_req=1024 n_rd=1024 n_write=511 bw_util=0.6587
+n_activity=4566 dram_eff=0.6724
+bk0: 1024a 3502i bk1: 0a 3549i bk2: 0a 3499i bk3: 0a 3528i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=32 avg=30.5338
+DRAM[1]: 4 bks, busW=4 BL=4 CL=9, tRRD=2 tCCD=8, tRCD=12 tRAS=21 tRP=13 tRC=34
+n_cmd=4661 n_nop=4661 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 4661i bk1: 0a 4661i bk2: 0a 4661i bk3: 0a 4661i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[2]: 4 bks, busW=4 BL=4 CL=9, tRRD=2 tCCD=8, tRCD=12 tRAS=21 tRP=13 tRC=34
+n_cmd=4661 n_nop=4661 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 4661i bk1: 0a 4661i bk2: 0a 4661i bk3: 0a 4661i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[3]: 4 bks, busW=4 BL=4 CL=9, tRRD=2 tCCD=8, tRCD=12 tRAS=21 tRP=13 tRC=34
+n_cmd=4661 n_nop=4661 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 4661i bk1: 0a 4661i bk2: 0a 4661i bk3: 0a 4661i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[4]: 4 bks, busW=4 BL=4 CL=9, tRRD=2 tCCD=8, tRCD=12 tRAS=21 tRP=13 tRC=34
+n_cmd=4661 n_nop=4661 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 4661i bk1: 0a 4661i bk2: 0a 4661i bk3: 0a 4661i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[5]: 4 bks, busW=4 BL=4 CL=9, tRRD=2 tCCD=8, tRCD=12 tRAS=21 tRP=13 tRC=34
+n_cmd=4661 n_nop=4661 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 4661i bk1: 0a 4661i bk2: 0a 4661i bk3: 0a 4661i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[6]: 4 bks, busW=4 BL=4 CL=9, tRRD=2 tCCD=8, tRCD=12 tRAS=21 tRP=13 tRC=34
+n_cmd=4661 n_nop=4661 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 4661i bk1: 0a 4661i bk2: 0a 4661i bk3: 0a 4661i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[7]: 4 bks, busW=4 BL=4 CL=9, tRRD=2 tCCD=8, tRCD=12 tRAS=21 tRP=13 tRC=34
+n_cmd=4661 n_nop=4661 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 4661i bk1: 0a 4661i bk2: 0a 4661i bk3: 0a 4661i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+Cache L1c_000:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -744 (inf)
+Cache L1c_001:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -744 (inf)
+Cache L1c_002:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -744 (inf)
+Cache L1c_003:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -744 (inf)
+Cache L1c_004:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -744 (inf)
+Cache L1c_005:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -744 (inf)
+Cache L1c_006:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -744 (inf)
+Cache L1c_007:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -744 (inf)
+Cache L1c_008:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_009:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_010:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_011:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_012:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_013:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_014:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_015:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_016:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_017:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_018:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_019:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_020:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_021:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_022:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_023:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_024:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_025:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_026:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+Cache L1c_027:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -496 (inf)
+L1 Data Cache Total Miss Rate = -nan
+Cache L1texc_000:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_001:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_002:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_003:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_004:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_005:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_006:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_007:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_008:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_009:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_010:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_011:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_012:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_013:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_014:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_015:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_016:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_017:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_018:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_019:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_020:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_021:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_022:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_023:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_024:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_025:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_026:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_027:	Size = 65536 B (512 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Texture Cache Total Miss Rate = -nan
+Cache L1constc_000:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_001:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_002:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_003:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_004:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_005:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_006:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_007:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_008:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_009:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_010:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_011:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_012:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_013:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_014:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_015:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_016:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_017:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_018:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_019:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_020:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_021:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_022:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_023:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_024:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_025:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_026:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_027:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Const Cache Total Miss Rate = -nan
+n_regconflict_stall = 0
+num_warps_issuable:17167 1553 37 28 28 29 29 28 56 28 28 28 348 28 28 36 8 8 8 8 200 8 8 0 0 0 0 0 0 0 0 0 0 
+gpgpu_commit_pc_beyond_two = 0
+Warp Occupancy Distribution:
+Stall:169	W0_Idle:0	W0_Mem:17167	W1:0	W2:0	W3:0	W4:0	W5:0	W6:0	W7:0	W8:0	W9:0	W10:0	W11:0	W12:0	W13:0	W14:0	W15:0	W16:0	W17:0	W18:0	W19:0	W20:0	W21:0	W22:0	W23:0	W24:0	W25:0	W26:0	W27:0	W28:0	W29:0	W30:0	W31:0	W32:2560
+LD_mem_lat_dist  0 0 0 279 0 155 0 0 0 37 0 0 3 0 0
+ST_mem_lat_dist  0 0 0 132 0 21 0 0 0 37
+Traffic 0 Stat
+%=================================
+% Average latency = 1131.67
+% Accepted packets = 0 at node 0 (avg = 0.0183079)
+% latency change    = 1
+% throughput change = 1
+Traffic 1 Stat
+%=================================
+% Average latency = 17.25
+% Accepted packets = 0 at node 3 (avg = 0.0122053)
+% latency change    = 64.6038
+% throughput change = 0.5
+----------------------------Interconnect-DETAILS---------------------------------=======Traffic[0]class0 ======
+Traffic[0]class0Overall average latency = 1131.67 (1 samples)
+Traffic[0]class0Overall average accepted rate = 0.0183079 (1 samples)
+Traffic[0]class0Overall min accepted rate = 0 (1 samples)
+=======Traffic[1]class0 ======
+Traffic[1]class0Overall average latency = 17.25 (1 samples)
+Traffic[1]class0Overall average accepted rate = 0.0122053 (1 samples)
+Traffic[1]class0Overall min accepted rate = 0 (1 samples)
+----------------------------END-of-Interconnect-DETAILS-------------------------
+
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 2 sec (2 sec)
+gpgpu_simulation_rate = 40960 (inst/sec)
+gpgpu_simulation_rate = 582 (cycle/sec)
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x26796a0
+GPGPU-Sim PTX: copying 4 bytes from GPU[0x10000000] to CPU[0x26796a0] ... done.
+atomicAdd failed
+Test FAILED

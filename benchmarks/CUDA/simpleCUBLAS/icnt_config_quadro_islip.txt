@@ -1,0 +1,1 @@
+/home/sfraney/Research/gpgpu-sim_v2.1.1b/configs/kraken-2/icnt_config_quadro_islip.txt

@@ -1,0 +1,2310 @@
+
+
+        *** GPGPU-Sim version 2.1.1b (beta) ***
+
+
+GPGPU-Sim PTX: __cudaRegisterFunction _Z12reduceKernelPfS_i : 0x404390
+GPGPU-Sim PTX: simulation mode 0 (can change with PTX_SIM_MODE_FUNC environment variable:
+               1=functional simulation only, 0=detailed performance simulator)
+GPGPU-Sim: Configuration options:
+
+-network_mode                           1 # Interconnection network mode
+-inter_config_file   icnt_config_quadro_islip.txt # Interconnection network config file
+-save_embedded_ptx                      0 # saves ptx files embedded in binary as <n>.ptx
+-gpgpu_simd_model                       1 # 0 = no recombination, 1 = post-dominator, 2 = MIMD, 3 = dynamic warp formation
+-gpgpu_dram_scheduler                    1 # 0 = fifo (default), 1 = fast ideal
+-gpgpu_max_cycle                        0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_max_insn                         0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_tex_cache:l1             64:64:2:L # per-shader L1 texture cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_const_cache:l1            64:64:2:L # per-shader L1 constant memory cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_no_dl1                           1 # no dl1 cache (voids -gpgpu_cache:dl1 option)
+-gpgpu_cache:dl1               128:64:4:L # shader L1 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}
+-gpgpu_cache:dl2                     NULL # unified banked L2 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}; disabled by default
+-gpgpu_perfect_mem                      0 # enable perfect memory mode (no cache miss)
+-gpgpu_shader_core_pipeline           1024:32:32 # shader core pipeline config, i.e., {<nthread>:<warpsize>:<pipe_simd_width>}
+-gpgpu_shader_registers                16384 # Number of registers per shader core. Limits number of concurrent CTAs. (default 8192)
+-gpgpu_shader_cta                       8 # Maximum number of concurrent CTAs in shader (default 8)
+-gpgpu_n_shader                        30 # number of shaders in gpu
+-gpgpu_n_mem                            8 # number of memory modules (e.g. memory controllers) in gpu
+-gpgpu_n_mem_per_ctrlr                    2 # number of memory chips per memory controller
+-gpgpu_runtime_stat                  1000 # display runtime statistics such as dram utilization {<freq>:<flag>}
+-gpgpu_dwf_heuristic                    0 # DWF scheduling heuristic: 0 = majority, 1 = minority, 2 = timestamp, 3 = pdom priority, 4 = pc-based, 5 = max-heap
+-gpgpu_reg_bankconflict                    0 # Check for bank conflict in the pipeline
+-gpgpu_dwf_regbk                        1 # Have dwf scheduler to avoid bank conflict
+-gpgpu_memlatency_stat                   14 # track and display latency statistics 0x2 enables MC, 0x4 enables queue logs
+-gpgpu_mshr_per_thread                    1 # Number of MSHRs per thread
+-gpgpu_interwarp_mshr_merge                    6 # interwarp coalescing
+-gpgpu_dram_sched_queue_size                   32 # 0 = unlimited (default); # entries per chip
+-gpgpu_dram_buswidth                    4 # default = 4 bytes (8 bytes per cycle at DDR)
+-gpgpu_dram_burst_length                    4 # Burst length of each DRAM request (default = 4 DDR cycle)
+-gpgpu_dram_timing_opt 8:2:8:12:25:10:35:10:7:6 # DRAM timing parameters = {nbk:tCCD:tRRD:tRCD:tRAS:tRP:tRC:CL:WL:tWTR}
+-gpgpu_mem_address_mask                    1 # 0 = old addressing mask, 1 = new addressing mask, 2 = new add. mask + flipped bank sel and chip sel bits
+-gpgpu_flush_cache                      0 # Flush cache at the end of each kernel call
+-gpgpu_l2_readoverwrite                    0 # Prioritize read requests over write requests for L2
+-gpgpu_pre_mem_stages                    1 # default = 0 pre-memory pipeline stages
+-gpgpu_no_divg_load                     0 # Don't allow divergence on load
+-gpgpu_dwf_hw                        32:2 # dynamic warp formation hw config, i.e., {<#LUT_entries>:<associativity>|none}
+-gpgpu_thread_swizzling                    0 # Thread Swizzling (1=on, 0=off)
+-gpgpu_strict_simd_wrbk                    0 # Applying Strick SIMD WriteBack Stage (1=on, 0=off)
+-gpgpu_shmem_size                   16384 # Size of shared memory per shader core (default 16kB)
+-gpgpu_shmem_bkconflict                    1 # Turn on bank conflict check for shared memory
+-gpgpu_shmem_pipe_speedup                    1 # Number of groups each warp is divided for shared memory bank conflict check
+-gpgpu_L2_queue         0:0:0:0:0:0:10:10 # L2 data cache queue length and latency config
+-gpgpu_cache_wt_through                    0 # L1 cache become write through (1=on, 0=off)
+-gpgpu_deadlock_detect                    1 # Stop the simulation at deadlock (1=on (default), 0=off)
+-gpgpu_cache_bkconflict                    1 # Turn on bank conflict check for L1 cache access
+-gpgpu_n_cache_bank                     1 # Number of banks in L1 cache, also for memory coalescing stall
+-gpgpu_warpdistro_shader                   -1 # Specify which shader core to collect the warp size distribution from
+-gpgpu_pdom_sched_type                    8 # 0 = first ready warp found, 1 = random, 8 = loose round robin
+-gpgpu_spread_blocks_across_cores                    1 # Spread block-issuing across all cores instead of filling up core by core
+-gpgpu_cuda_sim                         1 # use PTX instruction set
+-gpgpu_ptx_instruction_classification                    0 # if enabled will classify ptx instruction types per kernel (Max 255 kernels now)
+-gpgpu_ptx_sim_mode                     0 # Select between Performance (default) or Functional simulation (1)
+-gpgpu_clock_domains 325.0:650.0:650.0:800.0 # Clock Domain Frequencies in MhZ {<Core Clock>:<ICNT Clock>:<L2 Clock>:<DRAM Clock>}
+-gpgpu_shmem_port_per_bank                    2 # Number of access processed by a shared memory bank per cycle (default = 2)
+-gpgpu_cache_port_per_bank                    2 # Number of access processed by a cache bank per cycle (default = 2)
+-gpgpu_const_port_per_bank                    2 # Number of access processed by a constant cache bank per cycle (default = 2)
+-gpgpu_cflog_interval                    0 # Interval between each snapshot in control flow logger
+-gpgpu_partial_write_mask                    1 # use partial write mask to filter memory requests <1>No extra reads(use this!)<2>extra reads generated for partial chunks
+-gpu_concentration                      3 # Number of shader cores per interconnection port (default = 1)
+-gpgpu_local_mem_map                    1 # Mapping from local memory space address to simulated GPU physical address space (default = 1)
+-pipetrace_out              pipetrace.txt # specifies file to output pipetrace to
+-pipetrace                              0 # Turns pipetrace on/off
+-gpgpu_mem_addr_mapping dramid@8;00000000.00000000.00000000.00000000.0000RRRR.RRRRRRRR.RRBBBCCC.CCCSSSSS # mapping memory address to dram model {dramid@<start bit>;<memory address map>}
+-visualizer_enabled                     1 # Turn on visualizer output (1=On, 0=Off)
+-visualizer_outputfile                 NULL # Specifies the output log file for visualizer
+-visualizer_zlevel                      6 # Compression level of the visualizer output log (0=no comp, 9=highest)
+-enable_ptx_file_line_stats                    1 # Turn on PTX source line statistic profiling. (1 = On)
+-ptx_line_stats_filename gpgpu_inst_stats.txt # Output file for PTX source line statistics.
+32 30 1024 983040
+30720
+addr_dec_mask[CHIP]  = 0000000000000700 	high:11 low:8
+addr_dec_mask[BK]    = 000000000001c000 	high:17 low:14
+addr_dec_mask[ROW]   = 000000007ffe0000 	high:31 low:17
+addr_dec_mask[COL]   = 00000000000038ff 	high:14 low:0
+addr_dec_mask[BURST] = 000000000000001f 	high:5 low:0
+*** Initializing Memory Statistics ***
+nodemap
+0 
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 15 16 
+17 GPU performance model initialization complete.
+GPGPU-Sim PTX: USING EMBEDDED .ptx files...
+GPGPU-Sim PTX: parsing function _Z12reduceKernelPfS_i
+GPGPU-Sim PTX: instruction assembly for function '_Z12reduceKernelPfS_i'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z12reduceKernelPfS_i'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z12reduceKernelPfS_i'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _1.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_HKAGpy"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_B88Vd5 --output-file /dev/null 2> _ptx_HKAGpyinfo"
+GPGPU-Sim PTX: Kernel _Z12reduceKernelPfS_i
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_HKAGpy _ptx2_B88Vd5 _ptx_HKAGpyinfo"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: Program parsing completed (max 34 registers used per thread).
+CUDA-capable device count: 1
+main(): generating input data...
+main(): waiting for GPU results...
+GPGPU-Sim PTX: allocating 134217728 bytes on GPU starting at address 0x10000000
+GPGPU-Sim PTX: cudaMallocing 134217728 bytes starting at 0x10000000..
+GPGPU-Sim PTX: allocating 32768 bytes on GPU starting at address 0x18000000
+GPGPU-Sim PTX: cudaMallocing 32768 bytes starting at 0x18000000..
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x10000000
+GPGPU-Sim PTX: copying 134217728 bytes from CPU[0x7f362e532010] to GPU[0x10000000] ...  done.
+
+
+
+GPGPU-Sim PTX: cudaLaunch for 0x404390 (mode=performance simulation)
+GPGPU-Sim PTX: Launching kernel '_Z12reduceKernelPfS_i' gridDim= (32,1,1) blockDim = (256,1,1); ntuid=1
+GPGPU-Sim uArch: clock freqs: 325000000.000000:650000000.000000:650000000.000000:800000000.000000
+GPGPU-Sim uArch: clock periods: 0.00000000307692307692:0.00000000153846153846:0.00000000153846153846:0.00000000125000000000
+Reconvergence Pairs for _Z12reduceKernelPfS_i
+10	26
+24	25
+25	26
+CTA/core = 4, limited by: threads
+Shader 0 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 1 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 2 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 3 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 4 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 5 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 6 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 7 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 8 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 9 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 10 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 11 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 12 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 13 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 14 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 15 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 16 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 17 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 18 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 19 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 20 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 21 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 22 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 23 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 24 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 25 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 26 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 27 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 28 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 29 initializing CTA #0 with hw tids from 0 to 256 @(1,0) shdr->not_completed = 0
+Shader 0 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+Shader 1 initializing CTA #1 with hw tids from 256 to 512 @(2,0) shdr->not_completed = 256
+100000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+200000 instructions simulated : ctaid=(21,0,0) tid=(191,0,0)
+300000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+400000 instructions simulated : ctaid=(0,0,0) tid=(191,0,0)
+500000 instructions simulated : ctaid=(26,0,0) tid=(191,0,0)
+cycles: 1000  inst.: 520880 (ipc=520.9) sim_rate=57875 (inst/sec) elapsed = 0:0:00:09 / Wed May 25 11:34:00 2011
+600000 instructions simulated : ctaid=(0,0,0) tid=(95,0,0)
+700000 instructions simulated : ctaid=(10,0,0) tid=(223,0,0)
+800000 instructions simulated : ctaid=(28,0,0) tid=(159,0,0)
+900000 instructions simulated : ctaid=(21,0,0) tid=(127,0,0)
+1000000 instructions simulated : ctaid=(31,0,0) tid=(31,0,0)
+cycles: 2000  inst.: 996224 (ipc=498.1) sim_rate=76632 (inst/sec) elapsed = 0:0:00:13 / Wed May 25 11:34:04 2011
+1100000 instructions simulated : ctaid=(25,0,0) tid=(31,0,0)
+1200000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+1300000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+1400000 instructions simulated : ctaid=(5,0,0) tid=(95,0,0)
+cycles: 3000  inst.: 1468640 (ipc=489.5) sim_rate=86390 (inst/sec) elapsed = 0:0:00:17 / Wed May 25 11:34:08 2011
+1500000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+1600000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+1700000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+1800000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+1900000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+cycles: 4000  inst.: 1940768 (ipc=485.2) sim_rate=92417 (inst/sec) elapsed = 0:0:00:21 / Wed May 25 11:34:12 2011
+2000000 instructions simulated : ctaid=(10,0,0) tid=(63,0,0)
+2100000 instructions simulated : ctaid=(20,0,0) tid=(159,0,0)
+2200000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+2300000 instructions simulated : ctaid=(0,0,0) tid=(159,0,0)
+2400000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+cycles: 5000  inst.: 2412000 (ipc=482.4) sim_rate=100500 (inst/sec) elapsed = 0:0:00:24 / Wed May 25 11:34:15 2011
+2500000 instructions simulated : ctaid=(5,0,0) tid=(255,0,0)
+2600000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+2700000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+2800000 instructions simulated : ctaid=(27,0,0) tid=(255,0,0)
+cycles: 6000  inst.: 2885152 (ipc=480.9) sim_rate=103041 (inst/sec) elapsed = 0:0:00:28 / Wed May 25 11:34:19 2011
+2900000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+3000000 instructions simulated : ctaid=(22,0,0) tid=(223,0,0)
+3100000 instructions simulated : ctaid=(19,0,0) tid=(31,0,0)
+3200000 instructions simulated : ctaid=(29,0,0) tid=(127,0,0)
+3300000 instructions simulated : ctaid=(2,0,0) tid=(63,0,0)
+cycles: 7000  inst.: 3357104 (ipc=479.6) sim_rate=104909 (inst/sec) elapsed = 0:0:00:32 / Wed May 25 11:34:23 2011
+3400000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+3500000 instructions simulated : ctaid=(28,0,0) tid=(255,0,0)
+3600000 instructions simulated : ctaid=(13,0,0) tid=(159,0,0)
+3700000 instructions simulated : ctaid=(24,0,0) tid=(127,0,0)
+3800000 instructions simulated : ctaid=(9,0,0) tid=(127,0,0)
+cycles: 8000  inst.: 3829632 (ipc=478.7) sim_rate=106378 (inst/sec) elapsed = 0:0:00:36 / Wed May 25 11:34:27 2011
+3900000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+4000000 instructions simulated : ctaid=(4,0,0) tid=(159,0,0)
+4100000 instructions simulated : ctaid=(9,0,0) tid=(159,0,0)
+4200000 instructions simulated : ctaid=(30,0,0) tid=(127,0,0)
+4300000 instructions simulated : ctaid=(14,0,0) tid=(63,0,0)
+cycles: 9000  inst.: 4301328 (ipc=477.9) sim_rate=110290 (inst/sec) elapsed = 0:0:00:39 / Wed May 25 11:34:30 2011
+4400000 instructions simulated : ctaid=(21,0,0) tid=(31,0,0)
+4500000 instructions simulated : ctaid=(17,0,0) tid=(127,0,0)
+4600000 instructions simulated : ctaid=(4,0,0) tid=(127,0,0)
+4700000 instructions simulated : ctaid=(4,0,0) tid=(223,0,0)
+cycles: 10000  inst.: 4773600 (ipc=477.4) sim_rate=111013 (inst/sec) elapsed = 0:0:00:43 / Wed May 25 11:34:34 2011
+4800000 instructions simulated : ctaid=(10,0,0) tid=(223,0,0)
+4900000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+5000000 instructions simulated : ctaid=(26,0,0) tid=(95,0,0)
+5100000 instructions simulated : ctaid=(17,0,0) tid=(255,0,0)
+5200000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+cycles: 11000  inst.: 5245632 (ipc=476.9) sim_rate=111609 (inst/sec) elapsed = 0:0:00:47 / Wed May 25 11:34:38 2011
+5300000 instructions simulated : ctaid=(0,0,0) tid=(255,0,0)
+5400000 instructions simulated : ctaid=(23,0,0) tid=(159,0,0)
+5500000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+5600000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+5700000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+cycles: 12000  inst.: 5717712 (ipc=476.5) sim_rate=112112 (inst/sec) elapsed = 0:0:00:51 / Wed May 25 11:34:42 2011
+5800000 instructions simulated : ctaid=(4,0,0) tid=(255,0,0)
+5900000 instructions simulated : ctaid=(19,0,0) tid=(191,0,0)
+6000000 instructions simulated : ctaid=(14,0,0) tid=(31,0,0)
+6100000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+cycles: 13000  inst.: 6188992 (ipc=476.1) sim_rate=114610 (inst/sec) elapsed = 0:0:00:54 / Wed May 25 11:34:45 2011
+6200000 instructions simulated : ctaid=(16,0,0) tid=(255,0,0)
+6300000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+6400000 instructions simulated : ctaid=(12,0,0) tid=(255,0,0)
+6500000 instructions simulated : ctaid=(15,0,0) tid=(191,0,0)
+6600000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+cycles: 14000  inst.: 6661616 (ipc=475.8) sim_rate=114855 (inst/sec) elapsed = 0:0:00:58 / Wed May 25 11:34:49 2011
+6700000 instructions simulated : ctaid=(23,0,0) tid=(159,0,0)
+6800000 instructions simulated : ctaid=(24,0,0) tid=(127,0,0)
+6900000 instructions simulated : ctaid=(11,0,0) tid=(159,0,0)
+7000000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+7100000 instructions simulated : ctaid=(29,0,0) tid=(223,0,0)
+cycles: 15000  inst.: 7134096 (ipc=475.6) sim_rate=115066 (inst/sec) elapsed = 0:0:01:02 / Wed May 25 11:34:53 2011
+7200000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+7300000 instructions simulated : ctaid=(28,0,0) tid=(127,0,0)
+7400000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+7500000 instructions simulated : ctaid=(17,0,0) tid=(63,0,0)
+7600000 instructions simulated : ctaid=(27,0,0) tid=(255,0,0)
+cycles: 16000  inst.: 7606480 (ipc=475.4) sim_rate=115249 (inst/sec) elapsed = 0:0:01:06 / Wed May 25 11:34:57 2011
+7700000 instructions simulated : ctaid=(16,0,0) tid=(127,0,0)
+7800000 instructions simulated : ctaid=(11,0,0) tid=(159,0,0)
+7900000 instructions simulated : ctaid=(6,0,0) tid=(159,0,0)
+8000000 instructions simulated : ctaid=(12,0,0) tid=(223,0,0)
+cycles: 17000  inst.: 8077648 (ipc=475.2) sim_rate=117067 (inst/sec) elapsed = 0:0:01:09 / Wed May 25 11:35:00 2011
+8100000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+8200000 instructions simulated : ctaid=(3,0,0) tid=(127,0,0)
+8300000 instructions simulated : ctaid=(27,0,0) tid=(127,0,0)
+8400000 instructions simulated : ctaid=(12,0,0) tid=(31,0,0)
+8500000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+cycles: 18000  inst.: 8549728 (ipc=475.0) sim_rate=117119 (inst/sec) elapsed = 0:0:01:13 / Wed May 25 11:35:04 2011
+8600000 instructions simulated : ctaid=(15,0,0) tid=(95,0,0)
+8700000 instructions simulated : ctaid=(13,0,0) tid=(31,0,0)
+8800000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+8900000 instructions simulated : ctaid=(13,0,0) tid=(95,0,0)
+9000000 instructions simulated : ctaid=(20,0,0) tid=(255,0,0)
+cycles: 19000  inst.: 9022336 (ipc=474.9) sim_rate=117173 (inst/sec) elapsed = 0:0:01:17 / Wed May 25 11:35:08 2011
+9100000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+9200000 instructions simulated : ctaid=(4,0,0) tid=(223,0,0)
+9300000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+9400000 instructions simulated : ctaid=(9,0,0) tid=(63,0,0)
+9500000 instructions simulated : ctaid=(10,0,0) tid=(31,0,0)
+cycles: 20000  inst.: 9493872 (ipc=474.7) sim_rate=117208 (inst/sec) elapsed = 0:0:01:21 / Wed May 25 11:35:12 2011
+9600000 instructions simulated : ctaid=(5,0,0) tid=(127,0,0)
+9700000 instructions simulated : ctaid=(30,0,0) tid=(223,0,0)
+9800000 instructions simulated : ctaid=(1,0,0) tid=(95,0,0)
+9900000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+cycles: 21000  inst.: 9966336 (ipc=474.6) sim_rate=117251 (inst/sec) elapsed = 0:0:01:25 / Wed May 25 11:35:16 2011
+10000000 instructions simulated : ctaid=(15,0,0) tid=(159,0,0)
+10100000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+10200000 instructions simulated : ctaid=(24,0,0) tid=(63,0,0)
+10300000 instructions simulated : ctaid=(25,0,0) tid=(31,0,0)
+10400000 instructions simulated : ctaid=(30,0,0) tid=(127,0,0)
+cycles: 22000  inst.: 10439024 (ipc=474.5) sim_rate=117292 (inst/sec) elapsed = 0:0:01:29 / Wed May 25 11:35:20 2011
+10500000 instructions simulated : ctaid=(1,0,0) tid=(31,0,0)
+10600000 instructions simulated : ctaid=(28,0,0) tid=(223,0,0)
+10700000 instructions simulated : ctaid=(28,0,0) tid=(31,0,0)
+10800000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+10900000 instructions simulated : ctaid=(22,0,0) tid=(223,0,0)
+cycles: 23000  inst.: 10911040 (ipc=474.4) sim_rate=117323 (inst/sec) elapsed = 0:0:01:33 / Wed May 25 11:35:24 2011
+11000000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+11100000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+11200000 instructions simulated : ctaid=(18,0,0) tid=(63,0,0)
+11300000 instructions simulated : ctaid=(14,0,0) tid=(127,0,0)
+cycles: 24000  inst.: 11382992 (ipc=474.3) sim_rate=117350 (inst/sec) elapsed = 0:0:01:37 / Wed May 25 11:35:28 2011
+11400000 instructions simulated : ctaid=(8,0,0) tid=(159,0,0)
+11500000 instructions simulated : ctaid=(8,0,0) tid=(159,0,0)
+11600000 instructions simulated : ctaid=(0,0,0) tid=(63,0,0)
+11700000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+11800000 instructions simulated : ctaid=(23,0,0) tid=(159,0,0)
+cycles: 25000  inst.: 11855328 (ipc=474.2) sim_rate=118553 (inst/sec) elapsed = 0:0:01:40 / Wed May 25 11:35:31 2011
+11900000 instructions simulated : ctaid=(30,0,0) tid=(223,0,0)
+12000000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+12100000 instructions simulated : ctaid=(12,0,0) tid=(31,0,0)
+12200000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+12300000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+cycles: 26000  inst.: 12327088 (ipc=474.1) sim_rate=118529 (inst/sec) elapsed = 0:0:01:44 / Wed May 25 11:35:35 2011
+12400000 instructions simulated : ctaid=(28,0,0) tid=(31,0,0)
+12500000 instructions simulated : ctaid=(14,0,0) tid=(159,0,0)
+12600000 instructions simulated : ctaid=(13,0,0) tid=(127,0,0)
+12700000 instructions simulated : ctaid=(21,0,0) tid=(255,0,0)
+12800000 instructions simulated : ctaid=(2,0,0) tid=(159,0,0)
+cycles: 27000  inst.: 12799104 (ipc=474.0) sim_rate=118510 (inst/sec) elapsed = 0:0:01:48 / Wed May 25 11:35:39 2011
+12900000 instructions simulated : ctaid=(21,0,0) tid=(223,0,0)
+13000000 instructions simulated : ctaid=(7,0,0) tid=(255,0,0)
+13100000 instructions simulated : ctaid=(1,0,0) tid=(255,0,0)
+13200000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+cycles: 28000  inst.: 13271280 (ipc=474.0) sim_rate=118493 (inst/sec) elapsed = 0:0:01:52 / Wed May 25 11:35:43 2011
+13300000 instructions simulated : ctaid=(16,0,0) tid=(31,0,0)
+13400000 instructions simulated : ctaid=(6,0,0) tid=(255,0,0)
+13500000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+13600000 instructions simulated : ctaid=(22,0,0) tid=(63,0,0)
+13700000 instructions simulated : ctaid=(9,0,0) tid=(159,0,0)
+cycles: 29000  inst.: 13743328 (ipc=473.9) sim_rate=118476 (inst/sec) elapsed = 0:0:01:56 / Wed May 25 11:35:47 2011
+13800000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+13900000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+14000000 instructions simulated : ctaid=(7,0,0) tid=(255,0,0)
+14100000 instructions simulated : ctaid=(22,0,0) tid=(255,0,0)
+14200000 instructions simulated : ctaid=(18,0,0) tid=(223,0,0)
+cycles: 30000  inst.: 14215760 (ipc=473.9) sim_rate=119460 (inst/sec) elapsed = 0:0:01:59 / Wed May 25 11:35:50 2011
+14300000 instructions simulated : ctaid=(25,0,0) tid=(191,0,0)
+14400000 instructions simulated : ctaid=(31,0,0) tid=(255,0,0)
+14500000 instructions simulated : ctaid=(26,0,0) tid=(223,0,0)
+14600000 instructions simulated : ctaid=(19,0,0) tid=(223,0,0)
+cycles: 31000  inst.: 14687488 (ipc=473.8) sim_rate=119410 (inst/sec) elapsed = 0:0:02:03 / Wed May 25 11:35:54 2011
+14700000 instructions simulated : ctaid=(10,0,0) tid=(63,0,0)
+14800000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+14900000 instructions simulated : ctaid=(29,0,0) tid=(127,0,0)
+15000000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+15100000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+cycles: 32000  inst.: 15159408 (ipc=473.7) sim_rate=119365 (inst/sec) elapsed = 0:0:02:07 / Wed May 25 11:35:58 2011
+15200000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+15300000 instructions simulated : ctaid=(13,0,0) tid=(31,0,0)
+15400000 instructions simulated : ctaid=(27,0,0) tid=(223,0,0)
+15500000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+15600000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+cycles: 33000  inst.: 15630560 (ipc=473.7) sim_rate=119317 (inst/sec) elapsed = 0:0:02:11 / Wed May 25 11:36:02 2011
+15700000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+15800000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+15900000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+16000000 instructions simulated : ctaid=(14,0,0) tid=(159,0,0)
+16100000 instructions simulated : ctaid=(1,0,0) tid=(255,0,0)
+cycles: 34000  inst.: 16104176 (ipc=473.7) sim_rate=120180 (inst/sec) elapsed = 0:0:02:14 / Wed May 25 11:36:05 2011
+16200000 instructions simulated : ctaid=(10,0,0) tid=(255,0,0)
+16300000 instructions simulated : ctaid=(23,0,0) tid=(127,0,0)
+16400000 instructions simulated : ctaid=(25,0,0) tid=(191,0,0)
+16500000 instructions simulated : ctaid=(7,0,0) tid=(95,0,0)
+cycles: 35000  inst.: 16575584 (ipc=473.6) sim_rate=120112 (inst/sec) elapsed = 0:0:02:18 / Wed May 25 11:36:09 2011
+16600000 instructions simulated : ctaid=(8,0,0) tid=(191,0,0)
+16700000 instructions simulated : ctaid=(24,0,0) tid=(255,0,0)
+16800000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+16900000 instructions simulated : ctaid=(5,0,0) tid=(255,0,0)
+17000000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+cycles: 36000  inst.: 17046960 (ipc=473.5) sim_rate=120049 (inst/sec) elapsed = 0:0:02:22 / Wed May 25 11:36:13 2011
+17100000 instructions simulated : ctaid=(1,0,0) tid=(223,0,0)
+17200000 instructions simulated : ctaid=(16,0,0) tid=(191,0,0)
+17300000 instructions simulated : ctaid=(19,0,0) tid=(63,0,0)
+17400000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+17500000 instructions simulated : ctaid=(8,0,0) tid=(223,0,0)
+cycles: 37000  inst.: 17519536 (ipc=473.5) sim_rate=119996 (inst/sec) elapsed = 0:0:02:26 / Wed May 25 11:36:17 2011
+17600000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+17700000 instructions simulated : ctaid=(25,0,0) tid=(223,0,0)
+17800000 instructions simulated : ctaid=(28,0,0) tid=(255,0,0)
+17900000 instructions simulated : ctaid=(7,0,0) tid=(159,0,0)
+18000000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+cycles: 38000  inst.: 17992752 (ipc=473.5) sim_rate=119951 (inst/sec) elapsed = 0:0:02:30 / Wed May 25 11:36:21 2011
+18100000 instructions simulated : ctaid=(5,0,0) tid=(95,0,0)
+18200000 instructions simulated : ctaid=(22,0,0) tid=(191,0,0)
+18300000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+18400000 instructions simulated : ctaid=(3,0,0) tid=(63,0,0)
+cycles: 39000  inst.: 18464656 (ipc=473.5) sim_rate=120684 (inst/sec) elapsed = 0:0:02:33 / Wed May 25 11:36:24 2011
+18500000 instructions simulated : ctaid=(2,0,0) tid=(255,0,0)
+18600000 instructions simulated : ctaid=(10,0,0) tid=(223,0,0)
+18700000 instructions simulated : ctaid=(4,0,0) tid=(191,0,0)
+18800000 instructions simulated : ctaid=(14,0,0) tid=(63,0,0)
+18900000 instructions simulated : ctaid=(31,0,0) tid=(255,0,0)
+cycles: 40000  inst.: 18936656 (ipc=473.4) sim_rate=120615 (inst/sec) elapsed = 0:0:02:37 / Wed May 25 11:36:28 2011
+19000000 instructions simulated : ctaid=(5,0,0) tid=(95,0,0)
+19100000 instructions simulated : ctaid=(24,0,0) tid=(63,0,0)
+19200000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+19300000 instructions simulated : ctaid=(3,0,0) tid=(159,0,0)
+19400000 instructions simulated : ctaid=(26,0,0) tid=(95,0,0)
+cycles: 41000  inst.: 19408528 (ipc=473.4) sim_rate=120549 (inst/sec) elapsed = 0:0:02:41 / Wed May 25 11:36:32 2011
+19500000 instructions simulated : ctaid=(5,0,0) tid=(191,0,0)
+19600000 instructions simulated : ctaid=(8,0,0) tid=(31,0,0)
+19700000 instructions simulated : ctaid=(12,0,0) tid=(127,0,0)
+19800000 instructions simulated : ctaid=(16,0,0) tid=(95,0,0)
+cycles: 42000  inst.: 19880880 (ipc=473.4) sim_rate=120490 (inst/sec) elapsed = 0:0:02:45 / Wed May 25 11:36:36 2011
+19900000 instructions simulated : ctaid=(9,0,0) tid=(191,0,0)
+20000000 instructions simulated : ctaid=(8,0,0) tid=(95,0,0)
+20100000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+20200000 instructions simulated : ctaid=(8,0,0) tid=(31,0,0)
+20300000 instructions simulated : ctaid=(1,0,0) tid=(223,0,0)
+cycles: 43000  inst.: 20352496 (ipc=473.3) sim_rate=121145 (inst/sec) elapsed = 0:0:02:48 / Wed May 25 11:36:39 2011
+20400000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+20500000 instructions simulated : ctaid=(24,0,0) tid=(31,0,0)
+20600000 instructions simulated : ctaid=(15,0,0) tid=(63,0,0)
+20700000 instructions simulated : ctaid=(4,0,0) tid=(127,0,0)
+20800000 instructions simulated : ctaid=(7,0,0) tid=(95,0,0)
+cycles: 44000  inst.: 20823568 (ipc=473.3) sim_rate=121067 (inst/sec) elapsed = 0:0:02:52 / Wed May 25 11:36:43 2011
+20900000 instructions simulated : ctaid=(4,0,0) tid=(31,0,0)
+21000000 instructions simulated : ctaid=(23,0,0) tid=(159,0,0)
+21100000 instructions simulated : ctaid=(23,0,0) tid=(127,0,0)
+21200000 instructions simulated : ctaid=(17,0,0) tid=(95,0,0)
+21300000 instructions simulated : ctaid=(29,0,0) tid=(63,0,0)
+cycles: 45000  inst.: 21297520 (ipc=473.3) sim_rate=121008 (inst/sec) elapsed = 0:0:02:56 / Wed May 25 11:36:47 2011
+21400000 instructions simulated : ctaid=(22,0,0) tid=(95,0,0)
+21500000 instructions simulated : ctaid=(7,0,0) tid=(255,0,0)
+21600000 instructions simulated : ctaid=(10,0,0) tid=(159,0,0)
+21700000 instructions simulated : ctaid=(13,0,0) tid=(127,0,0)
+cycles: 46000  inst.: 21768176 (ipc=473.2) sim_rate=120934 (inst/sec) elapsed = 0:0:03:00 / Wed May 25 11:36:51 2011
+21800000 instructions simulated : ctaid=(18,0,0) tid=(95,0,0)
+21900000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+22000000 instructions simulated : ctaid=(28,0,0) tid=(191,0,0)
+22100000 instructions simulated : ctaid=(9,0,0) tid=(127,0,0)
+22200000 instructions simulated : ctaid=(17,0,0) tid=(191,0,0)
+cycles: 47000  inst.: 22239616 (ipc=473.2) sim_rate=120867 (inst/sec) elapsed = 0:0:03:04 / Wed May 25 11:36:55 2011
+22300000 instructions simulated : ctaid=(29,0,0) tid=(95,0,0)
+22400000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+22500000 instructions simulated : ctaid=(24,0,0) tid=(255,0,0)
+22600000 instructions simulated : ctaid=(16,0,0) tid=(255,0,0)
+22700000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+cycles: 48000  inst.: 22712464 (ipc=473.2) sim_rate=121457 (inst/sec) elapsed = 0:0:03:07 / Wed May 25 11:36:58 2011
+22800000 instructions simulated : ctaid=(12,0,0) tid=(255,0,0)
+22900000 instructions simulated : ctaid=(27,0,0) tid=(127,0,0)
+23000000 instructions simulated : ctaid=(1,0,0) tid=(95,0,0)
+23100000 instructions simulated : ctaid=(16,0,0) tid=(127,0,0)
+cycles: 49000  inst.: 23185072 (ipc=473.2) sim_rate=121387 (inst/sec) elapsed = 0:0:03:11 / Wed May 25 11:37:02 2011
+23200000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+23300000 instructions simulated : ctaid=(5,0,0) tid=(63,0,0)
+23400000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+23500000 instructions simulated : ctaid=(21,0,0) tid=(63,0,0)
+23600000 instructions simulated : ctaid=(5,0,0) tid=(159,0,0)
+cycles: 50000  inst.: 23656784 (ipc=473.1) sim_rate=121316 (inst/sec) elapsed = 0:0:03:15 / Wed May 25 11:37:06 2011
+23700000 instructions simulated : ctaid=(29,0,0) tid=(63,0,0)
+23800000 instructions simulated : ctaid=(15,0,0) tid=(63,0,0)
+23900000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+24000000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+24100000 instructions simulated : ctaid=(12,0,0) tid=(127,0,0)
+cycles: 51000  inst.: 24128816 (ipc=473.1) sim_rate=121250 (inst/sec) elapsed = 0:0:03:19 / Wed May 25 11:37:10 2011
+24200000 instructions simulated : ctaid=(7,0,0) tid=(191,0,0)
+24300000 instructions simulated : ctaid=(22,0,0) tid=(255,0,0)
+24400000 instructions simulated : ctaid=(13,0,0) tid=(255,0,0)
+24500000 instructions simulated : ctaid=(22,0,0) tid=(223,0,0)
+24600000 instructions simulated : ctaid=(13,0,0) tid=(95,0,0)
+cycles: 52000  inst.: 24601648 (ipc=473.1) sim_rate=121790 (inst/sec) elapsed = 0:0:03:22 / Wed May 25 11:37:13 2011
+24700000 instructions simulated : ctaid=(24,0,0) tid=(255,0,0)
+24800000 instructions simulated : ctaid=(28,0,0) tid=(31,0,0)
+24900000 instructions simulated : ctaid=(14,0,0) tid=(159,0,0)
+25000000 instructions simulated : ctaid=(4,0,0) tid=(159,0,0)
+cycles: 53000  inst.: 25073664 (ipc=473.1) sim_rate=121716 (inst/sec) elapsed = 0:0:03:26 / Wed May 25 11:37:17 2011
+25100000 instructions simulated : ctaid=(6,0,0) tid=(95,0,0)
+25200000 instructions simulated : ctaid=(10,0,0) tid=(127,0,0)
+25300000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+25400000 instructions simulated : ctaid=(11,0,0) tid=(255,0,0)
+25500000 instructions simulated : ctaid=(13,0,0) tid=(191,0,0)
+cycles: 54000  inst.: 25545360 (ipc=473.1) sim_rate=121644 (inst/sec) elapsed = 0:0:03:30 / Wed May 25 11:37:21 2011
+25600000 instructions simulated : ctaid=(16,0,0) tid=(223,0,0)
+25700000 instructions simulated : ctaid=(1,0,0) tid=(255,0,0)
+25800000 instructions simulated : ctaid=(24,0,0) tid=(31,0,0)
+25900000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+26000000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+cycles: 55000  inst.: 26017840 (ipc=473.1) sim_rate=121578 (inst/sec) elapsed = 0:0:03:34 / Wed May 25 11:37:25 2011
+26100000 instructions simulated : ctaid=(7,0,0) tid=(223,0,0)
+26200000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+26300000 instructions simulated : ctaid=(10,0,0) tid=(31,0,0)
+26400000 instructions simulated : ctaid=(31,0,0) tid=(127,0,0)
+cycles: 56000  inst.: 26488864 (ipc=473.0) sim_rate=122068 (inst/sec) elapsed = 0:0:03:37 / Wed May 25 11:37:28 2011
+26500000 instructions simulated : ctaid=(25,0,0) tid=(223,0,0)
+26600000 instructions simulated : ctaid=(3,0,0) tid=(223,0,0)
+26700000 instructions simulated : ctaid=(5,0,0) tid=(255,0,0)
+26800000 instructions simulated : ctaid=(14,0,0) tid=(127,0,0)
+26900000 instructions simulated : ctaid=(4,0,0) tid=(255,0,0)
+cycles: 57000  inst.: 26961824 (ipc=473.0) sim_rate=121999 (inst/sec) elapsed = 0:0:03:41 / Wed May 25 11:37:32 2011
+27000000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+27100000 instructions simulated : ctaid=(3,0,0) tid=(223,0,0)
+27200000 instructions simulated : ctaid=(21,0,0) tid=(63,0,0)
+27300000 instructions simulated : ctaid=(17,0,0) tid=(127,0,0)
+27400000 instructions simulated : ctaid=(13,0,0) tid=(223,0,0)
+cycles: 58000  inst.: 27434016 (ipc=473.0) sim_rate=121928 (inst/sec) elapsed = 0:0:03:45 / Wed May 25 11:37:36 2011
+27500000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+27600000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+27700000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+27800000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+27900000 instructions simulated : ctaid=(26,0,0) tid=(223,0,0)
+cycles: 59000  inst.: 27906448 (ipc=473.0) sim_rate=121862 (inst/sec) elapsed = 0:0:03:49 / Wed May 25 11:37:40 2011
+28000000 instructions simulated : ctaid=(25,0,0) tid=(191,0,0)
+28100000 instructions simulated : ctaid=(27,0,0) tid=(127,0,0)
+28200000 instructions simulated : ctaid=(22,0,0) tid=(63,0,0)
+28300000 instructions simulated : ctaid=(12,0,0) tid=(127,0,0)
+cycles: 60000  inst.: 28377760 (ipc=473.0) sim_rate=122317 (inst/sec) elapsed = 0:0:03:52 / Wed May 25 11:37:43 2011
+28400000 instructions simulated : ctaid=(14,0,0) tid=(223,0,0)
+28500000 instructions simulated : ctaid=(15,0,0) tid=(63,0,0)
+28600000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+28700000 instructions simulated : ctaid=(23,0,0) tid=(31,0,0)
+28800000 instructions simulated : ctaid=(30,0,0) tid=(63,0,0)
+cycles: 61000  inst.: 28849440 (ipc=472.9) sim_rate=122243 (inst/sec) elapsed = 0:0:03:56 / Wed May 25 11:37:47 2011
+28900000 instructions simulated : ctaid=(0,0,0) tid=(31,0,0)
+29000000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+29100000 instructions simulated : ctaid=(19,0,0) tid=(63,0,0)
+29200000 instructions simulated : ctaid=(21,0,0) tid=(95,0,0)
+29300000 instructions simulated : ctaid=(14,0,0) tid=(127,0,0)
+cycles: 62000  inst.: 29322592 (ipc=472.9) sim_rate=122177 (inst/sec) elapsed = 0:0:04:00 / Wed May 25 11:37:51 2011
+29400000 instructions simulated : ctaid=(22,0,0) tid=(31,0,0)
+29500000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+29600000 instructions simulated : ctaid=(25,0,0) tid=(127,0,0)
+29700000 instructions simulated : ctaid=(30,0,0) tid=(95,0,0)
+29800000 instructions simulated : ctaid=(23,0,0) tid=(255,0,0)
+cycles: 63000  inst.: 29793456 (ipc=472.9) sim_rate=122104 (inst/sec) elapsed = 0:0:04:04 / Wed May 25 11:37:55 2011
+29900000 instructions simulated : ctaid=(12,0,0) tid=(255,0,0)
+30000000 instructions simulated : ctaid=(11,0,0) tid=(127,0,0)
+30100000 instructions simulated : ctaid=(27,0,0) tid=(191,0,0)
+30200000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+cycles: 64000  inst.: 30266320 (ipc=472.9) sim_rate=122041 (inst/sec) elapsed = 0:0:04:08 / Wed May 25 11:37:59 2011
+30300000 instructions simulated : ctaid=(12,0,0) tid=(191,0,0)
+30400000 instructions simulated : ctaid=(25,0,0) tid=(31,0,0)
+30500000 instructions simulated : ctaid=(29,0,0) tid=(191,0,0)
+30600000 instructions simulated : ctaid=(8,0,0) tid=(95,0,0)
+30700000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+cycles: 65000  inst.: 30738688 (ipc=472.9) sim_rate=121978 (inst/sec) elapsed = 0:0:04:12 / Wed May 25 11:38:03 2011
+30800000 instructions simulated : ctaid=(30,0,0) tid=(63,0,0)
+30900000 instructions simulated : ctaid=(28,0,0) tid=(31,0,0)
+31000000 instructions simulated : ctaid=(30,0,0) tid=(159,0,0)
+31100000 instructions simulated : ctaid=(11,0,0) tid=(31,0,0)
+31200000 instructions simulated : ctaid=(29,0,0) tid=(223,0,0)
+cycles: 66000  inst.: 31209904 (ipc=472.9) sim_rate=122391 (inst/sec) elapsed = 0:0:04:15 / Wed May 25 11:38:06 2011
+31300000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+31400000 instructions simulated : ctaid=(19,0,0) tid=(63,0,0)
+31500000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+31600000 instructions simulated : ctaid=(1,0,0) tid=(31,0,0)
+cycles: 67000  inst.: 31682368 (ipc=472.9) sim_rate=122325 (inst/sec) elapsed = 0:0:04:19 / Wed May 25 11:38:10 2011
+31700000 instructions simulated : ctaid=(8,0,0) tid=(159,0,0)
+31800000 instructions simulated : ctaid=(18,0,0) tid=(63,0,0)
+31900000 instructions simulated : ctaid=(11,0,0) tid=(255,0,0)
+32000000 instructions simulated : ctaid=(29,0,0) tid=(191,0,0)
+32100000 instructions simulated : ctaid=(17,0,0) tid=(223,0,0)
+cycles: 68000  inst.: 32155648 (ipc=472.9) sim_rate=122264 (inst/sec) elapsed = 0:0:04:23 / Wed May 25 11:38:14 2011
+32200000 instructions simulated : ctaid=(15,0,0) tid=(63,0,0)
+32300000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+32400000 instructions simulated : ctaid=(19,0,0) tid=(31,0,0)
+32500000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+32600000 instructions simulated : ctaid=(23,0,0) tid=(63,0,0)
+cycles: 69000  inst.: 32628144 (ipc=472.9) sim_rate=122202 (inst/sec) elapsed = 0:0:04:27 / Wed May 25 11:38:18 2011
+32700000 instructions simulated : ctaid=(25,0,0) tid=(95,0,0)
+32800000 instructions simulated : ctaid=(17,0,0) tid=(159,0,0)
+32900000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+33000000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+33100000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+cycles: 70000  inst.: 33098848 (ipc=472.8) sim_rate=122588 (inst/sec) elapsed = 0:0:04:30 / Wed May 25 11:38:21 2011
+33200000 instructions simulated : ctaid=(18,0,0) tid=(127,0,0)
+33300000 instructions simulated : ctaid=(20,0,0) tid=(31,0,0)
+33400000 instructions simulated : ctaid=(21,0,0) tid=(63,0,0)
+33500000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+cycles: 71000  inst.: 33570560 (ipc=472.8) sim_rate=122520 (inst/sec) elapsed = 0:0:04:34 / Wed May 25 11:38:25 2011
+33600000 instructions simulated : ctaid=(31,0,0) tid=(255,0,0)
+33700000 instructions simulated : ctaid=(4,0,0) tid=(255,0,0)
+33800000 instructions simulated : ctaid=(10,0,0) tid=(159,0,0)
+33900000 instructions simulated : ctaid=(28,0,0) tid=(31,0,0)
+34000000 instructions simulated : ctaid=(7,0,0) tid=(223,0,0)
+cycles: 72000  inst.: 34043584 (ipc=472.8) sim_rate=122458 (inst/sec) elapsed = 0:0:04:38 / Wed May 25 11:38:29 2011
+34100000 instructions simulated : ctaid=(28,0,0) tid=(159,0,0)
+34200000 instructions simulated : ctaid=(19,0,0) tid=(31,0,0)
+34300000 instructions simulated : ctaid=(6,0,0) tid=(31,0,0)
+34400000 instructions simulated : ctaid=(17,0,0) tid=(191,0,0)
+34500000 instructions simulated : ctaid=(18,0,0) tid=(31,0,0)
+cycles: 73000  inst.: 34516496 (ipc=472.8) sim_rate=122398 (inst/sec) elapsed = 0:0:04:42 / Wed May 25 11:38:33 2011
+34600000 instructions simulated : ctaid=(19,0,0) tid=(63,0,0)
+34700000 instructions simulated : ctaid=(15,0,0) tid=(191,0,0)
+34800000 instructions simulated : ctaid=(0,0,0) tid=(127,0,0)
+34900000 instructions simulated : ctaid=(21,0,0) tid=(127,0,0)
+cycles: 74000  inst.: 34986640 (ipc=472.8) sim_rate=122760 (inst/sec) elapsed = 0:0:04:45 / Wed May 25 11:38:36 2011
+35000000 instructions simulated : ctaid=(0,0,0) tid=(95,0,0)
+35100000 instructions simulated : ctaid=(26,0,0) tid=(31,0,0)
+35200000 instructions simulated : ctaid=(22,0,0) tid=(63,0,0)
+35300000 instructions simulated : ctaid=(23,0,0) tid=(191,0,0)
+35400000 instructions simulated : ctaid=(21,0,0) tid=(63,0,0)
+cycles: 75000  inst.: 35458624 (ipc=472.8) sim_rate=122694 (inst/sec) elapsed = 0:0:04:49 / Wed May 25 11:38:40 2011
+35500000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+35600000 instructions simulated : ctaid=(13,0,0) tid=(223,0,0)
+35700000 instructions simulated : ctaid=(7,0,0) tid=(31,0,0)
+35800000 instructions simulated : ctaid=(21,0,0) tid=(223,0,0)
+35900000 instructions simulated : ctaid=(15,0,0) tid=(223,0,0)
+cycles: 76000  inst.: 35931216 (ipc=472.8) sim_rate=122632 (inst/sec) elapsed = 0:0:04:53 / Wed May 25 11:38:44 2011
+36000000 instructions simulated : ctaid=(10,0,0) tid=(31,0,0)
+36100000 instructions simulated : ctaid=(19,0,0) tid=(63,0,0)
+36200000 instructions simulated : ctaid=(4,0,0) tid=(223,0,0)
+36300000 instructions simulated : ctaid=(28,0,0) tid=(127,0,0)
+36400000 instructions simulated : ctaid=(27,0,0) tid=(191,0,0)
+cycles: 77000  inst.: 36403968 (ipc=472.8) sim_rate=122572 (inst/sec) elapsed = 0:0:04:57 / Wed May 25 11:38:48 2011
+36500000 instructions simulated : ctaid=(13,0,0) tid=(191,0,0)
+36600000 instructions simulated : ctaid=(13,0,0) tid=(31,0,0)
+36700000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+36800000 instructions simulated : ctaid=(23,0,0) tid=(127,0,0)
+cycles: 78000  inst.: 36875600 (ipc=472.8) sim_rate=122510 (inst/sec) elapsed = 0:0:05:01 / Wed May 25 11:38:52 2011
+36900000 instructions simulated : ctaid=(30,0,0) tid=(31,0,0)
+37000000 instructions simulated : ctaid=(25,0,0) tid=(255,0,0)
+37100000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+37200000 instructions simulated : ctaid=(18,0,0) tid=(95,0,0)
+37300000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+cycles: 79000  inst.: 37347152 (ipc=472.7) sim_rate=122449 (inst/sec) elapsed = 0:0:05:05 / Wed May 25 11:38:56 2011
+37400000 instructions simulated : ctaid=(22,0,0) tid=(63,0,0)
+37500000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+37600000 instructions simulated : ctaid=(25,0,0) tid=(223,0,0)
+37700000 instructions simulated : ctaid=(6,0,0) tid=(159,0,0)
+37800000 instructions simulated : ctaid=(15,0,0) tid=(95,0,0)
+cycles: 80000  inst.: 37818256 (ipc=472.7) sim_rate=122786 (inst/sec) elapsed = 0:0:05:08 / Wed May 25 11:38:59 2011
+37900000 instructions simulated : ctaid=(18,0,0) tid=(95,0,0)
+38000000 instructions simulated : ctaid=(7,0,0) tid=(159,0,0)
+38100000 instructions simulated : ctaid=(19,0,0) tid=(223,0,0)
+38200000 instructions simulated : ctaid=(2,0,0) tid=(191,0,0)
+cycles: 81000  inst.: 38291392 (ipc=472.7) sim_rate=122728 (inst/sec) elapsed = 0:0:05:12 / Wed May 25 11:39:03 2011
+38300000 instructions simulated : ctaid=(13,0,0) tid=(95,0,0)
+38400000 instructions simulated : ctaid=(31,0,0) tid=(31,0,0)
+38500000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+38600000 instructions simulated : ctaid=(29,0,0) tid=(223,0,0)
+38700000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+cycles: 82000  inst.: 38764240 (ipc=472.7) sim_rate=122671 (inst/sec) elapsed = 0:0:05:16 / Wed May 25 11:39:07 2011
+38800000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+38900000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+39000000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+39100000 instructions simulated : ctaid=(13,0,0) tid=(255,0,0)
+39200000 instructions simulated : ctaid=(10,0,0) tid=(223,0,0)
+cycles: 83000  inst.: 39235904 (ipc=472.7) sim_rate=122612 (inst/sec) elapsed = 0:0:05:20 / Wed May 25 11:39:11 2011
+39300000 instructions simulated : ctaid=(21,0,0) tid=(191,0,0)
+39400000 instructions simulated : ctaid=(10,0,0) tid=(223,0,0)
+39500000 instructions simulated : ctaid=(28,0,0) tid=(223,0,0)
+39600000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+39700000 instructions simulated : ctaid=(2,0,0) tid=(95,0,0)
+cycles: 84000  inst.: 39708352 (ipc=472.7) sim_rate=122936 (inst/sec) elapsed = 0:0:05:23 / Wed May 25 11:39:14 2011
+39800000 instructions simulated : ctaid=(21,0,0) tid=(223,0,0)
+39900000 instructions simulated : ctaid=(12,0,0) tid=(191,0,0)
+40000000 instructions simulated : ctaid=(28,0,0) tid=(255,0,0)
+40100000 instructions simulated : ctaid=(12,0,0) tid=(191,0,0)
+cycles: 85000  inst.: 40179584 (ipc=472.7) sim_rate=122873 (inst/sec) elapsed = 0:0:05:27 / Wed May 25 11:39:18 2011
+40200000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+40300000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+40400000 instructions simulated : ctaid=(13,0,0) tid=(223,0,0)
+40500000 instructions simulated : ctaid=(6,0,0) tid=(63,0,0)
+40600000 instructions simulated : ctaid=(7,0,0) tid=(191,0,0)
+cycles: 86000  inst.: 40652368 (ipc=472.7) sim_rate=122816 (inst/sec) elapsed = 0:0:05:31 / Wed May 25 11:39:22 2011
+40700000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+40800000 instructions simulated : ctaid=(12,0,0) tid=(127,0,0)
+40900000 instructions simulated : ctaid=(2,0,0) tid=(191,0,0)
+41000000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+41100000 instructions simulated : ctaid=(13,0,0) tid=(191,0,0)
+cycles: 87000  inst.: 41123984 (ipc=472.7) sim_rate=122758 (inst/sec) elapsed = 0:0:05:35 / Wed May 25 11:39:26 2011
+41200000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+41300000 instructions simulated : ctaid=(13,0,0) tid=(255,0,0)
+41400000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+41500000 instructions simulated : ctaid=(8,0,0) tid=(63,0,0)
+41600000 instructions simulated : ctaid=(0,0,0) tid=(223,0,0)
+cycles: 88000  inst.: 41595856 (ipc=472.7) sim_rate=122701 (inst/sec) elapsed = 0:0:05:39 / Wed May 25 11:39:30 2011
+41700000 instructions simulated : ctaid=(22,0,0) tid=(63,0,0)
+41800000 instructions simulated : ctaid=(5,0,0) tid=(63,0,0)
+41900000 instructions simulated : ctaid=(25,0,0) tid=(95,0,0)
+42000000 instructions simulated : ctaid=(14,0,0) tid=(31,0,0)
+cycles: 89000  inst.: 42068320 (ipc=472.7) sim_rate=122648 (inst/sec) elapsed = 0:0:05:43 / Wed May 25 11:39:34 2011
+42100000 instructions simulated : ctaid=(3,0,0) tid=(159,0,0)
+42200000 instructions simulated : ctaid=(11,0,0) tid=(95,0,0)
+42300000 instructions simulated : ctaid=(25,0,0) tid=(95,0,0)
+42400000 instructions simulated : ctaid=(9,0,0) tid=(159,0,0)
+42500000 instructions simulated : ctaid=(20,0,0) tid=(31,0,0)
+cycles: 90000  inst.: 42539232 (ipc=472.7) sim_rate=122945 (inst/sec) elapsed = 0:0:05:46 / Wed May 25 11:39:37 2011
+42600000 instructions simulated : ctaid=(2,0,0) tid=(95,0,0)
+42700000 instructions simulated : ctaid=(26,0,0) tid=(31,0,0)
+42800000 instructions simulated : ctaid=(13,0,0) tid=(31,0,0)
+42900000 instructions simulated : ctaid=(18,0,0) tid=(63,0,0)
+43000000 instructions simulated : ctaid=(4,0,0) tid=(31,0,0)
+cycles: 91000  inst.: 43011184 (ipc=472.7) sim_rate=122889 (inst/sec) elapsed = 0:0:05:50 / Wed May 25 11:39:41 2011
+43100000 instructions simulated : ctaid=(3,0,0) tid=(63,0,0)
+43200000 instructions simulated : ctaid=(1,0,0) tid=(159,0,0)
+43300000 instructions simulated : ctaid=(12,0,0) tid=(255,0,0)
+43400000 instructions simulated : ctaid=(1,0,0) tid=(127,0,0)
+cycles: 92000  inst.: 43484560 (ipc=472.7) sim_rate=122837 (inst/sec) elapsed = 0:0:05:54 / Wed May 25 11:39:45 2011
+43500000 instructions simulated : ctaid=(27,0,0) tid=(95,0,0)
+43600000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+43700000 instructions simulated : ctaid=(0,0,0) tid=(31,0,0)
+43800000 instructions simulated : ctaid=(5,0,0) tid=(255,0,0)
+43900000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+cycles: 93000  inst.: 43956320 (ipc=472.6) sim_rate=122783 (inst/sec) elapsed = 0:0:05:58 / Wed May 25 11:39:49 2011
+44000000 instructions simulated : ctaid=(23,0,0) tid=(159,0,0)
+44100000 instructions simulated : ctaid=(31,0,0) tid=(255,0,0)
+44200000 instructions simulated : ctaid=(18,0,0) tid=(127,0,0)
+44300000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+44400000 instructions simulated : ctaid=(10,0,0) tid=(223,0,0)
+cycles: 94000  inst.: 44429280 (ipc=472.7) sim_rate=122732 (inst/sec) elapsed = 0:0:06:02 / Wed May 25 11:39:53 2011
+44500000 instructions simulated : ctaid=(10,0,0) tid=(191,0,0)
+44600000 instructions simulated : ctaid=(16,0,0) tid=(95,0,0)
+44700000 instructions simulated : ctaid=(25,0,0) tid=(159,0,0)
+44800000 instructions simulated : ctaid=(6,0,0) tid=(191,0,0)
+44900000 instructions simulated : ctaid=(12,0,0) tid=(95,0,0)
+cycles: 95000  inst.: 44901424 (ipc=472.6) sim_rate=123017 (inst/sec) elapsed = 0:0:06:05 / Wed May 25 11:39:56 2011
+45000000 instructions simulated : ctaid=(7,0,0) tid=(159,0,0)
+45100000 instructions simulated : ctaid=(6,0,0) tid=(191,0,0)
+45200000 instructions simulated : ctaid=(31,0,0) tid=(95,0,0)
+45300000 instructions simulated : ctaid=(24,0,0) tid=(159,0,0)
+cycles: 96000  inst.: 45373104 (ipc=472.6) sim_rate=122962 (inst/sec) elapsed = 0:0:06:09 / Wed May 25 11:40:00 2011
+45400000 instructions simulated : ctaid=(26,0,0) tid=(191,0,0)
+45500000 instructions simulated : ctaid=(30,0,0) tid=(223,0,0)
+45600000 instructions simulated : ctaid=(31,0,0) tid=(223,0,0)
+45700000 instructions simulated : ctaid=(21,0,0) tid=(127,0,0)
+45800000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+cycles: 97000  inst.: 45844960 (ipc=472.6) sim_rate=122908 (inst/sec) elapsed = 0:0:06:13 / Wed May 25 11:40:04 2011
+45900000 instructions simulated : ctaid=(14,0,0) tid=(159,0,0)
+46000000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+46100000 instructions simulated : ctaid=(0,0,0) tid=(95,0,0)
+46200000 instructions simulated : ctaid=(2,0,0) tid=(95,0,0)
+46300000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+cycles: 98000  inst.: 46316544 (ipc=472.6) sim_rate=122855 (inst/sec) elapsed = 0:0:06:17 / Wed May 25 11:40:08 2011
+46400000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+46500000 instructions simulated : ctaid=(22,0,0) tid=(63,0,0)
+46600000 instructions simulated : ctaid=(24,0,0) tid=(95,0,0)
+46700000 instructions simulated : ctaid=(11,0,0) tid=(255,0,0)
+cycles: 99000  inst.: 46789440 (ipc=472.6) sim_rate=122806 (inst/sec) elapsed = 0:0:06:21 / Wed May 25 11:40:12 2011
+46800000 instructions simulated : ctaid=(13,0,0) tid=(255,0,0)
+46900000 instructions simulated : ctaid=(22,0,0) tid=(223,0,0)
+47000000 instructions simulated : ctaid=(15,0,0) tid=(95,0,0)
+47100000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+47200000 instructions simulated : ctaid=(3,0,0) tid=(127,0,0)
+cycles: 100000  inst.: 47261696 (ipc=472.6) sim_rate=123077 (inst/sec) elapsed = 0:0:06:24 / Wed May 25 11:40:15 2011
+47300000 instructions simulated : ctaid=(30,0,0) tid=(255,0,0)
+47400000 instructions simulated : ctaid=(23,0,0) tid=(63,0,0)
+47500000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+47600000 instructions simulated : ctaid=(4,0,0) tid=(127,0,0)
+47700000 instructions simulated : ctaid=(17,0,0) tid=(159,0,0)
+cycles: 101000  inst.: 47733872 (ipc=472.6) sim_rate=123025 (inst/sec) elapsed = 0:0:06:28 / Wed May 25 11:40:19 2011
+47800000 instructions simulated : ctaid=(3,0,0) tid=(159,0,0)
+47900000 instructions simulated : ctaid=(10,0,0) tid=(31,0,0)
+48000000 instructions simulated : ctaid=(25,0,0) tid=(255,0,0)
+48100000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+48200000 instructions simulated : ctaid=(26,0,0) tid=(127,0,0)
+cycles: 102000  inst.: 48205264 (ipc=472.6) sim_rate=122972 (inst/sec) elapsed = 0:0:06:32 / Wed May 25 11:40:23 2011
+48300000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+48400000 instructions simulated : ctaid=(28,0,0) tid=(223,0,0)
+48500000 instructions simulated : ctaid=(18,0,0) tid=(95,0,0)
+48600000 instructions simulated : ctaid=(30,0,0) tid=(63,0,0)
+cycles: 103000  inst.: 48677872 (ipc=472.6) sim_rate=122923 (inst/sec) elapsed = 0:0:06:36 / Wed May 25 11:40:27 2011
+48700000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+48800000 instructions simulated : ctaid=(0,0,0) tid=(223,0,0)
+48900000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+49000000 instructions simulated : ctaid=(20,0,0) tid=(63,0,0)
+49100000 instructions simulated : ctaid=(0,0,0) tid=(31,0,0)
+cycles: 104000  inst.: 49149248 (ipc=472.6) sim_rate=122873 (inst/sec) elapsed = 0:0:06:40 / Wed May 25 11:40:31 2011
+49200000 instructions simulated : ctaid=(24,0,0) tid=(159,0,0)
+49300000 instructions simulated : ctaid=(29,0,0) tid=(223,0,0)
+49400000 instructions simulated : ctaid=(23,0,0) tid=(191,0,0)
+49500000 instructions simulated : ctaid=(20,0,0) tid=(191,0,0)
+49600000 instructions simulated : ctaid=(15,0,0) tid=(159,0,0)
+cycles: 105000  inst.: 49621248 (ipc=472.6) sim_rate=123129 (inst/sec) elapsed = 0:0:06:43 / Wed May 25 11:40:34 2011
+49700000 instructions simulated : ctaid=(10,0,0) tid=(63,0,0)
+49800000 instructions simulated : ctaid=(15,0,0) tid=(159,0,0)
+49900000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+50000000 instructions simulated : ctaid=(29,0,0) tid=(191,0,0)
+cycles: 106000  inst.: 50092400 (ipc=472.6) sim_rate=123077 (inst/sec) elapsed = 0:0:06:47 / Wed May 25 11:40:38 2011
+50100000 instructions simulated : ctaid=(29,0,0) tid=(63,0,0)
+50200000 instructions simulated : ctaid=(18,0,0) tid=(223,0,0)
+50300000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+50400000 instructions simulated : ctaid=(2,0,0) tid=(159,0,0)
+50500000 instructions simulated : ctaid=(30,0,0) tid=(255,0,0)
+cycles: 107000  inst.: 50565760 (ipc=472.6) sim_rate=123031 (inst/sec) elapsed = 0:0:06:51 / Wed May 25 11:40:42 2011
+50600000 instructions simulated : ctaid=(7,0,0) tid=(127,0,0)
+50700000 instructions simulated : ctaid=(11,0,0) tid=(159,0,0)
+50800000 instructions simulated : ctaid=(21,0,0) tid=(255,0,0)
+50900000 instructions simulated : ctaid=(9,0,0) tid=(255,0,0)
+51000000 instructions simulated : ctaid=(27,0,0) tid=(223,0,0)
+cycles: 108000  inst.: 51038624 (ipc=472.6) sim_rate=122984 (inst/sec) elapsed = 0:0:06:55 / Wed May 25 11:40:46 2011
+51100000 instructions simulated : ctaid=(10,0,0) tid=(159,0,0)
+51200000 instructions simulated : ctaid=(2,0,0) tid=(95,0,0)
+51300000 instructions simulated : ctaid=(5,0,0) tid=(223,0,0)
+51400000 instructions simulated : ctaid=(9,0,0) tid=(191,0,0)
+51500000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+cycles: 109000  inst.: 51509568 (ipc=472.6) sim_rate=122934 (inst/sec) elapsed = 0:0:06:59 / Wed May 25 11:40:50 2011
+51600000 instructions simulated : ctaid=(28,0,0) tid=(255,0,0)
+51700000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+51800000 instructions simulated : ctaid=(27,0,0) tid=(95,0,0)
+51900000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+cycles: 110000  inst.: 51983440 (ipc=472.6) sim_rate=122892 (inst/sec) elapsed = 0:0:07:03 / Wed May 25 11:40:54 2011
+52000000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+52100000 instructions simulated : ctaid=(22,0,0) tid=(255,0,0)
+52200000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+52300000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+52400000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+cycles: 111000  inst.: 52454256 (ipc=472.6) sim_rate=123132 (inst/sec) elapsed = 0:0:07:06 / Wed May 25 11:40:57 2011
+52500000 instructions simulated : ctaid=(17,0,0) tid=(95,0,0)
+52600000 instructions simulated : ctaid=(20,0,0) tid=(255,0,0)
+52700000 instructions simulated : ctaid=(25,0,0) tid=(127,0,0)
+52800000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+52900000 instructions simulated : ctaid=(24,0,0) tid=(63,0,0)
+cycles: 112000  inst.: 52925696 (ipc=472.6) sim_rate=123083 (inst/sec) elapsed = 0:0:07:10 / Wed May 25 11:41:01 2011
+53000000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+53100000 instructions simulated : ctaid=(21,0,0) tid=(95,0,0)
+53200000 instructions simulated : ctaid=(12,0,0) tid=(191,0,0)
+53300000 instructions simulated : ctaid=(26,0,0) tid=(31,0,0)
+53400000 instructions simulated : ctaid=(16,0,0) tid=(255,0,0)
+cycles: 113000  inst.: 53398656 (ipc=472.6) sim_rate=123038 (inst/sec) elapsed = 0:0:07:14 / Wed May 25 11:41:05 2011
+53500000 instructions simulated : ctaid=(27,0,0) tid=(255,0,0)
+53600000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+53700000 instructions simulated : ctaid=(9,0,0) tid=(63,0,0)
+53800000 instructions simulated : ctaid=(6,0,0) tid=(63,0,0)
+cycles: 114000  inst.: 53870640 (ipc=472.5) sim_rate=122992 (inst/sec) elapsed = 0:0:07:18 / Wed May 25 11:41:09 2011
+53900000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+54000000 instructions simulated : ctaid=(2,0,0) tid=(191,0,0)
+54100000 instructions simulated : ctaid=(10,0,0) tid=(159,0,0)
+54200000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+54300000 instructions simulated : ctaid=(4,0,0) tid=(31,0,0)
+cycles: 115000  inst.: 54341744 (ipc=472.5) sim_rate=122945 (inst/sec) elapsed = 0:0:07:22 / Wed May 25 11:41:13 2011
+54400000 instructions simulated : ctaid=(19,0,0) tid=(191,0,0)
+54500000 instructions simulated : ctaid=(22,0,0) tid=(95,0,0)
+54600000 instructions simulated : ctaid=(28,0,0) tid=(159,0,0)
+54700000 instructions simulated : ctaid=(27,0,0) tid=(223,0,0)
+54800000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+cycles: 116000  inst.: 54815376 (ipc=472.5) sim_rate=122904 (inst/sec) elapsed = 0:0:07:26 / Wed May 25 11:41:17 2011
+54900000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+55000000 instructions simulated : ctaid=(18,0,0) tid=(95,0,0)
+55100000 instructions simulated : ctaid=(26,0,0) tid=(63,0,0)
+55200000 instructions simulated : ctaid=(31,0,0) tid=(63,0,0)
+cycles: 117000  inst.: 55286240 (ipc=472.5) sim_rate=123131 (inst/sec) elapsed = 0:0:07:29 / Wed May 25 11:41:20 2011
+55300000 instructions simulated : ctaid=(31,0,0) tid=(191,0,0)
+55400000 instructions simulated : ctaid=(27,0,0) tid=(255,0,0)
+55500000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+55600000 instructions simulated : ctaid=(19,0,0) tid=(31,0,0)
+55700000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+cycles: 118000  inst.: 55759824 (ipc=472.5) sim_rate=123090 (inst/sec) elapsed = 0:0:07:33 / Wed May 25 11:41:24 2011
+55800000 instructions simulated : ctaid=(8,0,0) tid=(191,0,0)
+55900000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+56000000 instructions simulated : ctaid=(17,0,0) tid=(127,0,0)
+56100000 instructions simulated : ctaid=(6,0,0) tid=(159,0,0)
+56200000 instructions simulated : ctaid=(8,0,0) tid=(127,0,0)
+cycles: 119000  inst.: 56231312 (ipc=472.5) sim_rate=123044 (inst/sec) elapsed = 0:0:07:37 / Wed May 25 11:41:28 2011
+56300000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+56400000 instructions simulated : ctaid=(8,0,0) tid=(95,0,0)
+56500000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+56600000 instructions simulated : ctaid=(8,0,0) tid=(95,0,0)
+56700000 instructions simulated : ctaid=(10,0,0) tid=(63,0,0)
+cycles: 120000  inst.: 56702704 (ipc=472.5) sim_rate=122999 (inst/sec) elapsed = 0:0:07:41 / Wed May 25 11:41:32 2011
+56800000 instructions simulated : ctaid=(4,0,0) tid=(31,0,0)
+56900000 instructions simulated : ctaid=(8,0,0) tid=(31,0,0)
+57000000 instructions simulated : ctaid=(3,0,0) tid=(255,0,0)
+57100000 instructions simulated : ctaid=(1,0,0) tid=(191,0,0)
+cycles: 121000  inst.: 57175872 (ipc=472.5) sim_rate=122958 (inst/sec) elapsed = 0:0:07:45 / Wed May 25 11:41:36 2011
+57200000 instructions simulated : ctaid=(7,0,0) tid=(191,0,0)
+57300000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+57400000 instructions simulated : ctaid=(1,0,0) tid=(223,0,0)
+57500000 instructions simulated : ctaid=(8,0,0) tid=(127,0,0)
+57600000 instructions simulated : ctaid=(18,0,0) tid=(223,0,0)
+cycles: 122000  inst.: 57645536 (ipc=472.5) sim_rate=123174 (inst/sec) elapsed = 0:0:07:48 / Wed May 25 11:41:39 2011
+57700000 instructions simulated : ctaid=(15,0,0) tid=(95,0,0)
+57800000 instructions simulated : ctaid=(7,0,0) tid=(127,0,0)
+57900000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+58000000 instructions simulated : ctaid=(11,0,0) tid=(127,0,0)
+58100000 instructions simulated : ctaid=(24,0,0) tid=(63,0,0)
+cycles: 123000  inst.: 58119376 (ipc=472.5) sim_rate=123134 (inst/sec) elapsed = 0:0:07:52 / Wed May 25 11:41:43 2011
+58200000 instructions simulated : ctaid=(26,0,0) tid=(191,0,0)
+58300000 instructions simulated : ctaid=(25,0,0) tid=(223,0,0)
+58400000 instructions simulated : ctaid=(13,0,0) tid=(223,0,0)
+58500000 instructions simulated : ctaid=(19,0,0) tid=(31,0,0)
+cycles: 124000  inst.: 58591456 (ipc=472.5) sim_rate=123091 (inst/sec) elapsed = 0:0:07:56 / Wed May 25 11:41:47 2011
+58600000 instructions simulated : ctaid=(19,0,0) tid=(191,0,0)
+58700000 instructions simulated : ctaid=(14,0,0) tid=(63,0,0)
+58800000 instructions simulated : ctaid=(7,0,0) tid=(223,0,0)
+58900000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+59000000 instructions simulated : ctaid=(31,0,0) tid=(63,0,0)
+cycles: 125000  inst.: 59064112 (ipc=472.5) sim_rate=123050 (inst/sec) elapsed = 0:0:08:00 / Wed May 25 11:41:51 2011
+59100000 instructions simulated : ctaid=(20,0,0) tid=(255,0,0)
+59200000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+59300000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+59400000 instructions simulated : ctaid=(13,0,0) tid=(63,0,0)
+59500000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+cycles: 126000  inst.: 59536544 (ipc=472.5) sim_rate=123264 (inst/sec) elapsed = 0:0:08:03 / Wed May 25 11:41:54 2011
+59600000 instructions simulated : ctaid=(18,0,0) tid=(127,0,0)
+59700000 instructions simulated : ctaid=(1,0,0) tid=(159,0,0)
+59800000 instructions simulated : ctaid=(26,0,0) tid=(95,0,0)
+59900000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+60000000 instructions simulated : ctaid=(8,0,0) tid=(31,0,0)
+cycles: 127000  inst.: 60008576 (ipc=472.5) sim_rate=123220 (inst/sec) elapsed = 0:0:08:07 / Wed May 25 11:41:58 2011
+60100000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+60200000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+60300000 instructions simulated : ctaid=(6,0,0) tid=(63,0,0)
+60400000 instructions simulated : ctaid=(16,0,0) tid=(31,0,0)
+cycles: 128000  inst.: 60479504 (ipc=472.5) sim_rate=123176 (inst/sec) elapsed = 0:0:08:11 / Wed May 25 11:42:02 2011
+60500000 instructions simulated : ctaid=(20,0,0) tid=(191,0,0)
+60600000 instructions simulated : ctaid=(31,0,0) tid=(223,0,0)
+60700000 instructions simulated : ctaid=(27,0,0) tid=(127,0,0)
+60800000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+60900000 instructions simulated : ctaid=(17,0,0) tid=(95,0,0)
+cycles: 129000  inst.: 60952464 (ipc=472.5) sim_rate=123136 (inst/sec) elapsed = 0:0:08:15 / Wed May 25 11:42:06 2011
+61000000 instructions simulated : ctaid=(27,0,0) tid=(255,0,0)
+61100000 instructions simulated : ctaid=(11,0,0) tid=(255,0,0)
+61200000 instructions simulated : ctaid=(20,0,0) tid=(191,0,0)
+61300000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+61400000 instructions simulated : ctaid=(30,0,0) tid=(223,0,0)
+cycles: 130000  inst.: 61424528 (ipc=472.5) sim_rate=123095 (inst/sec) elapsed = 0:0:08:19 / Wed May 25 11:42:10 2011
+61500000 instructions simulated : ctaid=(7,0,0) tid=(191,0,0)
+61600000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+61700000 instructions simulated : ctaid=(0,0,0) tid=(159,0,0)
+61800000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+61900000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+cycles: 131000  inst.: 61896624 (ipc=472.5) sim_rate=123054 (inst/sec) elapsed = 0:0:08:23 / Wed May 25 11:42:14 2011
+62000000 instructions simulated : ctaid=(24,0,0) tid=(31,0,0)
+62100000 instructions simulated : ctaid=(23,0,0) tid=(159,0,0)
+62200000 instructions simulated : ctaid=(10,0,0) tid=(191,0,0)
+62300000 instructions simulated : ctaid=(4,0,0) tid=(191,0,0)
+cycles: 132000  inst.: 62368608 (ipc=472.5) sim_rate=123258 (inst/sec) elapsed = 0:0:08:26 / Wed May 25 11:42:17 2011
+62400000 instructions simulated : ctaid=(18,0,0) tid=(63,0,0)
+62500000 instructions simulated : ctaid=(4,0,0) tid=(95,0,0)
+62600000 instructions simulated : ctaid=(3,0,0) tid=(159,0,0)
+62700000 instructions simulated : ctaid=(27,0,0) tid=(191,0,0)
+62800000 instructions simulated : ctaid=(22,0,0) tid=(255,0,0)
+cycles: 133000  inst.: 62841488 (ipc=472.5) sim_rate=123218 (inst/sec) elapsed = 0:0:08:30 / Wed May 25 11:42:21 2011
+62900000 instructions simulated : ctaid=(16,0,0) tid=(31,0,0)
+63000000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+63100000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+63200000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+63300000 instructions simulated : ctaid=(25,0,0) tid=(223,0,0)
+cycles: 134000  inst.: 63312736 (ipc=472.5) sim_rate=123176 (inst/sec) elapsed = 0:0:08:34 / Wed May 25 11:42:25 2011
+63400000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+63500000 instructions simulated : ctaid=(22,0,0) tid=(127,0,0)
+63600000 instructions simulated : ctaid=(13,0,0) tid=(63,0,0)
+63700000 instructions simulated : ctaid=(17,0,0) tid=(63,0,0)
+cycles: 135000  inst.: 63785424 (ipc=472.5) sim_rate=123137 (inst/sec) elapsed = 0:0:08:38 / Wed May 25 11:42:29 2011
+63800000 instructions simulated : ctaid=(0,0,0) tid=(191,0,0)
+63900000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+64000000 instructions simulated : ctaid=(21,0,0) tid=(63,0,0)
+64100000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+64200000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+cycles: 136000  inst.: 64257232 (ipc=472.5) sim_rate=123334 (inst/sec) elapsed = 0:0:08:41 / Wed May 25 11:42:32 2011
+64300000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+64400000 instructions simulated : ctaid=(12,0,0) tid=(95,0,0)
+64500000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+64600000 instructions simulated : ctaid=(22,0,0) tid=(223,0,0)
+64700000 instructions simulated : ctaid=(16,0,0) tid=(127,0,0)
+cycles: 137000  inst.: 64728944 (ipc=472.5) sim_rate=123293 (inst/sec) elapsed = 0:0:08:45 / Wed May 25 11:42:36 2011
+64800000 instructions simulated : ctaid=(5,0,0) tid=(223,0,0)
+64900000 instructions simulated : ctaid=(16,0,0) tid=(223,0,0)
+65000000 instructions simulated : ctaid=(12,0,0) tid=(95,0,0)
+65100000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+65200000 instructions simulated : ctaid=(17,0,0) tid=(31,0,0)
+cycles: 138000  inst.: 65198912 (ipc=472.5) sim_rate=123249 (inst/sec) elapsed = 0:0:08:49 / Wed May 25 11:42:40 2011
+65300000 instructions simulated : ctaid=(30,0,0) tid=(191,0,0)
+65400000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+65500000 instructions simulated : ctaid=(24,0,0) tid=(159,0,0)
+65600000 instructions simulated : ctaid=(10,0,0) tid=(159,0,0)
+cycles: 139000  inst.: 65672112 (ipc=472.5) sim_rate=123212 (inst/sec) elapsed = 0:0:08:53 / Wed May 25 11:42:44 2011
+65700000 instructions simulated : ctaid=(19,0,0) tid=(191,0,0)
+65800000 instructions simulated : ctaid=(21,0,0) tid=(255,0,0)
+65900000 instructions simulated : ctaid=(7,0,0) tid=(95,0,0)
+66000000 instructions simulated : ctaid=(27,0,0) tid=(191,0,0)
+66100000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+cycles: 140000  inst.: 66145424 (ipc=472.5) sim_rate=123405 (inst/sec) elapsed = 0:0:08:56 / Wed May 25 11:42:47 2011
+66200000 instructions simulated : ctaid=(14,0,0) tid=(159,0,0)
+66300000 instructions simulated : ctaid=(4,0,0) tid=(223,0,0)
+66400000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+66500000 instructions simulated : ctaid=(26,0,0) tid=(223,0,0)
+66600000 instructions simulated : ctaid=(20,0,0) tid=(159,0,0)
+cycles: 141000  inst.: 66616512 (ipc=472.5) sim_rate=123363 (inst/sec) elapsed = 0:0:09:00 / Wed May 25 11:42:51 2011
+66700000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+66800000 instructions simulated : ctaid=(4,0,0) tid=(95,0,0)
+66900000 instructions simulated : ctaid=(27,0,0) tid=(95,0,0)
+67000000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+cycles: 142000  inst.: 67089792 (ipc=472.5) sim_rate=123326 (inst/sec) elapsed = 0:0:09:04 / Wed May 25 11:42:55 2011
+67100000 instructions simulated : ctaid=(12,0,0) tid=(223,0,0)
+67200000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+67300000 instructions simulated : ctaid=(18,0,0) tid=(95,0,0)
+67400000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+67500000 instructions simulated : ctaid=(8,0,0) tid=(31,0,0)
+cycles: 143000  inst.: 67561472 (ipc=472.5) sim_rate=123287 (inst/sec) elapsed = 0:0:09:08 / Wed May 25 11:42:59 2011
+67600000 instructions simulated : ctaid=(13,0,0) tid=(127,0,0)
+67700000 instructions simulated : ctaid=(0,0,0) tid=(31,0,0)
+67800000 instructions simulated : ctaid=(7,0,0) tid=(127,0,0)
+67900000 instructions simulated : ctaid=(22,0,0) tid=(223,0,0)
+68000000 instructions simulated : ctaid=(27,0,0) tid=(223,0,0)
+cycles: 144000  inst.: 68034032 (ipc=472.5) sim_rate=123250 (inst/sec) elapsed = 0:0:09:12 / Wed May 25 11:43:03 2011
+68100000 instructions simulated : ctaid=(31,0,0) tid=(191,0,0)
+68200000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+68300000 instructions simulated : ctaid=(2,0,0) tid=(95,0,0)
+68400000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+68500000 instructions simulated : ctaid=(4,0,0) tid=(223,0,0)
+cycles: 145000  inst.: 68506160 (ipc=472.5) sim_rate=123434 (inst/sec) elapsed = 0:0:09:15 / Wed May 25 11:43:06 2011
+68600000 instructions simulated : ctaid=(11,0,0) tid=(31,0,0)
+68700000 instructions simulated : ctaid=(5,0,0) tid=(63,0,0)
+68800000 instructions simulated : ctaid=(10,0,0) tid=(63,0,0)
+68900000 instructions simulated : ctaid=(13,0,0) tid=(223,0,0)
+cycles: 146000  inst.: 68978368 (ipc=472.5) sim_rate=123396 (inst/sec) elapsed = 0:0:09:19 / Wed May 25 11:43:10 2011
+69000000 instructions simulated : ctaid=(7,0,0) tid=(95,0,0)
+69100000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+69200000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+69300000 instructions simulated : ctaid=(1,0,0) tid=(223,0,0)
+69400000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+cycles: 147000  inst.: 69450704 (ipc=472.5) sim_rate=123358 (inst/sec) elapsed = 0:0:09:23 / Wed May 25 11:43:14 2011
+69500000 instructions simulated : ctaid=(21,0,0) tid=(223,0,0)
+69600000 instructions simulated : ctaid=(22,0,0) tid=(191,0,0)
+69700000 instructions simulated : ctaid=(31,0,0) tid=(127,0,0)
+69800000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+69900000 instructions simulated : ctaid=(15,0,0) tid=(63,0,0)
+cycles: 148000  inst.: 69922208 (ipc=472.4) sim_rate=123319 (inst/sec) elapsed = 0:0:09:27 / Wed May 25 11:43:18 2011
+70000000 instructions simulated : ctaid=(28,0,0) tid=(159,0,0)
+70100000 instructions simulated : ctaid=(13,0,0) tid=(95,0,0)
+70200000 instructions simulated : ctaid=(2,0,0) tid=(31,0,0)
+70300000 instructions simulated : ctaid=(3,0,0) tid=(255,0,0)
+70400000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+cycles: 149000  inst.: 70393824 (ipc=472.4) sim_rate=123281 (inst/sec) elapsed = 0:0:09:31 / Wed May 25 11:43:22 2011
+70500000 instructions simulated : ctaid=(28,0,0) tid=(223,0,0)
+70600000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+70700000 instructions simulated : ctaid=(14,0,0) tid=(63,0,0)
+70800000 instructions simulated : ctaid=(21,0,0) tid=(223,0,0)
+cycles: 150000  inst.: 70866880 (ipc=472.4) sim_rate=123246 (inst/sec) elapsed = 0:0:09:35 / Wed May 25 11:43:26 2011
+70900000 instructions simulated : ctaid=(0,0,0) tid=(223,0,0)
+71000000 instructions simulated : ctaid=(28,0,0) tid=(127,0,0)
+71100000 instructions simulated : ctaid=(16,0,0) tid=(191,0,0)
+71200000 instructions simulated : ctaid=(4,0,0) tid=(31,0,0)
+71300000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+cycles: 151000  inst.: 71338688 (ipc=472.4) sim_rate=123210 (inst/sec) elapsed = 0:0:09:39 / Wed May 25 11:43:30 2011
+71400000 instructions simulated : ctaid=(14,0,0) tid=(127,0,0)
+71500000 instructions simulated : ctaid=(16,0,0) tid=(127,0,0)
+71600000 instructions simulated : ctaid=(16,0,0) tid=(63,0,0)
+71700000 instructions simulated : ctaid=(26,0,0) tid=(223,0,0)
+71800000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+cycles: 152000  inst.: 71811184 (ipc=472.4) sim_rate=123175 (inst/sec) elapsed = 0:0:09:43 / Wed May 25 11:43:34 2011
+71900000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+72000000 instructions simulated : ctaid=(14,0,0) tid=(31,0,0)
+72100000 instructions simulated : ctaid=(17,0,0) tid=(31,0,0)
+72200000 instructions simulated : ctaid=(10,0,0) tid=(95,0,0)
+cycles: 153000  inst.: 72283440 (ipc=472.4) sim_rate=123140 (inst/sec) elapsed = 0:0:09:47 / Wed May 25 11:43:38 2011
+72300000 instructions simulated : ctaid=(29,0,0) tid=(223,0,0)
+72400000 instructions simulated : ctaid=(31,0,0) tid=(63,0,0)
+72500000 instructions simulated : ctaid=(6,0,0) tid=(159,0,0)
+72600000 instructions simulated : ctaid=(11,0,0) tid=(127,0,0)
+72700000 instructions simulated : ctaid=(12,0,0) tid=(127,0,0)
+cycles: 154000  inst.: 72753952 (ipc=472.4) sim_rate=123103 (inst/sec) elapsed = 0:0:09:51 / Wed May 25 11:43:42 2011
+72800000 instructions simulated : ctaid=(8,0,0) tid=(127,0,0)
+72900000 instructions simulated : ctaid=(25,0,0) tid=(127,0,0)
+73000000 instructions simulated : ctaid=(0,0,0) tid=(31,0,0)
+73100000 instructions simulated : ctaid=(29,0,0) tid=(95,0,0)
+73200000 instructions simulated : ctaid=(26,0,0) tid=(95,0,0)
+cycles: 155000  inst.: 73225584 (ipc=472.4) sim_rate=123068 (inst/sec) elapsed = 0:0:09:55 / Wed May 25 11:43:46 2011
+73300000 instructions simulated : ctaid=(15,0,0) tid=(223,0,0)
+73400000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+73500000 instructions simulated : ctaid=(23,0,0) tid=(63,0,0)
+73600000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+73700000 instructions simulated : ctaid=(25,0,0) tid=(31,0,0)
+cycles: 156000  inst.: 73698080 (ipc=472.4) sim_rate=123035 (inst/sec) elapsed = 0:0:09:59 / Wed May 25 11:43:50 2011
+73800000 instructions simulated : ctaid=(10,0,0) tid=(95,0,0)
+73900000 instructions simulated : ctaid=(22,0,0) tid=(191,0,0)
+74000000 instructions simulated : ctaid=(22,0,0) tid=(31,0,0)
+74100000 instructions simulated : ctaid=(10,0,0) tid=(31,0,0)
+cycles: 157000  inst.: 74170192 (ipc=472.4) sim_rate=123001 (inst/sec) elapsed = 0:0:10:03 / Wed May 25 11:43:54 2011
+74200000 instructions simulated : ctaid=(22,0,0) tid=(31,0,0)
+74300000 instructions simulated : ctaid=(14,0,0) tid=(159,0,0)
+74400000 instructions simulated : ctaid=(27,0,0) tid=(127,0,0)
+74500000 instructions simulated : ctaid=(8,0,0) tid=(191,0,0)
+74600000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+cycles: 158000  inst.: 74642416 (ipc=472.4) sim_rate=122969 (inst/sec) elapsed = 0:0:10:07 / Wed May 25 11:43:58 2011
+74700000 instructions simulated : ctaid=(16,0,0) tid=(191,0,0)
+74800000 instructions simulated : ctaid=(20,0,0) tid=(31,0,0)
+74900000 instructions simulated : ctaid=(21,0,0) tid=(191,0,0)
+75000000 instructions simulated : ctaid=(17,0,0) tid=(255,0,0)
+75100000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+cycles: 159000  inst.: 75114464 (ipc=472.4) sim_rate=123138 (inst/sec) elapsed = 0:0:10:10 / Wed May 25 11:44:01 2011
+75200000 instructions simulated : ctaid=(9,0,0) tid=(159,0,0)
+75300000 instructions simulated : ctaid=(10,0,0) tid=(223,0,0)
+75400000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+75500000 instructions simulated : ctaid=(1,0,0) tid=(223,0,0)
+cycles: 160000  inst.: 75587152 (ipc=472.4) sim_rate=123106 (inst/sec) elapsed = 0:0:10:14 / Wed May 25 11:44:05 2011
+75600000 instructions simulated : ctaid=(21,0,0) tid=(127,0,0)
+75700000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+75800000 instructions simulated : ctaid=(13,0,0) tid=(95,0,0)
+75900000 instructions simulated : ctaid=(8,0,0) tid=(63,0,0)
+76000000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+cycles: 161000  inst.: 76059248 (ipc=472.4) sim_rate=123073 (inst/sec) elapsed = 0:0:10:18 / Wed May 25 11:44:09 2011
+76100000 instructions simulated : ctaid=(14,0,0) tid=(95,0,0)
+76200000 instructions simulated : ctaid=(16,0,0) tid=(63,0,0)
+76300000 instructions simulated : ctaid=(2,0,0) tid=(95,0,0)
+76400000 instructions simulated : ctaid=(3,0,0) tid=(191,0,0)
+76500000 instructions simulated : ctaid=(5,0,0) tid=(159,0,0)
+cycles: 162000  inst.: 76530896 (ipc=472.4) sim_rate=123040 (inst/sec) elapsed = 0:0:10:22 / Wed May 25 11:44:13 2011
+76600000 instructions simulated : ctaid=(15,0,0) tid=(95,0,0)
+76700000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+76800000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+76900000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+77000000 instructions simulated : ctaid=(30,0,0) tid=(191,0,0)
+cycles: 163000  inst.: 77003232 (ipc=472.4) sim_rate=123205 (inst/sec) elapsed = 0:0:10:25 / Wed May 25 11:44:16 2011
+77100000 instructions simulated : ctaid=(30,0,0) tid=(223,0,0)
+77200000 instructions simulated : ctaid=(29,0,0) tid=(127,0,0)
+77300000 instructions simulated : ctaid=(3,0,0) tid=(191,0,0)
+77400000 instructions simulated : ctaid=(1,0,0) tid=(191,0,0)
+cycles: 164000  inst.: 77474128 (ipc=472.4) sim_rate=123170 (inst/sec) elapsed = 0:0:10:29 / Wed May 25 11:44:20 2011
+77500000 instructions simulated : ctaid=(16,0,0) tid=(63,0,0)
+77600000 instructions simulated : ctaid=(15,0,0) tid=(95,0,0)
+77700000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+77800000 instructions simulated : ctaid=(12,0,0) tid=(255,0,0)
+77900000 instructions simulated : ctaid=(2,0,0) tid=(31,0,0)
+cycles: 165000  inst.: 77946912 (ipc=472.4) sim_rate=123138 (inst/sec) elapsed = 0:0:10:33 / Wed May 25 11:44:24 2011
+78000000 instructions simulated : ctaid=(26,0,0) tid=(255,0,0)
+78100000 instructions simulated : ctaid=(22,0,0) tid=(31,0,0)
+78200000 instructions simulated : ctaid=(12,0,0) tid=(223,0,0)
+78300000 instructions simulated : ctaid=(31,0,0) tid=(255,0,0)
+78400000 instructions simulated : ctaid=(19,0,0) tid=(63,0,0)
+cycles: 166000  inst.: 78418976 (ipc=472.4) sim_rate=123106 (inst/sec) elapsed = 0:0:10:37 / Wed May 25 11:44:28 2011
+78500000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+78600000 instructions simulated : ctaid=(22,0,0) tid=(127,0,0)
+78700000 instructions simulated : ctaid=(9,0,0) tid=(255,0,0)
+78800000 instructions simulated : ctaid=(14,0,0) tid=(31,0,0)
+cycles: 167000  inst.: 78891248 (ipc=472.4) sim_rate=123075 (inst/sec) elapsed = 0:0:10:41 / Wed May 25 11:44:32 2011
+78900000 instructions simulated : ctaid=(11,0,0) tid=(127,0,0)
+79000000 instructions simulated : ctaid=(26,0,0) tid=(127,0,0)
+79100000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+79200000 instructions simulated : ctaid=(7,0,0) tid=(223,0,0)
+79300000 instructions simulated : ctaid=(10,0,0) tid=(31,0,0)
+cycles: 168000  inst.: 79363392 (ipc=472.4) sim_rate=123235 (inst/sec) elapsed = 0:0:10:44 / Wed May 25 11:44:35 2011
+79400000 instructions simulated : ctaid=(3,0,0) tid=(255,0,0)
+79500000 instructions simulated : ctaid=(6,0,0) tid=(255,0,0)
+79600000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+79700000 instructions simulated : ctaid=(26,0,0) tid=(95,0,0)
+79800000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+cycles: 169000  inst.: 79835408 (ipc=472.4) sim_rate=123202 (inst/sec) elapsed = 0:0:10:48 / Wed May 25 11:44:39 2011
+79900000 instructions simulated : ctaid=(21,0,0) tid=(223,0,0)
+80000000 instructions simulated : ctaid=(26,0,0) tid=(223,0,0)
+80100000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+80200000 instructions simulated : ctaid=(10,0,0) tid=(63,0,0)
+80300000 instructions simulated : ctaid=(30,0,0) tid=(63,0,0)
+cycles: 170000  inst.: 80307088 (ipc=472.4) sim_rate=123170 (inst/sec) elapsed = 0:0:10:52 / Wed May 25 11:44:43 2011
+80400000 instructions simulated : ctaid=(31,0,0) tid=(191,0,0)
+80500000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+80600000 instructions simulated : ctaid=(23,0,0) tid=(127,0,0)
+80700000 instructions simulated : ctaid=(10,0,0) tid=(63,0,0)
+cycles: 171000  inst.: 80777776 (ipc=472.4) sim_rate=123136 (inst/sec) elapsed = 0:0:10:56 / Wed May 25 11:44:47 2011
+80800000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+80900000 instructions simulated : ctaid=(21,0,0) tid=(95,0,0)
+81000000 instructions simulated : ctaid=(26,0,0) tid=(127,0,0)
+81100000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+81200000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+cycles: 172000  inst.: 81251312 (ipc=472.4) sim_rate=123294 (inst/sec) elapsed = 0:0:10:59 / Wed May 25 11:44:50 2011
+81300000 instructions simulated : ctaid=(27,0,0) tid=(223,0,0)
+81400000 instructions simulated : ctaid=(14,0,0) tid=(191,0,0)
+81500000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+81600000 instructions simulated : ctaid=(2,0,0) tid=(159,0,0)
+81700000 instructions simulated : ctaid=(8,0,0) tid=(127,0,0)
+cycles: 173000  inst.: 81723232 (ipc=472.4) sim_rate=123262 (inst/sec) elapsed = 0:0:11:03 / Wed May 25 11:44:54 2011
+81800000 instructions simulated : ctaid=(18,0,0) tid=(127,0,0)
+81900000 instructions simulated : ctaid=(18,0,0) tid=(223,0,0)
+82000000 instructions simulated : ctaid=(18,0,0) tid=(31,0,0)
+82100000 instructions simulated : ctaid=(23,0,0) tid=(255,0,0)
+82200000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+cycles: 174000  inst.: 82196448 (ipc=472.4) sim_rate=123233 (inst/sec) elapsed = 0:0:11:07 / Wed May 25 11:44:58 2011
+82300000 instructions simulated : ctaid=(10,0,0) tid=(191,0,0)
+82400000 instructions simulated : ctaid=(21,0,0) tid=(63,0,0)
+82500000 instructions simulated : ctaid=(18,0,0) tid=(223,0,0)
+82600000 instructions simulated : ctaid=(28,0,0) tid=(31,0,0)
+cycles: 175000  inst.: 82668144 (ipc=472.4) sim_rate=123201 (inst/sec) elapsed = 0:0:11:11 / Wed May 25 11:45:02 2011
+82700000 instructions simulated : ctaid=(30,0,0) tid=(127,0,0)
+82800000 instructions simulated : ctaid=(15,0,0) tid=(63,0,0)
+82900000 instructions simulated : ctaid=(24,0,0) tid=(159,0,0)
+83000000 instructions simulated : ctaid=(25,0,0) tid=(223,0,0)
+83100000 instructions simulated : ctaid=(7,0,0) tid=(31,0,0)
+cycles: 176000  inst.: 83140448 (ipc=472.4) sim_rate=123171 (inst/sec) elapsed = 0:0:11:15 / Wed May 25 11:45:06 2011
+83200000 instructions simulated : ctaid=(28,0,0) tid=(127,0,0)
+83300000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+83400000 instructions simulated : ctaid=(16,0,0) tid=(31,0,0)
+83500000 instructions simulated : ctaid=(7,0,0) tid=(127,0,0)
+83600000 instructions simulated : ctaid=(13,0,0) tid=(31,0,0)
+cycles: 177000  inst.: 83612336 (ipc=472.4) sim_rate=123322 (inst/sec) elapsed = 0:0:11:18 / Wed May 25 11:45:09 2011
+83700000 instructions simulated : ctaid=(29,0,0) tid=(63,0,0)
+83800000 instructions simulated : ctaid=(10,0,0) tid=(255,0,0)
+83900000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+84000000 instructions simulated : ctaid=(5,0,0) tid=(223,0,0)
+cycles: 178000  inst.: 84083776 (ipc=472.4) sim_rate=123289 (inst/sec) elapsed = 0:0:11:22 / Wed May 25 11:45:13 2011
+84100000 instructions simulated : ctaid=(20,0,0) tid=(159,0,0)
+84200000 instructions simulated : ctaid=(0,0,0) tid=(31,0,0)
+84300000 instructions simulated : ctaid=(0,0,0) tid=(223,0,0)
+84400000 instructions simulated : ctaid=(30,0,0) tid=(255,0,0)
+84500000 instructions simulated : ctaid=(20,0,0) tid=(159,0,0)
+cycles: 179000  inst.: 84556192 (ipc=472.4) sim_rate=123259 (inst/sec) elapsed = 0:0:11:26 / Wed May 25 11:45:17 2011
+84600000 instructions simulated : ctaid=(14,0,0) tid=(191,0,0)
+84700000 instructions simulated : ctaid=(14,0,0) tid=(223,0,0)
+84800000 instructions simulated : ctaid=(20,0,0) tid=(31,0,0)
+84900000 instructions simulated : ctaid=(13,0,0) tid=(31,0,0)
+85000000 instructions simulated : ctaid=(29,0,0) tid=(191,0,0)
+cycles: 180000  inst.: 85027904 (ipc=472.4) sim_rate=123228 (inst/sec) elapsed = 0:0:11:30 / Wed May 25 11:45:21 2011
+85100000 instructions simulated : ctaid=(8,0,0) tid=(31,0,0)
+85200000 instructions simulated : ctaid=(15,0,0) tid=(95,0,0)
+85300000 instructions simulated : ctaid=(6,0,0) tid=(31,0,0)
+85400000 instructions simulated : ctaid=(17,0,0) tid=(255,0,0)
+85500000 instructions simulated : ctaid=(15,0,0) tid=(127,0,0)
+cycles: 181000  inst.: 85499808 (ipc=472.4) sim_rate=123376 (inst/sec) elapsed = 0:0:11:33 / Wed May 25 11:45:24 2011
+85600000 instructions simulated : ctaid=(24,0,0) tid=(95,0,0)
+85700000 instructions simulated : ctaid=(8,0,0) tid=(31,0,0)
+85800000 instructions simulated : ctaid=(21,0,0) tid=(95,0,0)
+85900000 instructions simulated : ctaid=(16,0,0) tid=(63,0,0)
+cycles: 182000  inst.: 85972960 (ipc=472.4) sim_rate=123347 (inst/sec) elapsed = 0:0:11:37 / Wed May 25 11:45:28 2011
+86000000 instructions simulated : ctaid=(19,0,0) tid=(127,0,0)
+86100000 instructions simulated : ctaid=(28,0,0) tid=(95,0,0)
+86200000 instructions simulated : ctaid=(31,0,0) tid=(223,0,0)
+86300000 instructions simulated : ctaid=(17,0,0) tid=(95,0,0)
+86400000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+cycles: 183000  inst.: 86443152 (ipc=472.4) sim_rate=123314 (inst/sec) elapsed = 0:0:11:41 / Wed May 25 11:45:32 2011
+86500000 instructions simulated : ctaid=(12,0,0) tid=(31,0,0)
+86600000 instructions simulated : ctaid=(4,0,0) tid=(95,0,0)
+86700000 instructions simulated : ctaid=(21,0,0) tid=(31,0,0)
+86800000 instructions simulated : ctaid=(22,0,0) tid=(31,0,0)
+86900000 instructions simulated : ctaid=(5,0,0) tid=(159,0,0)
+cycles: 184000  inst.: 86916992 (ipc=472.4) sim_rate=123286 (inst/sec) elapsed = 0:0:11:45 / Wed May 25 11:45:36 2011
+87000000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+87100000 instructions simulated : ctaid=(25,0,0) tid=(191,0,0)
+87200000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+87300000 instructions simulated : ctaid=(4,0,0) tid=(95,0,0)
+cycles: 185000  inst.: 87389056 (ipc=472.4) sim_rate=123256 (inst/sec) elapsed = 0:0:11:49 / Wed May 25 11:45:40 2011
+87400000 instructions simulated : ctaid=(7,0,0) tid=(223,0,0)
+87500000 instructions simulated : ctaid=(7,0,0) tid=(191,0,0)
+87600000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+87700000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+87800000 instructions simulated : ctaid=(10,0,0) tid=(191,0,0)
+cycles: 186000  inst.: 87861520 (ipc=472.4) sim_rate=123401 (inst/sec) elapsed = 0:0:11:52 / Wed May 25 11:45:43 2011
+87900000 instructions simulated : ctaid=(16,0,0) tid=(95,0,0)
+88000000 instructions simulated : ctaid=(9,0,0) tid=(159,0,0)
+88100000 instructions simulated : ctaid=(1,0,0) tid=(31,0,0)
+88200000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+88300000 instructions simulated : ctaid=(10,0,0) tid=(223,0,0)
+cycles: 187000  inst.: 88332016 (ipc=472.4) sim_rate=123368 (inst/sec) elapsed = 0:0:11:56 / Wed May 25 11:45:47 2011
+88400000 instructions simulated : ctaid=(28,0,0) tid=(159,0,0)
+88500000 instructions simulated : ctaid=(8,0,0) tid=(159,0,0)
+88600000 instructions simulated : ctaid=(12,0,0) tid=(127,0,0)
+88700000 instructions simulated : ctaid=(8,0,0) tid=(31,0,0)
+88800000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+cycles: 188000  inst.: 88804624 (ipc=472.4) sim_rate=123339 (inst/sec) elapsed = 0:0:12:00 / Wed May 25 11:45:51 2011
+88900000 instructions simulated : ctaid=(15,0,0) tid=(191,0,0)
+89000000 instructions simulated : ctaid=(5,0,0) tid=(159,0,0)
+89100000 instructions simulated : ctaid=(10,0,0) tid=(255,0,0)
+89200000 instructions simulated : ctaid=(31,0,0) tid=(191,0,0)
+cycles: 189000  inst.: 89277136 (ipc=472.4) sim_rate=123310 (inst/sec) elapsed = 0:0:12:04 / Wed May 25 11:45:55 2011
+89300000 instructions simulated : ctaid=(13,0,0) tid=(191,0,0)
+89400000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+89500000 instructions simulated : ctaid=(17,0,0) tid=(95,0,0)
+89600000 instructions simulated : ctaid=(23,0,0) tid=(255,0,0)
+89700000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+cycles: 190000  inst.: 89748848 (ipc=472.4) sim_rate=123281 (inst/sec) elapsed = 0:0:12:08 / Wed May 25 11:45:59 2011
+89800000 instructions simulated : ctaid=(23,0,0) tid=(191,0,0)
+89900000 instructions simulated : ctaid=(18,0,0) tid=(31,0,0)
+90000000 instructions simulated : ctaid=(12,0,0) tid=(63,0,0)
+90100000 instructions simulated : ctaid=(0,0,0) tid=(95,0,0)
+90200000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+cycles: 191000  inst.: 90220512 (ipc=472.4) sim_rate=123420 (inst/sec) elapsed = 0:0:12:11 / Wed May 25 11:46:02 2011
+90300000 instructions simulated : ctaid=(4,0,0) tid=(255,0,0)
+90400000 instructions simulated : ctaid=(4,0,0) tid=(127,0,0)
+90500000 instructions simulated : ctaid=(8,0,0) tid=(191,0,0)
+90600000 instructions simulated : ctaid=(1,0,0) tid=(95,0,0)
+90700000 instructions simulated : ctaid=(25,0,0) tid=(31,0,0)
+cycles: 192000  inst.: 90692800 (ipc=472.4) sim_rate=123391 (inst/sec) elapsed = 0:0:12:15 / Wed May 25 11:46:06 2011
+90800000 instructions simulated : ctaid=(21,0,0) tid=(191,0,0)
+90900000 instructions simulated : ctaid=(25,0,0) tid=(191,0,0)
+91000000 instructions simulated : ctaid=(19,0,0) tid=(31,0,0)
+91100000 instructions simulated : ctaid=(0,0,0) tid=(159,0,0)
+cycles: 193000  inst.: 91165584 (ipc=472.4) sim_rate=123363 (inst/sec) elapsed = 0:0:12:19 / Wed May 25 11:46:10 2011
+91200000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+91300000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+91400000 instructions simulated : ctaid=(5,0,0) tid=(191,0,0)
+91500000 instructions simulated : ctaid=(28,0,0) tid=(95,0,0)
+91600000 instructions simulated : ctaid=(24,0,0) tid=(159,0,0)
+cycles: 194000  inst.: 91638160 (ipc=472.4) sim_rate=123335 (inst/sec) elapsed = 0:0:12:23 / Wed May 25 11:46:14 2011
+91700000 instructions simulated : ctaid=(19,0,0) tid=(223,0,0)
+91800000 instructions simulated : ctaid=(9,0,0) tid=(159,0,0)
+91900000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+92000000 instructions simulated : ctaid=(21,0,0) tid=(223,0,0)
+92100000 instructions simulated : ctaid=(13,0,0) tid=(255,0,0)
+cycles: 195000  inst.: 92108480 (ipc=472.4) sim_rate=123469 (inst/sec) elapsed = 0:0:12:26 / Wed May 25 11:46:17 2011
+92200000 instructions simulated : ctaid=(9,0,0) tid=(63,0,0)
+92300000 instructions simulated : ctaid=(3,0,0) tid=(191,0,0)
+92400000 instructions simulated : ctaid=(8,0,0) tid=(223,0,0)
+92500000 instructions simulated : ctaid=(16,0,0) tid=(95,0,0)
+cycles: 196000  inst.: 92581856 (ipc=472.4) sim_rate=123442 (inst/sec) elapsed = 0:0:12:30 / Wed May 25 11:46:21 2011
+92600000 instructions simulated : ctaid=(28,0,0) tid=(223,0,0)
+92700000 instructions simulated : ctaid=(18,0,0) tid=(223,0,0)
+92800000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+92900000 instructions simulated : ctaid=(0,0,0) tid=(95,0,0)
+93000000 instructions simulated : ctaid=(21,0,0) tid=(31,0,0)
+cycles: 197000  inst.: 93053616 (ipc=472.4) sim_rate=123413 (inst/sec) elapsed = 0:0:12:34 / Wed May 25 11:46:25 2011
+93100000 instructions simulated : ctaid=(30,0,0) tid=(223,0,0)
+93200000 instructions simulated : ctaid=(17,0,0) tid=(95,0,0)
+93300000 instructions simulated : ctaid=(5,0,0) tid=(223,0,0)
+93400000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+93500000 instructions simulated : ctaid=(14,0,0) tid=(127,0,0)
+cycles: 198000  inst.: 93525600 (ipc=472.4) sim_rate=123384 (inst/sec) elapsed = 0:0:12:38 / Wed May 25 11:46:29 2011
+93600000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+93700000 instructions simulated : ctaid=(16,0,0) tid=(255,0,0)
+93800000 instructions simulated : ctaid=(17,0,0) tid=(127,0,0)
+93900000 instructions simulated : ctaid=(31,0,0) tid=(191,0,0)
+94000000 instructions simulated : ctaid=(24,0,0) tid=(127,0,0)
+cycles: 199000  inst.: 93998144 (ipc=472.4) sim_rate=123519 (inst/sec) elapsed = 0:0:12:41 / Wed May 25 11:46:32 2011
+94100000 instructions simulated : ctaid=(1,0,0) tid=(223,0,0)
+94200000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+94300000 instructions simulated : ctaid=(27,0,0) tid=(191,0,0)
+94400000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+cycles: 200000  inst.: 94469024 (ipc=472.3) sim_rate=123488 (inst/sec) elapsed = 0:0:12:45 / Wed May 25 11:46:36 2011
+94500000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+94600000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+94700000 instructions simulated : ctaid=(31,0,0) tid=(31,0,0)
+94800000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+94900000 instructions simulated : ctaid=(17,0,0) tid=(63,0,0)
+cycles: 201000  inst.: 94941920 (ipc=472.3) sim_rate=123461 (inst/sec) elapsed = 0:0:12:49 / Wed May 25 11:46:40 2011
+95000000 instructions simulated : ctaid=(8,0,0) tid=(159,0,0)
+95100000 instructions simulated : ctaid=(25,0,0) tid=(31,0,0)
+95200000 instructions simulated : ctaid=(1,0,0) tid=(95,0,0)
+95300000 instructions simulated : ctaid=(8,0,0) tid=(223,0,0)
+95400000 instructions simulated : ctaid=(27,0,0) tid=(191,0,0)
+cycles: 202000  inst.: 95413936 (ipc=472.3) sim_rate=123433 (inst/sec) elapsed = 0:0:12:53 / Wed May 25 11:46:44 2011
+95500000 instructions simulated : ctaid=(27,0,0) tid=(127,0,0)
+95600000 instructions simulated : ctaid=(9,0,0) tid=(63,0,0)
+95700000 instructions simulated : ctaid=(26,0,0) tid=(95,0,0)
+95800000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+cycles: 203000  inst.: 95886256 (ipc=472.3) sim_rate=123564 (inst/sec) elapsed = 0:0:12:56 / Wed May 25 11:46:47 2011
+95900000 instructions simulated : ctaid=(1,0,0) tid=(63,0,0)
+96000000 instructions simulated : ctaid=(3,0,0) tid=(223,0,0)
+96100000 instructions simulated : ctaid=(20,0,0) tid=(63,0,0)
+96200000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+96300000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+cycles: 204000  inst.: 96358048 (ipc=472.3) sim_rate=123535 (inst/sec) elapsed = 0:0:13:00 / Wed May 25 11:46:51 2011
+96400000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+96500000 instructions simulated : ctaid=(2,0,0) tid=(159,0,0)
+96600000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+96700000 instructions simulated : ctaid=(18,0,0) tid=(95,0,0)
+96800000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+cycles: 205000  inst.: 96828752 (ipc=472.3) sim_rate=123506 (inst/sec) elapsed = 0:0:13:04 / Wed May 25 11:46:55 2011
+96900000 instructions simulated : ctaid=(28,0,0) tid=(127,0,0)
+97000000 instructions simulated : ctaid=(3,0,0) tid=(191,0,0)
+97100000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+97200000 instructions simulated : ctaid=(30,0,0) tid=(31,0,0)
+97300000 instructions simulated : ctaid=(18,0,0) tid=(63,0,0)
+cycles: 206000  inst.: 97302416 (ipc=472.3) sim_rate=123480 (inst/sec) elapsed = 0:0:13:08 / Wed May 25 11:46:59 2011
+97400000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+97500000 instructions simulated : ctaid=(19,0,0) tid=(95,0,0)
+97600000 instructions simulated : ctaid=(4,0,0) tid=(95,0,0)
+97700000 instructions simulated : ctaid=(3,0,0) tid=(255,0,0)
+cycles: 207000  inst.: 97773776 (ipc=472.3) sim_rate=123451 (inst/sec) elapsed = 0:0:13:12 / Wed May 25 11:47:03 2011
+97800000 instructions simulated : ctaid=(15,0,0) tid=(31,0,0)
+97900000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+98000000 instructions simulated : ctaid=(24,0,0) tid=(159,0,0)
+98100000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+98200000 instructions simulated : ctaid=(6,0,0) tid=(63,0,0)
+cycles: 208000  inst.: 98243968 (ipc=472.3) sim_rate=123577 (inst/sec) elapsed = 0:0:13:15 / Wed May 25 11:47:06 2011
+98300000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+98400000 instructions simulated : ctaid=(15,0,0) tid=(127,0,0)
+98500000 instructions simulated : ctaid=(27,0,0) tid=(95,0,0)
+98600000 instructions simulated : ctaid=(25,0,0) tid=(191,0,0)
+98700000 instructions simulated : ctaid=(2,0,0) tid=(191,0,0)
+cycles: 209000  inst.: 98718000 (ipc=472.3) sim_rate=123551 (inst/sec) elapsed = 0:0:13:19 / Wed May 25 11:47:10 2011
+98800000 instructions simulated : ctaid=(14,0,0) tid=(223,0,0)
+98900000 instructions simulated : ctaid=(24,0,0) tid=(255,0,0)
+99000000 instructions simulated : ctaid=(22,0,0) tid=(127,0,0)
+99100000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+cycles: 210000  inst.: 99189616 (ipc=472.3) sim_rate=123523 (inst/sec) elapsed = 0:0:13:23 / Wed May 25 11:47:14 2011
+99200000 instructions simulated : ctaid=(27,0,0) tid=(255,0,0)
+99300000 instructions simulated : ctaid=(16,0,0) tid=(223,0,0)
+99400000 instructions simulated : ctaid=(13,0,0) tid=(255,0,0)
+99500000 instructions simulated : ctaid=(30,0,0) tid=(255,0,0)
+99600000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+cycles: 211000  inst.: 99661536 (ipc=472.3) sim_rate=123496 (inst/sec) elapsed = 0:0:13:27 / Wed May 25 11:47:18 2011
+99700000 instructions simulated : ctaid=(7,0,0) tid=(223,0,0)
+99800000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+99900000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+100000000 instructions simulated : ctaid=(17,0,0) tid=(31,0,0)
+100100000 instructions simulated : ctaid=(20,0,0) tid=(191,0,0)
+cycles: 212000  inst.: 100133936 (ipc=472.3) sim_rate=123622 (inst/sec) elapsed = 0:0:13:30 / Wed May 25 11:47:21 2011
+100200000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+100300000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+100400000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+100500000 instructions simulated : ctaid=(13,0,0) tid=(255,0,0)
+100600000 instructions simulated : ctaid=(19,0,0) tid=(223,0,0)
+cycles: 213000  inst.: 100606976 (ipc=472.3) sim_rate=123595 (inst/sec) elapsed = 0:0:13:34 / Wed May 25 11:47:25 2011
+100700000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+100800000 instructions simulated : ctaid=(0,0,0) tid=(31,0,0)
+100900000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+101000000 instructions simulated : ctaid=(27,0,0) tid=(127,0,0)
+cycles: 214000  inst.: 101078768 (ipc=472.3) sim_rate=123568 (inst/sec) elapsed = 0:0:13:38 / Wed May 25 11:47:29 2011
+101100000 instructions simulated : ctaid=(18,0,0) tid=(95,0,0)
+101200000 instructions simulated : ctaid=(5,0,0) tid=(95,0,0)
+101300000 instructions simulated : ctaid=(0,0,0) tid=(255,0,0)
+101400000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+101500000 instructions simulated : ctaid=(10,0,0) tid=(95,0,0)
+cycles: 215000  inst.: 101550624 (ipc=472.3) sim_rate=123540 (inst/sec) elapsed = 0:0:13:42 / Wed May 25 11:47:33 2011
+101600000 instructions simulated : ctaid=(15,0,0) tid=(223,0,0)
+101700000 instructions simulated : ctaid=(4,0,0) tid=(191,0,0)
+101800000 instructions simulated : ctaid=(1,0,0) tid=(31,0,0)
+101900000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+102000000 instructions simulated : ctaid=(14,0,0) tid=(127,0,0)
+cycles: 216000  inst.: 102023648 (ipc=472.3) sim_rate=123515 (inst/sec) elapsed = 0:0:13:46 / Wed May 25 11:47:37 2011
+102100000 instructions simulated : ctaid=(31,0,0) tid=(159,0,0)
+102200000 instructions simulated : ctaid=(24,0,0) tid=(31,0,0)
+102300000 instructions simulated : ctaid=(2,0,0) tid=(255,0,0)
+102400000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+102500000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+cycles: 217000  inst.: 102495168 (ipc=472.3) sim_rate=123637 (inst/sec) elapsed = 0:0:13:49 / Wed May 25 11:47:40 2011
+102600000 instructions simulated : ctaid=(29,0,0) tid=(127,0,0)
+102700000 instructions simulated : ctaid=(14,0,0) tid=(63,0,0)
+102800000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+102900000 instructions simulated : ctaid=(29,0,0) tid=(63,0,0)
+cycles: 218000  inst.: 102966608 (ipc=472.3) sim_rate=123609 (inst/sec) elapsed = 0:0:13:53 / Wed May 25 11:47:44 2011
+103000000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+103100000 instructions simulated : ctaid=(15,0,0) tid=(159,0,0)
+103200000 instructions simulated : ctaid=(24,0,0) tid=(255,0,0)
+103300000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+103400000 instructions simulated : ctaid=(8,0,0) tid=(159,0,0)
+cycles: 219000  inst.: 103438800 (ipc=472.3) sim_rate=123582 (inst/sec) elapsed = 0:0:13:57 / Wed May 25 11:47:48 2011
+103500000 instructions simulated : ctaid=(3,0,0) tid=(127,0,0)
+103600000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+103700000 instructions simulated : ctaid=(31,0,0) tid=(63,0,0)
+103800000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+103900000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+cycles: 220000  inst.: 103911664 (ipc=472.3) sim_rate=123557 (inst/sec) elapsed = 0:0:14:01 / Wed May 25 11:47:52 2011
+104000000 instructions simulated : ctaid=(8,0,0) tid=(63,0,0)
+104100000 instructions simulated : ctaid=(21,0,0) tid=(191,0,0)
+104200000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+104300000 instructions simulated : ctaid=(9,0,0) tid=(159,0,0)
+cycles: 221000  inst.: 104382800 (ipc=472.3) sim_rate=123676 (inst/sec) elapsed = 0:0:14:04 / Wed May 25 11:47:55 2011
+104400000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+104500000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+104600000 instructions simulated : ctaid=(26,0,0) tid=(63,0,0)
+104700000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+104800000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+cycles: 222000  inst.: 104856080 (ipc=472.3) sim_rate=123651 (inst/sec) elapsed = 0:0:14:08 / Wed May 25 11:47:59 2011
+104900000 instructions simulated : ctaid=(14,0,0) tid=(223,0,0)
+105000000 instructions simulated : ctaid=(18,0,0) tid=(31,0,0)
+105100000 instructions simulated : ctaid=(21,0,0) tid=(191,0,0)
+105200000 instructions simulated : ctaid=(1,0,0) tid=(255,0,0)
+105300000 instructions simulated : ctaid=(29,0,0) tid=(127,0,0)
+cycles: 223000  inst.: 105327392 (ipc=472.3) sim_rate=123623 (inst/sec) elapsed = 0:0:14:12 / Wed May 25 11:48:03 2011
+105400000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+105500000 instructions simulated : ctaid=(17,0,0) tid=(127,0,0)
+105600000 instructions simulated : ctaid=(7,0,0) tid=(31,0,0)
+105700000 instructions simulated : ctaid=(9,0,0) tid=(191,0,0)
+105800000 instructions simulated : ctaid=(1,0,0) tid=(159,0,0)
+cycles: 224000  inst.: 105800224 (ipc=472.3) sim_rate=123598 (inst/sec) elapsed = 0:0:14:16 / Wed May 25 11:48:07 2011
+105900000 instructions simulated : ctaid=(19,0,0) tid=(95,0,0)
+106000000 instructions simulated : ctaid=(14,0,0) tid=(127,0,0)
+106100000 instructions simulated : ctaid=(5,0,0) tid=(255,0,0)
+106200000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+cycles: 225000  inst.: 106272320 (ipc=472.3) sim_rate=123572 (inst/sec) elapsed = 0:0:14:20 / Wed May 25 11:48:11 2011
+106300000 instructions simulated : ctaid=(25,0,0) tid=(191,0,0)
+106400000 instructions simulated : ctaid=(22,0,0) tid=(255,0,0)
+106500000 instructions simulated : ctaid=(13,0,0) tid=(95,0,0)
+106600000 instructions simulated : ctaid=(4,0,0) tid=(191,0,0)
+106700000 instructions simulated : ctaid=(8,0,0) tid=(191,0,0)
+cycles: 226000  inst.: 106743616 (ipc=472.3) sim_rate=123689 (inst/sec) elapsed = 0:0:14:23 / Wed May 25 11:48:14 2011
+106800000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+106900000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+107000000 instructions simulated : ctaid=(26,0,0) tid=(255,0,0)
+107100000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+107200000 instructions simulated : ctaid=(11,0,0) tid=(159,0,0)
+cycles: 227000  inst.: 107215520 (ipc=472.3) sim_rate=123662 (inst/sec) elapsed = 0:0:14:27 / Wed May 25 11:48:18 2011
+107300000 instructions simulated : ctaid=(10,0,0) tid=(223,0,0)
+107400000 instructions simulated : ctaid=(11,0,0) tid=(95,0,0)
+107500000 instructions simulated : ctaid=(5,0,0) tid=(159,0,0)
+107600000 instructions simulated : ctaid=(25,0,0) tid=(31,0,0)
+cycles: 228000  inst.: 107687680 (ipc=472.3) sim_rate=123636 (inst/sec) elapsed = 0:0:14:31 / Wed May 25 11:48:22 2011
+107700000 instructions simulated : ctaid=(2,0,0) tid=(255,0,0)
+107800000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+107900000 instructions simulated : ctaid=(26,0,0) tid=(191,0,0)
+108000000 instructions simulated : ctaid=(14,0,0) tid=(63,0,0)
+108100000 instructions simulated : ctaid=(3,0,0) tid=(191,0,0)
+cycles: 229000  inst.: 108160352 (ipc=472.3) sim_rate=123753 (inst/sec) elapsed = 0:0:14:34 / Wed May 25 11:48:25 2011
+108200000 instructions simulated : ctaid=(19,0,0) tid=(31,0,0)
+108300000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+108400000 instructions simulated : ctaid=(25,0,0) tid=(95,0,0)
+108500000 instructions simulated : ctaid=(2,0,0) tid=(95,0,0)
+108600000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+cycles: 230000  inst.: 108632416 (ipc=472.3) sim_rate=123727 (inst/sec) elapsed = 0:0:14:38 / Wed May 25 11:48:29 2011
+108700000 instructions simulated : ctaid=(19,0,0) tid=(191,0,0)
+108800000 instructions simulated : ctaid=(15,0,0) tid=(127,0,0)
+108900000 instructions simulated : ctaid=(2,0,0) tid=(63,0,0)
+109000000 instructions simulated : ctaid=(7,0,0) tid=(191,0,0)
+109100000 instructions simulated : ctaid=(18,0,0) tid=(127,0,0)
+cycles: 231000  inst.: 109104624 (ipc=472.3) sim_rate=123701 (inst/sec) elapsed = 0:0:14:42 / Wed May 25 11:48:33 2011
+109200000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+109300000 instructions simulated : ctaid=(21,0,0) tid=(223,0,0)
+109400000 instructions simulated : ctaid=(11,0,0) tid=(95,0,0)
+109500000 instructions simulated : ctaid=(5,0,0) tid=(63,0,0)
+cycles: 232000  inst.: 109572976 (ipc=472.3) sim_rate=123671 (inst/sec) elapsed = 0:0:14:46 / Wed May 25 11:48:37 2011
+109600000 instructions simulated : ctaid=(9,0,0) tid=(255,0,0)
+109700000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+109800000 instructions simulated : ctaid=(18,0,0) tid=(223,0,0)
+109900000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+110000000 instructions simulated : ctaid=(27,0,0) tid=(95,0,0)
+cycles: 233000  inst.: 110047008 (ipc=472.3) sim_rate=123648 (inst/sec) elapsed = 0:0:14:50 / Wed May 25 11:48:41 2011
+110100000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+110200000 instructions simulated : ctaid=(22,0,0) tid=(63,0,0)
+110300000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+110400000 instructions simulated : ctaid=(18,0,0) tid=(63,0,0)
+110500000 instructions simulated : ctaid=(15,0,0) tid=(191,0,0)
+cycles: 234000  inst.: 110518976 (ipc=472.3) sim_rate=123623 (inst/sec) elapsed = 0:0:14:54 / Wed May 25 11:48:45 2011
+110600000 instructions simulated : ctaid=(25,0,0) tid=(31,0,0)
+110700000 instructions simulated : ctaid=(16,0,0) tid=(95,0,0)
+110800000 instructions simulated : ctaid=(13,0,0) tid=(191,0,0)
+110900000 instructions simulated : ctaid=(25,0,0) tid=(127,0,0)
+cycles: 235000  inst.: 110990864 (ipc=472.3) sim_rate=123597 (inst/sec) elapsed = 0:0:14:58 / Wed May 25 11:48:49 2011
+111000000 instructions simulated : ctaid=(20,0,0) tid=(191,0,0)
+111100000 instructions simulated : ctaid=(16,0,0) tid=(255,0,0)
+111200000 instructions simulated : ctaid=(11,0,0) tid=(159,0,0)
+111300000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+111400000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+cycles: 236000  inst.: 111462848 (ipc=472.3) sim_rate=123710 (inst/sec) elapsed = 0:0:15:01 / Wed May 25 11:48:52 2011
+111500000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+111600000 instructions simulated : ctaid=(15,0,0) tid=(63,0,0)
+111700000 instructions simulated : ctaid=(12,0,0) tid=(223,0,0)
+111800000 instructions simulated : ctaid=(6,0,0) tid=(31,0,0)
+111900000 instructions simulated : ctaid=(14,0,0) tid=(191,0,0)
+cycles: 237000  inst.: 111935696 (ipc=472.3) sim_rate=123685 (inst/sec) elapsed = 0:0:15:05 / Wed May 25 11:48:56 2011
+112000000 instructions simulated : ctaid=(21,0,0) tid=(127,0,0)
+112100000 instructions simulated : ctaid=(6,0,0) tid=(95,0,0)
+112200000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+112300000 instructions simulated : ctaid=(4,0,0) tid=(159,0,0)
+112400000 instructions simulated : ctaid=(15,0,0) tid=(31,0,0)
+cycles: 238000  inst.: 112407264 (ipc=472.3) sim_rate=123660 (inst/sec) elapsed = 0:0:15:09 / Wed May 25 11:49:00 2011
+112500000 instructions simulated : ctaid=(14,0,0) tid=(191,0,0)
+112600000 instructions simulated : ctaid=(29,0,0) tid=(63,0,0)
+112700000 instructions simulated : ctaid=(3,0,0) tid=(255,0,0)
+112800000 instructions simulated : ctaid=(12,0,0) tid=(63,0,0)
+cycles: 239000  inst.: 112879488 (ipc=472.3) sim_rate=123635 (inst/sec) elapsed = 0:0:15:13 / Wed May 25 11:49:04 2011
+112900000 instructions simulated : ctaid=(25,0,0) tid=(159,0,0)
+113000000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+113100000 instructions simulated : ctaid=(22,0,0) tid=(223,0,0)
+113200000 instructions simulated : ctaid=(29,0,0) tid=(127,0,0)
+113300000 instructions simulated : ctaid=(10,0,0) tid=(31,0,0)
+cycles: 240000  inst.: 113350160 (ipc=472.3) sim_rate=123744 (inst/sec) elapsed = 0:0:15:16 / Wed May 25 11:49:07 2011
+113400000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+113500000 instructions simulated : ctaid=(26,0,0) tid=(31,0,0)
+113600000 instructions simulated : ctaid=(13,0,0) tid=(191,0,0)
+113700000 instructions simulated : ctaid=(7,0,0) tid=(95,0,0)
+113800000 instructions simulated : ctaid=(15,0,0) tid=(191,0,0)
+cycles: 241000  inst.: 113824208 (ipc=472.3) sim_rate=123721 (inst/sec) elapsed = 0:0:15:20 / Wed May 25 11:49:11 2011
+113900000 instructions simulated : ctaid=(26,0,0) tid=(31,0,0)
+114000000 instructions simulated : ctaid=(23,0,0) tid=(159,0,0)
+114100000 instructions simulated : ctaid=(22,0,0) tid=(31,0,0)
+114200000 instructions simulated : ctaid=(23,0,0) tid=(159,0,0)
+114300000 instructions simulated : ctaid=(3,0,0) tid=(223,0,0)
+cycles: 242000  inst.: 114294944 (ipc=472.3) sim_rate=123695 (inst/sec) elapsed = 0:0:15:24 / Wed May 25 11:49:15 2011
+114400000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+114500000 instructions simulated : ctaid=(17,0,0) tid=(63,0,0)
+114600000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+114700000 instructions simulated : ctaid=(23,0,0) tid=(159,0,0)
+cycles: 243000  inst.: 114766128 (ipc=472.3) sim_rate=123670 (inst/sec) elapsed = 0:0:15:28 / Wed May 25 11:49:19 2011
+114800000 instructions simulated : ctaid=(1,0,0) tid=(159,0,0)
+114900000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+115000000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+115100000 instructions simulated : ctaid=(6,0,0) tid=(95,0,0)
+115200000 instructions simulated : ctaid=(4,0,0) tid=(127,0,0)
+cycles: 244000  inst.: 115239024 (ipc=472.3) sim_rate=123779 (inst/sec) elapsed = 0:0:15:31 / Wed May 25 11:49:22 2011
+115300000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+115400000 instructions simulated : ctaid=(30,0,0) tid=(223,0,0)
+115500000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+115600000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+115700000 instructions simulated : ctaid=(15,0,0) tid=(63,0,0)
+cycles: 245000  inst.: 115712144 (ipc=472.3) sim_rate=123756 (inst/sec) elapsed = 0:0:15:35 / Wed May 25 11:49:26 2011
+115800000 instructions simulated : ctaid=(6,0,0) tid=(63,0,0)
+115900000 instructions simulated : ctaid=(27,0,0) tid=(255,0,0)
+116000000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+116100000 instructions simulated : ctaid=(11,0,0) tid=(31,0,0)
+cycles: 246000  inst.: 116183856 (ipc=472.3) sim_rate=123731 (inst/sec) elapsed = 0:0:15:39 / Wed May 25 11:49:30 2011
+116200000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+116300000 instructions simulated : ctaid=(22,0,0) tid=(31,0,0)
+116400000 instructions simulated : ctaid=(24,0,0) tid=(127,0,0)
+116500000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+116600000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+cycles: 247000  inst.: 116656560 (ipc=472.3) sim_rate=123707 (inst/sec) elapsed = 0:0:15:43 / Wed May 25 11:49:34 2011
+116700000 instructions simulated : ctaid=(11,0,0) tid=(95,0,0)
+116800000 instructions simulated : ctaid=(5,0,0) tid=(159,0,0)
+116900000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+117000000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+117100000 instructions simulated : ctaid=(3,0,0) tid=(127,0,0)
+cycles: 248000  inst.: 117127216 (ipc=472.3) sim_rate=123682 (inst/sec) elapsed = 0:0:15:47 / Wed May 25 11:49:38 2011
+117200000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+117300000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+117400000 instructions simulated : ctaid=(20,0,0) tid=(159,0,0)
+117500000 instructions simulated : ctaid=(6,0,0) tid=(159,0,0)
+117600000 instructions simulated : ctaid=(21,0,0) tid=(255,0,0)
+cycles: 249000  inst.: 117600928 (ipc=472.3) sim_rate=123660 (inst/sec) elapsed = 0:0:15:51 / Wed May 25 11:49:42 2011
+117700000 instructions simulated : ctaid=(11,0,0) tid=(159,0,0)
+117800000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+117900000 instructions simulated : ctaid=(28,0,0) tid=(63,0,0)
+118000000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+cycles: 250000  inst.: 118072720 (ipc=472.3) sim_rate=123636 (inst/sec) elapsed = 0:0:15:55 / Wed May 25 11:49:46 2011
+118100000 instructions simulated : ctaid=(0,0,0) tid=(31,0,0)
+118200000 instructions simulated : ctaid=(21,0,0) tid=(95,0,0)
+118300000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+118400000 instructions simulated : ctaid=(5,0,0) tid=(63,0,0)
+118500000 instructions simulated : ctaid=(16,0,0) tid=(63,0,0)
+cycles: 251000  inst.: 118544480 (ipc=472.3) sim_rate=123741 (inst/sec) elapsed = 0:0:15:58 / Wed May 25 11:49:49 2011
+118600000 instructions simulated : ctaid=(17,0,0) tid=(159,0,0)
+118700000 instructions simulated : ctaid=(7,0,0) tid=(31,0,0)
+118800000 instructions simulated : ctaid=(14,0,0) tid=(191,0,0)
+118900000 instructions simulated : ctaid=(12,0,0) tid=(95,0,0)
+119000000 instructions simulated : ctaid=(16,0,0) tid=(63,0,0)
+cycles: 252000  inst.: 119016400 (ipc=472.3) sim_rate=123717 (inst/sec) elapsed = 0:0:16:02 / Wed May 25 11:49:53 2011
+119100000 instructions simulated : ctaid=(3,0,0) tid=(191,0,0)
+119200000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+119300000 instructions simulated : ctaid=(1,0,0) tid=(127,0,0)
+119400000 instructions simulated : ctaid=(7,0,0) tid=(95,0,0)
+cycles: 253000  inst.: 119488432 (ipc=472.3) sim_rate=123694 (inst/sec) elapsed = 0:0:16:06 / Wed May 25 11:49:57 2011
+119500000 instructions simulated : ctaid=(31,0,0) tid=(223,0,0)
+119600000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+119700000 instructions simulated : ctaid=(12,0,0) tid=(95,0,0)
+119800000 instructions simulated : ctaid=(5,0,0) tid=(127,0,0)
+119900000 instructions simulated : ctaid=(1,0,0) tid=(159,0,0)
+cycles: 254000  inst.: 119960896 (ipc=472.3) sim_rate=123671 (inst/sec) elapsed = 0:0:16:10 / Wed May 25 11:50:01 2011
+120000000 instructions simulated : ctaid=(23,0,0) tid=(31,0,0)
+120100000 instructions simulated : ctaid=(9,0,0) tid=(63,0,0)
+120200000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+120300000 instructions simulated : ctaid=(8,0,0) tid=(31,0,0)
+120400000 instructions simulated : ctaid=(13,0,0) tid=(63,0,0)
+cycles: 255000  inst.: 120433040 (ipc=472.3) sim_rate=123647 (inst/sec) elapsed = 0:0:16:14 / Wed May 25 11:50:05 2011
+120500000 instructions simulated : ctaid=(25,0,0) tid=(159,0,0)
+120600000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+120700000 instructions simulated : ctaid=(29,0,0) tid=(191,0,0)
+120800000 instructions simulated : ctaid=(19,0,0) tid=(191,0,0)
+120900000 instructions simulated : ctaid=(11,0,0) tid=(255,0,0)
+cycles: 256000  inst.: 120905200 (ipc=472.3) sim_rate=123624 (inst/sec) elapsed = 0:0:16:18 / Wed May 25 11:50:09 2011
+121000000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+121100000 instructions simulated : ctaid=(4,0,0) tid=(127,0,0)
+121200000 instructions simulated : ctaid=(30,0,0) tid=(95,0,0)
+121300000 instructions simulated : ctaid=(1,0,0) tid=(63,0,0)
+cycles: 257000  inst.: 121377328 (ipc=472.3) sim_rate=123728 (inst/sec) elapsed = 0:0:16:21 / Wed May 25 11:50:12 2011
+121400000 instructions simulated : ctaid=(17,0,0) tid=(255,0,0)
+121500000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+121600000 instructions simulated : ctaid=(25,0,0) tid=(31,0,0)
+121700000 instructions simulated : ctaid=(22,0,0) tid=(63,0,0)
+121800000 instructions simulated : ctaid=(10,0,0) tid=(95,0,0)
+cycles: 258000  inst.: 121849296 (ipc=472.3) sim_rate=123704 (inst/sec) elapsed = 0:0:16:25 / Wed May 25 11:50:16 2011
+121900000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+122000000 instructions simulated : ctaid=(22,0,0) tid=(95,0,0)
+122100000 instructions simulated : ctaid=(8,0,0) tid=(223,0,0)
+122200000 instructions simulated : ctaid=(7,0,0) tid=(127,0,0)
+122300000 instructions simulated : ctaid=(22,0,0) tid=(63,0,0)
+cycles: 259000  inst.: 122319728 (ipc=472.3) sim_rate=123680 (inst/sec) elapsed = 0:0:16:29 / Wed May 25 11:50:20 2011
+122400000 instructions simulated : ctaid=(7,0,0) tid=(159,0,0)
+122500000 instructions simulated : ctaid=(15,0,0) tid=(159,0,0)
+122600000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+122700000 instructions simulated : ctaid=(8,0,0) tid=(63,0,0)
+122800000 instructions simulated : ctaid=(24,0,0) tid=(31,0,0)
+cycles: 260000  inst.: 122793216 (ipc=472.3) sim_rate=123658 (inst/sec) elapsed = 0:0:16:33 / Wed May 25 11:50:24 2011
+122900000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+123000000 instructions simulated : ctaid=(17,0,0) tid=(63,0,0)
+123100000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+123200000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+cycles: 261000  inst.: 123265456 (ipc=472.3) sim_rate=123636 (inst/sec) elapsed = 0:0:16:37 / Wed May 25 11:50:28 2011
+123300000 instructions simulated : ctaid=(7,0,0) tid=(95,0,0)
+123400000 instructions simulated : ctaid=(28,0,0) tid=(127,0,0)
+123500000 instructions simulated : ctaid=(21,0,0) tid=(31,0,0)
+123600000 instructions simulated : ctaid=(11,0,0) tid=(255,0,0)
+123700000 instructions simulated : ctaid=(17,0,0) tid=(159,0,0)
+cycles: 262000  inst.: 123737280 (ipc=472.3) sim_rate=123737 (inst/sec) elapsed = 0:0:16:40 / Wed May 25 11:50:31 2011
+123800000 instructions simulated : ctaid=(30,0,0) tid=(191,0,0)
+123900000 instructions simulated : ctaid=(19,0,0) tid=(95,0,0)
+124000000 instructions simulated : ctaid=(5,0,0) tid=(127,0,0)
+124100000 instructions simulated : ctaid=(16,0,0) tid=(127,0,0)
+124200000 instructions simulated : ctaid=(26,0,0) tid=(191,0,0)
+cycles: 263000  inst.: 124209264 (ipc=472.3) sim_rate=123714 (inst/sec) elapsed = 0:0:16:44 / Wed May 25 11:50:35 2011
+124300000 instructions simulated : ctaid=(1,0,0) tid=(255,0,0)
+124400000 instructions simulated : ctaid=(31,0,0) tid=(63,0,0)
+124500000 instructions simulated : ctaid=(17,0,0) tid=(255,0,0)
+124600000 instructions simulated : ctaid=(14,0,0) tid=(223,0,0)
+cycles: 264000  inst.: 124681360 (ipc=472.3) sim_rate=123691 (inst/sec) elapsed = 0:0:16:48 / Wed May 25 11:50:39 2011
+124700000 instructions simulated : ctaid=(30,0,0) tid=(31,0,0)
+124800000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+124900000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+125000000 instructions simulated : ctaid=(20,0,0) tid=(63,0,0)
+125100000 instructions simulated : ctaid=(29,0,0) tid=(223,0,0)
+cycles: 265000  inst.: 125153568 (ipc=472.3) sim_rate=123669 (inst/sec) elapsed = 0:0:16:52 / Wed May 25 11:50:43 2011
+125200000 instructions simulated : ctaid=(1,0,0) tid=(31,0,0)
+125300000 instructions simulated : ctaid=(15,0,0) tid=(159,0,0)
+125400000 instructions simulated : ctaid=(1,0,0) tid=(159,0,0)
+125500000 instructions simulated : ctaid=(25,0,0) tid=(191,0,0)
+125600000 instructions simulated : ctaid=(21,0,0) tid=(255,0,0)
+cycles: 266000  inst.: 125625456 (ipc=472.3) sim_rate=123647 (inst/sec) elapsed = 0:0:16:56 / Wed May 25 11:50:47 2011
+125700000 instructions simulated : ctaid=(10,0,0) tid=(95,0,0)
+125800000 instructions simulated : ctaid=(4,0,0) tid=(191,0,0)
+125900000 instructions simulated : ctaid=(6,0,0) tid=(63,0,0)
+126000000 instructions simulated : ctaid=(22,0,0) tid=(95,0,0)
+126100000 instructions simulated : ctaid=(24,0,0) tid=(63,0,0)
+cycles: 267000  inst.: 126098000 (ipc=472.3) sim_rate=123746 (inst/sec) elapsed = 0:0:16:59 / Wed May 25 11:50:50 2011
+126200000 instructions simulated : ctaid=(21,0,0) tid=(127,0,0)
+126300000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+126400000 instructions simulated : ctaid=(7,0,0) tid=(159,0,0)
+126500000 instructions simulated : ctaid=(12,0,0) tid=(127,0,0)
+cycles: 268000  inst.: 126569504 (ipc=472.3) sim_rate=123723 (inst/sec) elapsed = 0:0:17:03 / Wed May 25 11:50:54 2011
+126600000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+126700000 instructions simulated : ctaid=(11,0,0) tid=(31,0,0)
+126800000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+126900000 instructions simulated : ctaid=(12,0,0) tid=(127,0,0)
+127000000 instructions simulated : ctaid=(5,0,0) tid=(255,0,0)
+cycles: 269000  inst.: 127041760 (ipc=472.3) sim_rate=123701 (inst/sec) elapsed = 0:0:17:07 / Wed May 25 11:50:58 2011
+127100000 instructions simulated : ctaid=(25,0,0) tid=(159,0,0)
+127200000 instructions simulated : ctaid=(11,0,0) tid=(31,0,0)
+127300000 instructions simulated : ctaid=(28,0,0) tid=(255,0,0)
+127400000 instructions simulated : ctaid=(17,0,0) tid=(63,0,0)
+127500000 instructions simulated : ctaid=(15,0,0) tid=(223,0,0)
+cycles: 270000  inst.: 127512752 (ipc=472.3) sim_rate=123678 (inst/sec) elapsed = 0:0:17:11 / Wed May 25 11:51:02 2011
+127600000 instructions simulated : ctaid=(26,0,0) tid=(191,0,0)
+127700000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+127800000 instructions simulated : ctaid=(25,0,0) tid=(95,0,0)
+127900000 instructions simulated : ctaid=(6,0,0) tid=(255,0,0)
+cycles: 271000  inst.: 127985984 (ipc=472.3) sim_rate=123657 (inst/sec) elapsed = 0:0:17:15 / Wed May 25 11:51:06 2011
+128000000 instructions simulated : ctaid=(13,0,0) tid=(31,0,0)
+128100000 instructions simulated : ctaid=(4,0,0) tid=(127,0,0)
+128200000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+128300000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+128400000 instructions simulated : ctaid=(2,0,0) tid=(191,0,0)
+cycles: 272000  inst.: 128458480 (ipc=472.3) sim_rate=123636 (inst/sec) elapsed = 0:0:17:19 / Wed May 25 11:51:10 2011
+128500000 instructions simulated : ctaid=(3,0,0) tid=(223,0,0)
+128600000 instructions simulated : ctaid=(1,0,0) tid=(191,0,0)
+128700000 instructions simulated : ctaid=(19,0,0) tid=(191,0,0)
+128800000 instructions simulated : ctaid=(12,0,0) tid=(191,0,0)
+128900000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+cycles: 273000  inst.: 128930144 (ipc=472.3) sim_rate=123733 (inst/sec) elapsed = 0:0:17:22 / Wed May 25 11:51:13 2011
+129000000 instructions simulated : ctaid=(13,0,0) tid=(31,0,0)
+129100000 instructions simulated : ctaid=(5,0,0) tid=(95,0,0)
+129200000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+129300000 instructions simulated : ctaid=(5,0,0) tid=(63,0,0)
+129400000 instructions simulated : ctaid=(29,0,0) tid=(95,0,0)
+cycles: 274000  inst.: 129402080 (ipc=472.3) sim_rate=123711 (inst/sec) elapsed = 0:0:17:26 / Wed May 25 11:51:17 2011
+129500000 instructions simulated : ctaid=(4,0,0) tid=(127,0,0)
+129600000 instructions simulated : ctaid=(28,0,0) tid=(223,0,0)
+129700000 instructions simulated : ctaid=(2,0,0) tid=(255,0,0)
+129800000 instructions simulated : ctaid=(12,0,0) tid=(63,0,0)
+cycles: 275000  inst.: 129874656 (ipc=472.3) sim_rate=123690 (inst/sec) elapsed = 0:0:17:30 / Wed May 25 11:51:21 2011
+129900000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+130000000 instructions simulated : ctaid=(4,0,0) tid=(31,0,0)
+130100000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+130200000 instructions simulated : ctaid=(5,0,0) tid=(191,0,0)
+130300000 instructions simulated : ctaid=(4,0,0) tid=(191,0,0)
+cycles: 276000  inst.: 130345424 (ipc=472.3) sim_rate=123667 (inst/sec) elapsed = 0:0:17:34 / Wed May 25 11:51:25 2011
+130400000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+130500000 instructions simulated : ctaid=(22,0,0) tid=(191,0,0)
+130600000 instructions simulated : ctaid=(14,0,0) tid=(191,0,0)
+130700000 instructions simulated : ctaid=(26,0,0) tid=(63,0,0)
+130800000 instructions simulated : ctaid=(16,0,0) tid=(223,0,0)
+cycles: 277000  inst.: 130818528 (ipc=472.3) sim_rate=123647 (inst/sec) elapsed = 0:0:17:38 / Wed May 25 11:51:29 2011
+130900000 instructions simulated : ctaid=(30,0,0) tid=(63,0,0)
+131000000 instructions simulated : ctaid=(15,0,0) tid=(159,0,0)
+131100000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+131200000 instructions simulated : ctaid=(16,0,0) tid=(95,0,0)
+cycles: 278000  inst.: 131291088 (ipc=472.3) sim_rate=123742 (inst/sec) elapsed = 0:0:17:41 / Wed May 25 11:51:32 2011
+131300000 instructions simulated : ctaid=(5,0,0) tid=(255,0,0)
+131400000 instructions simulated : ctaid=(30,0,0) tid=(159,0,0)
+131500000 instructions simulated : ctaid=(2,0,0) tid=(191,0,0)
+131600000 instructions simulated : ctaid=(13,0,0) tid=(63,0,0)
+131700000 instructions simulated : ctaid=(25,0,0) tid=(95,0,0)
+cycles: 279000  inst.: 131762560 (ipc=472.3) sim_rate=123720 (inst/sec) elapsed = 0:0:17:45 / Wed May 25 11:51:36 2011
+131800000 instructions simulated : ctaid=(5,0,0) tid=(191,0,0)
+131900000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+132000000 instructions simulated : ctaid=(2,0,0) tid=(223,0,0)
+132100000 instructions simulated : ctaid=(31,0,0) tid=(223,0,0)
+132200000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+cycles: 280000  inst.: 132235616 (ipc=472.3) sim_rate=123700 (inst/sec) elapsed = 0:0:17:49 / Wed May 25 11:51:40 2011
+132300000 instructions simulated : ctaid=(14,0,0) tid=(31,0,0)
+132400000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+132500000 instructions simulated : ctaid=(13,0,0) tid=(255,0,0)
+132600000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+132700000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+cycles: 281000  inst.: 132707168 (ipc=472.3) sim_rate=123678 (inst/sec) elapsed = 0:0:17:53 / Wed May 25 11:51:44 2011
+132800000 instructions simulated : ctaid=(24,0,0) tid=(159,0,0)
+132900000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+133000000 instructions simulated : ctaid=(14,0,0) tid=(223,0,0)
+133100000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+cycles: 282000  inst.: 133179728 (ipc=472.3) sim_rate=123658 (inst/sec) elapsed = 0:0:17:57 / Wed May 25 11:51:48 2011
+133200000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+133300000 instructions simulated : ctaid=(16,0,0) tid=(255,0,0)
+133400000 instructions simulated : ctaid=(5,0,0) tid=(191,0,0)
+133500000 instructions simulated : ctaid=(20,0,0) tid=(31,0,0)
+133600000 instructions simulated : ctaid=(15,0,0) tid=(159,0,0)
+cycles: 283000  inst.: 133650448 (ipc=472.3) sim_rate=123750 (inst/sec) elapsed = 0:0:18:00 / Wed May 25 11:51:51 2011
+133700000 instructions simulated : ctaid=(17,0,0) tid=(31,0,0)
+133800000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+133900000 instructions simulated : ctaid=(21,0,0) tid=(31,0,0)
+134000000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+134100000 instructions simulated : ctaid=(15,0,0) tid=(223,0,0)
+cycles: 284000  inst.: 134124240 (ipc=472.3) sim_rate=123730 (inst/sec) elapsed = 0:0:18:04 / Wed May 25 11:51:55 2011
+134200000 instructions simulated : ctaid=(29,0,0) tid=(191,0,0)
+134300000 instructions simulated : ctaid=(14,0,0) tid=(63,0,0)
+134400000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+134500000 instructions simulated : ctaid=(26,0,0) tid=(191,0,0)
+134600000 instructions simulated : ctaid=(19,0,0) tid=(95,0,0)
+cycles: 285000  inst.: 134596080 (ipc=472.3) sim_rate=123709 (inst/sec) elapsed = 0:0:18:08 / Wed May 25 11:51:59 2011
+134700000 instructions simulated : ctaid=(15,0,0) tid=(127,0,0)
+134800000 instructions simulated : ctaid=(24,0,0) tid=(95,0,0)
+134900000 instructions simulated : ctaid=(25,0,0) tid=(223,0,0)
+135000000 instructions simulated : ctaid=(0,0,0) tid=(255,0,0)
+cycles: 286000  inst.: 135068192 (ipc=472.3) sim_rate=123688 (inst/sec) elapsed = 0:0:18:12 / Wed May 25 11:52:03 2011
+135100000 instructions simulated : ctaid=(28,0,0) tid=(223,0,0)
+135200000 instructions simulated : ctaid=(31,0,0) tid=(127,0,0)
+135300000 instructions simulated : ctaid=(22,0,0) tid=(223,0,0)
+135400000 instructions simulated : ctaid=(1,0,0) tid=(31,0,0)
+135500000 instructions simulated : ctaid=(2,0,0) tid=(223,0,0)
+cycles: 287000  inst.: 135539696 (ipc=472.3) sim_rate=123780 (inst/sec) elapsed = 0:0:18:15 / Wed May 25 11:52:06 2011
+135600000 instructions simulated : ctaid=(3,0,0) tid=(223,0,0)
+135700000 instructions simulated : ctaid=(30,0,0) tid=(223,0,0)
+135800000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+135900000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+136000000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+cycles: 288000  inst.: 136012400 (ipc=472.3) sim_rate=123760 (inst/sec) elapsed = 0:0:18:19 / Wed May 25 11:52:10 2011
+136100000 instructions simulated : ctaid=(28,0,0) tid=(159,0,0)
+136200000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+136300000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+136400000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+cycles: 289000  inst.: 136484528 (ipc=472.3) sim_rate=123739 (inst/sec) elapsed = 0:0:18:23 / Wed May 25 11:52:14 2011
+136500000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+136600000 instructions simulated : ctaid=(16,0,0) tid=(95,0,0)
+136700000 instructions simulated : ctaid=(13,0,0) tid=(95,0,0)
+136800000 instructions simulated : ctaid=(24,0,0) tid=(63,0,0)
+136900000 instructions simulated : ctaid=(13,0,0) tid=(31,0,0)
+cycles: 290000  inst.: 136956080 (ipc=472.3) sim_rate=123718 (inst/sec) elapsed = 0:0:18:27 / Wed May 25 11:52:18 2011
+137000000 instructions simulated : ctaid=(10,0,0) tid=(159,0,0)
+137100000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+137200000 instructions simulated : ctaid=(7,0,0) tid=(31,0,0)
+137300000 instructions simulated : ctaid=(7,0,0) tid=(159,0,0)
+137400000 instructions simulated : ctaid=(17,0,0) tid=(127,0,0)
+cycles: 291000  inst.: 137428544 (ipc=472.3) sim_rate=123698 (inst/sec) elapsed = 0:0:18:31 / Wed May 25 11:52:22 2011
+137500000 instructions simulated : ctaid=(30,0,0) tid=(63,0,0)
+137600000 instructions simulated : ctaid=(9,0,0) tid=(191,0,0)
+137700000 instructions simulated : ctaid=(25,0,0) tid=(255,0,0)
+137800000 instructions simulated : ctaid=(16,0,0) tid=(255,0,0)
+137900000 instructions simulated : ctaid=(26,0,0) tid=(223,0,0)
+cycles: 292000  inst.: 137900352 (ipc=472.3) sim_rate=123788 (inst/sec) elapsed = 0:0:18:34 / Wed May 25 11:52:25 2011
+138000000 instructions simulated : ctaid=(14,0,0) tid=(223,0,0)
+138100000 instructions simulated : ctaid=(0,0,0) tid=(159,0,0)
+138200000 instructions simulated : ctaid=(11,0,0) tid=(255,0,0)
+138300000 instructions simulated : ctaid=(1,0,0) tid=(223,0,0)
+cycles: 293000  inst.: 138369760 (ipc=472.3) sim_rate=123765 (inst/sec) elapsed = 0:0:18:38 / Wed May 25 11:52:29 2011
+138400000 instructions simulated : ctaid=(11,0,0) tid=(255,0,0)
+138500000 instructions simulated : ctaid=(15,0,0) tid=(127,0,0)
+138600000 instructions simulated : ctaid=(9,0,0) tid=(63,0,0)
+138700000 instructions simulated : ctaid=(12,0,0) tid=(63,0,0)
+138800000 instructions simulated : ctaid=(5,0,0) tid=(223,0,0)
+cycles: 294000  inst.: 138843456 (ipc=472.3) sim_rate=123746 (inst/sec) elapsed = 0:0:18:42 / Wed May 25 11:52:33 2011
+138900000 instructions simulated : ctaid=(31,0,0) tid=(63,0,0)
+139000000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+139100000 instructions simulated : ctaid=(26,0,0) tid=(255,0,0)
+139200000 instructions simulated : ctaid=(12,0,0) tid=(95,0,0)
+139300000 instructions simulated : ctaid=(17,0,0) tid=(31,0,0)
+cycles: 295000  inst.: 139315456 (ipc=472.3) sim_rate=123725 (inst/sec) elapsed = 0:0:18:46 / Wed May 25 11:52:37 2011
+139400000 instructions simulated : ctaid=(13,0,0) tid=(159,0,0)
+139500000 instructions simulated : ctaid=(9,0,0) tid=(191,0,0)
+139600000 instructions simulated : ctaid=(26,0,0) tid=(63,0,0)
+139700000 instructions simulated : ctaid=(13,0,0) tid=(63,0,0)
+cycles: 296000  inst.: 139789072 (ipc=472.3) sim_rate=123707 (inst/sec) elapsed = 0:0:18:50 / Wed May 25 11:52:41 2011
+139800000 instructions simulated : ctaid=(21,0,0) tid=(255,0,0)
+139900000 instructions simulated : ctaid=(2,0,0) tid=(191,0,0)
+140000000 instructions simulated : ctaid=(9,0,0) tid=(223,0,0)
+140100000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+140200000 instructions simulated : ctaid=(13,0,0) tid=(191,0,0)
+cycles: 297000  inst.: 140260656 (ipc=472.3) sim_rate=123795 (inst/sec) elapsed = 0:0:18:53 / Wed May 25 11:52:44 2011
+140300000 instructions simulated : ctaid=(11,0,0) tid=(127,0,0)
+140400000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+140500000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+140600000 instructions simulated : ctaid=(17,0,0) tid=(127,0,0)
+140700000 instructions simulated : ctaid=(26,0,0) tid=(127,0,0)
+cycles: 298000  inst.: 140733104 (ipc=472.3) sim_rate=123775 (inst/sec) elapsed = 0:0:18:57 / Wed May 25 11:52:48 2011
+140800000 instructions simulated : ctaid=(4,0,0) tid=(159,0,0)
+140900000 instructions simulated : ctaid=(7,0,0) tid=(95,0,0)
+141000000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+141100000 instructions simulated : ctaid=(21,0,0) tid=(95,0,0)
+141200000 instructions simulated : ctaid=(13,0,0) tid=(63,0,0)
+cycles: 299000  inst.: 141205280 (ipc=472.3) sim_rate=123755 (inst/sec) elapsed = 0:0:19:01 / Wed May 25 11:52:52 2011
+141300000 instructions simulated : ctaid=(8,0,0) tid=(159,0,0)
+141400000 instructions simulated : ctaid=(7,0,0) tid=(127,0,0)
+141500000 instructions simulated : ctaid=(17,0,0) tid=(223,0,0)
+141600000 instructions simulated : ctaid=(24,0,0) tid=(159,0,0)
+cycles: 300000  inst.: 141676656 (ipc=472.3) sim_rate=123735 (inst/sec) elapsed = 0:0:19:05 / Wed May 25 11:52:56 2011
+141700000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+141800000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+141900000 instructions simulated : ctaid=(29,0,0) tid=(95,0,0)
+142000000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+142100000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+cycles: 301000  inst.: 142149152 (ipc=472.3) sim_rate=123715 (inst/sec) elapsed = 0:0:19:09 / Wed May 25 11:53:00 2011
+142200000 instructions simulated : ctaid=(20,0,0) tid=(63,0,0)
+142300000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+142400000 instructions simulated : ctaid=(9,0,0) tid=(127,0,0)
+142500000 instructions simulated : ctaid=(6,0,0) tid=(95,0,0)
+142600000 instructions simulated : ctaid=(28,0,0) tid=(31,0,0)
+cycles: 302000  inst.: 142620336 (ipc=472.3) sim_rate=123802 (inst/sec) elapsed = 0:0:19:12 / Wed May 25 11:53:03 2011
+142700000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+142800000 instructions simulated : ctaid=(23,0,0) tid=(191,0,0)
+142900000 instructions simulated : ctaid=(27,0,0) tid=(127,0,0)
+143000000 instructions simulated : ctaid=(17,0,0) tid=(255,0,0)
+143100000 instructions simulated : ctaid=(3,0,0) tid=(159,0,0)
+cycles: 303000  inst.: 143093520 (ipc=472.3) sim_rate=123783 (inst/sec) elapsed = 0:0:19:16 / Wed May 25 11:53:07 2011
+143200000 instructions simulated : ctaid=(21,0,0) tid=(63,0,0)
+143300000 instructions simulated : ctaid=(16,0,0) tid=(223,0,0)
+143400000 instructions simulated : ctaid=(29,0,0) tid=(95,0,0)
+143500000 instructions simulated : ctaid=(19,0,0) tid=(191,0,0)
+cycles: 304000  inst.: 143565232 (ipc=472.3) sim_rate=123763 (inst/sec) elapsed = 0:0:19:20 / Wed May 25 11:53:11 2011
+143600000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+143700000 instructions simulated : ctaid=(23,0,0) tid=(63,0,0)
+143800000 instructions simulated : ctaid=(18,0,0) tid=(31,0,0)
+143900000 instructions simulated : ctaid=(6,0,0) tid=(159,0,0)
+144000000 instructions simulated : ctaid=(25,0,0) tid=(127,0,0)
+cycles: 305000  inst.: 144037104 (ipc=472.3) sim_rate=123743 (inst/sec) elapsed = 0:0:19:24 / Wed May 25 11:53:15 2011
+144100000 instructions simulated : ctaid=(28,0,0) tid=(191,0,0)
+144200000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+144300000 instructions simulated : ctaid=(9,0,0) tid=(191,0,0)
+144400000 instructions simulated : ctaid=(24,0,0) tid=(159,0,0)
+144500000 instructions simulated : ctaid=(17,0,0) tid=(223,0,0)
+cycles: 306000  inst.: 144508688 (ipc=472.3) sim_rate=123723 (inst/sec) elapsed = 0:0:19:28 / Wed May 25 11:53:19 2011
+144600000 instructions simulated : ctaid=(25,0,0) tid=(223,0,0)
+144700000 instructions simulated : ctaid=(22,0,0) tid=(191,0,0)
+144800000 instructions simulated : ctaid=(16,0,0) tid=(191,0,0)
+144900000 instructions simulated : ctaid=(21,0,0) tid=(63,0,0)
+cycles: 307000  inst.: 144981488 (ipc=472.3) sim_rate=123704 (inst/sec) elapsed = 0:0:19:32 / Wed May 25 11:53:23 2011
+145000000 instructions simulated : ctaid=(7,0,0) tid=(31,0,0)
+145100000 instructions simulated : ctaid=(26,0,0) tid=(127,0,0)
+145200000 instructions simulated : ctaid=(26,0,0) tid=(31,0,0)
+145300000 instructions simulated : ctaid=(18,0,0) tid=(63,0,0)
+145400000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+cycles: 308000  inst.: 145454736 (ipc=472.3) sim_rate=123791 (inst/sec) elapsed = 0:0:19:35 / Wed May 25 11:53:26 2011
+145500000 instructions simulated : ctaid=(28,0,0) tid=(127,0,0)
+145600000 instructions simulated : ctaid=(12,0,0) tid=(95,0,0)
+145700000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+145800000 instructions simulated : ctaid=(15,0,0) tid=(127,0,0)
+145900000 instructions simulated : ctaid=(12,0,0) tid=(95,0,0)
+cycles: 309000  inst.: 145926672 (ipc=472.3) sim_rate=123771 (inst/sec) elapsed = 0:0:19:39 / Wed May 25 11:53:30 2011
+146000000 instructions simulated : ctaid=(17,0,0) tid=(159,0,0)
+146100000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+146200000 instructions simulated : ctaid=(13,0,0) tid=(95,0,0)
+146300000 instructions simulated : ctaid=(25,0,0) tid=(223,0,0)
+146400000 instructions simulated : ctaid=(16,0,0) tid=(63,0,0)
+cycles: 310000  inst.: 146398688 (ipc=472.3) sim_rate=123752 (inst/sec) elapsed = 0:0:19:43 / Wed May 25 11:53:34 2011
+146500000 instructions simulated : ctaid=(17,0,0) tid=(223,0,0)
+146600000 instructions simulated : ctaid=(15,0,0) tid=(31,0,0)
+146700000 instructions simulated : ctaid=(19,0,0) tid=(95,0,0)
+146800000 instructions simulated : ctaid=(31,0,0) tid=(223,0,0)
+cycles: 311000  inst.: 146870288 (ipc=472.3) sim_rate=123732 (inst/sec) elapsed = 0:0:19:47 / Wed May 25 11:53:38 2011
+146900000 instructions simulated : ctaid=(24,0,0) tid=(255,0,0)
+147000000 instructions simulated : ctaid=(4,0,0) tid=(159,0,0)
+147100000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+147200000 instructions simulated : ctaid=(17,0,0) tid=(31,0,0)
+147300000 instructions simulated : ctaid=(0,0,0) tid=(63,0,0)
+cycles: 312000  inst.: 147343344 (ipc=472.3) sim_rate=123713 (inst/sec) elapsed = 0:0:19:51 / Wed May 25 11:53:42 2011
+147400000 instructions simulated : ctaid=(9,0,0) tid=(159,0,0)
+147500000 instructions simulated : ctaid=(12,0,0) tid=(95,0,0)
+147600000 instructions simulated : ctaid=(0,0,0) tid=(95,0,0)
+147700000 instructions simulated : ctaid=(21,0,0) tid=(191,0,0)
+147800000 instructions simulated : ctaid=(19,0,0) tid=(95,0,0)
+cycles: 313000  inst.: 147813248 (ipc=472.2) sim_rate=123796 (inst/sec) elapsed = 0:0:19:54 / Wed May 25 11:53:45 2011
+147900000 instructions simulated : ctaid=(18,0,0) tid=(63,0,0)
+148000000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+148100000 instructions simulated : ctaid=(17,0,0) tid=(191,0,0)
+148200000 instructions simulated : ctaid=(8,0,0) tid=(223,0,0)
+cycles: 314000  inst.: 148286720 (ipc=472.3) sim_rate=123778 (inst/sec) elapsed = 0:0:19:58 / Wed May 25 11:53:49 2011
+148300000 instructions simulated : ctaid=(13,0,0) tid=(95,0,0)
+148400000 instructions simulated : ctaid=(2,0,0) tid=(159,0,0)
+148500000 instructions simulated : ctaid=(25,0,0) tid=(255,0,0)
+148600000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+148700000 instructions simulated : ctaid=(3,0,0) tid=(63,0,0)
+cycles: 315000  inst.: 148758960 (ipc=472.3) sim_rate=123759 (inst/sec) elapsed = 0:0:20:02 / Wed May 25 11:53:53 2011
+148800000 instructions simulated : ctaid=(27,0,0) tid=(95,0,0)
+148900000 instructions simulated : ctaid=(27,0,0) tid=(255,0,0)
+149000000 instructions simulated : ctaid=(6,0,0) tid=(95,0,0)
+149100000 instructions simulated : ctaid=(22,0,0) tid=(31,0,0)
+149200000 instructions simulated : ctaid=(2,0,0) tid=(191,0,0)
+cycles: 316000  inst.: 149231808 (ipc=472.3) sim_rate=123741 (inst/sec) elapsed = 0:0:20:06 / Wed May 25 11:53:57 2011
+149300000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+149400000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+149500000 instructions simulated : ctaid=(28,0,0) tid=(255,0,0)
+149600000 instructions simulated : ctaid=(31,0,0) tid=(95,0,0)
+149700000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+cycles: 317000  inst.: 149703952 (ipc=472.3) sim_rate=123824 (inst/sec) elapsed = 0:0:20:09 / Wed May 25 11:54:00 2011
+149800000 instructions simulated : ctaid=(18,0,0) tid=(127,0,0)
+149900000 instructions simulated : ctaid=(23,0,0) tid=(255,0,0)
+150000000 instructions simulated : ctaid=(30,0,0) tid=(31,0,0)
+150100000 instructions simulated : ctaid=(10,0,0) tid=(127,0,0)
+cycles: 318000  inst.: 150176176 (ipc=472.3) sim_rate=123805 (inst/sec) elapsed = 0:0:20:13 / Wed May 25 11:54:04 2011
+150200000 instructions simulated : ctaid=(1,0,0) tid=(31,0,0)
+150300000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+150400000 instructions simulated : ctaid=(21,0,0) tid=(63,0,0)
+150500000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+150600000 instructions simulated : ctaid=(5,0,0) tid=(191,0,0)
+cycles: 319000  inst.: 150648016 (ipc=472.3) sim_rate=123786 (inst/sec) elapsed = 0:0:20:17 / Wed May 25 11:54:08 2011
+150700000 instructions simulated : ctaid=(6,0,0) tid=(95,0,0)
+150800000 instructions simulated : ctaid=(19,0,0) tid=(95,0,0)
+150900000 instructions simulated : ctaid=(19,0,0) tid=(127,0,0)
+151000000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+151100000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+cycles: 320000  inst.: 151120304 (ipc=472.3) sim_rate=123767 (inst/sec) elapsed = 0:0:20:21 / Wed May 25 11:54:12 2011
+151200000 instructions simulated : ctaid=(12,0,0) tid=(63,0,0)
+151300000 instructions simulated : ctaid=(8,0,0) tid=(191,0,0)
+151400000 instructions simulated : ctaid=(31,0,0) tid=(159,0,0)
+151500000 instructions simulated : ctaid=(22,0,0) tid=(191,0,0)
+cycles: 321000  inst.: 151591440 (ipc=472.2) sim_rate=123748 (inst/sec) elapsed = 0:0:20:25 / Wed May 25 11:54:16 2011
+151600000 instructions simulated : ctaid=(17,0,0) tid=(191,0,0)
+151700000 instructions simulated : ctaid=(15,0,0) tid=(127,0,0)
+151800000 instructions simulated : ctaid=(29,0,0) tid=(191,0,0)
+151900000 instructions simulated : ctaid=(0,0,0) tid=(127,0,0)
+152000000 instructions simulated : ctaid=(25,0,0) tid=(95,0,0)
+cycles: 322000  inst.: 152064144 (ipc=472.2) sim_rate=123830 (inst/sec) elapsed = 0:0:20:28 / Wed May 25 11:54:19 2011
+152100000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+152200000 instructions simulated : ctaid=(23,0,0) tid=(223,0,0)
+152300000 instructions simulated : ctaid=(11,0,0) tid=(63,0,0)
+152400000 instructions simulated : ctaid=(18,0,0) tid=(63,0,0)
+152500000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+cycles: 323000  inst.: 152536880 (ipc=472.3) sim_rate=123812 (inst/sec) elapsed = 0:0:20:32 / Wed May 25 11:54:23 2011
+152600000 instructions simulated : ctaid=(3,0,0) tid=(159,0,0)
+152700000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+152800000 instructions simulated : ctaid=(23,0,0) tid=(255,0,0)
+152900000 instructions simulated : ctaid=(21,0,0) tid=(255,0,0)
+153000000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+cycles: 324000  inst.: 153009392 (ipc=472.3) sim_rate=123794 (inst/sec) elapsed = 0:0:20:36 / Wed May 25 11:54:27 2011
+153100000 instructions simulated : ctaid=(21,0,0) tid=(31,0,0)
+153200000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+153300000 instructions simulated : ctaid=(1,0,0) tid=(223,0,0)
+153400000 instructions simulated : ctaid=(20,0,0) tid=(31,0,0)
+cycles: 325000  inst.: 153479136 (ipc=472.2) sim_rate=123773 (inst/sec) elapsed = 0:0:20:40 / Wed May 25 11:54:31 2011
+153500000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+153600000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+153700000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+153800000 instructions simulated : ctaid=(4,0,0) tid=(223,0,0)
+153900000 instructions simulated : ctaid=(4,0,0) tid=(31,0,0)
+cycles: 326000  inst.: 153953104 (ipc=472.2) sim_rate=123756 (inst/sec) elapsed = 0:0:20:44 / Wed May 25 11:54:35 2011
+154000000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+154100000 instructions simulated : ctaid=(31,0,0) tid=(223,0,0)
+154200000 instructions simulated : ctaid=(20,0,0) tid=(31,0,0)
+154300000 instructions simulated : ctaid=(28,0,0) tid=(95,0,0)
+154400000 instructions simulated : ctaid=(4,0,0) tid=(31,0,0)
+cycles: 327000  inst.: 154425424 (ipc=472.2) sim_rate=123837 (inst/sec) elapsed = 0:0:20:47 / Wed May 25 11:54:38 2011
+154500000 instructions simulated : ctaid=(16,0,0) tid=(255,0,0)
+154600000 instructions simulated : ctaid=(31,0,0) tid=(63,0,0)
+154700000 instructions simulated : ctaid=(9,0,0) tid=(63,0,0)
+154800000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+154900000 instructions simulated : ctaid=(25,0,0) tid=(255,0,0)
+cycles: 328000  inst.: 154896464 (ipc=472.2) sim_rate=123818 (inst/sec) elapsed = 0:0:20:51 / Wed May 25 11:54:42 2011
+155000000 instructions simulated : ctaid=(27,0,0) tid=(63,0,0)
+155100000 instructions simulated : ctaid=(12,0,0) tid=(255,0,0)
+155200000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+155300000 instructions simulated : ctaid=(19,0,0) tid=(63,0,0)
+cycles: 329000  inst.: 155369120 (ipc=472.2) sim_rate=123800 (inst/sec) elapsed = 0:0:20:55 / Wed May 25 11:54:46 2011
+155400000 instructions simulated : ctaid=(17,0,0) tid=(63,0,0)
+155500000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+155600000 instructions simulated : ctaid=(18,0,0) tid=(255,0,0)
+155700000 instructions simulated : ctaid=(25,0,0) tid=(95,0,0)
+155800000 instructions simulated : ctaid=(27,0,0) tid=(95,0,0)
+cycles: 330000  inst.: 155840976 (ipc=472.2) sim_rate=123781 (inst/sec) elapsed = 0:0:20:59 / Wed May 25 11:54:50 2011
+155900000 instructions simulated : ctaid=(4,0,0) tid=(223,0,0)
+156000000 instructions simulated : ctaid=(8,0,0) tid=(191,0,0)
+156100000 instructions simulated : ctaid=(27,0,0) tid=(255,0,0)
+156200000 instructions simulated : ctaid=(12,0,0) tid=(191,0,0)
+156300000 instructions simulated : ctaid=(22,0,0) tid=(223,0,0)
+cycles: 331000  inst.: 156312704 (ipc=472.2) sim_rate=123763 (inst/sec) elapsed = 0:0:21:03 / Wed May 25 11:54:54 2011
+156400000 instructions simulated : ctaid=(14,0,0) tid=(63,0,0)
+156500000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+156600000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+156700000 instructions simulated : ctaid=(6,0,0) tid=(159,0,0)
+cycles: 332000  inst.: 156784336 (ipc=472.2) sim_rate=123744 (inst/sec) elapsed = 0:0:21:07 / Wed May 25 11:54:58 2011
+156800000 instructions simulated : ctaid=(29,0,0) tid=(63,0,0)
+156900000 instructions simulated : ctaid=(15,0,0) tid=(31,0,0)
+157000000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+157100000 instructions simulated : ctaid=(15,0,0) tid=(95,0,0)
+157200000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+cycles: 333000  inst.: 157257568 (ipc=472.2) sim_rate=123824 (inst/sec) elapsed = 0:0:21:10 / Wed May 25 11:55:01 2011
+157300000 instructions simulated : ctaid=(17,0,0) tid=(127,0,0)
+157400000 instructions simulated : ctaid=(22,0,0) tid=(191,0,0)
+157500000 instructions simulated : ctaid=(31,0,0) tid=(159,0,0)
+157600000 instructions simulated : ctaid=(13,0,0) tid=(127,0,0)
+157700000 instructions simulated : ctaid=(22,0,0) tid=(31,0,0)
+cycles: 334000  inst.: 157730032 (ipc=472.2) sim_rate=123806 (inst/sec) elapsed = 0:0:21:14 / Wed May 25 11:55:05 2011
+157800000 instructions simulated : ctaid=(26,0,0) tid=(223,0,0)
+157900000 instructions simulated : ctaid=(11,0,0) tid=(255,0,0)
+158000000 instructions simulated : ctaid=(12,0,0) tid=(255,0,0)
+158100000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+158200000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+cycles: 335000  inst.: 158202336 (ipc=472.2) sim_rate=123788 (inst/sec) elapsed = 0:0:21:18 / Wed May 25 11:55:09 2011
+158300000 instructions simulated : ctaid=(17,0,0) tid=(159,0,0)
+158400000 instructions simulated : ctaid=(10,0,0) tid=(255,0,0)
+158500000 instructions simulated : ctaid=(21,0,0) tid=(191,0,0)
+158600000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+cycles: 336000  inst.: 158673920 (ipc=472.2) sim_rate=123770 (inst/sec) elapsed = 0:0:21:22 / Wed May 25 11:55:13 2011
+158700000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+158800000 instructions simulated : ctaid=(8,0,0) tid=(191,0,0)
+158900000 instructions simulated : ctaid=(11,0,0) tid=(95,0,0)
+159000000 instructions simulated : ctaid=(21,0,0) tid=(127,0,0)
+159100000 instructions simulated : ctaid=(4,0,0) tid=(31,0,0)
+cycles: 337000  inst.: 159144736 (ipc=472.2) sim_rate=123751 (inst/sec) elapsed = 0:0:21:26 / Wed May 25 11:55:17 2011
+159200000 instructions simulated : ctaid=(21,0,0) tid=(255,0,0)
+159300000 instructions simulated : ctaid=(3,0,0) tid=(159,0,0)
+159400000 instructions simulated : ctaid=(29,0,0) tid=(63,0,0)
+159500000 instructions simulated : ctaid=(31,0,0) tid=(191,0,0)
+159600000 instructions simulated : ctaid=(15,0,0) tid=(255,0,0)
+cycles: 338000  inst.: 159618512 (ipc=472.2) sim_rate=123735 (inst/sec) elapsed = 0:0:21:30 / Wed May 25 11:55:21 2011
+159700000 instructions simulated : ctaid=(27,0,0) tid=(191,0,0)
+159800000 instructions simulated : ctaid=(19,0,0) tid=(255,0,0)
+159900000 instructions simulated : ctaid=(19,0,0) tid=(95,0,0)
+160000000 instructions simulated : ctaid=(25,0,0) tid=(191,0,0)
+cycles: 339000  inst.: 160090128 (ipc=472.2) sim_rate=123812 (inst/sec) elapsed = 0:0:21:33 / Wed May 25 11:55:24 2011
+160100000 instructions simulated : ctaid=(18,0,0) tid=(191,0,0)
+160200000 instructions simulated : ctaid=(24,0,0) tid=(255,0,0)
+160300000 instructions simulated : ctaid=(22,0,0) tid=(159,0,0)
+160400000 instructions simulated : ctaid=(15,0,0) tid=(31,0,0)
+160500000 instructions simulated : ctaid=(29,0,0) tid=(191,0,0)
+cycles: 340000  inst.: 160560208 (ipc=472.2) sim_rate=123793 (inst/sec) elapsed = 0:0:21:37 / Wed May 25 11:55:28 2011
+160600000 instructions simulated : ctaid=(1,0,0) tid=(191,0,0)
+160700000 instructions simulated : ctaid=(14,0,0) tid=(127,0,0)
+160800000 instructions simulated : ctaid=(26,0,0) tid=(31,0,0)
+160900000 instructions simulated : ctaid=(17,0,0) tid=(255,0,0)
+161000000 instructions simulated : ctaid=(16,0,0) tid=(223,0,0)
+cycles: 341000  inst.: 161034656 (ipc=472.2) sim_rate=123777 (inst/sec) elapsed = 0:0:21:41 / Wed May 25 11:55:32 2011
+161100000 instructions simulated : ctaid=(7,0,0) tid=(127,0,0)
+161200000 instructions simulated : ctaid=(20,0,0) tid=(31,0,0)
+161300000 instructions simulated : ctaid=(14,0,0) tid=(255,0,0)
+161400000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+161500000 instructions simulated : ctaid=(29,0,0) tid=(95,0,0)
+cycles: 342000  inst.: 161506912 (ipc=472.2) sim_rate=123760 (inst/sec) elapsed = 0:0:21:45 / Wed May 25 11:55:36 2011
+161600000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+161700000 instructions simulated : ctaid=(28,0,0) tid=(191,0,0)
+161800000 instructions simulated : ctaid=(17,0,0) tid=(63,0,0)
+161900000 instructions simulated : ctaid=(28,0,0) tid=(159,0,0)
+cycles: 343000  inst.: 161978720 (ipc=472.2) sim_rate=123742 (inst/sec) elapsed = 0:0:21:49 / Wed May 25 11:55:40 2011
+162000000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+162100000 instructions simulated : ctaid=(12,0,0) tid=(223,0,0)
+162200000 instructions simulated : ctaid=(8,0,0) tid=(255,0,0)
+162300000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+162400000 instructions simulated : ctaid=(11,0,0) tid=(159,0,0)
+cycles: 344000  inst.: 162449712 (ipc=472.2) sim_rate=123724 (inst/sec) elapsed = 0:0:21:53 / Wed May 25 11:55:44 2011
+162500000 instructions simulated : ctaid=(21,0,0) tid=(127,0,0)
+162600000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+162700000 instructions simulated : ctaid=(3,0,0) tid=(191,0,0)
+162800000 instructions simulated : ctaid=(8,0,0) tid=(223,0,0)
+162900000 instructions simulated : ctaid=(30,0,0) tid=(159,0,0)
+cycles: 345000  inst.: 162922944 (ipc=472.2) sim_rate=123801 (inst/sec) elapsed = 0:0:21:56 / Wed May 25 11:55:47 2011
+163000000 instructions simulated : ctaid=(3,0,0) tid=(127,0,0)
+163100000 instructions simulated : ctaid=(14,0,0) tid=(63,0,0)
+163200000 instructions simulated : ctaid=(2,0,0) tid=(63,0,0)
+163300000 instructions simulated : ctaid=(15,0,0) tid=(223,0,0)
+163400000 instructions simulated : ctaid=(28,0,0) tid=(127,0,0)
+cycles: 346000  inst.: 163395136 (ipc=472.2) sim_rate=123784 (inst/sec) elapsed = 0:0:22:00 / Wed May 25 11:55:51 2011
+163500000 instructions simulated : ctaid=(20,0,0) tid=(191,0,0)
+163600000 instructions simulated : ctaid=(7,0,0) tid=(255,0,0)
+163700000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+163800000 instructions simulated : ctaid=(11,0,0) tid=(223,0,0)
+cycles: 347000  inst.: 163868032 (ipc=472.2) sim_rate=123767 (inst/sec) elapsed = 0:0:22:04 / Wed May 25 11:55:55 2011
+163900000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+164000000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+164100000 instructions simulated : ctaid=(7,0,0) tid=(255,0,0)
+164200000 instructions simulated : ctaid=(11,0,0) tid=(31,0,0)
+164300000 instructions simulated : ctaid=(18,0,0) tid=(159,0,0)
+cycles: 348000  inst.: 164338992 (ipc=472.2) sim_rate=123749 (inst/sec) elapsed = 0:0:22:08 / Wed May 25 11:55:59 2011
+164400000 instructions simulated : ctaid=(20,0,0) tid=(63,0,0)
+164500000 instructions simulated : ctaid=(5,0,0) tid=(31,0,0)
+164600000 instructions simulated : ctaid=(12,0,0) tid=(159,0,0)
+164700000 instructions simulated : ctaid=(12,0,0) tid=(255,0,0)
+164800000 instructions simulated : ctaid=(9,0,0) tid=(95,0,0)
+cycles: 349000  inst.: 164810656 (ipc=472.2) sim_rate=123731 (inst/sec) elapsed = 0:0:22:12 / Wed May 25 11:56:03 2011
+164900000 instructions simulated : ctaid=(31,0,0) tid=(159,0,0)
+165000000 instructions simulated : ctaid=(13,0,0) tid=(191,0,0)
+165100000 instructions simulated : ctaid=(8,0,0) tid=(159,0,0)
+165200000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+cycles: 350000  inst.: 165283696 (ipc=472.2) sim_rate=123808 (inst/sec) elapsed = 0:0:22:15 / Wed May 25 11:56:06 2011
+165300000 instructions simulated : ctaid=(17,0,0) tid=(191,0,0)
+165400000 instructions simulated : ctaid=(21,0,0) tid=(223,0,0)
+165500000 instructions simulated : ctaid=(17,0,0) tid=(191,0,0)
+165600000 instructions simulated : ctaid=(20,0,0) tid=(223,0,0)
+165700000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+cycles: 351000  inst.: 165755712 (ipc=472.2) sim_rate=123790 (inst/sec) elapsed = 0:0:22:19 / Wed May 25 11:56:10 2011
+165800000 instructions simulated : ctaid=(4,0,0) tid=(95,0,0)
+165900000 instructions simulated : ctaid=(24,0,0) tid=(95,0,0)
+166000000 instructions simulated : ctaid=(27,0,0) tid=(31,0,0)
+166100000 instructions simulated : ctaid=(14,0,0) tid=(95,0,0)
+166200000 instructions simulated : ctaid=(17,0,0) tid=(255,0,0)
+cycles: 352000  inst.: 166227152 (ipc=472.2) sim_rate=123773 (inst/sec) elapsed = 0:0:22:23 / Wed May 25 11:56:14 2011
+166300000 instructions simulated : ctaid=(28,0,0) tid=(159,0,0)
+166400000 instructions simulated : ctaid=(16,0,0) tid=(63,0,0)
+166500000 instructions simulated : ctaid=(17,0,0) tid=(159,0,0)
+166600000 instructions simulated : ctaid=(6,0,0) tid=(223,0,0)
+166700000 instructions simulated : ctaid=(1,0,0) tid=(159,0,0)
+cycles: 353000  inst.: 166699504 (ipc=472.2) sim_rate=123756 (inst/sec) elapsed = 0:0:22:27 / Wed May 25 11:56:18 2011
+166800000 instructions simulated : ctaid=(14,0,0) tid=(191,0,0)
+166900000 instructions simulated : ctaid=(25,0,0) tid=(159,0,0)
+167000000 instructions simulated : ctaid=(8,0,0) tid=(63,0,0)
+167100000 instructions simulated : ctaid=(2,0,0) tid=(223,0,0)
+cycles: 354000  inst.: 167171344 (ipc=472.2) sim_rate=123738 (inst/sec) elapsed = 0:0:22:31 / Wed May 25 11:56:22 2011
+167200000 instructions simulated : ctaid=(18,0,0) tid=(95,0,0)
+167300000 instructions simulated : ctaid=(0,0,0) tid=(31,0,0)
+167400000 instructions simulated : ctaid=(14,0,0) tid=(95,0,0)
+167500000 instructions simulated : ctaid=(13,0,0) tid=(159,0,0)
+167600000 instructions simulated : ctaid=(10,0,0) tid=(191,0,0)
+cycles: 355000  inst.: 167643248 (ipc=472.2) sim_rate=123721 (inst/sec) elapsed = 0:0:22:35 / Wed May 25 11:56:26 2011
+167700000 instructions simulated : ctaid=(0,0,0) tid=(255,0,0)
+167800000 instructions simulated : ctaid=(13,0,0) tid=(159,0,0)
+167900000 instructions simulated : ctaid=(14,0,0) tid=(159,0,0)
+168000000 instructions simulated : ctaid=(29,0,0) tid=(191,0,0)
+168100000 instructions simulated : ctaid=(19,0,0) tid=(63,0,0)
+cycles: 356000  inst.: 168116272 (ipc=472.2) sim_rate=123796 (inst/sec) elapsed = 0:0:22:38 / Wed May 25 11:56:29 2011
+168200000 instructions simulated : ctaid=(3,0,0) tid=(191,0,0)
+168300000 instructions simulated : ctaid=(28,0,0) tid=(127,0,0)
+168400000 instructions simulated : ctaid=(24,0,0) tid=(63,0,0)
+168500000 instructions simulated : ctaid=(0,0,0) tid=(63,0,0)
+cycles: 357000  inst.: 168589088 (ipc=472.2) sim_rate=123780 (inst/sec) elapsed = 0:0:22:42 / Wed May 25 11:56:33 2011
+168600000 instructions simulated : ctaid=(1,0,0) tid=(191,0,0)
+168700000 instructions simulated : ctaid=(26,0,0) tid=(63,0,0)
+168800000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+168900000 instructions simulated : ctaid=(8,0,0) tid=(223,0,0)
+169000000 instructions simulated : ctaid=(17,0,0) tid=(95,0,0)
+cycles: 358000  inst.: 169060816 (ipc=472.2) sim_rate=123763 (inst/sec) elapsed = 0:0:22:46 / Wed May 25 11:56:37 2011
+169100000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+169200000 instructions simulated : ctaid=(23,0,0) tid=(95,0,0)
+169300000 instructions simulated : ctaid=(2,0,0) tid=(63,0,0)
+169400000 instructions simulated : ctaid=(17,0,0) tid=(63,0,0)
+169500000 instructions simulated : ctaid=(16,0,0) tid=(255,0,0)
+cycles: 359000  inst.: 169532560 (ipc=472.2) sim_rate=123746 (inst/sec) elapsed = 0:0:22:50 / Wed May 25 11:56:41 2011
+169600000 instructions simulated : ctaid=(4,0,0) tid=(255,0,0)
+169700000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+169800000 instructions simulated : ctaid=(23,0,0) tid=(255,0,0)
+169900000 instructions simulated : ctaid=(4,0,0) tid=(159,0,0)
+170000000 instructions simulated : ctaid=(2,0,0) tid=(191,0,0)
+cycles: 360000  inst.: 170004896 (ipc=472.2) sim_rate=123729 (inst/sec) elapsed = 0:0:22:54 / Wed May 25 11:56:45 2011
+170100000 instructions simulated : ctaid=(4,0,0) tid=(63,0,0)
+170200000 instructions simulated : ctaid=(20,0,0) tid=(95,0,0)
+170300000 instructions simulated : ctaid=(9,0,0) tid=(223,0,0)
+170400000 instructions simulated : ctaid=(19,0,0) tid=(127,0,0)
+cycles: 361000  inst.: 170474736 (ipc=472.2) sim_rate=123801 (inst/sec) elapsed = 0:0:22:57 / Wed May 25 11:56:48 2011
+170500000 instructions simulated : ctaid=(11,0,0) tid=(191,0,0)
+170600000 instructions simulated : ctaid=(26,0,0) tid=(95,0,0)
+170700000 instructions simulated : ctaid=(2,0,0) tid=(31,0,0)
+170800000 instructions simulated : ctaid=(31,0,0) tid=(159,0,0)
+170900000 instructions simulated : ctaid=(20,0,0) tid=(63,0,0)
+cycles: 362000  inst.: 170948496 (ipc=472.2) sim_rate=123786 (inst/sec) elapsed = 0:0:23:01 / Wed May 25 11:56:52 2011
+171000000 instructions simulated : ctaid=(30,0,0) tid=(191,0,0)
+171100000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+171200000 instructions simulated : ctaid=(27,0,0) tid=(159,0,0)
+171300000 instructions simulated : ctaid=(6,0,0) tid=(63,0,0)
+171400000 instructions simulated : ctaid=(0,0,0) tid=(95,0,0)
+cycles: 363000  inst.: 171420496 (ipc=472.2) sim_rate=123769 (inst/sec) elapsed = 0:0:23:05 / Wed May 25 11:56:56 2011
+171500000 instructions simulated : ctaid=(7,0,0) tid=(159,0,0)
+171600000 instructions simulated : ctaid=(22,0,0) tid=(127,0,0)
+171700000 instructions simulated : ctaid=(3,0,0) tid=(95,0,0)
+171800000 instructions simulated : ctaid=(28,0,0) tid=(223,0,0)
+cycles: 364000  inst.: 171892496 (ipc=472.2) sim_rate=123752 (inst/sec) elapsed = 0:0:23:09 / Wed May 25 11:57:00 2011
+171900000 instructions simulated : ctaid=(26,0,0) tid=(191,0,0)
+172000000 instructions simulated : ctaid=(3,0,0) tid=(127,0,0)
+172100000 instructions simulated : ctaid=(19,0,0) tid=(31,0,0)
+172200000 instructions simulated : ctaid=(13,0,0) tid=(223,0,0)
+172300000 instructions simulated : ctaid=(29,0,0) tid=(159,0,0)
+cycles: 365000  inst.: 172365360 (ipc=472.2) sim_rate=123736 (inst/sec) elapsed = 0:0:23:13 / Wed May 25 11:57:04 2011
+172400000 instructions simulated : ctaid=(26,0,0) tid=(159,0,0)
+172500000 instructions simulated : ctaid=(11,0,0) tid=(127,0,0)
+172600000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+172700000 instructions simulated : ctaid=(1,0,0) tid=(127,0,0)
+172800000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+cycles: 366000  inst.: 172837440 (ipc=472.2) sim_rate=123720 (inst/sec) elapsed = 0:0:23:17 / Wed May 25 11:57:08 2011
+172900000 instructions simulated : ctaid=(4,0,0) tid=(223,0,0)
+173000000 instructions simulated : ctaid=(3,0,0) tid=(31,0,0)
+173100000 instructions simulated : ctaid=(24,0,0) tid=(255,0,0)
+173200000 instructions simulated : ctaid=(2,0,0) tid=(159,0,0)
+173300000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+cycles: 367000  inst.: 173308400 (ipc=472.2) sim_rate=123703 (inst/sec) elapsed = 0:0:23:21 / Wed May 25 11:57:12 2011
+173400000 instructions simulated : ctaid=(8,0,0) tid=(159,0,0)
+173500000 instructions simulated : ctaid=(13,0,0) tid=(127,0,0)
+173600000 instructions simulated : ctaid=(20,0,0) tid=(127,0,0)
+173700000 instructions simulated : ctaid=(19,0,0) tid=(63,0,0)
+cycles: 368000  inst.: 173782000 (ipc=472.2) sim_rate=123776 (inst/sec) elapsed = 0:0:23:24 / Wed May 25 11:57:15 2011
+173800000 instructions simulated : ctaid=(6,0,0) tid=(159,0,0)
+173900000 instructions simulated : ctaid=(23,0,0) tid=(31,0,0)
+174000000 instructions simulated : ctaid=(21,0,0) tid=(159,0,0)
+174100000 instructions simulated : ctaid=(17,0,0) tid=(127,0,0)
+174200000 instructions simulated : ctaid=(2,0,0) tid=(127,0,0)
+cycles: 369000  inst.: 174254480 (ipc=472.2) sim_rate=123760 (inst/sec) elapsed = 0:0:23:28 / Wed May 25 11:57:19 2011
+174300000 instructions simulated : ctaid=(25,0,0) tid=(63,0,0)
+174400000 instructions simulated : ctaid=(3,0,0) tid=(127,0,0)
+174500000 instructions simulated : ctaid=(9,0,0) tid=(31,0,0)
+174600000 instructions simulated : ctaid=(16,0,0) tid=(95,0,0)
+174700000 instructions simulated : ctaid=(30,0,0) tid=(159,0,0)
+cycles: 370000  inst.: 174726176 (ipc=472.2) sim_rate=123743 (inst/sec) elapsed = 0:0:23:32 / Wed May 25 11:57:23 2011
+174800000 instructions simulated : ctaid=(8,0,0) tid=(95,0,0)
+174900000 instructions simulated : ctaid=(0,0,0) tid=(95,0,0)
+175000000 instructions simulated : ctaid=(6,0,0) tid=(191,0,0)
+175100000 instructions simulated : ctaid=(12,0,0) tid=(223,0,0)
+175200000 instructions simulated : ctaid=(1,0,0) tid=(127,0,0)
+cycles: 371000  inst.: 175196256 (ipc=472.2) sim_rate=123726 (inst/sec) elapsed = 0:0:23:36 / Wed May 25 11:57:27 2011
+175300000 instructions simulated : ctaid=(10,0,0) tid=(255,0,0)
+175400000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+175500000 instructions simulated : ctaid=(16,0,0) tid=(159,0,0)
+175600000 instructions simulated : ctaid=(19,0,0) tid=(159,0,0)
+cycles: 372000  inst.: 175668768 (ipc=472.2) sim_rate=123710 (inst/sec) elapsed = 0:0:23:40 / Wed May 25 11:57:31 2011
+175700000 instructions simulated : ctaid=(14,0,0) tid=(191,0,0)
+175800000 instructions simulated : ctaid=(1,0,0) tid=(223,0,0)
+175900000 instructions simulated : ctaid=(6,0,0) tid=(31,0,0)
+176000000 instructions simulated : ctaid=(0,0,0) tid=(159,0,0)
+176100000 instructions simulated : ctaid=(16,0,0) tid=(63,0,0)
+cycles: 373000  inst.: 176143040 (ipc=472.2) sim_rate=123782 (inst/sec) elapsed = 0:0:23:43 / Wed May 25 11:57:34 2011
+176200000 instructions simulated : ctaid=(29,0,0) tid=(255,0,0)
+176300000 instructions simulated : ctaid=(15,0,0) tid=(95,0,0)
+176400000 instructions simulated : ctaid=(29,0,0) tid=(31,0,0)
+176500000 instructions simulated : ctaid=(7,0,0) tid=(63,0,0)
+176600000 instructions simulated : ctaid=(24,0,0) tid=(95,0,0)
+cycles: 374000  inst.: 176613856 (ipc=472.2) sim_rate=123765 (inst/sec) elapsed = 0:0:23:47 / Wed May 25 11:57:38 2011
+176700000 instructions simulated : ctaid=(24,0,0) tid=(223,0,0)
+176800000 instructions simulated : ctaid=(13,0,0) tid=(63,0,0)
+176900000 instructions simulated : ctaid=(31,0,0) tid=(63,0,0)
+177000000 instructions simulated : ctaid=(5,0,0) tid=(95,0,0)
+cycles: 375000  inst.: 177086528 (ipc=472.2) sim_rate=123750 (inst/sec) elapsed = 0:0:23:51 / Wed May 25 11:57:42 2011
+177100000 instructions simulated : ctaid=(26,0,0) tid=(31,0,0)
+177200000 instructions simulated : ctaid=(24,0,0) tid=(191,0,0)
+177300000 instructions simulated : ctaid=(20,0,0) tid=(31,0,0)
+177400000 instructions simulated : ctaid=(2,0,0) tid=(223,0,0)
+177500000 instructions simulated : ctaid=(6,0,0) tid=(127,0,0)
+cycles: 376000  inst.: 177558656 (ipc=472.2) sim_rate=123734 (inst/sec) elapsed = 0:0:23:55 / Wed May 25 11:57:46 2011
