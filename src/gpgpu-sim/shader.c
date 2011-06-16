@@ -244,6 +244,9 @@ extern int g_pipetrace;  //pipetrace on/off
 //struct to contain timestamps for existence in different stages
 typedef struct pipe_stat_t {
   unsigned uid; //unique identifier for instruction
+  unsigned long long int memreqaddr;
+  short hw_thread_id;
+  unsigned char inst_type;
 
   unsigned issued;
   unsigned in_fetch;
@@ -267,7 +270,7 @@ void pipe_stat_write_file() {
 
   pfile = fopen(g_pipetrace_out, "w");
   //print header
-  fprintf(pfile, "Instruction ID:  issued fetch decode pre-exec exec pre-mem mem writeback\n");
+  fprintf(pfile, "Inst_type MemReqAddr Thread_ID InstructionID issued fetch decode pre-exec exec pre-mem mem writeback\n");
 
   /*TEST
   static int counting=0;
@@ -286,8 +289,11 @@ void pipe_stat_write_file() {
   //TEST*/
   //UNTEST
   while(curr != NULL) {
-    fprintf(pfile, "%14i", curr->uid);
-    fprintf(pfile, "%7u", curr->issued);
+    fprintf(pfile, "%5c ", curr->inst_type);
+    fprintf(pfile, "%14llu  ", curr->memreqaddr);
+    fprintf(pfile, "%5hu  ", curr->hw_thread_id);
+    fprintf(pfile, "%10i", curr->uid);
+    fprintf(pfile, "%10u", curr->issued);
     fprintf(pfile, "%6u", curr->in_fetch);
     fprintf(pfile, "%7u", curr->in_decode);
     fprintf(pfile, "%8u", curr->in_pre_exec);
@@ -865,6 +871,7 @@ void shader_issue_thread(shader_core_ctx_t *shader, int tid, int wlane, unsigned
 	pipe_stat_last->in_mem=0;
 	pipe_stat_last->in_writeback=0;
 	pipe_stat_last->uid = shader->pipeline_reg[wlane][TS_IF].uid;
+	pipe_stat_last->hw_thread_id = shader->pipeline_reg[wlane][TS_IF].hw_thread_id;
 	/*TEST
 	if(pipe_stat_last->uid == 60000) printf("Creating pipe_stat for uid %u\n", pipe_stat_last->uid);
 	//TEST*/
@@ -1895,6 +1902,15 @@ void shader_decode( shader_core_ctx_t *shader,
 	  while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][next_stage].uid)) curr = curr->prev;    
 	  assert(curr->uid == shader->pipeline_reg[i][next_stage].uid);
 	  curr->in_decode = gpu_sim_cycle;
+	  curr->memreqaddr = shader->pipeline_reg[i][next_stage].memreqaddr;
+	  switch(shader->pipeline_reg[i][next_stage].inst_type) {
+	    //	  case NO_OP:  curr->inst_type = 'N'; break;
+	  case ALU_OP:  curr->inst_type = 'A'; break;
+	  case LOAD_OP:  curr->inst_type = 'L'; break;
+	  case STORE_OP:  curr->inst_type = 'S'; break;
+	  case BRANCH_OP:  curr->inst_type = 'B'; break;
+	  default:  curr->inst_type = 'U';
+	  }
 	}
       }
    }
