@@ -67,6 +67,10 @@
 #include "ptx_sim.h"
 #include <stdio.h>
 #include <dirent.h>
+//SEAN
+#include <sstream>
+#include <iostream>
+#include <string>
 
 #include "opcodes.h"
 #include "../intersim/statwraper.h"
@@ -467,11 +471,15 @@ void function_info::ptx_assemble()
    s_g_pc_to_insn.reserve(s_g_pc_to_insn.size() + m_instructions.size());
    for ( i=m_instructions.begin(); i != m_instructions.end(); i++ ) {
       ptx_instruction *pI = *i;
+      /*TEST
+      pI->print_insn();
+      printf("\n");
+      //TEST*/
       if ( pI->is_label() ) {
          const symbol *l = pI->get_label();
          labels[l->name()] = n;
       } else {
-         g_pc_to_finfo[PC] = this;
+	 g_pc_to_finfo[PC] = this; //SEAN:  "this" is the address of the function_info object
          m_instr_mem[n] = pI;
          s_g_pc_to_insn.push_back(pI);
          assert(pI == s_g_pc_to_insn[PC - 1]);
@@ -1626,9 +1634,65 @@ void gpgpu_ptx_sim_load_ptx_from_string( const char *p, unsigned source_num )
        fprintf(fp,"%s",p);
        fclose(fp);
     }
+    /*TEST
+    printf("%s",p);
+    //TEST*/
+
+    //Search "p" for atomics and insert modify/write instructions if found
+    std::istringstream code(p);
+    std::ostringstream out;
+    std::string test;
+    std::string rest;
+    //    code << p;
+    while(code >> test) {
+      std::getline(code,rest); //get rest of line
+      out << test << rest << std::endl;
+
+      /*TEST
+      std::cout << out.str() << std::endl;
+      //TEST*/
+      if(test.compare(0,4,"atom") == 0) { //this is atomic instruction
+	/*TEST
+	std::cout << "FOUND ATOMIC INSN in line:  " << test << rest << std::endl;
+	//TEST*/
+
+	//extract operands
+	/*TEST
+	std::cout << "Rest is:  " << rest << std::endl;
+	//TEST*/
+	std::istringstream parse(rest);
+	std::string op1, op2, op3;
+	parse >> op1 >> op2 >> op3;
+	op1.erase(op1.length()-1,1);
+	op2.erase(op2.length()-1,1);
+	op3.erase(op3.length()-1,1);
+	/*TEST
+	std::cout << op1 << std::endl << op2 << std::endl  << op3 << std::endl;
+	//TEST*/
+
+	//create modify instruction & insert to "out"
+	//MODIFY to support other than adds
+	out << "add.s32\t" << op3 /*TODO dest*/ << ", " << op3 /*src1*/ << ", " << op2 /*TODO src2 - needs to be location of return value from atomic's load*/ << ";" << std::endl;
+
+	//create write instruction & insert to "out"
+	op2.erase(op2.length()-1,1);
+	out << "st.global.s32\t" << op2 /*TODO dest - same as *source* of src2 above*/ << "+0], " << op3 /*TODO src - same as dest above*/ << ";" << std::endl;
+      }
+      /*TEST
+      std::cout << test << std::endl << std::endl;
+      //TEST*/
+    }
+    std::string pass = out.str();
+    int last_line = pass.find_last_of('\n');
+    pass.substr(0, last_line);
+    /*TEST
+    std::cout << "Pass is: " << std::endl << pass << std::endl;
+    //TEST*/
+
     g_filename = strdup(buf);
     init_parser();
-    ptx__scan_string(p);
+    ptx__scan_string(pass.c_str());
+    //ptx__scan_string(p);
     int errors = ptx_parse ();
     if ( errors ) {
         char fname[1024];

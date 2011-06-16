@@ -1,0 +1,7 @@
+*tar.gz
+pipeline.txt
+*.o
+#*
+*log.gz
+*~
+_*
