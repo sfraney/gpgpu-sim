@@ -153,15 +153,15 @@ extern "C" void ptx_file_line_stats_write_file()
     fprintf(pfile,"kernel line : count latency dram_traffic smem_bk_conflicts smem_warp gmem_access_generated gmem_warp exposed_latency warp_divergence\n");
     for( it=ptx_file_line_stats_tracker.begin(); it != ptx_file_line_stats_tracker.end(); it++ ) {
         fprintf(pfile, "%s %i : ", it->first.st.c_str(), it->first.line);
-        fprintf(pfile, "%lu ", it->second.exec_count);
-        fprintf(pfile, "%llu ", it->second.latency);
-        fprintf(pfile, "%llu ", it->second.dram_traffic);
-        fprintf(pfile, "%llu ", it->second.smem_n_way_bank_conflict_total);
-        fprintf(pfile, "%lu ", it->second.smem_warp_count);
-        fprintf(pfile, "%llu ", it->second.gmem_n_access_total);
-        fprintf(pfile, "%lu ", it->second.gmem_warp_count);
-        fprintf(pfile, "%llu ", it->second.exposed_latency);
-        fprintf(pfile, "%llu ", it->second.warp_divergence);
+        fprintf(pfile, "%7lu", it->second.exec_count);
+        fprintf(pfile, "%7llu", it->second.latency);
+        fprintf(pfile, "%7llu", it->second.dram_traffic);
+        fprintf(pfile, "%17llu", it->second.smem_n_way_bank_conflict_total);
+        fprintf(pfile, "%14lu", it->second.smem_warp_count);
+        fprintf(pfile, "%15llu", it->second.gmem_n_access_total);
+        fprintf(pfile, "%17lu", it->second.gmem_warp_count);
+        fprintf(pfile, "%12llu", it->second.exposed_latency);
+        fprintf(pfile, "%16llu", it->second.warp_divergence);
         fprintf(pfile, "\n");
     }
     fflush(pfile);

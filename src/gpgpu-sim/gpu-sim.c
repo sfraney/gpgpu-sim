@@ -2047,6 +2047,7 @@ void gpu_sim_loop( int grid_num )
    // shader core loading (pop from ICNT into shader core) follows CORE clock
    if (clock_mask & CORE ) {
       for (i=0;i<gpu_n_tpc;i++) {
+	//SEAN:  Insert check for response here
          fq_pop(i); 
       }
    }
