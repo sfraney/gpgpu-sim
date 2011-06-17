@@ -1,7 +1,9 @@
 *tar.gz
-pipeline.txt
+*.txt
+*.a
 *.o
 #*
 *log.gz
 *~
 _*
+libcudart.so

@@ -3215,6 +3215,14 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
                                    shader->L1cache->line_sz,
                                    0, NO_PARTIAL_WRITE, shader->sid, mem_insn[i].hw_thread_id, mshr_e, 
                                    cache_hits_waiting, mem_acc, mem_insn[i].pc);
+		  /*TEST
+		  if(!mshr_e->iswrite) {
+		    printf("SEAN: %llu data read request pushed from core (1).  Time %llu (%u)\n", mshr_e->addr, gpu_sim_cycle, shader->gpu_cycle);
+		  }
+		  else {
+		    printf("SEAN: %llu data write request pushed from core (1).  Time %llu (%u)\n", mshr_e->addr, gpu_sim_cycle, shader->gpu_cycle);
+		  }
+		  //TEST*/
                   shader->n_mshr_used++;
 
                   shader->mshr_up_counter++;
@@ -3265,6 +3273,14 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
                                 unq_bsize[num_unq_fetch], 1, partial_write_mask, 
                                 shader->sid, mem_insn[writer_tid].hw_thread_id, NULL, 0,
                                 mem_acc, mem_insn[writer_tid].pc);
+	       /*TEST
+	       //if(mf->type == RD_REQ) {
+		 printf("SEAN: %llu data request pushed from core (2).  Time %llu (%u)\n", unq_memaddr[num_unq_fetch], gpu_sim_cycle, shader->gpu_cycle);
+		 }
+	       else {
+		 printf("SEAN: %llu data write request pushed from core (2).  Time %llu (%u)\n", unq_memaddr[num_unq_fetch], gpu_sim_cycle, shader->gpu_cycle);
+	       }
+	       //TEST*/
             }
          } else if ( (gpgpu_cache_wt_through||gpgpu_no_dl1) && !gpgpu_perfect_mem &&
                      !isshmem[i] && is_store(mem_insn[i].op) ) {
@@ -3274,6 +3290,14 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
                              READ_PACKET_SIZE + WORD_SIZE, 1, NO_PARTIAL_WRITE, 
                              shader->sid, mem_insn[i].hw_thread_id, NULL, 0,
                              mem_acc, mem_insn[i].pc);
+	    /*TEST
+	    //	    if(mf->type == RD_REQ) {
+	      printf("SEAN: %llu data request pushed from core (3).  Time %llu (%u)\n", mem_insn[i].memreqaddr, gpu_sim_cycle, shader->gpu_cycle);
+	    }
+	    else {
+	      printf("SEAN: %llu data write request pushed from core (3).  Time %llu (%u)\n", mem_insn[i].memreqaddr, gpu_sim_cycle, shader->gpu_cycle);
+	    }
+	    //TEST*/
          }
       }
    }

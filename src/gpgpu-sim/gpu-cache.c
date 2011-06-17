@@ -349,6 +349,10 @@ unsigned long long int shd_cache_fill( shd_cache_t *cp,
 /*    printf("Fetching! Addr=%08x ReplAddr=%08x(%d) Set=%x Tag=%x\n",
           packed_addr, repl_addr, nofreeslot, set, tag);
  */
+   /*TEST
+   printf("SEAN: %llu data in shader (L1?) cache. Time:  %u\n", addr, sim_cycle);
+   //TEST*/
+
    return repl_addr;
 }
 

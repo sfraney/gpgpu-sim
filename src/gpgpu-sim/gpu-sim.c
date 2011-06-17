@@ -1196,10 +1196,11 @@ inline void fill_shd_L1_with_new_line(shader_core_ctx_t * sc, mem_fetch_t * mf) 
          shd_cache_fill(sc->L1constcache,mf->addr,sc->gpu_cycle);
       repl_addr = -1;
    } else {
-      if (!gpgpu_no_dl1) {
-         if (!shd_cache_probe(sc->L1cache, mf->addr))
-            repl_addr = shd_cache_fill(sc->L1cache,mf->addr,sc->gpu_cycle);
-      }
+     if (!gpgpu_no_dl1) {
+       if (!shd_cache_probe(sc->L1cache, mf->addr)) {
+	 repl_addr = shd_cache_fill(sc->L1cache,mf->addr,sc->gpu_cycle);
+       }
+     }
    }
 
    // only perform a write on cache eviction (write-back policy)
@@ -2079,6 +2080,9 @@ void gpu_sim_loop( int grid_num )
                   time_vector_update(mf->mshr->inst_uid ,MR_2SH_ICNT_PUSHED,gpu_sim_cycle+gpu_tot_sim_cycle,RD_REQ);
                   icnt_push( mem2device(i), return_dev, mf, mf->nbytes_L1);
                   mem_ctrl_pop(i);
+		  /*TEST
+		  printf("SEAN: %llu data returned from DRAM.  Time %llu\n", mf->addr, gpu_sim_cycle);
+		  //TEST*/
                } else {
                   gpu_stall_icnt2sh++;
                }
