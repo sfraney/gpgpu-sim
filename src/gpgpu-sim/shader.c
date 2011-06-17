@@ -287,7 +287,7 @@ void pipe_stat_write_file() {
     curr = curr->next;
   }
   //TEST*/
-  //UNTEST
+
   while(curr != NULL) {
     fprintf(pfile, "%5c ", curr->inst_type);
     fprintf(pfile, "%14llu  ", curr->memreqaddr);
@@ -307,9 +307,6 @@ void pipe_stat_write_file() {
     curr = curr->next;
   }
 
-  //not sure on the purpose of this, but figure it can't hurt
-  //fflush(pfile);
-  //UNTEST*/
   fclose(pfile);
 }
 //SEAN*/
