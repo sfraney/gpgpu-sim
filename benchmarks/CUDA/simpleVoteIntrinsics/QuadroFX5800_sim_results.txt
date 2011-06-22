@@ -1,0 +1,1698 @@
+
+
+        *** GPGPU-Sim version 2.1.1b (beta) ***
+
+
+GPGPU-Sim PTX: __cudaRegisterFunction _Z14VoteAnyKernel3Pbi : 0x403ea0
+GPGPU-Sim PTX: __cudaRegisterFunction _Z14VoteAllKernel2PjS_i : 0x403f40
+GPGPU-Sim PTX: __cudaRegisterFunction _Z14VoteAnyKernel1PjS_i : 0x403fe0
+GPGPU-Sim PTX: simulation mode 0 (can change with PTX_SIM_MODE_FUNC environment variable:
+               1=functional simulation only, 0=detailed performance simulator)
+GPGPU-Sim: Configuration options:
+
+-network_mode                           1 # Interconnection network mode
+-inter_config_file   icnt_config_quadro_islip.txt # Interconnection network config file
+-save_embedded_ptx                      0 # saves ptx files embedded in binary as <n>.ptx
+-gpgpu_simd_model                       1 # 0 = no recombination, 1 = post-dominator, 2 = MIMD, 3 = dynamic warp formation
+-gpgpu_dram_scheduler                    1 # 0 = fifo (default), 1 = fast ideal
+-gpgpu_max_cycle                        0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_max_insn                         0 # terminates gpu simulation early (0 = no limit)
+-gpgpu_tex_cache:l1             64:64:2:L # per-shader L1 texture cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_const_cache:l1            64:64:2:L # per-shader L1 constant memory cache  (READ-ONLY) config, i.e., {<nsets>:<linesize>:<assoc>:<repl>|none}
+-gpgpu_no_dl1                           1 # no dl1 cache (voids -gpgpu_cache:dl1 option)
+-gpgpu_cache:dl1               128:64:4:L # shader L1 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}
+-gpgpu_cache:dl2                     NULL # unified banked L2 data cache config, i.e., {<nsets>:<bsize>:<assoc>:<repl>|none}; disabled by default
+-gpgpu_perfect_mem                      0 # enable perfect memory mode (no cache miss)
+-gpgpu_shader_core_pipeline           1024:32:32 # shader core pipeline config, i.e., {<nthread>:<warpsize>:<pipe_simd_width>}
+-gpgpu_shader_registers                16384 # Number of registers per shader core. Limits number of concurrent CTAs. (default 8192)
+-gpgpu_shader_cta                       8 # Maximum number of concurrent CTAs in shader (default 8)
+-gpgpu_n_shader                        30 # number of shaders in gpu
+-gpgpu_n_mem                            8 # number of memory modules (e.g. memory controllers) in gpu
+-gpgpu_n_mem_per_ctrlr                    2 # number of memory chips per memory controller
+-gpgpu_runtime_stat                  1000 # display runtime statistics such as dram utilization {<freq>:<flag>}
+-gpgpu_dwf_heuristic                    0 # DWF scheduling heuristic: 0 = majority, 1 = minority, 2 = timestamp, 3 = pdom priority, 4 = pc-based, 5 = max-heap
+-gpgpu_reg_bankconflict                    0 # Check for bank conflict in the pipeline
+-gpgpu_dwf_regbk                        1 # Have dwf scheduler to avoid bank conflict
+-gpgpu_memlatency_stat                   14 # track and display latency statistics 0x2 enables MC, 0x4 enables queue logs
+-gpgpu_mshr_per_thread                    1 # Number of MSHRs per thread
+-gpgpu_interwarp_mshr_merge                    6 # interwarp coalescing
+-gpgpu_dram_sched_queue_size                   32 # 0 = unlimited (default); # entries per chip
+-gpgpu_dram_buswidth                    4 # default = 4 bytes (8 bytes per cycle at DDR)
+-gpgpu_dram_burst_length                    4 # Burst length of each DRAM request (default = 4 DDR cycle)
+-gpgpu_dram_timing_opt 8:2:8:12:25:10:35:10:7:6 # DRAM timing parameters = {nbk:tCCD:tRRD:tRCD:tRAS:tRP:tRC:CL:WL:tWTR}
+-gpgpu_mem_address_mask                    1 # 0 = old addressing mask, 1 = new addressing mask, 2 = new add. mask + flipped bank sel and chip sel bits
+-gpgpu_flush_cache                      0 # Flush cache at the end of each kernel call
+-gpgpu_l2_readoverwrite                    0 # Prioritize read requests over write requests for L2
+-gpgpu_pre_mem_stages                    1 # default = 0 pre-memory pipeline stages
+-gpgpu_no_divg_load                     0 # Don't allow divergence on load
+-gpgpu_dwf_hw                        32:2 # dynamic warp formation hw config, i.e., {<#LUT_entries>:<associativity>|none}
+-gpgpu_thread_swizzling                    0 # Thread Swizzling (1=on, 0=off)
+-gpgpu_strict_simd_wrbk                    0 # Applying Strick SIMD WriteBack Stage (1=on, 0=off)
+-gpgpu_shmem_size                   16384 # Size of shared memory per shader core (default 16kB)
+-gpgpu_shmem_bkconflict                    1 # Turn on bank conflict check for shared memory
+-gpgpu_shmem_pipe_speedup                    1 # Number of groups each warp is divided for shared memory bank conflict check
+-gpgpu_L2_queue         0:0:0:0:0:0:10:10 # L2 data cache queue length and latency config
+-gpgpu_cache_wt_through                    0 # L1 cache become write through (1=on, 0=off)
+-gpgpu_deadlock_detect                    1 # Stop the simulation at deadlock (1=on (default), 0=off)
+-gpgpu_cache_bkconflict                    1 # Turn on bank conflict check for L1 cache access
+-gpgpu_n_cache_bank                     1 # Number of banks in L1 cache, also for memory coalescing stall
+-gpgpu_warpdistro_shader                   -1 # Specify which shader core to collect the warp size distribution from
+-gpgpu_pdom_sched_type                    8 # 0 = first ready warp found, 1 = random, 8 = loose round robin
+-gpgpu_spread_blocks_across_cores                    1 # Spread block-issuing across all cores instead of filling up core by core
+-gpgpu_cuda_sim                         1 # use PTX instruction set
+-gpgpu_ptx_instruction_classification                    0 # if enabled will classify ptx instruction types per kernel (Max 255 kernels now)
+-gpgpu_ptx_sim_mode                     0 # Select between Performance (default) or Functional simulation (1)
+-gpgpu_clock_domains 325.0:650.0:650.0:800.0 # Clock Domain Frequencies in MhZ {<Core Clock>:<ICNT Clock>:<L2 Clock>:<DRAM Clock>}
+-gpgpu_shmem_port_per_bank                    2 # Number of access processed by a shared memory bank per cycle (default = 2)
+-gpgpu_cache_port_per_bank                    2 # Number of access processed by a cache bank per cycle (default = 2)
+-gpgpu_const_port_per_bank                    2 # Number of access processed by a constant cache bank per cycle (default = 2)
+-gpgpu_cflog_interval                    0 # Interval between each snapshot in control flow logger
+-gpgpu_partial_write_mask                    1 # use partial write mask to filter memory requests <1>No extra reads(use this!)<2>extra reads generated for partial chunks
+-gpu_concentration                      3 # Number of shader cores per interconnection port (default = 1)
+-gpgpu_local_mem_map                    1 # Mapping from local memory space address to simulated GPU physical address space (default = 1)
+-pipetrace_out              pipetrace.txt # specifies file to output pipetrace to
+-pipetrace                              0 # Turns pipetrace on/off
+-gpgpu_mem_addr_mapping dramid@8;00000000.00000000.00000000.00000000.0000RRRR.RRRRRRRR.RRBBBCCC.CCCSSSSS # mapping memory address to dram model {dramid@<start bit>;<memory address map>}
+-visualizer_enabled                     1 # Turn on visualizer output (1=On, 0=Off)
+-visualizer_outputfile                 NULL # Specifies the output log file for visualizer
+-visualizer_zlevel                      6 # Compression level of the visualizer output log (0=no comp, 9=highest)
+-enable_ptx_file_line_stats                    1 # Turn on PTX source line statistic profiling. (1 = On)
+-ptx_line_stats_filename gpgpu_inst_stats.txt # Output file for PTX source line statistics.
+32 30 1024 983040
+30720
+addr_dec_mask[CHIP]  = 0000000000000700 	high:11 low:8
+addr_dec_mask[BK]    = 000000000001c000 	high:17 low:14
+addr_dec_mask[ROW]   = 000000007ffe0000 	high:31 low:17
+addr_dec_mask[COL]   = 00000000000038ff 	high:14 low:0
+addr_dec_mask[BURST] = 000000000000001f 	high:5 low:0
+*** Initializing Memory Statistics ***
+nodemap
+0 
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 15 16 
+17 GPU performance model initialization complete.
+GPGPU-Sim PTX: USING EMBEDDED .ptx files...
+GPGPU-Sim PTX: parsing function _Z14VoteAnyKernel1PjS_i
+GPGPU-Sim PTX: instruction assembly for function '_Z14VoteAnyKernel1PjS_i'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z14VoteAnyKernel1PjS_i'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z14VoteAnyKernel1PjS_i'...
+GPGPU-Sim PTX: parsing function _Z14VoteAllKernel2PjS_i
+GPGPU-Sim PTX: instruction assembly for function '_Z14VoteAllKernel2PjS_i'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z14VoteAllKernel2PjS_i'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z14VoteAllKernel2PjS_i'...
+GPGPU-Sim PTX: parsing function _Z14VoteAnyKernel3Pbi
+GPGPU-Sim PTX: instruction assembly for function '_Z14VoteAnyKernel3Pbi'...   done.
+GPGPU-Sim PTX: Finding postdominators for '_Z14VoteAnyKernel3Pbi'...
+GPGPU-Sim PTX: Finding immediate postdominators for '_Z14VoteAnyKernel3Pbi'...
+GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file _1.ptx
+GPGPU-Sim PTX: extracting embedded .ptx to temporary file "_ptx_zwaEl9"
+GPGPU-Sim PTX: generating ptxinfo using "ptxas -v _ptx2_405qc3 --output-file /dev/null 2> _ptx_zwaEl9info"
+GPGPU-Sim PTX: Kernel _Z14VoteAnyKernel3Pbi
+GPGPU-Sim PTX: Kernel _Z14VoteAllKernel2PjS_i
+GPGPU-Sim PTX: Kernel _Z14VoteAnyKernel1PjS_i
+GPGPU-Sim PTX: removing ptxinfo using "rm -f _ptx_zwaEl9 _ptx2_405qc3 _ptx_zwaEl9info"
+GPGPU-Sim PTX: loading global with explicit initializers...  done.
+GPGPU-Sim PTX: loading constants with explicit initializers...  done.
+GPGPU-Sim PTX: Program parsing completed (max 38 registers used per thread).
+simpleVoteIntrinsics: Using Device 0: "GPGPU-Sim_v2.1.1b (beta)"
+GPGPU-Sim PTX: allocating 512 bytes on GPU starting at address 0x10000000
+GPGPU-Sim PTX: cudaMallocing 512 bytes starting at 0x10000000..
+GPGPU-Sim PTX: allocating 512 bytes on GPU starting at address 0x10000200
+GPGPU-Sim PTX: cudaMallocing 512 bytes starting at 0x10000200..
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x10000000
+GPGPU-Sim PTX: copying 512 bytes from CPU[0x4401990] to GPU[0x10000000] ...  done.
+[VOTE Kernel Test 1/3]
+	Running <<Vote.Any>> kernel1 ...
+
+
+
+GPGPU-Sim PTX: cudaLaunch for 0x403fe0 (mode=performance simulation)
+GPGPU-Sim PTX: Launching kernel '_Z14VoteAnyKernel1PjS_i' gridDim= (1,1,1) blockDim = (128,1,1); ntuid=1
+GPGPU-Sim uArch: clock freqs: 325000000.000000:650000000.000000:650000000.000000:800000000.000000
+GPGPU-Sim uArch: clock periods: 0.00000000307692307692:0.00000000153846153846:0.00000000153846153846:0.00000000125000000000
+Reconvergence Pairs for _Z14VoteAnyKernel1PjS_i
+CTA/core = 8, limited by: threads cta_limit
+Shader 0 initializing CTA #0 with hw tids from 0 to 128 @(1,0) shdr->not_completed = 0
+Shader 0 finished CTA #0 (125,0)
+stats for grid: 0
+gpu_sim_cycle = 128
+gpu_sim_insn = 2688
+gpu_sim_no_ld_const_insn = 2432
+gpu_ipc =      21.0000
+gpu_completed_thread = 128
+gpu_tot_sim_cycle = 128
+gpu_tot_sim_insn = 2688
+gpu_tot_ipc =      21.0000
+gpu_tot_completed_thread = 128
+gpgpu_n_sent_writes = 8
+gpgpu_n_processed_writes = 5
+gpu_stall_by_MSHRwb= 2
+gpu_stall_shd_mem  = 0
+gpu_stall_wr_back  = 0
+gpu_stall_dramfull = 0
+gpu_stall_icnt2sh    = 0
+gpu_stall_sh2icnt    = 0
+gpgpu_n_load_insn  = 128
+gpgpu_n_store_insn = 128
+gpgpu_n_shmem_insn = 0
+gpgpu_n_tex_insn = 0
+gpgpu_n_const_mem_insn = 0
+gpgpu_n_param_mem_insn = 256
+gpgpu_n_shmem_bkconflict = 0
+gpgpu_n_cache_bkconflict = 0
+gpgpu_n_intrawarp_mshr_merge = 256
+gpgpu_n_cmem_portconflict = 0
+gpgpu_n_writeback_l1_miss = 0
+gpgpu_n_partial_writes = 0
+maxmrqlatency = 8 
+maxdqlatency = 10 
+maxmflatency = 18 
+averagemflatency = 14 
+max_icnt2mem_latency = 9 
+max_icnt2sh_latency = 3 
+mrq_lat_table:7 	2 	5 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+dq_lat_table:0 	1 	10 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+mf_lat_table:0 	0 	0 	6 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+icnt2mem_lat_table:4 	5 	6 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+icnt2sh_lat_table:6 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+mf_lat_pw_table:0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+maximum concurrent accesses to same row:
+dram[0]:         0         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+maximum service time to same row:
+dram[0]:        32         0         0         0 
+dram[1]:        33         0         0         0 
+dram[2]:       118         0         0         0 
+dram[3]:       121         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+average row accesses per activate:
+dram[0]:  4.000000      -nan      -nan      -nan 
+dram[1]:  4.000000      -nan      -nan      -nan 
+dram[2]:  4.000000      -nan      -nan      -nan 
+dram[3]:  3.000000      -nan      -nan      -nan 
+dram[4]:      -nan      -nan      -nan      -nan 
+dram[5]:      -nan      -nan      -nan      -nan 
+dram[6]:      -nan      -nan      -nan      -nan 
+dram[7]:      -nan      -nan      -nan      -nan 
+average row locality = 15/4 = 3.750000
+number of total memory accesses made:
+dram[0]:        64         0         0         0 
+dram[1]:        64         0         0         0 
+dram[2]:        64         0         0         0 
+dram[3]:        64         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total accesses: 256
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+number of total read accesses:
+dram[0]:         4         0         0         0 
+dram[1]:         4         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total reads: 8
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+number of total write accesses:
+dram[0]:         0         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         4         0         0         0 
+dram[3]:         4         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total reads: 8
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+average mf latency per bank:
+dram[0]:         13    none      none      none  
+dram[1]:         14    none      none      none  
+dram[2]:          0    none      none      none  
+dram[3]:          0    none      none      none  
+dram[4]:     none      none      none      none  
+dram[5]:     none      none      none      none  
+dram[6]:     none      none      none      none  
+dram[7]:     none      none      none      none  
+maximum mf latency per bank:
+dram[0]:         16         0         0         0
+dram[1]:         18         0         0         0
+dram[2]:          0         0         0         0
+dram[3]:          0         0         0         0
+dram[4]:          0         0         0         0
+dram[5]:          0         0         0         0
+dram[6]:          0         0         0         0
+dram[7]:          0         0         0         0
+
+Number of Memory Banks Accessed per Memory Operation per Warp (from 0):
+0	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	
+Average # of Memory Banks Accessed per Memory Operation per Warp=1.000000
+
+position of mrq chosen
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	
+
+average position of mrq chosen = -nan
+max return queue length = 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+merge misses = 120
+L1 read misses = 128
+L1 write misses = 0
+L1 texture misses = 0
+L1 const misses = 0
+L2_write_miss = 0
+L2_write_hit = 0
+L2_read_miss = 0
+L2_read_hit = 0
+made_read_mfs = 8
+made_write_mfs = 8
+freed_read_mfs = 8
+freed_L1write_mfs = 5
+freed_L2write_mfs = 0
+freed_dummy_read_mfs = 0
+gpgpu_n_mem_read_local = 0
+gpgpu_n_mem_write_local = 0
+gpgpu_n_mem_read_global = 8
+gpgpu_n_mem_write_global = 8
+gpgpu_n_mem_texture = 0
+gpgpu_n_mem_const = 0
+max_n_mshr_used = 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+DRAM[0]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=314 n_nop=305 n_act=1 n_pre=0 n_req=4 n_rd=8 n_write=0 bw_util=0.05096
+n_activity=35 dram_eff=0.4571
+bk0: 8a 314i bk1: 0a 314i bk2: 0a 314i bk3: 0a 314i bk4: 0a 310i bk5: 0a 310i bk6: 0a 310i bk7: 0a 299i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=3 avg=0.130573
+DRAM[1]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=314 n_nop=305 n_act=1 n_pre=0 n_req=4 n_rd=8 n_write=0 bw_util=0.05096
+n_activity=35 dram_eff=0.4571
+bk0: 8a 314i bk1: 0a 314i bk2: 0a 314i bk3: 0a 314i bk4: 0a 310i bk5: 0a 310i bk6: 0a 310i bk7: 0a 299i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=3 avg=0.156051
+DRAM[2]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=314 n_nop=305 n_act=1 n_pre=0 n_req=4 n_rd=0 n_write=8 bw_util=0.05096
+n_activity=25 dram_eff=0.64
+bk0: 0a 314i bk1: 0a 314i bk2: 0a 314i bk3: 0a 314i bk4: 0a 311i bk5: 0a 311i bk6: 0a 310i bk7: 0a 307i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=1 avg=0.0127389
+DRAM[3]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=314 n_nop=307 n_act=1 n_pre=0 n_req=4 n_rd=0 n_write=6 bw_util=0.03822
+n_activity=18 dram_eff=0.6667
+bk0: 0a 314i bk1: 0a 314i bk2: 0a 314i bk3: 0a 314i bk4: 0a 314i bk5: 0a 311i bk6: 0a 310i bk7: 0a 307i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=1 avg=0.00955414
+DRAM[4]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=314 n_nop=314 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 314i bk1: 0a 314i bk2: 0a 314i bk3: 0a 314i bk4: 0a 314i bk5: 0a 314i bk6: 0a 314i bk7: 0a 314i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[5]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=314 n_nop=314 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 314i bk1: 0a 314i bk2: 0a 314i bk3: 0a 314i bk4: 0a 314i bk5: 0a 314i bk6: 0a 314i bk7: 0a 314i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[6]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=314 n_nop=314 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 314i bk1: 0a 314i bk2: 0a 314i bk3: 0a 314i bk4: 0a 314i bk5: 0a 314i bk6: 0a 314i bk7: 0a 314i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[7]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=314 n_nop=314 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 314i bk1: 0a 314i bk2: 0a 314i bk3: 0a 314i bk4: 0a 314i bk5: 0a 314i bk6: 0a 314i bk7: 0a 314i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+Cache L1c_000:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -120 (inf)
+Cache L1c_001:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_002:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_003:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_004:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_005:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_006:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_007:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_008:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_009:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_010:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_011:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_012:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_013:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_014:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_015:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_016:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_017:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_018:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_019:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_020:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_021:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_022:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_023:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_024:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_025:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_026:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_027:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_028:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_029:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Data Cache Total Miss Rate = -nan
+Cache L1texc_000:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_001:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_002:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_003:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_004:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_005:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_006:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_007:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_008:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_009:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_010:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_011:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_012:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_013:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_014:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_015:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_016:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_017:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_018:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_019:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_020:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_021:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_022:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_023:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_024:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_025:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_026:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_027:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_028:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_029:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Texture Cache Total Miss Rate = -nan
+Cache L1constc_000:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_001:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_002:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_003:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_004:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_005:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_006:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_007:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_008:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_009:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_010:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_011:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_012:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_013:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_014:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_015:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_016:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_017:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_018:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_019:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_020:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_021:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_022:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_023:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_024:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_025:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_026:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_027:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_028:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_029:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Const Cache Total Miss Rate = -nan
+n_regconflict_stall = 0
+num_warps_issuable:36 81 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+gpgpu_commit_pc_beyond_two = 0
+Warp Occupancy Distribution:
+Stall:35	W0_Idle:5	W0_Mem:36	W1:0	W2:0	W3:0	W4:0	W5:0	W6:0	W7:0	W8:0	W9:0	W10:0	W11:0	W12:0	W13:0	W14:0	W15:0	W16:0	W17:0	W18:0	W19:0	W20:0	W21:0	W22:0	W23:0	W24:0	W25:0	W26:0	W27:0	W28:0	W29:0	W30:0	W31:0	W32:84
+LD_mem_lat_dist  0 0 0 1 0 0 0 0 0 11 0 0 0 0 0
+ST_mem_lat_dist  0 0 0 3 0 0 0 0 0 5
+Traffic 0 Stat
+%=================================
+% Average latency = 5.5
+% Accepted packets = 0 at node 0 (avg = 0.00694444)
+lat(1) = 5.5;
+thru(1,:) = [ 0 0 0 0 0 0 0 0 0 0 0.015625 0.015625 0.046875 0.046875 0 0 0 0 ];
+% latency change    = 1
+% throughput change = 1
+Traffic 1 Stat
+%=================================
+% Average latency = 3.75
+% Accepted packets = 0 at node 1 (avg = 0.00347222)
+lat(2) = 3.75;
+thru(2,:) = [ 0.0625 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+% latency change    = 0.466667
+% throughput change = 1
+----------------------------Interconnect-DETAILS---------------------------------=======Traffic[0]class0 ======
+Traffic[0]class0Overall average latency = 5.5 (1 samples)
+Traffic[0]class0Overall average accepted rate = 0.00694444 (1 samples)
+Traffic[0]class0Overall min accepted rate = 0 (1 samples)
+traffic_manager/latency_stat_0_freq = [ 0 4 4 1 0 0 1 1 0 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Traffic[0]class1Average hops = 1 (16 samples)
+traffic_manager/hop_stats_freq = [ 0 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+=======Traffic[1]class0 ======
+Traffic[1]class0Overall average latency = 3.75 (1 samples)
+Traffic[1]class0Overall average accepted rate = 0.00347222 (1 samples)
+Traffic[1]class0Overall min accepted rate = 0 (1 samples)
+traffic_manager/latency_stat_0_freq = [ 0 0 1 2 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Traffic[1]class1Average hops = 1 (8 samples)
+traffic_manager/hop_stats_freq = [ 0 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+----------------------------END-of-Interconnect-DETAILS-------------------------(LOGB2)Latency DRAM[0] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[0] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.964968 
+rwq_freq = [ 3 5 306 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[1] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[1] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.964968 
+rwq_freq = [ 3 5 306 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[2] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[2] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.920382 
+rwq_freq = [ 3 19 292 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[3] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[3] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.942675 
+rwq_freq = [ 3 12 299 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[4] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[4] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.964968 
+rwq_freq = [ 3 5 306 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[5] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[5] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.964968 
+rwq_freq = [ 3 5 306 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[6] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[6] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.964968 
+rwq_freq = [ 3 5 306 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[7] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[7] Stats for rwq
+Min 0.000000 Max 2.000000 Average 1.964968 
+rwq_freq = [ 3 5 306 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[0] Stats for mrqq_length
+Min 0.000000 Max 3.000000 Average 0.130573 
+mrqq_length_freq = [ 292 10 5 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[1] Stats for mrqq_length
+Min 0.000000 Max 3.000000 Average 0.156051 
+mrqq_length_freq = [ 292 6 5 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[2] Stats for mrqq_length
+Min 0.000000 Max 1.000000 Average 0.012739 
+mrqq_length_freq = [ 310 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[3] Stats for mrqq_length
+Min 0.000000 Max 1.000000 Average 0.009554 
+mrqq_length_freq = [ 311 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[4] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 314 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[5] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 314 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[6] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 314 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[7] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 314 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+
+
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 1 sec (1 sec)
+gpgpu_simulation_rate = 2688 (inst/sec)
+gpgpu_simulation_rate = 128 (cycle/sec)
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x4401ba0
+GPGPU-Sim PTX: copying 512 bytes from GPU[0x10000200] to CPU[0x4401ba0] ... done.
+
+[VOTE Kernel Test 2/3]
+	Running <<Vote.All>> kernel2 ...
+
+
+
+GPGPU-Sim PTX: cudaLaunch for 0x403f40 (mode=performance simulation)
+GPGPU-Sim PTX: Launching kernel '_Z14VoteAllKernel2PjS_i' gridDim= (1,1,1) blockDim = (128,1,1); ntuid=129
+GPGPU-Sim uArch: clock freqs: 325000000.000000:650000000.000000:650000000.000000:800000000.000000
+GPGPU-Sim uArch: clock periods: 0.00000000307692307692:0.00000000153846153846:0.00000000153846153846:0.00000000125000000000
+Reconvergence Pairs for _Z14VoteAllKernel2PjS_i
+CTA/core = 8, limited by: threads cta_limit
+Shader 0 initializing CTA #0 with hw tids from 0 to 128 @(1,128) shdr->not_completed = 0
+Shader 0 finished CTA #0 (120,128)
+stats for grid: 1
+gpu_sim_cycle = 123
+gpu_sim_insn = 2688
+gpu_sim_no_ld_const_insn = 2432
+gpu_ipc =      21.8537
+gpu_completed_thread = 128
+gpu_tot_sim_cycle = 251
+gpu_tot_sim_insn = 5376
+gpu_tot_ipc =      21.4183
+gpu_tot_completed_thread = 256
+gpgpu_n_sent_writes = 16
+gpgpu_n_processed_writes = 13
+gpu_stall_by_MSHRwb= 4
+gpu_stall_shd_mem  = 0
+gpu_stall_wr_back  = 0
+gpu_stall_dramfull = 0
+gpu_stall_icnt2sh    = 0
+gpu_stall_sh2icnt    = 0
+gpgpu_n_load_insn  = 256
+gpgpu_n_store_insn = 256
+gpgpu_n_shmem_insn = 0
+gpgpu_n_tex_insn = 0
+gpgpu_n_const_mem_insn = 0
+gpgpu_n_param_mem_insn = 512
+gpgpu_n_shmem_bkconflict = 0
+gpgpu_n_cache_bkconflict = 0
+gpgpu_n_intrawarp_mshr_merge = 512
+gpgpu_n_cmem_portconflict = 0
+gpgpu_n_writeback_l1_miss = 0
+gpgpu_n_partial_writes = 0
+maxmrqlatency = 8 
+maxdqlatency = 10 
+maxmflatency = 18 
+averagemflatency = 9 
+max_icnt2mem_latency = 9 
+max_icnt2sh_latency = 3 
+mrq_lat_table:19 	6 	5 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+dq_lat_table:0 	3 	24 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+mf_lat_table:0 	0 	1 	13 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+icnt2mem_lat_table:8 	10 	11 	3 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+icnt2sh_lat_table:12 	4 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+mf_lat_pw_table:0 	0 	0 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+maximum concurrent accesses to same row:
+dram[0]:         0         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+maximum service time to same row:
+dram[0]:        32         0         0         0 
+dram[1]:        33         0         0         0 
+dram[2]:       118         0         0         0 
+dram[3]:       121         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+average row accesses per activate:
+dram[0]:  8.000000      -nan      -nan      -nan 
+dram[1]:  8.000000      -nan      -nan      -nan 
+dram[2]:  8.000000      -nan      -nan      -nan 
+dram[3]:  7.000000      -nan      -nan      -nan 
+dram[4]:      -nan      -nan      -nan      -nan 
+dram[5]:      -nan      -nan      -nan      -nan 
+dram[6]:      -nan      -nan      -nan      -nan 
+dram[7]:      -nan      -nan      -nan      -nan 
+average row locality = 31/4 = 7.750000
+number of total memory accesses made:
+dram[0]:       128         0         0         0 
+dram[1]:       128         0         0         0 
+dram[2]:       128         0         0         0 
+dram[3]:       128         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total accesses: 512
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+number of total read accesses:
+dram[0]:         8         0         0         0 
+dram[1]:         8         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total reads: 16
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+number of total write accesses:
+dram[0]:         0         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         8         0         0         0 
+dram[3]:         8         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total reads: 16
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+average mf latency per bank:
+dram[0]:         11    none      none      none  
+dram[1]:         12    none      none      none  
+dram[2]:          0    none      none      none  
+dram[3]:          0    none      none      none  
+dram[4]:     none      none      none      none  
+dram[5]:     none      none      none      none  
+dram[6]:     none      none      none      none  
+dram[7]:     none      none      none      none  
+maximum mf latency per bank:
+dram[0]:         16         0         0         0
+dram[1]:         18         0         0         0
+dram[2]:          0         0         0         0
+dram[3]:          0         0         0         0
+dram[4]:          0         0         0         0
+dram[5]:          0         0         0         0
+dram[6]:          0         0         0         0
+dram[7]:          0         0         0         0
+
+Number of Memory Banks Accessed per Memory Operation per Warp (from 0):
+0	8	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	
+Average # of Memory Banks Accessed per Memory Operation per Warp=1.000000
+
+position of mrq chosen
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	
+
+average position of mrq chosen = -nan
+max return queue length = 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+merge misses = 240
+L1 read misses = 256
+L1 write misses = 0
+L1 texture misses = 0
+L1 const misses = 0
+L2_write_miss = 0
+L2_write_hit = 0
+L2_read_miss = 0
+L2_read_hit = 0
+made_read_mfs = 16
+made_write_mfs = 16
+freed_read_mfs = 16
+freed_L1write_mfs = 13
+freed_L2write_mfs = 0
+freed_dummy_read_mfs = 0
+gpgpu_n_mem_read_local = 0
+gpgpu_n_mem_write_local = 0
+gpgpu_n_mem_read_global = 16
+gpgpu_n_mem_write_global = 16
+gpgpu_n_mem_texture = 0
+gpgpu_n_mem_const = 0
+max_n_mshr_used = 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+DRAM[0]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=616 n_nop=599 n_act=1 n_pre=0 n_req=8 n_rd=16 n_write=0 bw_util=0.05195
+n_activity=56 dram_eff=0.5714
+bk0: 16a 612i bk1: 0a 612i bk2: 0a 612i bk3: 0a 613i bk4: 0a 612i bk5: 0a 612i bk6: 0a 612i bk7: 0a 601i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=3 avg=0.0909091
+DRAM[1]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=616 n_nop=599 n_act=1 n_pre=0 n_req=8 n_rd=16 n_write=0 bw_util=0.05195
+n_activity=56 dram_eff=0.5714
+bk0: 16a 612i bk1: 0a 612i bk2: 0a 612i bk3: 0a 613i bk4: 0a 612i bk5: 0a 612i bk6: 0a 612i bk7: 0a 601i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=3 avg=0.103896
+DRAM[2]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=616 n_nop=599 n_act=1 n_pre=0 n_req=8 n_rd=0 n_write=16 bw_util=0.05195
+n_activity=51 dram_eff=0.6275
+bk0: 0a 613i bk1: 0a 613i bk2: 0a 613i bk3: 0a 613i bk4: 0a 613i bk5: 0a 613i bk6: 0a 612i bk7: 0a 609i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=1 avg=0.00649351
+DRAM[3]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=616 n_nop=601 n_act=1 n_pre=0 n_req=8 n_rd=0 n_write=14 bw_util=0.04545
+n_activity=47 dram_eff=0.5957
+bk0: 0a 616i bk1: 0a 613i bk2: 0a 612i bk3: 0a 613i bk4: 0a 612i bk5: 0a 613i bk6: 0a 612i bk7: 0a 609i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=1 avg=0.00487013
+DRAM[4]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=616 n_nop=616 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 616i bk1: 0a 616i bk2: 0a 616i bk3: 0a 616i bk4: 0a 616i bk5: 0a 616i bk6: 0a 616i bk7: 0a 616i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[5]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=616 n_nop=616 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 616i bk1: 0a 616i bk2: 0a 616i bk3: 0a 616i bk4: 0a 616i bk5: 0a 616i bk6: 0a 616i bk7: 0a 616i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[6]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=616 n_nop=616 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 616i bk1: 0a 616i bk2: 0a 616i bk3: 0a 616i bk4: 0a 616i bk5: 0a 616i bk6: 0a 616i bk7: 0a 616i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[7]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=616 n_nop=616 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 616i bk1: 0a 616i bk2: 0a 616i bk3: 0a 616i bk4: 0a 616i bk5: 0a 616i bk6: 0a 616i bk7: 0a 616i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+Cache L1c_000:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -240 (inf)
+Cache L1c_001:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_002:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_003:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_004:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_005:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_006:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_007:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_008:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_009:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_010:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_011:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_012:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_013:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_014:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_015:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_016:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_017:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_018:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_019:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_020:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_021:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_022:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_023:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_024:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_025:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_026:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_027:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_028:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_029:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Data Cache Total Miss Rate = -nan
+Cache L1texc_000:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_001:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_002:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_003:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_004:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_005:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_006:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_007:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_008:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_009:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_010:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_011:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_012:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_013:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_014:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_015:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_016:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_017:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_018:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_019:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_020:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_021:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_022:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_023:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_024:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_025:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_026:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_027:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_028:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_029:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Texture Cache Total Miss Rate = -nan
+Cache L1constc_000:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_001:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_002:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_003:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_004:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_005:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_006:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_007:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_008:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_009:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_010:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_011:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_012:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_013:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_014:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_015:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_016:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_017:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_018:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_019:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_020:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_021:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_022:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_023:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_024:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_025:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_026:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_027:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_028:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_029:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Const Cache Total Miss Rate = -nan
+n_regconflict_stall = 0
+num_warps_issuable:67 162 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+gpgpu_commit_pc_beyond_two = 0
+Warp Occupancy Distribution:
+Stall:70	W0_Idle:5	W0_Mem:67	W1:0	W2:0	W3:0	W4:0	W5:0	W6:0	W7:0	W8:0	W9:0	W10:0	W11:0	W12:0	W13:0	W14:0	W15:0	W16:0	W17:0	W18:0	W19:0	W20:0	W21:0	W22:0	W23:0	W24:0	W25:0	W26:0	W27:0	W28:0	W29:0	W30:0	W31:0	W32:168
+LD_mem_lat_dist  0 0 0 1 0 0 0 0 0 10 0 0 0 0 0
+ST_mem_lat_dist  0 0 0 4 0 0 0 0 0 4
+Traffic 0 Stat
+%=================================
+% Average latency = 5.75
+% Accepted packets = 0 at node 0 (avg = 0.00722674)
+lat(3) = 5.75;
+thru(3,:) = [ 0 0 0 0 0 0 0 0 0 0 0.0162602 0.0162602 0.0487805 0.0487805 0 0 0 0 ];
+% latency change    = 0.347826
+% throughput change = 0.519531
+Traffic 1 Stat
+%=================================
+% Average latency = 3.125
+% Accepted packets = 0 at node 1 (avg = 0.00361337)
+lat(4) = 3.125;
+thru(4,:) = [ 0.0650407 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+% latency change    = 0.84
+% throughput change = 1
+----------------------------Interconnect-DETAILS---------------------------------=======Traffic[0]class0 ======
+Traffic[0]class0Overall average latency = 5.625 (2 samples)
+Traffic[0]class0Overall average accepted rate = 0.00708559 (2 samples)
+Traffic[0]class0Overall min accepted rate = 0 (2 samples)
+traffic_manager/latency_stat_0_freq = [ 0 4 4 1 0 0 1 1 0 0 1 1 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Traffic[0]class1Average hops = 1 (32 samples)
+traffic_manager/hop_stats_freq = [ 0 32 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+=======Traffic[1]class0 ======
+Traffic[1]class0Overall average latency = 3.4375 (2 samples)
+Traffic[1]class0Overall average accepted rate = 0.0035428 (2 samples)
+Traffic[1]class0Overall min accepted rate = 0 (2 samples)
+traffic_manager/latency_stat_0_freq = [ 0 0 2 4 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Traffic[1]class1Average hops = 1 (16 samples)
+traffic_manager/hop_stats_freq = [ 0 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+----------------------------END-of-Interconnect-DETAILS-------------------------(LOGB2)Latency DRAM[0] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[0] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.452922 
+rwq_freq = [ 3 5 598 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ];
+(LOGB2)Latency DRAM[1] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[1] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.452922 
+rwq_freq = [ 3 5 598 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ];
+(LOGB2)Latency DRAM[2] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[2] Stats for rwq
+Min 0.000000 Max 31.000000 Average 1.810065 
+rwq_freq = [ 3 314 292 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 ];
+(LOGB2)Latency DRAM[3] Stats for mrqq
+Min 0.000000 Max 31.000000 Average 4.428571 
+mrqq_freq = [ 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 ];
+(LOGB2)Latency DRAM[3] Stats for rwq
+Min 0.000000 Max 31.000000 Average 1.821429 
+rwq_freq = [ 3 307 299 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 ];
+(LOGB2)Latency DRAM[4] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[4] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.452922 
+rwq_freq = [ 3 5 598 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ];
+(LOGB2)Latency DRAM[5] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[5] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.452922 
+rwq_freq = [ 3 5 598 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ];
+(LOGB2)Latency DRAM[6] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[6] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.452922 
+rwq_freq = [ 3 5 598 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ];
+(LOGB2)Latency DRAM[7] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[7] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.452922 
+rwq_freq = [ 3 5 598 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 ];
+Queue Length DRAM[0] Stats for mrqq_length
+Min 0.000000 Max 3.000000 Average 0.090909 
+mrqq_length_freq = [ 584 15 10 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[1] Stats for mrqq_length
+Min 0.000000 Max 3.000000 Average 0.103896 
+mrqq_length_freq = [ 584 11 10 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[2] Stats for mrqq_length
+Min 0.000000 Max 1.000000 Average 0.006494 
+mrqq_length_freq = [ 612 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[3] Stats for mrqq_length
+Min 0.000000 Max 1.000000 Average 0.004870 
+mrqq_length_freq = [ 613 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[4] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 616 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[5] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 616 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[6] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 616 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[7] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 616 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+
+
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 1 sec (1 sec)
+gpgpu_simulation_rate = 5376 (inst/sec)
+gpgpu_simulation_rate = 251 (cycle/sec)
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x4401ba0
+GPGPU-Sim PTX: copying 512 bytes from GPU[0x10000200] to CPU[0x4401ba0] ... done.
+GPGPU-Sim PTX: allocating 288 bytes on GPU starting at address 0x10000400
+GPGPU-Sim PTX: cudaMallocing 288 bytes starting at 0x10000400..
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x10000400
+GPGPU-Sim PTX: copying 288 bytes from CPU[0x439a660] to GPU[0x10000400] ...  done.
+
+[VOTE Kernel Test 3/3]
+	Running <<Vote.Any>> kernel3 ...
+
+
+
+GPGPU-Sim PTX: cudaLaunch for 0x403ea0 (mode=performance simulation)
+GPGPU-Sim PTX: Launching kernel '_Z14VoteAnyKernel3Pbi' gridDim= (1,1,1) blockDim = (96,1,1); ntuid=257
+GPGPU-Sim uArch: clock freqs: 325000000.000000:650000000.000000:650000000.000000:800000000.000000
+GPGPU-Sim uArch: clock periods: 0.00000000307692307692:0.00000000153846153846:0.00000000153846153846:0.00000000125000000000
+Reconvergence Pairs for _Z14VoteAnyKernel3Pbi
+74	77
+CTA/core = 8, limited by: cta_limit
+Shader 0 initializing CTA #0 with hw tids from 0 to 96 @(1,251) shdr->not_completed = 0
+Shader 0 finished CTA #0 (178,251)
+stats for grid: 2
+gpu_sim_cycle = 179
+gpu_sim_insn = 3232
+gpu_sim_no_ld_const_insn = 3040
+gpu_ipc =      18.0559
+gpu_completed_thread = 96
+gpu_tot_sim_cycle = 430
+gpu_tot_sim_insn = 8608
+gpu_tot_ipc =      20.0186
+gpu_tot_completed_thread = 352
+gpgpu_n_sent_writes = 30
+gpgpu_n_processed_writes = 29
+gpu_stall_by_MSHRwb= 4
+gpu_stall_shd_mem  = 0
+gpu_stall_wr_back  = 0
+gpu_stall_dramfull = 0
+gpu_stall_icnt2sh    = 0
+gpu_stall_sh2icnt    = 0
+gpgpu_n_load_insn  = 256
+gpgpu_n_store_insn = 480
+gpgpu_n_shmem_insn = 0
+gpgpu_n_tex_insn = 0
+gpgpu_n_const_mem_insn = 0
+gpgpu_n_param_mem_insn = 704
+gpgpu_n_shmem_bkconflict = 0
+gpgpu_n_cache_bkconflict = 0
+gpgpu_n_intrawarp_mshr_merge = 736
+gpgpu_n_cmem_portconflict = 0
+gpgpu_n_writeback_l1_miss = 0
+gpgpu_n_partial_writes = 14
+maxmrqlatency = 8 
+maxdqlatency = 10 
+maxmflatency = 18 
+averagemflatency = 9 
+max_icnt2mem_latency = 12 
+max_icnt2sh_latency = 3 
+mrq_lat_table:33 	7 	5 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+dq_lat_table:0 	9 	34 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+mf_lat_table:0 	0 	1 	13 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+icnt2mem_lat_table:8 	12 	17 	9 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+icnt2sh_lat_table:12 	4 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+mf_lat_pw_table:0 	0 	0 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
+maximum concurrent accesses to same row:
+dram[0]:         0         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+maximum service time to same row:
+dram[0]:        32         0         0         0 
+dram[1]:        33         0         0         0 
+dram[2]:       118         0         0         0 
+dram[3]:       121         0         0         0 
+dram[4]:       118         0         0         0 
+dram[5]:       124         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+average row accesses per activate:
+dram[0]:  8.000000      -nan      -nan      -nan 
+dram[1]:  8.000000      -nan      -nan      -nan 
+dram[2]:  8.000000      -nan      -nan      -nan 
+dram[3]:  8.000000      -nan      -nan      -nan 
+dram[4]: 11.000000      -nan      -nan      -nan 
+dram[5]:  3.000000      -nan      -nan      -nan 
+dram[6]:      -nan      -nan      -nan      -nan 
+dram[7]:      -nan      -nan      -nan      -nan 
+average row locality = 46/6 = 7.666667
+number of total memory accesses made:
+dram[0]:       128         0         0         0 
+dram[1]:       128         0         0         0 
+dram[2]:       128         0         0         0 
+dram[3]:       128         0         0         0 
+dram[4]:       192         0         0         0 
+dram[5]:        32         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total accesses: 736
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+number of total read accesses:
+dram[0]:         8         0         0         0 
+dram[1]:         8         0         0         0 
+dram[2]:         0         0         0         0 
+dram[3]:         0         0         0         0 
+dram[4]:         0         0         0         0 
+dram[5]:         0         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total reads: 16
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+number of total write accesses:
+dram[0]:         0         0         0         0 
+dram[1]:         0         0         0         0 
+dram[2]:         8         0         0         0 
+dram[3]:         8         0         0         0 
+dram[4]:        11         0         0         0 
+dram[5]:         3         0         0         0 
+dram[6]:         0         0         0         0 
+dram[7]:         0         0         0         0 
+total reads: 30
+min_bank_accesses = 0!
+min_chip_accesses = 0!
+average mf latency per bank:
+dram[0]:         11    none      none      none  
+dram[1]:         12    none      none      none  
+dram[2]:          0    none      none      none  
+dram[3]:          0    none      none      none  
+dram[4]:          0    none      none      none  
+dram[5]:          0    none      none      none  
+dram[6]:     none      none      none      none  
+dram[7]:     none      none      none      none  
+maximum mf latency per bank:
+dram[0]:         16         0         0         0
+dram[1]:         18         0         0         0
+dram[2]:          0         0         0         0
+dram[3]:          0         0         0         0
+dram[4]:          0         0         0         0
+dram[5]:          0         0         0         0
+dram[6]:          0         0         0         0
+dram[7]:          0         0         0         0
+
+Number of Memory Banks Accessed per Memory Operation per Warp (from 0):
+0	8	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	
+Average # of Memory Banks Accessed per Memory Operation per Warp=1.000000
+
+position of mrq chosen
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	
+
+average position of mrq chosen = -nan
+max return queue length = 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+merge misses = 240
+L1 read misses = 256
+L1 write misses = 0
+L1 texture misses = 0
+L1 const misses = 0
+L2_write_miss = 0
+L2_write_hit = 0
+L2_read_miss = 0
+L2_read_hit = 0
+made_read_mfs = 16
+made_write_mfs = 30
+freed_read_mfs = 16
+freed_L1write_mfs = 29
+freed_L2write_mfs = 0
+freed_dummy_read_mfs = 0
+gpgpu_n_mem_read_local = 0
+gpgpu_n_mem_write_local = 0
+gpgpu_n_mem_read_global = 16
+gpgpu_n_mem_write_global = 30
+gpgpu_n_mem_texture = 0
+gpgpu_n_mem_const = 0
+max_n_mshr_used = 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+DRAM[0]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=1055 n_nop=1038 n_act=1 n_pre=0 n_req=8 n_rd=16 n_write=0 bw_util=0.03033
+n_activity=56 dram_eff=0.5714
+bk0: 16a 1051i bk1: 0a 1051i bk2: 0a 1051i bk3: 0a 1052i bk4: 0a 1051i bk5: 0a 1051i bk6: 0a 1051i bk7: 0a 1040i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=3 avg=0.0530806
+DRAM[1]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=1055 n_nop=1038 n_act=1 n_pre=0 n_req=8 n_rd=16 n_write=0 bw_util=0.03033
+n_activity=56 dram_eff=0.5714
+bk0: 16a 1051i bk1: 0a 1051i bk2: 0a 1051i bk3: 0a 1052i bk4: 0a 1051i bk5: 0a 1051i bk6: 0a 1051i bk7: 0a 1040i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=3 avg=0.0606635
+DRAM[2]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=1055 n_nop=1038 n_act=1 n_pre=0 n_req=8 n_rd=0 n_write=16 bw_util=0.03033
+n_activity=51 dram_eff=0.6275
+bk0: 0a 1052i bk1: 0a 1052i bk2: 0a 1052i bk3: 0a 1052i bk4: 0a 1052i bk5: 0a 1052i bk6: 0a 1051i bk7: 0a 1048i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=1 avg=0.00379147
+DRAM[3]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=1055 n_nop=1038 n_act=1 n_pre=0 n_req=8 n_rd=0 n_write=16 bw_util=0.03033
+n_activity=51 dram_eff=0.6275
+bk0: 0a 1052i bk1: 0a 1052i bk2: 0a 1051i bk3: 0a 1052i bk4: 0a 1051i bk5: 0a 1052i bk6: 0a 1051i bk7: 0a 1048i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=1 avg=0.0028436
+DRAM[4]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=1055 n_nop=1036 n_act=1 n_pre=0 n_req=11 n_rd=0 n_write=18 bw_util=0.03412
+n_activity=43 dram_eff=0.8372
+bk0: 0a 1052i bk1: 0a 1052i bk2: 0a 1054i bk3: 0a 1052i bk4: 0a 1053i bk5: 0a 1048i bk6: 0a 1048i bk7: 0a 1049i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=1 avg=0.0056872
+DRAM[5]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=1055 n_nop=1051 n_act=1 n_pre=0 n_req=3 n_rd=0 n_write=3 bw_util=0.005687
+n_activity=37 dram_eff=0.1622
+bk0: 0a 1055i bk1: 0a 1055i bk2: 0a 1055i bk3: 0a 1055i bk4: 0a 1055i bk5: 0a 1054i bk6: 0a 1054i bk7: 0a 1050i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[6]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=1055 n_nop=1055 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 1055i bk1: 0a 1055i bk2: 0a 1055i bk3: 0a 1055i bk4: 0a 1055i bk5: 0a 1055i bk6: 0a 1055i bk7: 0a 1055i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+DRAM[7]: 8 bks, busW=4 BL=4 CL=10, tRRD=2 tCCD=8, tRCD=12 tRAS=25 tRP=10 tRC=35
+n_cmd=1055 n_nop=1055 n_act=0 n_pre=0 n_req=0 n_rd=0 n_write=0 bw_util=0
+n_activity=0 dram_eff=-nan
+bk0: 0a 1055i bk1: 0a 1055i bk2: 0a 1055i bk3: 0a 1055i bk4: 0a 1055i bk5: 0a 1055i bk6: 0a 1055i bk7: 0a 1055i 
+dram_util_bins: 0 0 0 0 0 0 0 0 0 0
+dram_eff_bins: 0 0 0 0 0 0 0 0 0 0
+mrqq: max=0 avg=0
+Cache L1c_000:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = -240 (inf)
+Cache L1c_001:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_002:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_003:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_004:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_005:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_006:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_007:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_008:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_009:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_010:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_011:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_012:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_013:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_014:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_015:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_016:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_017:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_018:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_019:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_020:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_021:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_022:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_023:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_024:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_025:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_026:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_027:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_028:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1c_029:	Size = 32768 B (128 Set x 4-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Data Cache Total Miss Rate = -nan
+Cache L1texc_000:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_001:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_002:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_003:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_004:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_005:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_006:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_007:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_008:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_009:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_010:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_011:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_012:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_013:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_014:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_015:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_016:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_017:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_018:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_019:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_020:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_021:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_022:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_023:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_024:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_025:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_026:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_027:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_028:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1texc_029:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Texture Cache Total Miss Rate = -nan
+Cache L1constc_000:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_001:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_002:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_003:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_004:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_005:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_006:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_007:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_008:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_009:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_010:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_011:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_012:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_013:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_014:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_015:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_016:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_017:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_018:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_019:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_020:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_021:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_022:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_023:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_024:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_025:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_026:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_027:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_028:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+Cache L1constc_029:	Size = 8192 B (64 Set x 2-way x 64 byte line)
+		Access = 0, Miss = 0 (-nan), -MgHts = 0 (-nan)
+L1 Const Cache Total Miss Rate = -nan
+n_regconflict_stall = 0
+num_warps_issuable:139 261 3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+gpgpu_commit_pc_beyond_two = 0
+Warp Occupancy Distribution:
+Stall:105	W0_Idle:5	W0_Mem:139	W1:0	W2:0	W3:0	W4:0	W5:0	W6:0	W7:0	W8:0	W9:0	W10:0	W11:0	W12:0	W13:0	W14:0	W15:0	W16:0	W17:0	W18:0	W19:0	W20:0	W21:0	W22:0	W23:0	W24:0	W25:0	W26:0	W27:0	W28:0	W29:0	W30:0	W31:0	W32:269
+LD_mem_lat_dist  0 0 0 1 0 0 0 0 0 10 0 0 0 0 0
+ST_mem_lat_dist  0 0 0 5 0 0 0 0 0 3
+Traffic 0 Stat
+%=================================
+% Average latency = 11.3571
+% Accepted packets = 0 at node 0 (avg = 0.00653595)
+lat(5) = 11.3571;
+thru(5,:) = [ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.092437 0.0252101 0 0 ];
+% latency change    = 0.724843
+% throughput change = 0.447154
+Traffic 1 Stat
+%=================================
+% Average latency = -nan
+% Accepted packets = 0 at node 0 (avg = 0)
+lat(6) = -nan;
+thru(6,:) = [ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+% latency change    = nan
+% throughput change = inf
+----------------------------Interconnect-DETAILS---------------------------------=======Traffic[0]class0 ======
+Traffic[0]class0Overall average latency = 7.53571 (3 samples)
+Traffic[0]class0Overall average accepted rate = 0.00690238 (3 samples)
+Traffic[0]class0Overall min accepted rate = 0 (3 samples)
+traffic_manager/latency_stat_0_freq = [ 0 0 0 2 0 0 2 1 0 0 1 2 0 0 2 1 0 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Traffic[0]class1Average hops = 1 (46 samples)
+traffic_manager/hop_stats_freq = [ 0 46 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+=======Traffic[1]class0 ======
+Traffic[1]class0Overall average latency = -nan (3 samples)
+Traffic[1]class0Overall average accepted rate = 0.00236186 (3 samples)
+Traffic[1]class0Overall min accepted rate = 0 (3 samples)
+traffic_manager/latency_stat_0_freq = [ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Traffic[1]class1Average hops = 1 (16 samples)
+traffic_manager/hop_stats_freq = [ 0 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+----------------------------END-of-Interconnect-DETAILS-------------------------(LOGB2)Latency DRAM[0] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[0] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.539336 
+rwq_freq = [ 3 5 1027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 ];
+(LOGB2)Latency DRAM[1] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[1] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.539336 
+rwq_freq = [ 3 5 1027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 ];
+(LOGB2)Latency DRAM[2] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[2] Stats for rwq
+Min 0.000000 Max 31.000000 Average 1.672038 
+rwq_freq = [ 3 746 292 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 14 ];
+(LOGB2)Latency DRAM[3] Stats for mrqq
+Min 0.000000 Max 31.000000 Average 7.750000 
+mrqq_freq = [ 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 ];
+(LOGB2)Latency DRAM[3] Stats for rwq
+Min 0.000000 Max 31.000000 Average 1.678673 
+rwq_freq = [ 3 739 299 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 14 ];
+(LOGB2)Latency DRAM[4] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[4] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.407583 
+rwq_freq = [ 3 144 888 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 ];
+(LOGB2)Latency DRAM[5] Stats for mrqq
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_freq = [ 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+(LOGB2)Latency DRAM[5] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.420853 
+rwq_freq = [ 3 130 902 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 ];
+(LOGB2)Latency DRAM[6] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[6] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.539336 
+rwq_freq = [ 3 5 1027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 ];
+(LOGB2)Latency DRAM[7] Stats for mrqq
+ was never updated!
+(LOGB2)Latency DRAM[7] Stats for rwq
+Min 0.000000 Max 31.000000 Average 2.539336 
+rwq_freq = [ 3 5 1027 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 ];
+Queue Length DRAM[0] Stats for mrqq_length
+Min 0.000000 Max 3.000000 Average 0.053081 
+mrqq_length_freq = [ 1023 15 10 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[1] Stats for mrqq_length
+Min 0.000000 Max 3.000000 Average 0.060664 
+mrqq_length_freq = [ 1023 11 10 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[2] Stats for mrqq_length
+Min 0.000000 Max 1.000000 Average 0.003791 
+mrqq_length_freq = [ 1051 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[3] Stats for mrqq_length
+Min 0.000000 Max 1.000000 Average 0.002844 
+mrqq_length_freq = [ 1052 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[4] Stats for mrqq_length
+Min 0.000000 Max 1.000000 Average 0.005687 
+mrqq_length_freq = [ 1049 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[5] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 1055 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[6] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 1055 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+Queue Length DRAM[7] Stats for mrqq_length
+Min 0.000000 Max 0.000000 Average 0.000000 
+mrqq_length_freq = [ 1055 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ];
+
+
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 1 sec (1 sec)
+gpgpu_simulation_rate = 8608 (inst/sec)
+gpgpu_simulation_rate = 430 (cycle/sec)
+GPGPU-Sim PTX: cudaMemcpy(): devPtr = 0x439a660
+GPGPU-Sim PTX: copying 288 bytes from GPU[0x10000400] to CPU[0x439a660] ... done.
+	PASSED!
+
+TEST PASSED
+	Shutting down...
