@@ -2336,6 +2336,8 @@ void shader_const_memory( shader_core_ctx_t *shader, unsigned int shader_number 
             mshr_entry *mshr_e = alloc_mshr_entry();
             mshr_e->inst_uid = const_insn[i].uid;
             mshr_e->addr = const_insn[i].memreqaddr;
+	    //SEAN
+	    mshr_e->is_atom = const_insn[i].isatom;
             same_warp_mshr[i] = mshr_e; // attaching the mshr entry to this warp
             mshr_e->isvector = 0;
             mshr_e->reg = const_insn[i].out[0];
@@ -2634,6 +2636,8 @@ void shader_texture_memory( shader_core_ctx_t *shader, unsigned int shader_numbe
             mshr_e->inst_uid = tex_insn[i].uid;
             same_warp_mshr[i] = mshr_e; // attaching the mshr entry to this warp
             mshr_e->addr = tex_insn[i].memreqaddr;
+	    //SEAN
+	    mshr_e->is_atom = tex_insn[i].isatom;
             mshr_e->isvector = 1;
             mshr_e->reg = tex_insn[i].out[0];
             mshr_e->reg2 = tex_insn[i].out[1];
@@ -3149,6 +3153,8 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
                mshr_e->inst_uid = mem_insn[i].uid;
                same_warp_mshr[i] = mshr_e; // attaching the mshr entry to this warp
                mshr_e->addr = mem_insn[i].memreqaddr;
+	       //SEAN
+	       mshr_e->is_atom = mem_insn[i].isatom;
                mshr_e->isvector = mem_insn[i].is_vectorout; //cuda supports vector loads
                mshr_e->reg = mem_insn[i].out[0];
                if (mem_insn[i].is_vectorout) {

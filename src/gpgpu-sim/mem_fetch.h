@@ -106,6 +106,8 @@ typedef struct {
    unsigned long long int write_mask;
    int source_node; //memory node id when sending from mem to shader
                     //same as sid when sending from shader 2 mem 
+
+  unsigned int is_atom; //SEAN:  flag in mem_fetch_t to indicate atomic (inst_t -> mshr_entry -> mem_fetch_t)
 } mem_fetch_t;
 
 #endif

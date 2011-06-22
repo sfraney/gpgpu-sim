@@ -84,6 +84,19 @@
 #include <string.h>
 #define MAX(a,b) (((a)>(b))?(a):(b))
 
+//SEAN - to queue atomic requests
+//create struct for queue
+typedef struct atom_q_t {
+  unsigned long long int tag;
+  mem_fetch_t *mf; //memory fetch associated with entry
+
+  struct atom_q_t *next;
+} atom_q;
+
+//create list of structs
+atom_q *atom_q_head=NULL;
+atom_q *atom_q_tail=NULL;
+
 unsigned L2_write_miss = 0;
 unsigned L2_write_hit = 0;
 unsigned L2_read_hit = 0;
@@ -347,6 +360,10 @@ extern int g_ptx_sim_mode;
 #define DUMPLOG 333
 void L2c_log(int task);
 void dram_log(int task);
+
+extern unsigned long long int addrdec_packbits(unsigned long long int mask, 
+                                               unsigned long long int val,
+                                               unsigned char high, unsigned char low);
 
 extern void visualizer_options(option_parser_t opp);
 void gpu_reg_options(option_parser_t opp)
@@ -1110,6 +1127,10 @@ unsigned char fq_push(unsigned long long int addr, int bsize, unsigned char writ
    if (mshr) mshr->mf = (void*)mf; // for debugging
    mf->write = write;
 
+   //SEAN
+   if(mshr != NULL)
+     mf->is_atom = mshr->is_atom;
+
    if (write)
       made_write_mfs++;
    else
@@ -1573,56 +1594,150 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 
    if (!mf) return;
 
-   switch (mf->type) {
-   case RD_REQ:
-   case WT_REQ: {
-         shd_cache_line_t *hit_cacheline = shd_cache_access(dram_p->L2cache,
-                                                            mf->addr,
-                                                            4, mf->write,
-                                                            gpu_sim_cycle);
+   //Is this associated with an atomic operation? (Either a load or store)
+   //need to find a better way than to have every write go through this (i.e. mark stores with is_atom).  If there's not a corresponding atomic load for this, it will be caught below
+   if((mf->is_atom) || (mf->type == WT_REQ)) { 
+     //Determine the cache line it's associated with
+     unsigned long long int packed_addr;
+     unsigned long long int tag; 
+     if (dram_p->L2cache->bank_mask)
+       packed_addr = addrdec_packbits(dram_p->L2cache->bank_mask, mf->addr, 64, 0);
+     else
+       packed_addr = mf->addr;
 
-         if (hit_cacheline) { //L2 Cache Hit; reads are sent as a single command and need to be stored
-            if (!mf->write) { //L2 Cache Read
-               if ( dq_full(dram_p->L2tocbqueue) ) {
-                  dram_p->L2cache->access--;
-               } else {
-                  mf->type = REPLY_DATA;
-                  dq_push(dram_p->L2tocbqueue, mf);
-                  // at this point, should first check if earlier L2 miss is ready to be serviced
-                  // if so, service earlier L2 miss first
-                  L2request[dm_id] = NULL; //finished servicing
-                  L2_read_hit++;
-                  memlatstat_icnt2sh_push(mf);
-                  if (mf->mshr) mshr_update_status(mf->mshr, IN_L2TOCBQUEUE_HIT);
-               }
-            } else { //L2 Cache Write aka servicing L1 Writeback
-               L2request[dm_id] = NULL;    
-               L2_write_hit++;
-               freed_L1write_mfs++;
-               free(mf); //writeback from L1 successful
-               gpgpu_n_processed_writes++;
-            }
-         } else {
-            // L2 Cache Miss; issue commands accordingly
-            if ( dq_full(dram_p->L2todramqueue) ) {
-               dram_p->L2cache->miss--;
-               dram_p->L2cache->access--;
-            } else {
-               if (!mf->write) {
-                  dq_push(dram_p->L2todramqueue, mf);
-               } else {
-                  // if request is writeback from L1 and misses, 
-                  // then redirect mf writes to dram (no write allocate)
-                  mf->nbytes_L2 = mf->nbytes_L1 - READ_PACKET_SIZE;
-                  dq_push(dram_p->L2todramqueue, mf);
-               }
-               if (mf->mshr) mshr_update_status(mf->mshr, IN_L2TODRAMQUEUE);
-               L2request[dm_id] = NULL;
-            }
-         }
-      }
-      break;
-   default: assert(0);
+     tag = packed_addr >> (dram_p->L2cache->line_sz_log2 + dram_p->L2cache->nset_log2);
+
+     //     if(!mf->write) { //load request
+     if(mf->type == RD_REQ) {
+       //Allocate entry into atom_q
+       atom_q *add;
+       add = (atom_q *) malloc(sizeof(atom_q));
+       if(atom_q_head == NULL) {
+	 atom_q_head = add;
+	 atom_q_tail = add;
+       } else {
+	 atom_q_tail->next = add;
+       }
+       atom_q_tail = add;
+       add->next = NULL;
+       add->tag = tag;
+       add->mf = mf;
+
+       //TEST
+       printf("SEAN:  allocated entry for tag %llu\n", tag);
+       //TEST*/
+
+       //if one or more entries in atom_q exist for same line, stop processing 'mf' for now
+       atom_q *curr = atom_q_head;
+       while(curr != add) {
+	 if(curr->tag == tag) break;
+	 curr = curr->next;
+       }
+       if(curr != add) {
+	 //TEST
+	 printf("SEAN:  not processing because %llu has an outstanding request\n", tag);
+	 //TEST*/
+	 mf = NULL; //stop processing for now
+       }
+
+     } else { //store request
+       //Find corresponding load in atom_q & remove - HAVE TO ASSUME THAT THIS STORE *MUST* CORRESPOND TO THE FIRST LOAD FOR THE LINE ENCOUNTERED IN THE LIST (not sure of a good way to assert that this is true)
+       //TEST
+       printf("SEAN:  Write request received for tag %llu\n", tag);
+       //TEST*/
+       atom_q *curr = atom_q_head;
+       atom_q *prev = curr;
+       while(curr != NULL) {
+	 if(curr->tag == tag) break;
+	 prev = curr;
+	 curr = curr->next;
+       }
+       assert(curr != NULL); //the only way the loop should exit is through the 'break' (otherwise, there's no corresponding atomic load for this store)
+
+       if(curr == atom_q_head) {
+	 atom_q_head = NULL;
+	 atom_q_tail = NULL;
+	 free(curr);
+	 //TEST
+	 printf("SEAN:  found corresponding load at head of Queue\n");
+	 //TEST*/
+       } else {
+	 prev->next = curr->next;
+	 free(curr);
+
+       //Re-issue next waiting request (ideally should be pushed to the front of the queue to be handled next)
+       //i.e. push to front of "retry" (dram_p->cbtoL2queue) queue
+       //can I create dq_push_front function (in delayqueue.c) without breaking functionality of the delay queue (e.g. violating assumptions about not having more than one entry with 0 time_elapsed, or otherwise having a minimum time_elapsed difference between two consecutive entries?).  Need to evaluate this before modifying this to allow a push_front
+	 curr = prev->next;
+	 while (curr != NULL) {
+	   if(curr->tag == tag) break;
+	   curr = curr->next;
+	 }
+
+	 if(curr != NULL) {
+	   assert(curr->tag == tag); //the only way curr could not be NULL is if it's pointing to an entry that matches 'tag'
+	   mem_fetch_t *new_mf = curr->mf;
+	   dq_push(dram_p->cbtoL2queue, new_mf);
+	   //TEST
+	   printf("SEAN:  found another request for the tag (%llu) the atomic op this write corresponds to was servicing\n", tag);
+	   //TEST*/
+	 }
+       }
+     }
+   }
+
+   if(mf != NULL) { //atomic handling above make this possible
+     switch (mf->type) {
+     case RD_REQ:
+     case WT_REQ: {
+       shd_cache_line_t *hit_cacheline = shd_cache_access(dram_p->L2cache,
+							  mf->addr,
+							  4, mf->write,
+							  gpu_sim_cycle);
+       
+       if (hit_cacheline) { //L2 Cache Hit; reads are sent as a single command and need to be stored
+	 if (!mf->write) { //L2 Cache Read
+	   if ( dq_full(dram_p->L2tocbqueue) ) {
+	     dram_p->L2cache->access--;
+	   } else {
+	     mf->type = REPLY_DATA;
+	     dq_push(dram_p->L2tocbqueue, mf);
+	     // at this point, should first check if earlier L2 miss is ready to be serviced
+	     // if so, service earlier L2 miss first
+	     L2request[dm_id] = NULL; //finished servicing
+	     L2_read_hit++;
+	     memlatstat_icnt2sh_push(mf);
+	     if (mf->mshr) mshr_update_status(mf->mshr, IN_L2TOCBQUEUE_HIT);
+	   }
+	 } else { //L2 Cache Write aka servicing L1 Writeback
+	   L2request[dm_id] = NULL;    
+	   L2_write_hit++;
+	   freed_L1write_mfs++;
+	   free(mf); //writeback from L1 successful
+	   gpgpu_n_processed_writes++;
+	 }
+       } else {
+	 // L2 Cache Miss; issue commands accordingly
+	 if ( dq_full(dram_p->L2todramqueue) ) {
+	   dram_p->L2cache->miss--;
+	   dram_p->L2cache->access--;
+	 } else {
+	   if (!mf->write) {
+	     dq_push(dram_p->L2todramqueue, mf);
+	   } else {
+	     // if request is writeback from L1 and misses, 
+	     // then redirect mf writes to dram (no write allocate)
+	     mf->nbytes_L2 = mf->nbytes_L1 - READ_PACKET_SIZE;
+	     dq_push(dram_p->L2todramqueue, mf);
+	   }
+	   if (mf->mshr) mshr_update_status(mf->mshr, IN_L2TODRAMQUEUE);
+	   L2request[dm_id] = NULL;
+	 }
+       }
+     }
+       break;
+     default: assert(0);
+     }
    }
 }
 

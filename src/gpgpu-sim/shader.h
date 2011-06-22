@@ -140,7 +140,7 @@ typedef struct {
    unsigned long long  mm_cycle;
 
   //SEAN
-  unsigned isatom;
+  unsigned isatom; //SEAN:  inst_t flag for atomics  (inst_t -> mshr_entry -> mem_fetch_t)
 } inst_t;
 
 typedef struct {
@@ -255,6 +255,8 @@ typedef struct mshr_entry_t {
    unsigned char istexture; //if it's a request from the texture cache
    unsigned char isconst; //if it's a request from the constant cache
    unsigned char islocal; //if it's a request to the local memory of a thread
+
+  unsigned int is_atom;  //SEAN:  field in mshr_entry to indicate atomic or not (inst_t -> mshr_entry -> mem_fetch_t)
 
 } mshr_entry;
 
