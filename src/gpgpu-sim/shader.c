@@ -788,16 +788,25 @@ int shader_fetch_stalled(shader_core_ctx_t *shader)
    int n_warp_parts = warp_size/pipe_simd_width;
 
    if (shader->warp_part2issue < n_warp_parts) {
+     /*TEST
+     printf("%llu:  Stalling 1\n", gpu_sim_cycle);
+     //TEST*/
       return 1;
    }
 
    for (i=0; i<warp_size; i++) {
       if (shader->pipeline_reg[i][TS_IF].hw_thread_id != -1 ) {
+     /*TEST
+     printf("%llu:  Stalling 2\n", gpu_sim_cycle);
+     //TEST*/
          return 1;  // stalled 
       }
    }
    for (i=0; i<pipe_simd_width; i++) {
       if (shader->pipeline_reg[i][IF_ID].hw_thread_id != -1 ) {
+     /*TEST
+     printf("%llu:  Stalling 3\n", gpu_sim_cycle);
+     //TEST*/
          return 1;  // stalled 
       }
    }
@@ -879,7 +888,10 @@ void shader_issue_thread(shader_core_ctx_t *shader, int tid, int wlane, unsigned
    shader->thread[tid].avail4fetch--;
    assert( shader->thread[tid - (tid % warp_size)].n_avail4fetch > 0 );
    shader->thread[tid - (tid % warp_size)].n_avail4fetch--;
-}
+   /*TEST
+   printf("%llu SEAN:  n_avail4fetch decremented\n", gpu_sim_cycle);
+   //TEST*/
+} //shader_issue_thread
 
 void update_max_branch_priority(shader_core_ctx_t *shader, unsigned warp_hw_tid, unsigned grid_num )
 {
@@ -958,6 +970,9 @@ void shader_fetch_simd_no_reconverge(shader_core_ctx_t *shader, unsigned int sha
    if (!warp_ok) {
       shader_clear_stage_reg(shader, TS_IF);  // NOTE: is this needed?
       shader->next_warp = (shader->next_warp+1)%n_warp;  // NOTE: this is not round-robin.
+      /*TEST
+      printf("%llu:  Stalled 4\n", gpu_sim_cycle);
+      //TEST*/
       return;
    }
 
@@ -1065,7 +1080,7 @@ void shader_fetch_simd_postdominator(shader_core_ctx_t *shader, unsigned int sha
       return;
    }
 
-   if (shader_fetch_stalled(shader)) {
+   if (shader_fetch_stalled(shader)) { //check if fetch stage is stalled
       return; 
    }
    shader_clear_stage_reg(shader, TS_IF);
@@ -1109,7 +1124,7 @@ void shader_fetch_simd_postdominator(shader_core_ctx_t *shader, unsigned int sha
       } else if ( shader->thread[warp_size*shader->next_warp].n_waiting_at_barrier == 
                   shader->thread[warp_size*shader->next_warp].n_avail4fetch ) {
          w_barr_c++;
-      } else {
+      } else {  //SEAN:  Unless this branch is taken, the pipe will stall (i.e. warp_ok will never be set)
          // A valid warp is found at this point
          tmp_ready_warps[ready_warp_count] = shader->next_warp;
          ready_warp_count++;
@@ -1137,6 +1152,9 @@ void shader_fetch_simd_postdominator(shader_core_ctx_t *shader, unsigned int sha
    // probably just stall, ie nops into pipeline
    if (!warp_ok) {
       shader_clear_stage_reg(shader, TS_IF);  
+      /*TEST
+      printf("%llu:  Stalled 5\n", gpu_sim_cycle);
+      //TEST*/
       shader->next_warp = (shader->next_warp+1) % n_warp;  
       no_warp_issued = 1 ; 
       return;
@@ -1243,7 +1261,7 @@ void shader_fetch_simd_postdominator(shader_core_ctx_t *shader, unsigned int sha
          }
       }
    }
-}
+} //shader_fetch_simd_postdominator
 
 void get_pdom_stack_top_info( unsigned sid, unsigned tid, unsigned *pc, unsigned *rpc )
 {
@@ -1521,8 +1539,12 @@ void shader_fetch( shader_core_ctx_t *shader, unsigned int shader_number, int gr
    // check if decode stage is stalled
    int decode_stalled = 0;
    for (i = 0; i < pipe_simd_width; i++) {
-      if (shader->pipeline_reg[i][IF_ID].hw_thread_id != -1 )
-         decode_stalled = 1;
+     if (shader->pipeline_reg[i][IF_ID].hw_thread_id != -1 ) {
+       /*TEST
+       printf("%llu:  Stalled 6\n", gpu_sim_cycle);
+       //TEST*/
+       decode_stalled = 1;
+     }
    }
 
    if (shader->gpu_cycle % n_warp_parts == 0) {
@@ -1538,6 +1560,9 @@ void shader_fetch( shader_core_ctx_t *shader, unsigned int shader_number, int gr
                   assert(shader->thread[tid_commit[i]].avail4fetch <= 1);
                   assert( shader->thread[tid_commit[i] - (tid_commit[i]%warp_size)].n_avail4fetch < warp_size );
                   shader->thread[tid_commit[i] - (tid_commit[i]%warp_size)].n_avail4fetch++;
+		  /*TEST
+		  printf("%llu SEAN:  n_avail4fetch incremented\n", gpu_sim_cycle);
+		  //TEST*/
                }
             }
             warpupdate_bw -= 1;
@@ -1674,7 +1699,7 @@ void shader_fetch( shader_core_ctx_t *shader, unsigned int shader_number, int gr
       }
       shader->warp_part2issue += 1;
    }
-}
+} //shader_fetch
 
 inline int is_load ( op_type op ) {
    return op == LOAD_OP;
@@ -1734,7 +1759,10 @@ void shader_decode( shader_core_ctx_t *shader,
    for (i=0; i<pipe_simd_width;i++) {
       int next_stage = (shader->using_rrstage)? ID_RR:ID_EX;
       if (shader->pipeline_reg[i][next_stage].hw_thread_id != -1 ) {
-         return;  /* stalled */
+	/*TEST
+	printf("%llu:  Stalled 7\n", gpu_sim_cycle);
+	//TEST*/
+	return;  /* stalled */
       }
    }
 
@@ -1947,6 +1975,9 @@ void shader_preexecute( shader_core_ctx_t *shader,
          if (shader->RR_k) {
             shader->RR_k--;  
          }
+	 /*TEST
+	 printf("%llu:  Stalled 8\n", gpu_sim_cycle);
+	 //TEST*/
          return;  // stalled 
       }
    }
@@ -1978,6 +2009,9 @@ void shader_preexecute( shader_core_ctx_t *shader,
    if (shader->RR_k > 1) {
       n_regconflict_stall++;
       shader->RR_k--;
+      /*TEST
+      printf("%llu:  Stalled 9\n", gpu_sim_cycle);
+      //TEST*/
       return; 
    }
 
@@ -2012,12 +2046,18 @@ void shader_execute( shader_core_ctx_t *shader,
    for (i=0; i<pipe_simd_width; i++) {
       if (gpgpu_pre_mem_stages) {
          if (shader->pre_mem_pipeline[i][0].hw_thread_id != -1 ) {
-            //printf("stalled in shader_execute\n");
-            return;  // stalled 
+	   /*TEST - alread here, I just removed commenting
+	   printf("stalled in shader_execute\n");
+	   //TEST*/
+	   return;  // stalled 
          }
       } else {
-         if (shader->pipeline_reg[i][EX_MM].hw_thread_id != -1 )
-            return;  // stalled 
+	if (shader->pipeline_reg[i][EX_MM].hw_thread_id != -1 ) {
+	  /*TEST
+	  printf("stalled in shader_execute\n");
+	  //TEST*/
+	  return;  // stalled 
+	}
       }
    }
 
@@ -2094,6 +2134,9 @@ void shader_const_memory( shader_core_ctx_t *shader, unsigned int shader_number 
    for (i=0; i<pipe_simd_width; i++) {
       if (shader->pipeline_reg[i][MM_WB].hw_thread_id != -1 ) {
          wb_stalled = 1;
+	 /*TEST
+	 printf("%llu:  Stalled 10\n", gpu_sim_cycle);
+	 //TEST*/
          break;
       }
    }
@@ -2102,11 +2145,19 @@ void shader_const_memory( shader_core_ctx_t *shader, unsigned int shader_number 
       shader->pending_cmem_acc-=gpgpu_const_port_per_bank;
       if (shader->pending_cmem_acc > gpgpu_const_port_per_bank) {
          if (!wb_stalled) gpu_stall_shd_mem++; // correct the performance counter.
+	 /*TEST
+	 printf("%llu:  Stalled 11\n", gpu_sim_cycle);
+	 //TEST*/
          return;  // stalled 
       }
    }
 
-   if (wb_stalled) return; // don't proceed if next stage is stalled.
+   if (wb_stalled) {
+     /*TEST
+     printf("%llu:  Stalled 12\n", gpu_sim_cycle);
+     //TEST*/
+     return; // don't proceed if next stage is stalled.
+   }
 
    // select from the pipeline register of choice.
    static inst_t *const_insn = NULL;
@@ -2276,6 +2327,9 @@ void shader_const_memory( shader_core_ctx_t *shader, unsigned int shader_number 
       if ( require_MSHR && dq_full(shader->mshr[const_insn[i].hw_thread_id]) ) {
          // can't allocate all the resources - stall and retry next cycle
          rc_fail = 1;
+	 /*TEST
+	 printf("%llu:  Stalled 13\n", gpu_sim_cycle);
+	 //TEST*/
       }
    } //end for 
    for ( i=0;i<num_unq_fetch;i++ ) {
@@ -2311,6 +2365,9 @@ void shader_const_memory( shader_core_ctx_t *shader, unsigned int shader_number 
    if (rc_fail ) {
       // can't allocate all the resources - stall and retry next cycle
       gpu_stall_shd_mem++;
+      /*TEST
+      printf("%llu Stalling shd mem 14\n", gpu_sim_cycle);
+      //TEST*/
       for (i=0; i<pipe_simd_width; i++) {
          if ( (const_insn[i].hw_thread_id != -1 ) ) {
             // correcting statistic for resource stall
@@ -2444,11 +2501,19 @@ void shader_texture_memory( shader_core_ctx_t *shader, unsigned int shader_numbe
    int wb_stalled = 0; // check if next stage is stalled
    for (i=0; i<pipe_simd_width; i++) {
       if (shader->pipeline_reg[i][MM_WB].hw_thread_id != -1 ) {
+	 /*TEST
+	 printf("%llu:  Stalled 15\n", gpu_sim_cycle);
+	 //TEST*/
          wb_stalled = 1;
          break;
       }
    }
-   if (wb_stalled) return; // don't proceed if next stage is stalled.
+   if (wb_stalled) {
+     /*TEST
+     printf("%llu:  Stalled 16\n", gpu_sim_cycle);
+     //TEST*/
+     return; // don't proceed if next stage is stalled.
+   }
 
    // select from the pipeline register of choice.
    static inst_t *tex_insn = NULL;
@@ -2573,8 +2638,11 @@ void shader_texture_memory( shader_core_ctx_t *shader, unsigned int shader_numbe
       }
 
       if ( require_MSHR && dq_full(shader->mshr[tex_insn[i].hw_thread_id]) ) {
-         // can't allocate all the resources - stall and retry next cycle
-         rc_fail = 1;
+	// can't allocate all the resources - stall and retry next cycle
+	/*TEST
+	printf("%llu:  Stalled 17\n", gpu_sim_cycle);
+	//TEST*/
+	rc_fail = 1;
       }
    } //end for
    for ( i=0;i<num_unq_fetch;i++ ) {
@@ -2610,6 +2678,9 @@ void shader_texture_memory( shader_core_ctx_t *shader, unsigned int shader_numbe
    if (rc_fail) {
       // can't allocate all the resources - stall and retry next cycle
       gpu_stall_shd_mem++;
+      /*TEST
+      printf("%llu Stalling shd mem 18\n", gpu_sim_cycle);
+      //TEST*/
       for (i=0; i<pipe_simd_width; i++) {
          if ( (tex_insn[i].hw_thread_id != -1 ) ) {
             // correcting statistic for resource stall
@@ -2745,6 +2816,9 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
    int wb_stalled = 0; // check if next stage is stalled
    for (i=0; i<pipe_simd_width; i++) {
       if (shader->pipeline_reg[i][MM_WB].hw_thread_id != -1 ) {
+	 /*TEST
+	 printf("%llu:  Stalled 19\n", gpu_sim_cycle);
+	 //TEST*/
          wb_stalled = 1;
          break;
       }
@@ -2754,6 +2828,9 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
       shader->pending_shmem_bkacc -= gpgpu_shmem_port_per_bank;
       if (shader->pending_shmem_bkacc > gpgpu_shmem_port_per_bank) {
          if (!wb_stalled) gpu_stall_shd_mem++; // correct the performance counter. 
+	 /*TEST
+	 printf("%llu:  Stalled 20\n", gpu_sim_cycle);
+	 //TEST*/
          return;  // stalled 
       }
    }
@@ -2761,11 +2838,19 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
       shader->pending_cache_bkacc -= gpgpu_cache_port_per_bank;
       if (shader->pending_cache_bkacc > gpgpu_cache_port_per_bank) {
          if (!wb_stalled) gpu_stall_shd_mem++; // correct the performance counter. 
+	 /*TEST
+	 printf("%llu:  Stalled 21\n", gpu_sim_cycle);
+	 //TEST*/
          return;  // stalled 
       }
    }
 
-   if (wb_stalled) return; // don't preceed if next stage is stalled.
+   if (wb_stalled) {
+     /*TEST
+     printf("%llu:  Stalled 22\n", gpu_sim_cycle);
+     //TEST*/
+     return; // don't preceed if next stage is stalled.
+   }
 
    // select from the pipeline register of choice.
    static inst_t *mem_insn = NULL;
@@ -3076,6 +3161,9 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
 
       if ( require_MSHR && dq_full(shader->mshr[mem_insn[i].hw_thread_id]) ) {
          // can't allocate all the resources - stall and retry next cycle
+	 /*TEST
+	 printf("%llu:  Stalled 23\n", gpu_sim_cycle);
+	 //TEST*/
          rc_fail = 1;
       }
 
@@ -3112,6 +3200,9 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
    if (rc_fail) {
       // can't allocate all the resources - stall and retry next cycle
       gpu_stall_shd_mem++;
+      /*TEST
+      printf("%llu Stalling shd mem 24\n", gpu_sim_cycle);
+      //TEST*/
       for (i=0; i<pipe_simd_width; i++) {
          if ( is_load(mem_insn[i].op) || is_store(mem_insn[i].op) ) {
             // correcting statistic for resource stall
@@ -3471,6 +3562,9 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
          removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
          writeback_by_MSHR = 1;
          stalled_by_MSHR = 1;
+	 /*TEST
+	 printf("%llu:  Stalled by MSHR 24\n", gpu_sim_cycle);
+	 //TEST*/
 
       }
    }
@@ -3570,6 +3664,9 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
                assert( shader->thread[unlock_tid[i] - (unlock_tid[i]%warp_size)].n_avail4fetch < warp_size );
                shader->thread[unlock_tid[i] - (unlock_tid[i]%warp_size)].n_avail4fetch++;
                thd_unlocked = 1;
+	       /*TEST
+	       printf("%llu SEAN:  n_avail4fetch incremented (and thd unlocked in shader_writeback)\n", gpu_sim_cycle);
+	       //TEST*/
             }
          }
 
@@ -3617,7 +3714,7 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
          shader->pipeline_reg[i][MM_WB] = nop_inst;
       }
    }
-}
+} //shader_writeback
 
 void shader_print_runtime_stat( FILE *fout ) {
    int i;
