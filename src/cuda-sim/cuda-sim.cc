@@ -1643,7 +1643,7 @@ void gpgpu_ptx_sim_load_ptx_from_string( const char *p, unsigned source_num )
     std::ostringstream out;
     std::string test;
     std::string rest;
-    //    code << p;
+
     while(code >> test) {
       std::getline(code,rest); //get rest of line
       out << test << rest << std::endl;

@@ -1,5 +1,5 @@
 /* 
- * waro_tracker.cc
+ * warp_tracker.cc
  *
  * Copyright (c) 2009 by Tor M. Aamodt, Wilson W. L. Fung, Ali Bakhoda and the 
  * University of British Columbia
@@ -147,6 +147,9 @@ public:
             int *tid_unlocked = alloc_commit_warp();
             memcpy(tid_unlocked, this->tid, sizeof(int)*warp_size);
             dq_push(shd->thd_commit_queue,(void*)tid_unlocked);
+	    /*TEST
+	    printf("SEAN:  Pushed tid %i to thread commit queue (in warp_tracker.cc)\n", *tid_unlocked);
+	    //TEST*/
          }
 
          return true;

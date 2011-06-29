@@ -597,11 +597,13 @@ static char* MSHR_Status_str[] = {
    "IN_ICNTOL2QUEUE",
    "IN_L2TODRAMQUEUE",
    "IN_DRAM_REQ_QUEUE",
+   "IN_DRAMRETURN_Q",
    "IN_DRAMTOL2QUEUE",
    "IN_L2TOICNTQUEUE_HIT",
    "IN_L2TOICNTQUEUE_MISS",
    "IN_ICNT2SHADER",
    "FETCHED",
+   "STALLED_IN_ATOM_Q",
 };
 
 mshr_entry *g_mshr_free_queue = NULL;
@@ -742,7 +744,8 @@ void shader_update_mshr(shader_core_ctx_t* sc, unsigned long long int fetched_ad
 {
    assert( mshr_idx < sc->n_threads );
    int found_addr = 0;
-   delay_data* mshr_p = sc->mshr[mshr_idx]->head;
+   //Each shader has N_THREADS number of MSHR, one per thread
+   delay_data* mshr_p = sc->mshr[mshr_idx]->head; //SEAN:  head of shader's thread's mshr (which is implemented as delay queue)
    mshr_entry* mshr_e = NULL;
    while (mshr_p) {
       if (mshr_p->data) {
@@ -889,7 +892,7 @@ void shader_issue_thread(shader_core_ctx_t *shader, int tid, int wlane, unsigned
    assert( shader->thread[tid - (tid % warp_size)].n_avail4fetch > 0 );
    shader->thread[tid - (tid % warp_size)].n_avail4fetch--;
    /*TEST
-   printf("%llu SEAN:  n_avail4fetch decremented\n", gpu_sim_cycle);
+   printf("%llu SEAN:  n_avail4fetch decremented (now = %i)\n", gpu_sim_cycle, shader->thread[tid - (tid % warp_size)].n_avail4fetch);
    //TEST*/
 } //shader_issue_thread
 
@@ -1547,13 +1550,20 @@ void shader_fetch( shader_core_ctx_t *shader, unsigned int shader_number, int gr
      }
    }
 
-   if (shader->gpu_cycle % n_warp_parts == 0) {
+   if (shader->gpu_cycle % n_warp_parts == 0) { //n_warp_parts always '1'?
+     //n_warp_parts = warp_size/pipe_simd_width
 
       if (shader->model == POST_DOMINATOR || shader->model == NO_RECONVERGE) {
          int warpupdate_bw = 1; // number of warps to be unlocked per scheduler cycle
          while (!dq_empty(shader->thd_commit_queue) && warpupdate_bw > 0) {
+	   /*TEST
+	   printf("SEAN:  thd_commit_queue is not empty (and warpupdate_bw = %i)\n", warpupdate_bw);
+	   //TEST*/
             // grab a committed warp and unlock it here
             int *tid_commit = (int*)dq_pop(shader->thd_commit_queue);
+	    /*TEST
+	    dq_print(shader->thd_commit_queue);
+	    //TEST*/
             for ( i=0; i<warp_size; i++) {
                if (tid_commit[i] >= 0) {
                   shader->thread[tid_commit[i]].avail4fetch++;
@@ -1561,7 +1571,7 @@ void shader_fetch( shader_core_ctx_t *shader, unsigned int shader_number, int gr
                   assert( shader->thread[tid_commit[i] - (tid_commit[i]%warp_size)].n_avail4fetch < warp_size );
                   shader->thread[tid_commit[i] - (tid_commit[i]%warp_size)].n_avail4fetch++;
 		  /*TEST
-		  printf("%llu SEAN:  n_avail4fetch incremented\n", gpu_sim_cycle);
+		  printf("%llu SEAN:  n_avail4fetch incremented (now = %i)\n", gpu_sim_cycle, shader->thread[tid_commit[i] - (tid_commit[i]%warp_size)].n_avail4fetch);
 		  //TEST*/
                }
             }
@@ -3505,19 +3515,19 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
    }
    unlock_lat_info = NULL;
 
-   check_stage_pcs(shader,MM_WB);
+   check_stage_pcs(shader,MM_WB); //SEAN:  checks warp consistency (defaulted to turned off, however => nothing actually happens with this call).
 
    /* Generate Condition for instruction writeback to register file.
       A load miss *instruction* does not reach writeback until the data is fetched */
    for (i=0; i<pipe_simd_width; i++) {
       tid = shader->pipeline_reg[i][MM_WB].hw_thread_id;
-      w2rf |= (tid >= 0); 
+      w2rf |= (tid >= 0); //SEAN:  will be '1' as long as tid != -1
       pl_tid[i] = tid;
    }
    int mshr_warpid = -1;
    for (i=0; i<pipe_simd_width; i++) {
       mshr_returnhead = getMSHR_returnhead(shader);
-      if ((shader->model == POST_DOMINATOR || shader->model == NO_RECONVERGE) && gpgpu_strict_simd_wrbk) {
+      if ((shader->model == POST_DOMINATOR || shader->model == NO_RECONVERGE) && gpgpu_strict_simd_wrbk) { //SEAN:  gpgpu_strict_simd_wrbk defaults to '0'
          if (mshr_returnhead) {
             if (mshr_warpid == -1) {
                mshr_warpid = mshr_returnhead->hw_thread_id / warp_size;
@@ -3546,16 +3556,19 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
       /* arbitrate between two source of commit: instr or mshr */
       /* Note: now the priority is given to the instr, but
         if this is not the case, we should stall at WB */
-      if ( w2rf && !mshr_fetched ) {
+      if ( w2rf && !mshr_fetched ) { //SEAN:  inflight insn wants to write to RF & no mshr return also wants to write
          // instruction needs to be written to destination register 
          // and there is nothing from the MSHR, proceed with the writeback
-      } else if ( !w2rf && mshr_fetched ) {
+      } else if ( !w2rf && mshr_fetched ) { //SEAN:  no inflight insn trying to write to RF, but there is return data from the MSHR
          // all nop in this stage => no need to unlock and writeback
 
          removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
          writeback_by_MSHR = 1;
+	 /*TEST
+	 printf("SEAN (%llu):  load data returned for tid %i and written to RF\n", gpu_sim_cycle, mshr_tid[i]);
+	 //TEST*/
 
-      } else if ( w2rf && mshr_fetched ) {
+      } else if ( w2rf && mshr_fetched ) { //SEAN:  inflight insn *&* MSHR return both want to write to RF => stall inflight insn?
          // stall the pipeline if a load from MSHR is ready to commit
          assert (mshr_head[i]->hw_thread_id >= 0);
 
@@ -3657,7 +3670,7 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
          } else { //thread is not finished yet
             // program is not finished yet, allow more fetch 
             if (gpgpu_no_divg_load) {
-               freed_warp[i] = wpt_signal_avail(unlock_tid[i], shader);
+	      freed_warp[i] = wpt_signal_avail(unlock_tid[i], shader);
             } else {
                shader->thread[unlock_tid[i]].avail4fetch++;
                assert(shader->thread[unlock_tid[i]].avail4fetch <= 1);
@@ -3665,7 +3678,7 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
                shader->thread[unlock_tid[i] - (unlock_tid[i]%warp_size)].n_avail4fetch++;
                thd_unlocked = 1;
 	       /*TEST
-	       printf("%llu SEAN:  n_avail4fetch incremented (and thd unlocked in shader_writeback)\n", gpu_sim_cycle);
+	       printf("%llu SEAN:  n_avail4fetch incremented (and thd unlocked in shader_writeback) (now = %i)\n", gpu_sim_cycle, shader->thread[unlock_tid[i] - (unlock_tid[i]%warp_size)].n_avail4fetch);
 	       //TEST*/
             }
          }
@@ -3691,9 +3704,19 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
    }
    if (shader->using_commit_queue && thd_unlocked) {
       int *tid_unlocked = alloc_commit_warp();
-      memcpy(tid_unlocked, unlock_tid, sizeof(int)*pipe_simd_width); //NOTE: this maybe warp_size
+      memcpy(tid_unlocked, unlock_tid, sizeof(int)*pipe_simd_width); //NOTE: this may be warp_size
       dq_push(shader->thd_commit_queue,(void*)tid_unlocked);
+      /*TEST
+      printf("SEAN:  Pushed tid %i to thread commit queue\n", *tid_unlocked);
+      //TEST*/
    }
+   /*TEST
+   else if (!thd_unlocked) {
+     printf("SEAN:  thread not pushed to thd_commit_queue because thd_unlocked = %i\n", thd_unlocked);
+   } else {
+     printf("SEAN:  thread not pushed to thd_commit_queue because using_commit_queue = %i\n", shader->using_commit_queue);
+   }
+   //TEST*/
  
    //SEAN
    if(g_pipetrace) {

@@ -193,6 +193,7 @@ enum mshr_status {
    IN_L2TOCBQUEUE_MISS,
    IN_ICNT2SHADER,
    FETCHED,
+   STALLED_IN_ATOM_Q,
    NUM_MSHR_STATUS
 };
 

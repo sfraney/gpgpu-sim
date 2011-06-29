@@ -502,7 +502,7 @@ void gpu_reg_options(option_parser_t opp)
                 "0");
 
    option_parser_register(opp, "-gpgpu_strict_simd_wrbk", OPT_BOOL, (int*)&gpgpu_strict_simd_wrbk, 
-                "Applying Strick SIMD WriteBack Stage (1=on, 0=off)",
+                "Applying Strict SIMD WriteBack Stage (1=on, 0=off)",
                 "0");
 
    option_parser_register(opp, "-gpgpu_shmem_size", OPT_UINT32, &gpgpu_shmem_size, 
@@ -1604,6 +1604,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 
    if (!mf) return;
 
+   //SEAN
    //Is this associated with an atomic operation? (Either a load or store)
    //need to find a better way than to have every write go through this (i.e. mark stores with is_atom).  If there's not a corresponding atomic load for this, it will be caught below
    if((first) && ((mf->is_atom) || (mf->type == WT_REQ))) { 
@@ -1624,7 +1625,6 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
        add = (atom_q *) malloc(sizeof(atom_q));
        if(atom_q_head == NULL) {
 	 atom_q_head = add;
-	 atom_q_tail = add;
        } else {
 	 atom_q_tail->next = add;
        }
@@ -1634,7 +1634,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
        add->mf = mf;
 
        /*TEST
-       printf("SEAN:  allocated entry for tag %llu.  Time:  %llu\n", tag, gpu_sim_cycle);
+       printf("SEAN (%llu):  allocated entry for tag %llu.\n", gpu_sim_cycle, tag);
        //TEST*/
 
        //if one or more entries in atom_q exist for same line, stop processing 'mf' for now
@@ -1645,15 +1645,18 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
        }
        if(curr != add) {
 	 /*TEST
-	 printf("SEAN:  not processing because %llu has an outstanding request\n", tag);
+	 printf("SEAN (%llu):  not processing because %llu has an outstanding request\n", gpu_sim_cycle, tag);
 	 //TEST*/
+	 //Update mshr entry to indicate stalled
+	 mshr_update_status(mf->mshr, STALLED_IN_ATOM_Q);
 	 mf = NULL; //stop processing for now
+	 L2request[dm_id] = NULL;
        }
 
      } else { //store request
        //Find corresponding load in atom_q & remove - HAVE TO ASSUME THAT THIS STORE *MUST* CORRESPOND TO THE FIRST LOAD FOR THE LINE ENCOUNTERED IN THE LIST (not sure of a good way to assert that this is true)
        /*TEST
-       printf("SEAN:  Write request received for tag %llu.  Time:  %llu\n", tag, gpu_sim_cycle);
+       printf("SEAN (%llu):  Write request received for tag %llu.\n", gpu_sim_cycle, tag);
        //TEST*/
        atom_q *curr = atom_q_head;
        atom_q *prev = curr;
@@ -1662,14 +1665,15 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	 prev = curr;
 	 curr = curr->next;
        }
-       //     assert(curr != NULL); //the only way the loop should exit is through the 'break' (otherwise, there's no corresponding atomic load for this store)
+       //I want to re-introduce this if/when I can mark stores as atomic
+       //assert(curr != NULL); //the only way the loop should exit is through the 'break' (otherwise, there's no corresponding atomic load for this store)
 
        if(curr == atom_q_head) {
 	 atom_q_head = NULL;
 	 atom_q_tail = NULL;
 	 free(curr);
 	 /*TEST
-	 printf("SEAN:  found corresponding load at head of Queue.  Time:  %llu\n", gpu_sim_cycle);
+	 printf("SEAN (%llu):  found corresponding load at head of Queue.\n", gpu_sim_cycle);
 	 //TEST*/
        } else {
 	 prev->next = curr->next;
@@ -1689,12 +1693,13 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	   mem_fetch_t *new_mf = curr->mf;
 	   dq_push(dram_p->cbtoL2queue, new_mf);
 	   /*TEST
-	   printf("SEAN:  found another request for the tag (%llu) the atomic op this write corresponds to was servicing\n", tag);
+	   printf("SEAN (%llu):  found another request for the tag (%llu) the atomic op this write corresponds to was servicing\n", gpu_sim_cycle, tag);
 	   //TEST*/
 	 }
        }
      }
    }
+   //SEAN*/
 
    if(mf != NULL) { //atomic handling above make this possible
      switch (mf->type) {
@@ -2206,7 +2211,7 @@ void gpu_sim_loop( int grid_num )
                   icnt_push( mem2device(i), return_dev, mf, mf->nbytes_L1);
                   mem_ctrl_pop(i);
 		  /*TEST
-		  printf("SEAN: %llu data returned from DRAM, injected to ICNT back to core.  Time %llu\n", mf->addr, gpu_sim_cycle);
+		  printf("SEAN (%llu): %llu data returned from DRAM, injected to ICNT back to core.  Time %llu\n", mf->addr, gpu_sim_cycle);
 		  //TEST*/
                } else {
                   gpu_stall_icnt2sh++;
@@ -2226,12 +2231,12 @@ void gpu_sim_loop( int grid_num )
    if (clock_mask & DRAM) {
       for (i=0;i<gpu_n_mem;i++) {
          get_dram_output ( dram[i] ); 
-      }          
+      }    
       // Issue the dram command (scheduler + delay model) 
       for (i=0;i<gpu_n_mem;i++) {
          dram_issueCMD(dram[i]);
       }
-      dram_log(SAMPLELOG);   
+      dram_log(SAMPLELOG);  
    }
 
    // L2 operations follow L2 clock domain
@@ -2291,8 +2296,9 @@ void gpu_sim_loop( int grid_num )
    if (clock_mask & CORE) {
       // L1 cache + shader core pipeline stages 
       for (i=0;i<gpu_n_shader;i++) {
-         if (sc[i]->not_completed || more_thread)
-            shader_cycle(sc[i], i, grid_num);
+	if (sc[i]->not_completed || more_thread) {
+	  shader_cycle(sc[i], i, grid_num);
+	}
          sc[i]->gpu_cycle++;
       }
       gpu_sim_cycle++;
