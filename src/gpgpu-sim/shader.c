@@ -3567,6 +3567,17 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
 	 /*TEST
 	 printf("SEAN (%llu):  load data returned for tid %i and written to RF\n", gpu_sim_cycle, mshr_tid[i]);
 	 //TEST*/
+	 //SEAN
+	 if(g_pipetrace) {
+	   for (i=0; i<pipe_simd_width; i++) {
+	     if((mshr_head[i]) && (mshr_head[i]->inst.uid != nop_inst.uid)) {
+	       pipe_stat *curr=pipe_stat_last;
+	       while((curr != NULL) && (curr->uid != mshr_head[i]->inst.uid)) curr = curr->prev;    
+	       assert(curr->uid == mshr_head[i]->inst.uid);
+	       curr->in_writeback = gpu_sim_cycle;
+	     }
+	   }
+	 }
 
       } else if ( w2rf && mshr_fetched ) { //SEAN:  inflight insn *&* MSHR return both want to write to RF => stall inflight insn?
          // stall the pipeline if a load from MSHR is ready to commit
@@ -3578,6 +3589,17 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
 	 /*TEST
 	 printf("%llu:  Stalled by MSHR 24\n", gpu_sim_cycle);
 	 //TEST*/
+	 //SEAN
+	 if(g_pipetrace) {
+	   for (i=0; i<pipe_simd_width; i++) {
+	     if((mshr_head[i]) && (mshr_head[i]->inst.uid != nop_inst.uid)) {
+	       pipe_stat *curr=pipe_stat_last;
+	       while((curr != NULL) && (curr->uid != mshr_head[i]->inst.uid)) curr = curr->prev;    
+	       assert(curr->uid == mshr_head[i]->inst.uid);
+	       curr->in_writeback = gpu_sim_cycle;
+	     }
+	   }
+	 }
 
       }
    }
