@@ -821,6 +821,8 @@ void function_info::ptx_decode_inst( ptx_thread_info *thread,
       *op_type = LOAD_OP;
    } else if ( opcode == ST_OP ) {
       *op_type = STORE_OP;
+      //SEAN - to mark stores as corresponding to atomic load
+      if(m_instr_mem[index-2]->get_atomic()) *isatom = m_instr_mem[index-2]->get_atomic();
    } else if ( opcode == BRA_OP ) {
       *op_type = BRANCH_OP;
    } else if ( opcode == TEX_OP ) {

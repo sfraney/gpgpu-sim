@@ -1263,7 +1263,7 @@ unsigned char fq_pop(int tpc_id)
    if (mf) {
       assert(mf->type == REPLY_DATA);
       time_vector_update(mf->mshr->inst_uid ,MR_2SH_FQ_POP,gpu_sim_cycle+gpu_tot_sim_cycle, mf->type ) ;
-      /*TEST
+      //TEST
       printf("SEAN:  Filling shader %i with %llu data\n", mf->sid, mf->addr);
       //TEST*/
       fill_shd_L1_with_new_line(sc[mf->sid], mf);
@@ -1494,7 +1494,7 @@ void* mem_ctrl_pop( int mc_id )
       mf = dq_pop(dram[mc_id]->L2tocbqueue);
       if (mf && mf->mshr && mf->mshr->inst.callback.function) {
          dram_callback_t* cb = &(mf->mshr->inst.callback);
-	 /*TEST
+	 //TEST
 	 printf("SEAN:  Calling atom_callback function.  Time:  %llu\n", gpu_sim_cycle);
 	 //TEST*/
          cb->function(cb->instruction, cb->thread);
@@ -1607,7 +1607,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
    //SEAN
    //Is this associated with an atomic operation? (Either a load or store)
    //need to find a better way than to have every write go through this (i.e. mark stores with is_atom).  If there's not a corresponding atomic load for this, it will be caught below
-   if((first) && ((mf->is_atom) || (mf->type == WT_REQ))) { 
+   if((first) && (mf->is_atom)) { 
      //Determine the cache line it's associated with
      unsigned long long int packed_addr;
      unsigned long long int tag; 
@@ -1633,7 +1633,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
        add->tag = tag;
        add->mf = mf;
 
-       /*TEST
+       //TEST
        printf("SEAN (%llu):  allocated entry for tag %llu.\n", gpu_sim_cycle, tag);
        //TEST*/
 
@@ -1644,7 +1644,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	 curr = curr->next;
        }
        if(curr != add) {
-	 /*TEST
+	 //TEST
 	 printf("SEAN (%llu):  not processing because %llu has an outstanding request\n", gpu_sim_cycle, tag);
 	 //TEST*/
 	 //Update mshr entry to indicate stalled
@@ -1655,7 +1655,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 
      } else { //store request
        //Find corresponding load in atom_q & remove - HAVE TO ASSUME THAT THIS STORE *MUST* CORRESPOND TO THE FIRST LOAD FOR THE LINE ENCOUNTERED IN THE LIST (not sure of a good way to assert that this is true)
-       /*TEST
+       //TEST
        printf("SEAN (%llu):  Write request received for tag %llu.\n", gpu_sim_cycle, tag);
        //TEST*/
        atom_q *curr = atom_q_head;
@@ -1666,36 +1666,36 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	 curr = curr->next;
        }
        //I want to re-introduce this if/when I can mark stores as atomic
-       //assert(curr != NULL); //the only way the loop should exit is through the 'break' (otherwise, there's no corresponding atomic load for this store)
+       assert(curr != NULL); //the only way the loop should exit is through the 'break' (otherwise, there's no corresponding atomic load for this store)
 
        if(curr == atom_q_head) {
 	 atom_q_head = NULL;
 	 atom_q_tail = NULL;
-	 free(curr);
-	 /*TEST
+	 free(curr); //delete entry for load corresponding to this store
+	 //TEST
 	 printf("SEAN (%llu):  found corresponding load at head of Queue.\n", gpu_sim_cycle);
 	 //TEST*/
        } else {
 	 prev->next = curr->next;
-	 free(curr);
+	 free(curr); //delete entry for load corresponding to this store
+       }
 
        //Re-issue next waiting request (ideally should be pushed to the front of the queue to be handled next)
        //i.e. push to front of "retry" (dram_p->cbtoL2queue) queue
        //can I create dq_push_front function (in delayqueue.c) without breaking functionality of the delay queue (e.g. violating assumptions about not having more than one entry with 0 time_elapsed, or otherwise having a minimum time_elapsed difference between two consecutive entries?).  Need to evaluate this before modifying this to allow a push_front
-	 curr = prev->next;
-	 while (curr != NULL) {
-	   if(curr->tag == tag) break;
-	   curr = curr->next;
-	 }
-
-	 if(curr != NULL) {
-	   assert(curr->tag == tag); //the only way curr could not be NULL is if it's pointing to an entry that matches 'tag'
-	   mem_fetch_t *new_mf = curr->mf;
-	   dq_push(dram_p->cbtoL2queue, new_mf);
-	   /*TEST
-	   printf("SEAN (%llu):  found another request for the tag (%llu) the atomic op this write corresponds to was servicing\n", gpu_sim_cycle, tag);
-	   //TEST*/
-	 }
+       curr = prev->next;
+       while (curr != NULL) {
+	 if(curr->tag == tag) break;
+	 curr = curr->next;
+       }
+       
+       if(curr != NULL) {
+	 assert(curr->tag == tag); //the only way curr could not be NULL is if it's pointing to an entry that matches 'tag'
+	 mem_fetch_t *new_mf = curr->mf;
+	 dq_push(dram_p->cbtoL2queue, new_mf);
+	 //TEST
+	 printf("SEAN (%llu):  found another request for the tag (%llu) the atomic op this write corresponds to was servicing\n", gpu_sim_cycle, tag);
+	 //TEST*/
        }
      }
    }
@@ -1728,6 +1728,11 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	   L2request[dm_id] = NULL;    
 	   L2_write_hit++;
 	   freed_L1write_mfs++;
+	   /*THIS ISN'T WORKING TO COMPLETE THE WRITE INSN
+	   mshr_update_status(mf->mshr, FETCHED); //to allow insn to be retired
+	   dq_push(sc[mf->sid]->return_queue, mf->mshr);
+	   //THIS ISN'T WORKING TO COMPLETE THE WRITE INSN*/
+	   shader_update_mshr(sc[mf->sid],mf->addr,mf->mshr_idx, DCACHE);
 	   free(mf); //writeback from L1 successful
 	   gpgpu_n_processed_writes++;
 	 }
@@ -2180,6 +2185,10 @@ void gpu_sim_loop( int grid_num )
       for (i=0;i<gpu_n_tpc;i++) {
 	//SEAN:  Insert check for response here
          fq_pop(i); 
+	 //TEST
+	 printf("Cycle %llu:\n", gpu_sim_cycle);
+	 mshr_print(stdout, sc[i]);
+	 //TEST*/
       }
    }
 
@@ -2210,7 +2219,7 @@ void gpu_sim_loop( int grid_num )
                   time_vector_update(mf->mshr->inst_uid ,MR_2SH_ICNT_PUSHED,gpu_sim_cycle+gpu_tot_sim_cycle,RD_REQ);
                   icnt_push( mem2device(i), return_dev, mf, mf->nbytes_L1);
                   mem_ctrl_pop(i);
-		  /*TEST
+		  //TEST
 		  printf("SEAN (%llu): %llu data returned from DRAM, injected to ICNT back to core.  Time %llu\n", mf->addr, gpu_sim_cycle);
 		  //TEST*/
                } else {

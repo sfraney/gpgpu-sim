@@ -3242,7 +3242,7 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
                      || (!(gpgpu_cache_wt_through || gpgpu_no_dl1) && is_store(mem_insn[i].op)) ) {
 
             // note that an atomic memory operation is always treated as a miss
-            if (!gpgpu_perfect_mem && (!cachehit[i] || gpgpu_no_dl1 || isatommem[i])) { //cache miss
+	   if (!gpgpu_perfect_mem && (!cachehit[i] || gpgpu_no_dl1 || isatommem[i])) { //cache miss
                L1_read_miss++;
                shader->thread[mem_insn[i].hw_thread_id].n_l1_mis_ac++;
                shader->pending_mem_access++;
@@ -3320,7 +3320,7 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
                   enum mem_access_type mem_acc = is_local(mem_insn[i].space)? LOCAL_ACC_R : GLOBAL_ACC_R;
                   shader->fq_push( SHD_CACHE_TAG(mshr_e->addr,shader),
                                    shader->L1cache->line_sz,
-                                   0, NO_PARTIAL_WRITE, shader->sid, mem_insn[i].hw_thread_id, mshr_e, 
+                                   (iswrite[i] ? 1:0), NO_PARTIAL_WRITE, shader->sid, mem_insn[i].hw_thread_id, mshr_e, 
                                    cache_hits_waiting, mem_acc, mem_insn[i].pc);
 		  /*TEST
 		  if(!mshr_e->iswrite) {
@@ -3439,7 +3439,7 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
       for (i=0;i<pipe_simd_width ;i++ )
          shader->pre_mem_pipeline[i][gpgpu_pre_mem_stages] = shader->pipeline_reg[i][EX_MM];
    }
-}
+} //shader_memory
 
 
 
