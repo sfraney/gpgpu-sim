@@ -1639,20 +1639,49 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 
        //if one or more entries in atom_q exist for same line, stop processing 'mf' for now
        atom_q *curr = atom_q_head;
+       atom_q *prev = curr;
        while(curr != add) {
 	 if(curr->tag == tag) break;
+	 prev = curr;
 	 curr = curr->next;
        }
        if(curr != add) {
-	 //TEST
-	 printf("SEAN (%llu):  not processing because %llu has an outstanding request\n", gpu_sim_cycle, tag);
-	 //TEST*/
-	 //Update mshr entry to indicate stalled
-	 mshr_update_status(mf->mshr, STALLED_IN_ATOM_Q);
-	 mf = NULL; //stop processing for now
-	 L2request[dm_id] = NULL;
-       }
+	 //you're either a completely separate request (for same address) => stall me
+	 if(curr->mf != add->mf) {
+	   //TEST
+	   printf("SEAN (%llu):  not processing because %llu has an outstanding request\n", gpu_sim_cycle, tag);
+	   //TEST*/
+	   //Update mshr entry to indicate stalled
+	   mshr_update_status(mf->mshr, STALLED_IN_ATOM_Q);
+	   mf = NULL; //stop processing for now
+	   L2request[dm_id] = NULL;
+	 } else {
+	 //or you're a previous entry of the same fetch I'm responsible for => issue you and delete me
+	   //Unnecessary?
+	   mf = curr->mf;
+	   L2request[dm_id] = mf;
 
+	   //find entry in Q prior to 'add'
+	   while(curr->next != add) {
+	     curr = curr->next;
+	   }
+	   atom_q_tail = curr;
+	   curr->next = NULL;
+	   free(add);
+
+	   /*if(curr == atom_q_head) {
+	     atom_q_head = atom_q_head->next;
+	     if(atom_q_head == NULL) atom_q_tail = NULL;
+	     free(add); //delete entry for load corresponding to this store
+	     //TEST
+	     printf("SEAN (%llu):  found corresponding load at head of Queue.\n", gpu_sim_cycle);
+	     //TEST/
+	   } else {
+	     prev->next = curr->next;
+	     free(add); //delete entry for load corresponding to this store
+	   }*/
+	 }
+       }
      } else { //store request
        //Find corresponding load in atom_q & remove - HAVE TO ASSUME THAT THIS STORE *MUST* CORRESPOND TO THE FIRST LOAD FOR THE LINE ENCOUNTERED IN THE LIST (not sure of a good way to assert that this is true)
        //TEST
@@ -1665,12 +1694,13 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	 prev = curr;
 	 curr = curr->next;
        }
-       //I want to re-introduce this if/when I can mark stores as atomic
+
        assert(curr != NULL); //the only way the loop should exit is through the 'break' (otherwise, there's no corresponding atomic load for this store)
 
        if(curr == atom_q_head) {
-	 atom_q_head = NULL;
-	 atom_q_tail = NULL;
+	 atom_q_head = atom_q_head->next;
+	 if(atom_q_head == NULL) atom_q_tail = NULL;
+	 prev = atom_q_head;
 	 free(curr); //delete entry for load corresponding to this store
 	 //TEST
 	 printf("SEAN (%llu):  found corresponding load at head of Queue.\n", gpu_sim_cycle);
@@ -1683,7 +1713,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
        //Re-issue next waiting request (ideally should be pushed to the front of the queue to be handled next)
        //i.e. push to front of "retry" (dram_p->cbtoL2queue) queue
        //can I create dq_push_front function (in delayqueue.c) without breaking functionality of the delay queue (e.g. violating assumptions about not having more than one entry with 0 time_elapsed, or otherwise having a minimum time_elapsed difference between two consecutive entries?).  Need to evaluate this before modifying this to allow a push_front
-       curr = prev->next;
+       curr = prev;
        while (curr != NULL) {
 	 if(curr->tag == tag) break;
 	 curr = curr->next;
@@ -1696,7 +1726,12 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	 //TEST
 	 printf("SEAN (%llu):  found another request for the tag (%llu) the atomic op this write corresponds to was servicing\n", gpu_sim_cycle, tag);
 	 //TEST*/
+       } 
+       //TEST
+       else {
+	 printf("SEAN (%llu):  Didn't find another request for tag %llu\n", gpu_sim_cycle, tag);
        }
+       //TEST*/
      }
    }
    //SEAN*/

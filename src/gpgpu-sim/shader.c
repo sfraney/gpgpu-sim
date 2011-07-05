@@ -3322,6 +3322,12 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
                                    shader->L1cache->line_sz,
                                    (iswrite[i] ? 1:0), NO_PARTIAL_WRITE, shader->sid, mem_insn[i].hw_thread_id, mshr_e, 
                                    cache_hits_waiting, mem_acc, mem_insn[i].pc);
+
+		  //TEST
+		  if(iswrite[i]) {
+		    printf("SEAN:  Pushed write response up\n");
+		  }
+		  //TEST*/
 		  /*TEST
 		  if(!mshr_e->iswrite) {
 		    printf("SEAN: %llu data read request pushed from core (1).  Time %llu (%u)\n", mshr_e->addr, gpu_sim_cycle, shader->gpu_cycle);
