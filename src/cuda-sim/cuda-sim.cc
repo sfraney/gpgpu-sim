@@ -1639,7 +1639,7 @@ void gpgpu_ptx_sim_load_ptx_from_string( const char *p, unsigned source_num )
     /*TEST
     printf("%s",p);
     //TEST*/
-
+    /*
     //Search "p" for atomics and insert modify/write instructions if found
     std::istringstream code(p);
     std::ostringstream out;
@@ -1652,16 +1652,16 @@ void gpgpu_ptx_sim_load_ptx_from_string( const char *p, unsigned source_num )
 
       /*TEST
       std::cout << out.str() << std::endl;
-      //TEST*/
+      //TEST/
       if(test.compare(0,4,"atom") == 0) { //this is atomic instruction
 	/*TEST
 	std::cout << "FOUND ATOMIC INSN in line:  " << test << rest << std::endl;
-	//TEST*/
+	//TEST/
 
 	//extract operands
 	/*TEST
 	std::cout << "Rest is:  " << rest << std::endl;
-	//TEST*/
+	//TEST/
 	std::istringstream parse(rest);
 	std::string op1, op2, op3;
 	parse >> op1 >> op2 >> op3;
@@ -1670,31 +1670,32 @@ void gpgpu_ptx_sim_load_ptx_from_string( const char *p, unsigned source_num )
 	op3.erase(op3.length()-1,1);
 	/*TEST
 	std::cout << op1 << std::endl << op2 << std::endl  << op3 << std::endl;
-	//TEST*/
+	//TEST/
 
 	//create modify instruction & insert to "out"
 	//MODIFY to support other than adds
-	out << "add.s32\t" << op3 /*TODO dest*/ << ", " << op3 /*src1*/ << ", " << op2 /*TODO src2 - needs to be location of return value from atomic's load*/ << ";" << std::endl;
+	out << "add.s32\t" << op3 /*TODO dest/ << ", " << op3 /*src1/ << ", " << op2 /*TODO src2 - needs to be location of return value from atomic's load/ << ";" << std::endl;
 
 	//create write instruction & insert to "out"
 	op2.erase(op2.length()-1,1);
-	out << "st.global.s32\t" << op2 /*TODO dest - same as *source* of src2 above*/ << "+0], " << op3 /*TODO src - same as dest above*/ << ";" << std::endl;
+	out << "st.global.s32\t" << op2 /*TODO dest - same as *source* of src2 above/ << "+0], " << op3 /*TODO src - same as dest above/ << ";" << std::endl;
       }
       /*TEST
       std::cout << test << std::endl << std::endl;
-      //TEST*/
+      //TEST/
     }
     std::string pass = out.str();
     int last_line = pass.find_last_of('\n');
     pass.substr(0, last_line);
     /*TEST
     std::cout << "Pass is: " << std::endl << pass << std::endl;
-    //TEST*/
+    //TEST/
+    */
 
     g_filename = strdup(buf);
     init_parser();
-    ptx__scan_string(pass.c_str());
-    //ptx__scan_string(p);
+    //    ptx__scan_string(pass.c_str());
+    ptx__scan_string(p);
     int errors = ptx_parse ();
     if ( errors ) {
         char fname[1024];
