@@ -1110,63 +1110,73 @@ unsigned char fq_push(unsigned long long int addr, int bsize, unsigned char writ
                       int sid, int mshr_idx, mshr_entry* mshr, int cache_hits_waiting,
                       enum mem_access_type mem_acc, address_type pc) 
 {
-   mem_fetch_t *mf;
+  mem_fetch_t *mf;
 
-   mf = (mem_fetch_t*) calloc(1,sizeof(mem_fetch_t));
-   mf->request_uid = g_next_request_uid++;
-   mf->addr = addr;
-   mf->nbytes_L1 = bsize;
-   mf->sid = sid;
-   mf->source_node = sid / gpu_concentration;
-   mf->wid = mshr_idx/warp_size;
-   mf->cache_hits_waiting = cache_hits_waiting;
-   mf->txbytes_L1 = 0;
-   mf->rxbytes_L1 = 0;  
-   mf->mshr_idx = mshr_idx;
-   mf->mshr = mshr;
-   if (mshr) mshr->mf = (void*)mf; // for debugging
-   mf->write = write;
+  mf = (mem_fetch_t*) calloc(1,sizeof(mem_fetch_t));
+  mf->request_uid = g_next_request_uid++;
+  mf->addr = addr;
+  mf->nbytes_L1 = bsize;
+  mf->sid = sid;
+  mf->source_node = sid / gpu_concentration;
+  mf->wid = mshr_idx/warp_size;
+  mf->cache_hits_waiting = cache_hits_waiting;
+  mf->txbytes_L1 = 0;
+  mf->rxbytes_L1 = 0;  
+  mf->mshr_idx = mshr_idx;
+  mf->mshr = mshr;
+  if (mshr) mshr->mf = (void*)mf; // for debugging
+  mf->write = write;
+  /*TEST
+  printf("SEAN:  about to assign if atomic or not\n");
+  //TEST*/
+  //SEAN
+  if(mshr != NULL)
+    mf->is_atom = mshr->is_atom;
 
-   //SEAN
-   if(mshr != NULL)
-     mf->is_atom = mshr->is_atom;
+  if (write)
+    made_write_mfs++;
+  else
+    made_read_mfs++;
+  memlatstat_start(mf);
+  addrdec_tlx(addr,&mf->tlx);
+  mf->bank = mf->tlx.bk;
+  mf->chip = mf->tlx.chip;
+  /*TEST
+  printf("SEAN:  assigned some more properties\n");
+  //TEST*/
+  if (gpgpu_cache_dl2_opt)
+    mf->nbytes_L2 = dram[mf->tlx.chip]->L2cache->line_sz;
+  else
+    mf->nbytes_L2 = 0;
+  mf->txbytes_L2 = 0;
+  mf->rxbytes_L2 = 0;  
 
-   if (write)
-      made_write_mfs++;
-   else
-      made_read_mfs++;
-   memlatstat_start(mf);
-   addrdec_tlx(addr,&mf->tlx);
-   mf->bank = mf->tlx.bk;
-   mf->chip = mf->tlx.chip;
-   if (gpgpu_cache_dl2_opt)
-      mf->nbytes_L2 = dram[mf->tlx.chip]->L2cache->line_sz;
-   else
-      mf->nbytes_L2 = 0;
-   mf->txbytes_L2 = 0;
-   mf->rxbytes_L2 = 0;  
+  mf->write_mask = partial_write_mask;
+  if (!write) assert(partial_write_mask == NO_PARTIAL_WRITE);
+  /*TEST
+  printf("SEAN:  about to collect stats\n");
+  //TEST*/
+  // stat collection codes 
+  mf->mem_acc = mem_acc;
+  mf->pc = pc;
+  if (mf->mshr != NULL) {
+    if (mf->mshr->islocal) {
+      gpgpu_n_mem_read_local  += (write)? 0 : 1;
+      // gpgpu_n_mem_write_local += (write)? 1 : 0; // migrated to other code because mshr is not available for writes!
+    } else if (mf->mshr->istexture) {
+      gpgpu_n_mem_texture++; // read only
+    } else if (mf->mshr->isconst) {
+      gpgpu_n_mem_const++;   // read only
+    } else { // global
+      gpgpu_n_mem_read_global  += (write)? 0 : 1;
+      // gpgpu_n_mem_write_global += (write)? 1 : 0;
+    }
+  }
 
-   mf->write_mask = partial_write_mask;
-   if (!write) assert(partial_write_mask == NO_PARTIAL_WRITE);
-
-   // stat collection codes 
-   mf->mem_acc = mem_acc;
-   mf->pc = pc;
-   if (mf->mshr != NULL) {
-      if (mf->mshr->islocal) {
-         gpgpu_n_mem_read_local  += (write)? 0 : 1;
-         // gpgpu_n_mem_write_local += (write)? 1 : 0; // migrated to other code because mshr is not available for writes!
-      } else if (mf->mshr->istexture) {
-         gpgpu_n_mem_texture++; // read only
-      } else if (mf->mshr->isconst) {
-         gpgpu_n_mem_const++;   // read only
-      } else { // global
-         gpgpu_n_mem_read_global  += (write)? 0 : 1;
-         // gpgpu_n_mem_write_global += (write)? 1 : 0;
-      }
-   }
-
-   return(issue_mf_from_fq(mf));
+  /*TEST
+  printf("SEAN:  about to issue from fq\n");
+  //TEST*/
+  return(issue_mf_from_fq(mf));
 
 }
 
@@ -1174,21 +1184,63 @@ int issue_mf_from_fq(mem_fetch_t *mf){
    int destination; // where is the next level of memory?
    destination = mf->tlx.chip;
    int tpc_id = mf->sid / gpu_concentration;
+   /*TEST
+   printf("SEAN:  mf->sid:  %i, gpu_concentration %i\n", mf->sid, gpu_concentration);
+   //TEST*/
 
-   if (mf->mshr) mshr_update_status(mf->mshr, IN_ICNT2MEM);
+   if (mf->mshr) {
+     /*TEST
+     printf("SEAN:  about to update MSHR\n");
+     //TEST*/
+     mshr_update_status(mf->mshr, IN_ICNT2MEM);
+     /*TEST
+     printf("SEAN:  MSHR updated\n");
+     //TEST*/
+     /*TEST
+     printf("SEAN:  mshr entry exists\n");
+     //TEST*/
+   }
    if (!mf->write) {
+     /*TEST
+     printf("SEAN:  mem_fetch is a read\n");
+     //TEST*/
       mf->type = RD_REQ;
       assert( mf->timestamp == (gpu_sim_cycle+gpu_tot_sim_cycle) );
+      /*TEST
+      printf("SEAN:  calling time_vector_update 1\n");
+      //TEST*/
       time_vector_update(mf->mshr->inst_uid, MR_ICNT_PUSHED, gpu_sim_cycle+gpu_tot_sim_cycle, mf->type );
+      /*TEST
+      printf("SEAN:  time_vector_updated 1\n");
+      //TEST*/
       icnt_push(tpc_id, mem2device(destination), (void*)mf, READ_PACKET_SIZE);
    } else {
+     /*TEST
+     printf("SEAN:  mem_fetch is a write\n");
+     //TEST*/
       mf->type = WT_REQ;
+      /*TEST
+      printf("SEAN:  pushing to interconnect\n");
+      printf("SEAN:  tpc_id:  %i, destination:  %i, mem2device:  %i\n", tpc_id, destination, mem2device(destination));
+      //TEST*/
       icnt_push(tpc_id, mem2device(destination), (void*)mf, mf->nbytes_L1);
+      /*TEST
+      printf("SEAN:  pushed to interconnect\n");
+      //TEST*/
       gpgpu_n_sent_writes++;
       assert( mf->timestamp == (gpu_sim_cycle+gpu_tot_sim_cycle) );
+      /*TEST
+      printf("SEAN:  calling time_vector_update 2\n");
+      //TEST*/
       time_vector_update(mf->request_uid, MR_ICNT_PUSHED, gpu_sim_cycle+gpu_tot_sim_cycle, mf->type ) ;
+      /*TEST
+      printf("SEAN:  time_vector_updated 2\n");
+      //TEST*/
    }
 
+   /*TEST
+   printf("SEAN:  completing issue from fq\n");
+   //TEST*/
    return 0;
 }
 
@@ -1263,7 +1315,7 @@ unsigned char fq_pop(int tpc_id)
    if (mf) {
       assert(mf->type == REPLY_DATA);
       time_vector_update(mf->mshr->inst_uid ,MR_2SH_FQ_POP,gpu_sim_cycle+gpu_tot_sim_cycle, mf->type ) ;
-      //TEST
+      /*TEST
       printf("SEAN:  Filling shader %i with %llu data\n", mf->sid, mf->addr);
       //TEST*/
       fill_shd_L1_with_new_line(sc[mf->sid], mf);
@@ -1494,7 +1546,7 @@ void* mem_ctrl_pop( int mc_id )
       mf = dq_pop(dram[mc_id]->L2tocbqueue);
       if (mf && mf->mshr && mf->mshr->inst.callback.function) {
          dram_callback_t* cb = &(mf->mshr->inst.callback);
-	 //TEST
+	 /*TEST
 	 printf("SEAN:  Calling atom_callback function.  Time:  %llu\n", gpu_sim_cycle);
 	 //TEST*/
          cb->function(cb->instruction, cb->thread);
@@ -1633,7 +1685,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
        add->tag = tag;
        add->mf = mf;
 
-       //TEST
+       /*TEST
        printf("SEAN (%llu):  allocated entry for tag %llu.\n", gpu_sim_cycle, tag);
        //TEST*/
 
@@ -1648,7 +1700,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
        if(curr != add) {
 	 //you're either a completely separate request (for same address) => stall me
 	 if(curr->mf != add->mf) {
-	   //TEST
+	   /*TEST
 	   printf("SEAN (%llu):  not processing because %llu has an outstanding request\n", gpu_sim_cycle, tag);
 	   //TEST*/
 	   //Update mshr entry to indicate stalled
@@ -1684,7 +1736,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
        }
      } else { //store request
        //Find corresponding load in atom_q & remove - HAVE TO ASSUME THAT THIS STORE *MUST* CORRESPOND TO THE FIRST LOAD FOR THE LINE ENCOUNTERED IN THE LIST (not sure of a good way to assert that this is true)
-       //TEST
+       /*TEST
        printf("SEAN (%llu):  Write request received for tag %llu.\n", gpu_sim_cycle, tag);
        //TEST*/
        atom_q *curr = atom_q_head;
@@ -1702,7 +1754,7 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	 if(atom_q_head == NULL) atom_q_tail = NULL;
 	 prev = atom_q_head;
 	 free(curr); //delete entry for load corresponding to this store
-	 //TEST
+	 /*TEST
 	 printf("SEAN (%llu):  found corresponding load at head of Queue.\n", gpu_sim_cycle);
 	 //TEST*/
        } else {
@@ -1723,15 +1775,17 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	 assert(curr->tag == tag); //the only way curr could not be NULL is if it's pointing to an entry that matches 'tag'
 	 mem_fetch_t *new_mf = curr->mf;
 	 dq_push(dram_p->cbtoL2queue, new_mf);
-	 //TEST
+	 /*TEST
 	 printf("SEAN (%llu):  found another request for the tag (%llu) the atomic op this write corresponds to was servicing\n", gpu_sim_cycle, tag);
 	 //TEST*/
-       } 
-       //TEST
+       }
+       /*TEST
        else {
 	 printf("SEAN (%llu):  Didn't find another request for tag %llu\n", gpu_sim_cycle, tag);
        }
        //TEST*/
+       //Remove fake store from MSHR
+       //removeEntry(/*mshr entry*/, /*shader->mshr*/, /*mshr length*/);
      }
    }
    //SEAN*/
@@ -1763,11 +1817,14 @@ void L2c_service_mem_req ( dram_t* dram_p, int dm_id )
 	   L2request[dm_id] = NULL;    
 	   L2_write_hit++;
 	   freed_L1write_mfs++;
-	   /*THIS ISN'T WORKING TO COMPLETE THE WRITE INSN
-	   mshr_update_status(mf->mshr, FETCHED); //to allow insn to be retired
-	   dq_push(sc[mf->sid]->return_queue, mf->mshr);
-	   //THIS ISN'T WORKING TO COMPLETE THE WRITE INSN*/
+	   /*TEST
+	   printf("updating mshr with idx %u\n", mf->mshr_idx);
+	   //TEST*/
 	   shader_update_mshr(sc[mf->sid],mf->addr,mf->mshr_idx, DCACHE);
+	   /*TEST
+	   printf("Retiring MF:\n");
+	   print_mf(mf);
+	   //TEST*/
 	   free(mf); //writeback from L1 successful
 	   gpgpu_n_processed_writes++;
 	 }
@@ -2221,8 +2278,10 @@ void gpu_sim_loop( int grid_num )
 	//SEAN:  Insert check for response here
          fq_pop(i); 
 	 //TEST
-	 printf("Cycle %llu:\n", gpu_sim_cycle);
-	 mshr_print(stdout, sc[i]);
+	 //	 if(i==0) {
+	   printf("Cycle %llu:\n", gpu_sim_cycle);
+	   mshr_print(stdout, sc[i]);
+	   //	 }
 	 //TEST*/
       }
    }
@@ -2254,7 +2313,7 @@ void gpu_sim_loop( int grid_num )
                   time_vector_update(mf->mshr->inst_uid ,MR_2SH_ICNT_PUSHED,gpu_sim_cycle+gpu_tot_sim_cycle,RD_REQ);
                   icnt_push( mem2device(i), return_dev, mf, mf->nbytes_L1);
                   mem_ctrl_pop(i);
-		  //TEST
+		  /*TEST
 		  printf("SEAN (%llu): %llu data returned from DRAM, injected to ICNT back to core.  Time %llu\n", mf->addr, gpu_sim_cycle);
 		  //TEST*/
                } else {

@@ -309,6 +309,34 @@ void pipe_stat_write_file() {
 
   fclose(pfile);
 }
+
+void print_mf(mem_fetch_t *mf) {
+  printf("Mem Fetch:  %u:\n", mf->request_uid);
+  printf("addr: %llu; ", mf->addr);
+  printf("nbytes_L1: %i; ", mf->nbytes_L1);
+  printf("txbytes_L1: %i; ", mf->txbytes_L1);
+  printf("rxbytes_L1: %i; ", mf->rxbytes_L1);
+  printf("nbytes_L2: %i; ", mf->nbytes_L2);
+  printf("txbytes_L2: %i; ", mf->txbytes_L2);
+  printf("rxbytes_L2: %i; ", mf->rxbytes_L2);
+  printf("sid: %i; ", mf->sid);
+  printf("wid: %i; ", mf->wid);
+  printf("cache_hits_waiting: %i; ", mf->cache_hits_waiting);
+  printf("mshr_idx: %i; ", mf->mshr_idx);
+  printf("pc: %u; ", mf->pc);
+  printf("write: %u; ", mf->write);
+  printf("mem_acc: %u; ", mf->mem_acc);
+  printf("timestamp: %u; ", mf->timestamp);
+  printf("timestamp2: (used only for reads) %u; ", mf->timestamp2);
+  printf("icnt_receive_time: %u; ", mf->icnt_receive_time);
+  printf("bank: %u; ", mf->bank);
+  printf("chip: %u; ", mf->chip);
+  printf("tlx: %u; ", mf->tlx);
+  printf("type: %u; ", mf->type);
+  printf("write_mask: %llu; ", mf->write_mask);
+  printf("source_node: %i; ", mf->source_node);
+  printf("is_atom: %u;\n", mf->is_atom);
+}
 //SEAN*/
 
 shader_core_ctx_t* shader_create( char *name, int sid,
@@ -428,7 +456,7 @@ shader_core_ctx_t* shader_create( char *name, int sid,
 
    sc->mshr = calloc(n_threads,sizeof(delay_queue*));
    for (i=0; i<n_threads; i++) {
-      sc->mshr[i] = dq_create("mshr",0,0,n_mshr);
+     sc->mshr[i] = dq_create("mshr",0,0,n_mshr + 1 /* plus 1 to allow for atomics to inject write responses */);
    }
    sc->n_mshr_used=0;
    sc->max_n_mshr_used = 0;
@@ -742,6 +770,9 @@ mshr_entry* shader_check_mshr4tag(shader_core_ctx_t* sc, unsigned long long int 
 
 void shader_update_mshr(shader_core_ctx_t* sc, unsigned long long int fetched_addr, unsigned int mshr_idx, int mem_type ) 
 {
+  //TEST
+  int count=0;
+  //TEST*/
    assert( mshr_idx < sc->n_threads );
    int found_addr = 0;
    //Each shader has N_THREADS number of MSHR, one per thread
@@ -756,8 +787,11 @@ void shader_update_mshr(shader_core_ctx_t* sc, unsigned long long int fetched_ad
          case TEXTC: found_addr = (SHD_TEXCACHE_TAG(mshr_e->addr,sc) == fetched_addr); break;
          default: assert(0); break;
          }
-         if (found_addr) {
+         if (found_addr || (mshr_e->is_atom && mshr_e->iswrite)) {
             do {
+	      //TEST
+	      count++;
+	      //TEST*/
                assert( mshr_e->fetched != 1 );  // check for duplicate requests
                mshr_e->fetched = 1;
                dq_push(sc->return_queue,mshr_e);
@@ -766,6 +800,9 @@ void shader_update_mshr(shader_core_ctx_t* sc, unsigned long long int fetched_ad
                }
                mshr_e = mshr_e->merged_requests;
             } while ( mshr_e != NULL );
+	    /*TEST
+	    printf("SEAN:  updated %i entries\n");
+	    //TEST*/
             return;
          }
       }
@@ -1561,11 +1598,12 @@ void shader_fetch( shader_core_ctx_t *shader, unsigned int shader_number, int gr
 	   //TEST*/
             // grab a committed warp and unlock it here
             int *tid_commit = (int*)dq_pop(shader->thd_commit_queue);
-	    /*TEST
-	    dq_print(shader->thd_commit_queue);
-	    //TEST*/
             for ( i=0; i<warp_size; i++) {
                if (tid_commit[i] >= 0) {
+		 /*TEST
+		 printf("SEAN:  thread commit queue:\n");
+		 dq_print(shader->thd_commit_queue);
+		 //TEST*/
                   shader->thread[tid_commit[i]].avail4fetch++;
                   assert(shader->thread[tid_commit[i]].avail4fetch <= 1);
                   assert( shader->thread[tid_commit[i] - (tid_commit[i]%warp_size)].n_avail4fetch < warp_size );
@@ -1573,6 +1611,7 @@ void shader_fetch( shader_core_ctx_t *shader, unsigned int shader_number, int gr
 		  /*TEST
 		  printf("%llu SEAN:  n_avail4fetch incremented (now = %i)\n", gpu_sim_cycle, shader->thread[tid_commit[i] - (tid_commit[i]%warp_size)].n_avail4fetch);
 		  //TEST*/
+		  //SEAN:  insert code to push write up to mimic read-modify-write if atomic?
                }
             }
             warpupdate_bw -= 1;
@@ -1704,6 +1743,9 @@ void shader_fetch( shader_core_ctx_t *shader, unsigned int shader_number, int gr
 	     while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][IF_ID].uid)) curr = curr->prev;    
 	     assert(curr->uid == shader->pipeline_reg[i][IF_ID].uid);
 	     curr->in_fetch = gpu_sim_cycle;
+	     /*TEST
+	     printf("SEAN:  %u in fetch\n", curr->uid);
+	     //TEST*/
 	   }
 	 }
       }
@@ -1793,6 +1835,11 @@ void shader_decode( shader_core_ctx_t *shader,
          shader->pipeline_reg[i][IF_ID].pc = ptx_thread_get_next_pc( shader->thread[tid].ptx_thd_info );
          shader->pipeline_reg[i][IF_ID].ptx_thd_info = shader->thread[tid].ptx_thd_info;
 	 shader->pipeline_reg[i][IF_ID].isatom = isatom;
+	 /*TEST
+	 if(isatom) {
+	   printf("SEAN (%llu):  atomic insn decoded\n", gpu_sim_cycle);
+	 }
+	 //TEST*/
 
       } else {
          abort();
@@ -1817,6 +1864,9 @@ void shader_decode( shader_core_ctx_t *shader,
       if ( gpgpu_cuda_sim ) {
 	 ptx_decode_inst( shader->thread[tid].ptx_thd_info, (unsigned*)&op, &i1, &i2, &i3, &i4, &o1, &o2, &o3, &o4, &vectorin, &vectorout, &isatom );
          ptx_exec_inst( shader->thread[tid].ptx_thd_info, &addr, &space, &data_size, &callback, shader->pipeline_reg[i][IF_ID].warp_active_mask );
+	 /*TEST
+	 printf("SEAN (%llu):  Executing Instruction.  Should trigger thread completion\n", gpu_sim_cycle);
+	 //TEST*/
          shader->pipeline_reg[i][IF_ID].callback = callback;
          shader->pipeline_reg[i][IF_ID].space = space;
 
@@ -1946,6 +1996,9 @@ void shader_decode( shader_core_ctx_t *shader,
 	  case BRANCH_OP:  curr->inst_type = 'B'; break;
 	  default:  curr->inst_type = 'U';
 	  }
+	  /*TEST
+	  printf("SEAN:  %u in decode\n", curr->uid);
+	  //TEST*/
 	}
       }
    }
@@ -1957,7 +2010,7 @@ void shader_decode( shader_core_ctx_t *shader,
        assert(warp_current_pc != 0x600DBEEF); // guard against empty warp causing warp divergence
        ptx_file_line_stats_add_warp_divergence(warp_current_pc, 1);
    }
-}
+} //shader_decode
 
 unsigned int n_regconflict_stall = 0;
 
@@ -2036,6 +2089,9 @@ void shader_preexecute( shader_core_ctx_t *shader,
 	  while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][ID_RR].uid)) curr = curr->prev;    
 	  assert(curr->uid == shader->pipeline_reg[i][ID_RR].uid);
 	  curr->in_pre_exec = gpu_sim_cycle;
+	  /*TEST
+	  printf("SEAN:  %u in pre-exec\n", curr->uid);
+	  //TEST*/
 	}
       }
 
@@ -2045,7 +2101,7 @@ void shader_preexecute( shader_core_ctx_t *shader,
       shader->pipeline_reg[i][ID_RR] = nop_inst;
    }
 
-}
+} //shader_pre_execute
 
 
 void shader_execute( shader_core_ctx_t *shader, 
@@ -2056,8 +2112,8 @@ void shader_execute( shader_core_ctx_t *shader,
    for (i=0; i<pipe_simd_width; i++) {
       if (gpgpu_pre_mem_stages) {
          if (shader->pre_mem_pipeline[i][0].hw_thread_id != -1 ) {
-	   /*TEST - alread here, I just removed commenting
-	   printf("stalled in shader_execute\n");
+	   /*TEST - already here, I just removed commenting
+	   printf("stalled in shader_pre-mem\n");
 	   //TEST*/
 	   return;  // stalled 
          }
@@ -2092,6 +2148,9 @@ void shader_execute( shader_core_ctx_t *shader,
 	  while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][EX_MM].uid)) curr = curr->prev;    
 	  assert(curr->uid == shader->pipeline_reg[i][EX_MM].uid);
 	  curr->in_exec = gpu_sim_cycle;
+	  /*TEST
+	  printf("SEAN:  %u in execute\n", curr->uid);
+	  //TEST*/
 	}
       }
    }  
@@ -2112,6 +2171,11 @@ void shader_pre_memory( shader_core_ctx_t *shader,
       for (i=0; i<pipe_simd_width; i++) {
          shader->pre_mem_pipeline[i][j] = shader->pre_mem_pipeline[i][j - 1];
          shader->pre_mem_pipeline[i][j - 1] = nop_inst;
+	 /*TEST
+	 if(shader->pre_mem_pipeline[i][j].uid != nop_inst.uid) {
+	   printf("SEAN:  (%u) Advanced thread %u in slot %i to next pre-mem stage\n", shader_number, shader->pre_mem_pipeline[i][j].hw_thread_id, i);
+	 }
+	 //TEST*/
       }
    }
    check_pm_stage_pcs(shader,gpgpu_pre_mem_stages);
@@ -2124,6 +2188,9 @@ void shader_pre_memory( shader_core_ctx_t *shader,
 	 while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][EX_MM].uid)) curr = curr->prev; 
 	 assert(curr->uid == shader->pipeline_reg[i][EX_MM].uid);
 	 curr->in_pre_mem = gpu_sim_cycle;   
+	 /*TEST
+	 printf("SEAN:  %u in pre-mem\n", curr->uid);
+	 //TEST*/
        }
      }
    }
@@ -2490,6 +2557,9 @@ void shader_const_memory( shader_core_ctx_t *shader, unsigned int shader_number 
 	     while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][MM_WB].uid)) curr = curr->prev;    
 	     assert(curr->uid == shader->pipeline_reg[i][MM_WB].uid);
 	     curr->in_mem = gpu_sim_cycle;
+	     /*TEST
+	     printf("SEAN:  %u in const mem\n", curr->uid);
+	     //TEST*/
 	   }
 	 }
       }  
@@ -2806,6 +2876,9 @@ void shader_texture_memory( shader_core_ctx_t *shader, unsigned int shader_numbe
 	     while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][MM_WB].uid)) curr = curr->prev;    
 	     assert(curr->uid == shader->pipeline_reg[i][MM_WB].uid);
 	     curr->in_mem = gpu_sim_cycle;
+	     /*TEST
+	     printf("SEAN:  %u in tex mem\n", curr->uid);
+	     //TEST*/
 	   }
 	 }
       }
@@ -3323,7 +3396,7 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
                                    (iswrite[i] ? 1:0), NO_PARTIAL_WRITE, shader->sid, mem_insn[i].hw_thread_id, mshr_e, 
                                    cache_hits_waiting, mem_acc, mem_insn[i].pc);
 
-		  //TEST
+		  /*TEST
 		  if(iswrite[i]) {
 		    printf("SEAN:  Pushed write response up\n");
 		  }
@@ -3416,6 +3489,9 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
    }
 
    if (!rc_fail) {
+     /*TEST
+     printf("SEAN:  insn succeeded to progress in shader_memory\n");
+     //TEST*/
       check_stage_pcs(shader,EX_MM);
       // and pass instruction from EX_MM to MM_WB for cache hit
       for (i=0; i<pipe_simd_width; i++) {
@@ -3431,6 +3507,9 @@ void shader_memory( shader_core_ctx_t *shader, unsigned int shader_number )
 	     while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][MM_WB].uid)) curr = curr->prev;    
 	     assert(curr->uid == shader->pipeline_reg[i][MM_WB].uid);
 	     curr->in_mem = gpu_sim_cycle;
+	     /*TEST
+	     printf("SEAN:  %u in mem\n", curr->uid);
+	     //TEST*/
 	   }
 	 }
       }    
@@ -3521,7 +3600,7 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
    }
    unlock_lat_info = NULL;
 
-   check_stage_pcs(shader,MM_WB); //SEAN:  checks warp consistency (defaulted to turned off, however => nothing actually happens with this call).
+   check_stage_pcs(shader,MM_WB); //SEAN:  checks warp consistency (defaulted to turned off however => nothing actually happens with this call).
 
    /* Generate Condition for instruction writeback to register file.
       A load miss *instruction* does not reach writeback until the data is fetched */
@@ -3531,7 +3610,10 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
       pl_tid[i] = tid;
    }
    int mshr_warpid = -1;
+   int atom_thread_done[pipe_simd_width];
+
    for (i=0; i<pipe_simd_width; i++) {
+     atom_thread_done[i] = 0;
       mshr_returnhead = getMSHR_returnhead(shader);
       if ((shader->model == POST_DOMINATOR || shader->model == NO_RECONVERGE) && gpgpu_strict_simd_wrbk) { //SEAN:  gpgpu_strict_simd_wrbk defaults to '0'
          if (mshr_returnhead) {
@@ -3563,15 +3645,159 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
       /* Note: now the priority is given to the instr, but
         if this is not the case, we should stall at WB */
       if ( w2rf && !mshr_fetched ) { //SEAN:  inflight insn wants to write to RF & no mshr return also wants to write
-         // instruction needs to be written to destination register 
-         // and there is nothing from the MSHR, proceed with the writeback
-      } else if ( !w2rf && mshr_fetched ) { //SEAN:  no inflight insn trying to write to RF, but there is return data from the MSHR
-         // all nop in this stage => no need to unlock and writeback
+	/*TEST
+	printf("SEAN:  in case 1 for thread %i\n",i);
+	//TEST*/
+	// instruction needs to be written to destination register 
+	// and there is nothing from the MSHR, proceed with the writeback
+	mem_fetch_t *mf=NULL;
+	if(mshr_head[i]) mf = (mem_fetch_t*) mshr_head[i]->mf;
+	//SEAN:  push write back up if this is an atomic instruction
+	if(mf && (mf->is_atom && !mshr_head[i]->iswrite)) { //SEAN: iswrite to prevent duplicate
+	  /*TEST
+	  printf("SEAN:  about to generate write response for fetched atomic operation\n");
+	  //TEST*/
+	   //make MSHR entry
+	   mshr_entry *mshr_e = alloc_mshr_entry();
+	   mshr_e->inst_uid = mshr_head[i]->inst_uid;
+	   mshr_e->addr = mshr_head[i]->addr;
+	   mshr_e->is_atom = mshr_head[i]->is_atom;
+	   mshr_e->isvector = mshr_head[i]->isvector; //cuda supports vector loads
+	   mshr_e->reg = mshr_head[i]->reg;
+	   if (mshr_head[i]->isvector) {
+	     mshr_e->reg2 = mshr_head[i]->reg2;
+	     mshr_e->reg3 = mshr_head[i]->reg3;
+	     mshr_e->reg4 = mshr_head[i]->reg4;
+	   }
+	   mshr_e->hw_thread_id = mshr_head[i]->hw_thread_id;
+	   mshr_e->priority = shader->mshr_up_counter; //**** check this out ****//
+	   mshr_e->inst = mshr_head[i]->inst;
+	   mshr_e->iswrite = 1;
+	   mshr_e->istexture = 0;
+	   mshr_e->isconst = 0;
+	   mshr_e->islocal = mshr_head[i]->islocal;
+	   //inflight_memory_insn_add(shader, &mshr_e->inst);
 
-         removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
-         writeback_by_MSHR = 1;
+	   if(!dq_push(shader->mshr[mshr_e->hw_thread_id], mshr_e)) assert(0);
+
+	   //push up to memory
+	   fq_push(mf->addr, mf->nbytes_L1, 1, mf->write_mask, mf->sid, mshr_e->hw_thread_id, mshr_e, 0, mf->mem_acc, mf->pc);
+
+	   shader->n_mshr_used++;
+
+	   shader->mshr_up_counter++;
+	   if (shader->n_mshr_used > shader->max_n_mshr_used) shader->max_n_mshr_used = shader->n_mshr_used;
+	 }
+      } else if ( !w2rf && mshr_fetched ) { //SEAN:  no inflight insn trying to write to RF, but there is return data from the MSHR
+	/*TEST
+	printf("SEAN:  in case 2 for thread %i\n",i);
+	//TEST*/
+         // all nop in this stage => no need to unlock and writeback
+	/*TEST
+	printf("Original MF:\n");
+	print_mf(mshr_head[i]->mf);
+	//TEST*/
+	 mem_fetch_t *mf = (mem_fetch_t*) mshr_head[i]->mf;
+	 //SEAN:  push write back up if this is an atomic instruction
+	 /*TEST
+	 printf("SEAN:  mshr_head[%u]->iswrite is %u\n"/* and mf->isatom is %u\n"/,mshr_head[i]->iswrite/*, mf->is_atom/);
+	 printf("SEAN:  about to create mshr entry\n");
+	 if(mshr_head[i] == NULL) printf("SEAN: mshr_head[%u] is NULL\n", i);
+	 //TEST*/
+	 if((mf != NULL) && mf->is_atom && !mshr_head[i]->iswrite) { //SEAN: iswrite to prevent duplicate
+	   /*TEST
+	   printf("SEAN:  made it through 'if'\n");
+	   //TEST*/
+	   /*mf->sid = shader->sid;
+	     mf->nbytes_L1 = shader->L1cache->line_sz;*/
+	   //make MSHR entry
+	   mshr_entry *mshr_e = alloc_mshr_entry();
+	   mshr_e->inst_uid = mshr_head[i]->inst_uid;
+	   mshr_e->addr = mshr_head[i]->addr;
+	   mshr_e->is_atom = mshr_head[i]->is_atom;
+	   mshr_e->isvector = mshr_head[i]->isvector; //cuda supports vector loads
+	   mshr_e->reg = mshr_head[i]->reg;
+	   if (mshr_head[i]->isvector) {
+	     mshr_e->reg2 = mshr_head[i]->reg2;
+	     mshr_e->reg3 = mshr_head[i]->reg3;
+	     mshr_e->reg4 = mshr_head[i]->reg4;
+	   }
+	   mshr_e->hw_thread_id = mshr_head[i]->hw_thread_id;
+	   mshr_e->priority = shader->mshr_up_counter; //**** check this out ****//
+	   mshr_e->inst = mshr_head[i]->inst;
+	   mshr_e->iswrite = 1;
+	   mshr_e->istexture = 0;
+	   mshr_e->isconst = 0;
+	   mshr_e->islocal = mshr_head[i]->islocal;
+
+	   /*TEST
+	   printf("MSHR Entry:\n");
+	   printf("\tis_atom = %u, iswrite = %u\n", mshr_e->is_atom, mshr_e->iswrite);
+	   //TEST*/
+	   inflight_memory_insn_add(shader, &mshr_e->inst);
+	   /*TEST
+	   printf("SEAN:  created new mshr entry\n");
+	   //TEST*/
+	   if(!dq_push(shader->mshr[mshr_e->hw_thread_id], mshr_e)) assert(0);
+	   /*TEST
+	   printf("SEAN:  pushed mshr entry to mshr\n");
+	   //TEST*/
+	   /*TEST
+	   printf("addr: %llu\n", mf->addr);
+	   printf("mf->nbytes_L1: %i\n",mf->nbytes_L1);
+	   printf("mf->write_mask: %llu\n",mf->write_mask);
+	   printf("mf->sid:  %i\n",mf->sid);
+	   printf("mshr_e->hw_thread_id:  %i\n",mshr_e->hw_thread_id);
+	   printf("mf->mem_acc:  %u\n",mf->mem_acc);
+	   printf("mf->pc:  %u\n",mf->pc);
+	   //TEST*/
+	   //push up to memory
+	   /*TEST
+	   printf("mshr_idx = %u?\n", mshr_e->request_uid);
+	   //TEST*/
+	   //mf->mshr_idx = mshr_e->request_uid; //MSHR idx should be the thread?
+	   fq_push(mf->addr, mf->nbytes_L1, 1, mf->write_mask, mf->sid, mf->mshr_idx, mshr_e, 0, mf->mem_acc, mf->pc);
+	   /*TEST
+	   printf("SEAN:  pushed mem_fetch to queue\n");
+	   //TEST*/
+	   shader->n_mshr_used++;
+	   /*TEST
+	   printf("SEAN:  incremented no. mshr entries used\n");
+	   //TEST*/
+	   shader->mshr_up_counter++;
+	   /*TEST
+	   printf("SEAN:  incremented mshr_up_counter\n");
+	   //TEST*/
+	   if (shader->n_mshr_used > shader->max_n_mshr_used) shader->max_n_mshr_used = shader->n_mshr_used;
+	   /*TEST
+	   printf("SEAN:  made sure too many entries weren't used\n");
+	   //TEST*/
+	   /*TEST
+	   printf("SEAN (%llu):  retiring atomic insn\n", gpu_sim_cycle);
+	   //TEST*/
+	   /*TEST
+	   printf("In-flight MF:\n");
+	   print_mf(mf);
+	   //TEST*/
+	   removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
+	   writeback_by_MSHR = 1;
+	 } else if(mshr_head[i]->iswrite) {
+	   /*TEST
+	   printf("SEAN:  this should be completion of a write\n");
+	   //TEST*/
+	   mf->sid = shader->sid;
+	   atom_thread_done[i] = 1;
+	   removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
+	 }
+	 /*TEST
+	 printf("SEAN:  about to remove original mshr entry\n");
+	 //TEST*/
 	 /*TEST
 	 printf("SEAN (%llu):  load data returned for tid %i and written to RF\n", gpu_sim_cycle, mshr_tid[i]);
+	 //TEST*/
+
+	 /*TEST
+	 printf("SEAN:  made it out of sending write, about to record pipetrace\n");
 	 //TEST*/
 	 //SEAN
 	 if(g_pipetrace) {
@@ -3581,11 +3807,19 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
 	       while((curr != NULL) && (curr->uid != mshr_head[i]->inst.uid)) curr = curr->prev;    
 	       assert(curr->uid == mshr_head[i]->inst.uid);
 	       curr->in_writeback = gpu_sim_cycle;
+	     /*TEST
+	     printf("SEAN:  %u in writeback\n", curr->uid);
+	     //TEST*/
 	     }
 	   }
 	 }
-
+	 /*TEST
+	 printf("SEAN:  pipetrace recorded\n");
+	 //TEST*/
       } else if ( w2rf && mshr_fetched ) { //SEAN:  inflight insn *&* MSHR return both want to write to RF => stall inflight insn?
+	/*TEST
+	printf("SEAN:  in case 3 for thread %i\n",i);
+	//TEST*/
          // stall the pipeline if a load from MSHR is ready to commit
          assert (mshr_head[i]->hw_thread_id >= 0);
 
@@ -3603,6 +3837,9 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
 	       while((curr != NULL) && (curr->uid != mshr_head[i]->inst.uid)) curr = curr->prev;    
 	       assert(curr->uid == mshr_head[i]->inst.uid);
 	       curr->in_writeback = gpu_sim_cycle;
+	     /*TEST
+	     printf("SEAN:  %u in writeback 2\n", curr->uid);
+	     //TEST*/
 	     }
 	   }
 	 }
@@ -3650,6 +3887,10 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
             free_mshr_entry(mshr_head[i]);
             mshr_head[i] = NULL;
             unlock_tid[i] = mshr_tid[i];
+	    /*TEST
+	    if(mshr_tid[i] > 0) 
+	      printf("Set unlock_tid[%i] from mshr_tid[%i] to %i\n", i, i, mshr_tid[i]);
+	    //TEST*/
          }
       }
       unlock_lat_info = mshr_lat_info;
@@ -3663,6 +3904,10 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
          o4 = shader->pipeline_reg[i][MM_WB].out[3];
 
          unlock_tid[i] = pl_tid[i];
+	 /*TEST
+	 if(pl_tid[i] > 0) 
+	   printf("Set unlock_tid[%i] from pl_tid[%i] to %i\n", i, i, pl_tid[i]);
+	 //TEST*/
          obtain_insn_latency_info(&pl_lat_info[i], &shader->pipeline_reg[i][MM_WB]);
       }
       unlock_lat_info = pl_lat_info;
@@ -3672,7 +3917,8 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
       // NOTE: no need to check for next-stage stall at the last stage
       if (unlock_tid[i] >= 0 ) { // not unlocking an invalid thread (ie. due to a bubble)
          // thread completed if it is going to fetching beyond code boundry 
-         if ( gpgpu_cuda_sim && ptx_thread_done(shader->thread[unlock_tid[i]].ptx_thd_info) ) {
+         if ( gpgpu_cuda_sim && ptx_thread_done(shader->thread[unlock_tid[i]].ptx_thd_info) &&
+	      (!shader->pipeline_reg[i][MM_WB].isatom || (shader->pipeline_reg[i][MM_WB].isatom && atom_thread_done[i])) ) {
 
             finished_trace += 1;
             shader->not_completed -= 1;
@@ -3693,6 +3939,12 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
                int amask = wpt_signal_complete(unlock_tid[i], shader);
                freed_warp[i] = (amask != 0)? 1 : 0;
             } else {
+	      /*TEST
+	      if(shader->pipeline_reg[i][MM_WB].isatom && atom_thread_done[i]) printf("Atomic thread finishing\n");
+	      //TEST*/
+	      /*TEST
+	      printf("calling thread exit in shader.c\n");
+	      //TEST*/
                register_cta_thread_exit(shader, unlock_tid[i] );
             }
          } else { //thread is not finished yet
@@ -3735,7 +3987,7 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
       memcpy(tid_unlocked, unlock_tid, sizeof(int)*pipe_simd_width); //NOTE: this may be warp_size
       dq_push(shader->thd_commit_queue,(void*)tid_unlocked);
       /*TEST
-      printf("SEAN:  Pushed tid %i to thread commit queue\n", *tid_unlocked);
+      printf("SEAN:  Pushed tid %i to thread commit queue (in shader.c)\n", *tid_unlocked);
       //TEST*/
    }
    /*TEST
@@ -3754,6 +4006,9 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
 	 while((curr != NULL) && (curr->uid != shader->pipeline_reg[i][MM_WB].uid)) curr = curr->prev;    
 	 assert(curr->uid == shader->pipeline_reg[i][MM_WB].uid);
 	 curr->in_writeback = gpu_sim_cycle;
+	 /*TEST
+	 printf("SEAN:  %u in writeback 3\n", curr->uid);
+	 //TEST*/
        }
      }
    }
@@ -4133,6 +4388,10 @@ void shader_cycle( shader_core_ctx_t *shader,
                    unsigned int shader_number,
                    int grid_num ) 
 {
+  /*TEST
+  if(!dq_empty(shader->thd_commit_queue)) printf("Shader %u:  thd_commit_queue is not empty\n", shader->sid);
+  //TEST*/
+
    // last pipeline stage
    shader_writeback(shader, shader_number, grid_num);
 

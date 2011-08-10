@@ -1354,6 +1354,9 @@ void ex2_impl( const ptx_instruction *pI, ptx_thread_info *thread )
 void exit_impl( const ptx_instruction *pI, ptx_thread_info *thread ) 
 { 
    thread->m_cta_info->register_thread_exit(thread);
+   /*TEST
+   printf("setting thread->set_done in exit_impl\n");
+   //TEST*/
    thread->set_done();
 }
 
@@ -1960,8 +1963,11 @@ void ret_impl( const ptx_instruction *pI, ptx_thread_info *thread )
 { 
    bool empty = thread->callstack_pop();
    if( empty ) {
-      thread->m_cta_info->register_thread_exit(thread);
-      thread->set_done();
+     thread->m_cta_info->register_thread_exit(thread);
+     /*TEST
+     printf("setting thread->set_done in exit_impl\n");
+     //TEST*/
+     thread->set_done();
    }
 }
 

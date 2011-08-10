@@ -275,6 +275,9 @@ extern "C" int wpt_signal_complete( int tid, shader_core_ctx_t *shd )
       int warp_mask = 0;
       for (unsigned i=0; i<warp_size; i++) {
          if (wpt->tid[i] >= 0) {
+	   /*TEST
+	   printf("calling thread exit in warp_tracker\n");
+	   //TEST*/
             register_cta_thread_exit(shd, wpt->tid[i] );
             warp_tracker_map[sid][wpt->tid[i]] = NULL;
             g_warp_tracker_map_setl_cycle[sid][wpt->tid[i]] = gpu_tot_sim_cycle + gpu_sim_cycle;

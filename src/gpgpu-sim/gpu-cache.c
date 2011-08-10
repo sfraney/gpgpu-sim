@@ -359,7 +359,7 @@ unsigned long long int shd_cache_fill( shd_cache_t *cp,
 void shd_cache_invalidate( shd_cache_t *cp, 
 			   unsigned long long int addr) {
 
-  //TEST
+  /*TEST
   printf("Invalidating address %llu\n", addr);
   //TEST*/
 
