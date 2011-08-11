@@ -3610,10 +3610,10 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
       pl_tid[i] = tid;
    }
    int mshr_warpid = -1;
-   int atom_thread_done[pipe_simd_width];
+   //   int atom_thread_done[pipe_simd_width];
 
    for (i=0; i<pipe_simd_width; i++) {
-     atom_thread_done[i] = 0;
+     //     atom_thread_done[i] = 0;
       mshr_returnhead = getMSHR_returnhead(shader);
       if ((shader->model == POST_DOMINATOR || shader->model == NO_RECONVERGE) && gpgpu_strict_simd_wrbk) { //SEAN:  gpgpu_strict_simd_wrbk defaults to '0'
          if (mshr_returnhead) {
@@ -3645,204 +3645,78 @@ void shader_writeback( shader_core_ctx_t *shader, unsigned int shader_number, in
       /* Note: now the priority is given to the instr, but
         if this is not the case, we should stall at WB */
       if ( w2rf && !mshr_fetched ) { //SEAN:  inflight insn wants to write to RF & no mshr return also wants to write
-	/*TEST
-	printf("SEAN:  in case 1 for thread %i\n",i);
-	//TEST*/
 	// instruction needs to be written to destination register 
 	// and there is nothing from the MSHR, proceed with the writeback
-	mem_fetch_t *mf=NULL;
-	if(mshr_head[i]) mf = (mem_fetch_t*) mshr_head[i]->mf;
-	//SEAN:  push write back up if this is an atomic instruction
-	if(mf && (mf->is_atom && !mshr_head[i]->iswrite)) { //SEAN: iswrite to prevent duplicate
-	  /*TEST
-	  printf("SEAN:  about to generate write response for fetched atomic operation\n");
-	  //TEST*/
-	   //make MSHR entry
-	   mshr_entry *mshr_e = alloc_mshr_entry();
-	   mshr_e->inst_uid = mshr_head[i]->inst_uid;
-	   mshr_e->addr = mshr_head[i]->addr;
-	   mshr_e->is_atom = mshr_head[i]->is_atom;
-	   mshr_e->isvector = mshr_head[i]->isvector; //cuda supports vector loads
-	   mshr_e->reg = mshr_head[i]->reg;
-	   if (mshr_head[i]->isvector) {
-	     mshr_e->reg2 = mshr_head[i]->reg2;
-	     mshr_e->reg3 = mshr_head[i]->reg3;
-	     mshr_e->reg4 = mshr_head[i]->reg4;
-	   }
-	   mshr_e->hw_thread_id = mshr_head[i]->hw_thread_id;
-	   mshr_e->priority = shader->mshr_up_counter; //**** check this out ****//
-	   mshr_e->inst = mshr_head[i]->inst;
-	   mshr_e->iswrite = 1;
-	   mshr_e->istexture = 0;
-	   mshr_e->isconst = 0;
-	   mshr_e->islocal = mshr_head[i]->islocal;
-	   //inflight_memory_insn_add(shader, &mshr_e->inst);
-
-	   if(!dq_push(shader->mshr[mshr_e->hw_thread_id], mshr_e)) assert(0);
-
-	   //push up to memory
-	   fq_push(mf->addr, mf->nbytes_L1, 1, mf->write_mask, mf->sid, mshr_e->hw_thread_id, mshr_e, 0, mf->mem_acc, mf->pc);
-
-	   shader->n_mshr_used++;
-
-	   shader->mshr_up_counter++;
-	   if (shader->n_mshr_used > shader->max_n_mshr_used) shader->max_n_mshr_used = shader->n_mshr_used;
-	 }
       } else if ( !w2rf && mshr_fetched ) { //SEAN:  no inflight insn trying to write to RF, but there is return data from the MSHR
-	/*TEST
-	printf("SEAN:  in case 2 for thread %i\n",i);
-	//TEST*/
-         // all nop in this stage => no need to unlock and writeback
-	/*TEST
-	printf("Original MF:\n");
-	print_mf(mshr_head[i]->mf);
-	//TEST*/
-	 mem_fetch_t *mf = (mem_fetch_t*) mshr_head[i]->mf;
-	 //SEAN:  push write back up if this is an atomic instruction
-	 /*TEST
-	 printf("SEAN:  mshr_head[%u]->iswrite is %u\n"/* and mf->isatom is %u\n"/,mshr_head[i]->iswrite/*, mf->is_atom/);
-	 printf("SEAN:  about to create mshr entry\n");
-	 if(mshr_head[i] == NULL) printf("SEAN: mshr_head[%u] is NULL\n", i);
-	 //TEST*/
-	 if((mf != NULL) && mf->is_atom && !mshr_head[i]->iswrite) { //SEAN: iswrite to prevent duplicate
-	   /*TEST
-	   printf("SEAN:  made it through 'if'\n");
-	   //TEST*/
-	   /*mf->sid = shader->sid;
-	     mf->nbytes_L1 = shader->L1cache->line_sz;*/
-	   //make MSHR entry
-	   mshr_entry *mshr_e = alloc_mshr_entry();
-	   mshr_e->inst_uid = mshr_head[i]->inst_uid;
-	   mshr_e->addr = mshr_head[i]->addr;
-	   mshr_e->is_atom = mshr_head[i]->is_atom;
-	   mshr_e->isvector = mshr_head[i]->isvector; //cuda supports vector loads
-	   mshr_e->reg = mshr_head[i]->reg;
-	   if (mshr_head[i]->isvector) {
-	     mshr_e->reg2 = mshr_head[i]->reg2;
-	     mshr_e->reg3 = mshr_head[i]->reg3;
-	     mshr_e->reg4 = mshr_head[i]->reg4;
-	   }
-	   mshr_e->hw_thread_id = mshr_head[i]->hw_thread_id;
-	   mshr_e->priority = shader->mshr_up_counter; //**** check this out ****//
-	   mshr_e->inst = mshr_head[i]->inst;
-	   mshr_e->iswrite = 1;
-	   mshr_e->istexture = 0;
-	   mshr_e->isconst = 0;
-	   mshr_e->islocal = mshr_head[i]->islocal;
+	mem_fetch_t *mf = (mem_fetch_t*) mshr_head[i]->mf;
+	//SEAN:  push write back up if this is an atomic instruction
+	if((mf != NULL) && mf->is_atom && !mshr_head[i]->iswrite) { //SEAN: iswrite to prevent duplicate
+	  //make MSHR entry
+	  mshr_entry *mshr_e = alloc_mshr_entry();
+	  mshr_e->inst_uid = mshr_head[i]->inst_uid;
+	  mshr_e->addr = mshr_head[i]->addr;
+	  mshr_e->is_atom = mshr_head[i]->is_atom;
+	  mshr_e->isvector = mshr_head[i]->isvector; //cuda supports vector loads
+	  mshr_e->reg = mshr_head[i]->reg;
+	  if (mshr_head[i]->isvector) {
+	    mshr_e->reg2 = mshr_head[i]->reg2;
+	    mshr_e->reg3 = mshr_head[i]->reg3;
+	    mshr_e->reg4 = mshr_head[i]->reg4;
+	  }
+	  mshr_e->hw_thread_id = mshr_head[i]->hw_thread_id;
+	  mshr_e->priority = shader->mshr_up_counter; //**** check this out ****//
+	  mshr_e->inst = mshr_head[i]->inst;
+	  mshr_e->iswrite = 1;
+	  mshr_e->istexture = 0;
+	  mshr_e->isconst = 0;
+	  mshr_e->islocal = mshr_head[i]->islocal;
 
-	   /*TEST
-	   printf("MSHR Entry:\n");
-	   printf("\tis_atom = %u, iswrite = %u\n", mshr_e->is_atom, mshr_e->iswrite);
-	   //TEST*/
-	   inflight_memory_insn_add(shader, &mshr_e->inst);
-	   /*TEST
-	   printf("SEAN:  created new mshr entry\n");
-	   //TEST*/
-	   if(!dq_push(shader->mshr[mshr_e->hw_thread_id], mshr_e)) assert(0);
-	   /*TEST
-	   printf("SEAN:  pushed mshr entry to mshr\n");
-	   //TEST*/
-	   /*TEST
-	   printf("addr: %llu\n", mf->addr);
-	   printf("mf->nbytes_L1: %i\n",mf->nbytes_L1);
-	   printf("mf->write_mask: %llu\n",mf->write_mask);
-	   printf("mf->sid:  %i\n",mf->sid);
-	   printf("mshr_e->hw_thread_id:  %i\n",mshr_e->hw_thread_id);
-	   printf("mf->mem_acc:  %u\n",mf->mem_acc);
-	   printf("mf->pc:  %u\n",mf->pc);
-	   //TEST*/
-	   //push up to memory
-	   /*TEST
-	   printf("mshr_idx = %u?\n", mshr_e->request_uid);
-	   //TEST*/
-	   //mf->mshr_idx = mshr_e->request_uid; //MSHR idx should be the thread?
-	   fq_push(mf->addr, mf->nbytes_L1, 1, mf->write_mask, mf->sid, mf->mshr_idx, mshr_e, 0, mf->mem_acc, mf->pc);
-	   /*TEST
-	   printf("SEAN:  pushed mem_fetch to queue\n");
-	   //TEST*/
-	   shader->n_mshr_used++;
-	   /*TEST
-	   printf("SEAN:  incremented no. mshr entries used\n");
-	   //TEST*/
-	   shader->mshr_up_counter++;
-	   /*TEST
-	   printf("SEAN:  incremented mshr_up_counter\n");
-	   //TEST*/
-	   if (shader->n_mshr_used > shader->max_n_mshr_used) shader->max_n_mshr_used = shader->n_mshr_used;
-	   /*TEST
-	   printf("SEAN:  made sure too many entries weren't used\n");
-	   //TEST*/
-	   /*TEST
-	   printf("SEAN (%llu):  retiring atomic insn\n", gpu_sim_cycle);
-	   //TEST*/
-	   /*TEST
-	   printf("In-flight MF:\n");
-	   print_mf(mf);
-	   //TEST*/
-	   removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
-	   writeback_by_MSHR = 1;
-	 } else if(mshr_head[i]->iswrite) {
-	   /*TEST
-	   printf("SEAN:  this should be completion of a write\n");
-	   //TEST*/
-	   mf->sid = shader->sid;
-	   atom_thread_done[i] = 1;
-	   removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
-	 }
-	 /*TEST
-	 printf("SEAN:  about to remove original mshr entry\n");
-	 //TEST*/
-	 /*TEST
-	 printf("SEAN (%llu):  load data returned for tid %i and written to RF\n", gpu_sim_cycle, mshr_tid[i]);
-	 //TEST*/
+	  inflight_memory_insn_add(shader, &mshr_e->inst);
 
-	 /*TEST
-	 printf("SEAN:  made it out of sending write, about to record pipetrace\n");
-	 //TEST*/
-	 //SEAN
-	 if(g_pipetrace) {
-	   for (i=0; i<pipe_simd_width; i++) {
-	     if((mshr_head[i]) && (mshr_head[i]->inst.uid != nop_inst.uid)) {
-	       pipe_stat *curr=pipe_stat_last;
-	       while((curr != NULL) && (curr->uid != mshr_head[i]->inst.uid)) curr = curr->prev;    
-	       assert(curr->uid == mshr_head[i]->inst.uid);
-	       curr->in_writeback = gpu_sim_cycle;
-	     /*TEST
-	     printf("SEAN:  %u in writeback\n", curr->uid);
-	     //TEST*/
-	     }
-	   }
-	 }
-	 /*TEST
-	 printf("SEAN:  pipetrace recorded\n");
-	 //TEST*/
+	  if(!dq_push(shader->mshr[mshr_e->hw_thread_id], mshr_e)) assert(0);
+	  //push up to memory
+	  fq_push(mf->addr, mf->nbytes_L1, 1, mf->write_mask, mf->sid, mf->mshr_idx, mshr_e, 0, mf->mem_acc, mf->pc);
+	  shader->n_mshr_used++;
+	  shader->mshr_up_counter++;
+	  if (shader->n_mshr_used > shader->max_n_mshr_used) shader->max_n_mshr_used = shader->n_mshr_used;
+	  writeback_by_MSHR = 1;
+	} else if(mshr_head[i]->iswrite) {
+	  mf->sid = shader->sid;
+	} else { //need a case for the original functionality
+	  writeback_by_MSHR = 1;
+	}
+	removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
+
+	//SEAN
+	if(g_pipetrace) {
+	  for (i=0; i<pipe_simd_width; i++) {
+	    if((mshr_head[i]) && (mshr_head[i]->inst.uid != nop_inst.uid)) {
+	      pipe_stat *curr=pipe_stat_last;
+	      while((curr != NULL) && (curr->uid != mshr_head[i]->inst.uid)) curr = curr->prev;    
+	      assert(curr->uid == mshr_head[i]->inst.uid);
+	      curr->in_writeback = gpu_sim_cycle;
+	    }
+	  }
+	}
       } else if ( w2rf && mshr_fetched ) { //SEAN:  inflight insn *&* MSHR return both want to write to RF => stall inflight insn?
-	/*TEST
-	printf("SEAN:  in case 3 for thread %i\n",i);
-	//TEST*/
-         // stall the pipeline if a load from MSHR is ready to commit
-         assert (mshr_head[i]->hw_thread_id >= 0);
+	// stall the pipeline if a load from MSHR is ready to commit
+	assert (mshr_head[i]->hw_thread_id >= 0);
 
-         removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
-         writeback_by_MSHR = 1;
-         stalled_by_MSHR = 1;
-	 /*TEST
-	 printf("%llu:  Stalled by MSHR 24\n", gpu_sim_cycle);
-	 //TEST*/
-	 //SEAN
-	 if(g_pipetrace) {
-	   for (i=0; i<pipe_simd_width; i++) {
-	     if((mshr_head[i]) && (mshr_head[i]->inst.uid != nop_inst.uid)) {
-	       pipe_stat *curr=pipe_stat_last;
-	       while((curr != NULL) && (curr->uid != mshr_head[i]->inst.uid)) curr = curr->prev;    
-	       assert(curr->uid == mshr_head[i]->inst.uid);
-	       curr->in_writeback = gpu_sim_cycle;
-	     /*TEST
-	     printf("SEAN:  %u in writeback 2\n", curr->uid);
-	     //TEST*/
-	     }
-	   }
-	 }
+	removeEntry(mshr_head[i], shader->mshr, shader->n_threads);
+	writeback_by_MSHR = 1;
+	stalled_by_MSHR = 1;
+
+	//SEAN
+	if(g_pipetrace) {
+	  for (i=0; i<pipe_simd_width; i++) {
+	    if((mshr_head[i]) && (mshr_head[i]->inst.uid != nop_inst.uid)) {
+	      pipe_stat *curr=pipe_stat_last;
+	      while((curr != NULL) && (curr->uid != mshr_head[i]->inst.uid)) curr = curr->prev;    
+	      assert(curr->uid == mshr_head[i]->inst.uid);
+	      curr->in_writeback = gpu_sim_cycle;
+	    }
+	  }
+	}
 
       }
    }
